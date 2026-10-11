@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solstice GMT</string>
+    <string name="watch_face_description">Aviation GMT watch face with astronomical solar horizon bezel, dual timezone tracking, and arc complications.</string>
+</resources>

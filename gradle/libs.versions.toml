@@ -1,0 +1,17 @@
+[versions]
+agp = "8.4.2"
+kotlin = "1.9.24"
+coreKtx = "1.13.1"
+playServicesWearable = "18.2.0"
+wearWatchface = "1.2.1"
+wearWatchfaceComplications = "1.2.1"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "playServicesWearable" }
+androidx-wear-watchface = { group = "androidx.wear.watchface", name = "watchface", version.ref = "wearWatchface" }
+androidx-wear-watchface-complications-data = { group = "androidx.wear.watchface", name = "watchface-complications-data", version.ref = "wearWatchfaceComplications" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

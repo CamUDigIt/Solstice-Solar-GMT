@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  Solstice GMT Watch Face Format (WFF) specification
+  Built for Wear OS 4+ / Wear OS 5+ Declarative Watch Face Format (XML)
+  Target Resolution: 450x450 (Circular Canvas)
+-->
+<WatchFace width="450" height="450"
+    clipShape="CIRCLE"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schemas.android.com/apk/res/android">
+
+  <Metadata key="CLOCK_TYPE" value="ANALOG" />
+  <Metadata key="PREVIEW_TIME" value="10:10:30" />
+  <Metadata key="SOLAR_DYNAMIC_BEZEL" value="true" />
+  <Metadata key="AIRPORT_CODE" value="LHR" />
+  <Metadata key="SUNRISE_CALCULATION_LAT" value="51.47" />
+  <Metadata key="SUNRISE_CALCULATION_LON" value="-0.4543" />
+
+  <!-- User Customizable Configurations -->
+  <UserConfigurations>
+    <ColorConfiguration id="bezel_preset" defaultValue="pepsi" displayName="Bezel Colorway">
+      <ColorOption id="pepsi" displayName="Pepsi (Cerulean &amp; Crimson)" colors="#1d4ed8 #dc2626" />
+      <ColorOption id="batman" displayName="Batman (Noir &amp; Royal Blue)" colors="#09090b #2563eb" />
+      <ColorOption id="coke" displayName="Coke (Obsidian &amp; Scarlet)" colors="#111827 #b91c1c" />
+      <ColorOption id="rootbeer" displayName="Root Beer (Espresso &amp; Bronze)" colors="#3f2e22 #d97706" />
+      <ColorOption id="golden_hour" displayName="Golden Hour (Violet &amp; Amber)" colors="#2e1065 #ea580c" />
+      <ColorOption id="polar" displayName="Polar (Abyss &amp; Glacial White)" colors="#0f172a #e2e8f0" />
+    </ColorConfiguration>
+  </UserConfigurations>
+
+  <Scene backgroundColor="#08090a">
+    <!-- DYNAMIC SOLAR BEZEL RING (Dictated by selected airport coordinates) -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <!-- NIGHT ARC -->
+      <Arc centerX="225" centerY="225" width="424" height="424"
+           startAngle="275" endAngle="469"
+           direction="CLOCKWISE" strokeWidth="28" color="#1d4ed8">
+        <Transform target="startAngle" value="[CALENDAR_SUNSET_ANGLE]" />
+        <Transform target="endAngle" value="[CALENDAR_SUNRISE_ANGLE]" />
+      </Arc>
+
+      <!-- DAY ARC -->
+      <Arc centerX="225" centerY="225" width="424" height="424"
+           startAngle="109" endAngle="275"
+           direction="CLOCKWISE" strokeWidth="28" color="#dc2626">
+        <Transform target="startAngle" value="[CALENDAR_SUNRISE_ANGLE]" />
+        <Transform target="endAngle" value="[CALENDAR_SUNSET_ANGLE]" />
+      </Arc>
+    </PartDraw>
+
+    <!-- 12-HOUR BEZEL SCALE NUMERALS & UNIFORM MINUTE TICKS (Ticks at numbers deleted) -->
+    <PartGroup x="0" y="0" width="450" height="450"
+               angle="0">
+      <!-- Uniform minute ticks in red & blue bezel (omits m % 5 === 0 at numerals) -->
+      <Line startX="245" startY="38" endX="245" endY="30" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="264" startY="41" endX="266" endY="33" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="283" startY="46" endX="286" endY="39" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="301" startY="53" endX="305" endY="46" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="336" startY="73" endX="340" endY="66" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="351" startY="85" endX="356" endY="79" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="365" startY="99" endX="371" endY="94" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="377" startY="114" endX="384" endY="110" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="397" startY="149" endX="404" endY="145" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="404" startY="167" endX="411" endY="164" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="409" startY="186" endX="417" endY="184" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="412" startY="205" endX="420" endY="205" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="412" startY="245" endX="420" endY="245" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="409" startY="264" endX="417" endY="266" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="404" startY="283" endX="411" endY="286" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="397" startY="301" endX="404" endY="305" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="377" startY="336" endX="384" endY="340" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="365" startY="351" endX="371" endY="356" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="351" startY="365" endX="356" endY="371" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="336" startY="377" endX="340" endY="384" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="301" startY="397" endX="305" endY="404" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="283" startY="404" endX="286" endY="411" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="264" startY="409" endX="266" endY="417" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="245" startY="412" endX="245" endY="420" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="205" startY="412" endX="205" endY="420" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="186" startY="409" endX="184" endY="417" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="167" startY="404" endX="164" endY="411" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="149" startY="397" endX="145" endY="404" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="114" startY="377" endX="110" endY="384" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="99" startY="365" endX="94" endY="371" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="85" startY="351" endX="79" endY="356" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="73" startY="336" endX="66" endY="340" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="53" startY="301" endX="46" endY="305" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="46" startY="283" endX="39" endY="286" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="41" startY="264" endX="33" endY="266" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="38" startY="245" endX="30" endY="245" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="38" startY="205" endX="30" endY="205" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="41" startY="186" endX="33" endY="184" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="46" startY="167" endX="39" endY="164" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="53" startY="149" endX="46" endY="145" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="73" startY="114" endX="66" endY="110" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="85" startY="99" endX="79" endY="94" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="99" startY="85" endX="94" endY="79" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="114" startY="73" endX="110" endY="66" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="149" startY="53" endX="145" endY="46" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="167" startY="46" endX="164" endY="39" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="186" startY="41" endX="184" endY="33" strokeWidth="1.6" color="#ffffff" />
+      <Line startX="205" startY="38" endX="205" endY="30" strokeWidth="1.6" color="#ffffff" />
+      <PartText x="207" y="8" width="36" height="24" angle="0"><Text text="12" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="322" y="40" width="36" height="24" angle="30"><Text text="1" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="397" y="113" width="36" height="24" angle="60"><Text text="2" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="421" y="213" width="36" height="24" angle="90"><Text text="3" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="397" y="313" width="36" height="24" angle="120"><Text text="4" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="322" y="386" width="36" height="24" angle="150"><Text text="5" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="207" y="414" width="36" height="24" angle="180"><Text text="6" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="92" y="386" width="36" height="24" angle="210"><Text text="7" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="17" y="313" width="36" height="24" angle="240"><Text text="8" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="-7" y="213" width="36" height="24" angle="270"><Text text="9" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="17" y="113" width="36" height="24" angle="300"><Text text="10" size="24" font="ROBOTO_CONDENSED"/></PartText>
+      <PartText x="92" y="40" width="36" height="24" angle="330"><Text text="11" size="24" font="ROBOTO_CONDENSED"/></PartText>
+    </PartGroup>
+
+    <!-- CLEAN DIAL FACE (Zero blue markings) -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Circle centerX="225" centerY="225" radius="196" fill="true" color="#0b0e14" />
+      <Circle centerX="225" centerY="225" radius="195" strokeWidth="1" color="#1e293b" />
+    </PartDraw>
+
+    <!-- WEAR OS PERIMETER ARC COMPLICATIONS -->
+    <!-- Top-Left Arc: Battery Reserve -->
+    <ComplicationSlot slotId="101"
+        supportedTypes="RANGED_VALUE,SHORT_TEXT"
+        x="25" y="25" width="400" height="400">
+      <DefaultProviderPolicy defaultProvider="com.google.android.wearable.battery" />
+      <PartDraw x="0" y="0" width="400" height="400">
+        <Arc centerX="200" centerY="200" width="352" height="352"
+             startAngle="295" endAngle="345" strokeWidth="3" color="#10b981" />
+      </PartDraw>
+    </ComplicationSlot>
+
+    <!-- Top-Right Arc: Weather / Temp -->
+    <ComplicationSlot slotId="102"
+        supportedTypes="RANGED_VALUE,SHORT_TEXT"
+        x="25" y="25" width="400" height="400">
+      <DefaultProviderPolicy defaultProvider="com.google.android.wearable.weather" />
+      <PartDraw x="0" y="0" width="400" height="400">
+        <Arc centerX="200" centerY="200" width="352" height="352"
+             startAngle="15" endAngle="65" strokeWidth="3" color="#f59e0b" />
+      </PartDraw>
+    </ComplicationSlot>
+
+    <!-- TOP AIRPORT / LOCATION COMPLICATION SLOT -->
+    <ComplicationSlot slotId="201"
+        supportedTypes="SHORT_TEXT"
+        x="181" y="112" width="88" height="28">
+      <PartDraw x="0" y="0" width="88" height="28">
+        <RoundRectangle x="0" y="0" width="88" height="28" cornerRadius="7" color="#0b0f19" strokeWidth="1" strokeColor="#475569" />
+        <PartText x="0" y="5" width="88" height="18">
+          <Text text="LHR" color="#ffffff" font="ROBOTO_CONDENSED"/>
+        </PartText>
+      </PartDraw>
+    </ComplicationSlot>
+
+    <!-- 3 O'CLOCK DATE WINDOW -->
+    <PartDraw x="328" y="210" width="38" height="30">
+      <RoundRectangle x="0" y="0" width="38" height="30" cornerRadius="4" color="#ffffff" strokeWidth="2" strokeColor="#334155" />
+      <PartText x="0" y="5" width="38" height="20">
+        <Text text="[DAY_OF_MONTH]" color="#0f172a" font="ROBOTO"/>
+      </PartText>
+    </PartDraw>
+
+    <!-- 6 O'CLOCK BOTTOM LONG TEXT COMPLICATION SLOT -->
+    <ComplicationSlot slotId="301"
+        supportedTypes="LONG_TEXT"
+        x="135" y="285" width="180" height="46">
+      <PartDraw x="0" y="0" width="180" height="46">
+        <RoundRectangle x="0" y="0" width="180" height="46" cornerRadius="8" color="#0b0f19" strokeWidth="1" strokeColor="#334155" />
+        <PartText x="0" y="4" width="180" height="20">
+          <Text text="[COMPLICATION.TEXT]" color="#ffffff" font="ROBOTO"/>
+        </PartText>
+        <PartText x="0" y="24" width="180" height="16">
+          <Text text="[COMPLICATION.TITLE]" color="#38bdf8" font="ROBOTO_CONDENSED"/>
+        </PartText>
+      </PartDraw>
+    </ComplicationSlot>
+
+    <!-- ANALOG HANDS STACK -->
+    <!-- LAYER 1: RED HOURS HAND FOR THE AIRPORT LOCATION -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Transform target="angle" value="([TIME_HOUR_AIRPORT_12] + [TIME_MINUTE] / 60) * 30" />
+      <Line startX="225" startY="225" endX="225" endY="95" strokeWidth="3.5" color="#ef4444" />
+      <Polyline points="225,75 216,98 234,98" color="#ef4444" fill="true" />
+      <Polyline points="225,80 219,96 231,96" color="#ffffff" fill="true" />
+    </PartDraw>
+
+    <!-- LAYER 2: 12-HOUR LOCAL HOUR HAND -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Transform target="angle" value="([TIME_HOUR_12] + [TIME_MINUTE] / 60) * 30" />
+      <Line startX="225" startY="225" endX="225" endY="105" strokeWidth="5" color="#f8fafc" />
+      <Circle centerX="225" centerY="130" radius="7" color="#f8fafc" fill="false" strokeWidth="2" />
+    </PartDraw>
+
+    <!-- LAYER 3: 60-MINUTE MINUTE HAND -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Transform target="angle" value="([TIME_MINUTE] + [TIME_SECOND] / 60) * 6" />
+      <Line startX="225" startY="225" endX="225" endY="55" strokeWidth="3.5" color="#ffffff" />
+    </PartDraw>
+
+    <!-- LAYER 4: CENTRAL SWEEPING SECONDS HAND -->
+    <PartDraw x="0" y="0" width="450" height="450" renderMode="INTERACTIVE">
+      <Transform target="angle" value="[TIME_SECOND_SMOOTH] * 6" />
+      <Line startX="225" startY="250" endX="225" endY="45" strokeWidth="1.5" color="#ef4444" />
+      <Circle centerX="225" centerY="95" radius="4.5" color="#ef4444" fill="true" />
+      <Circle centerX="225" centerY="95" radius="3" color="#ffffff" fill="true" />
+    </PartDraw>
+
+    <!-- Center Pinion -->
+    <Circle centerX="225" centerY="225" radius="5" color="#1e293b" fill="true" />
+    <Circle centerX="225" centerY="225" radius="2" color="#ffffff" fill="true" />
+  </Scene>
+</WatchFace>

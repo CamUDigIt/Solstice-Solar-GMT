@@ -1,0 +1,94 @@
+{
+  "exportedAt": "2026-10-11T18:41:25.337Z",
+  "format": "Wear OS Watch Face Format (WFF)",
+  "targetVersion": "Wear OS 4 / 5 (Android 13+ / 14+)",
+  "bezel": {
+    "preset": "pepsi",
+    "dayColor": "#dc2626",
+    "nightColor": "#1d4ed8",
+    "rotationOffsetHours": 0
+  },
+  "airport": {
+    "code": "LHR",
+    "name": "Heathrow Airport",
+    "city": "London",
+    "country": "United Kingdom",
+    "timezone": "Europe/London",
+    "latitude": 51.47,
+    "longitude": -0.4543
+  },
+  "solarData": {
+    "sunrise": "07:16",
+    "sunset": "18:20",
+    "daySweepDegrees": 166,
+    "solarNoon": "12:48"
+  },
+  "complications": {
+    "bottomLongText": {
+      "enabled": true,
+      "type": "next_event",
+      "title": "EVENT",
+      "text": "Strategy Sync",
+      "time": "11:30 AM",
+      "icon": "calendar"
+    },
+    "arcs": {
+      "topLeft": {
+        "id": "arc_topLeft",
+        "position": "topLeft",
+        "type": "battery",
+        "label": "Battery Reserve",
+        "value": "84%",
+        "progress": 0.84,
+        "min": 0,
+        "max": 100,
+        "current": 84,
+        "color": "#10b981"
+      },
+      "topRight": {
+        "id": "arc_topRight",
+        "position": "topRight",
+        "type": "weather",
+        "label": "Weather & Temp",
+        "value": "21°",
+        "progress": 0.65,
+        "min": 0,
+        "max": 40,
+        "current": 21,
+        "color": "#f59e0b"
+      },
+      "bottomLeft": {
+        "id": "arc_bottomLeft",
+        "position": "bottomLeft",
+        "type": "steps",
+        "label": "Daily Steps",
+        "value": "7.8k",
+        "progress": 0.78,
+        "min": 0,
+        "max": 10000,
+        "current": 7800,
+        "color": "#e2e8f0"
+      },
+      "bottomRight": {
+        "id": "arc_bottomRight",
+        "position": "bottomRight",
+        "type": "heart_rate",
+        "label": "Heart Rate",
+        "value": "72",
+        "progress": 0.55,
+        "min": 40,
+        "max": 160,
+        "current": 72,
+        "color": "#f43f5e"
+      }
+    },
+    "showDateWindow": true,
+    "dateTargetApp": "google-calendar"
+  },
+  "fonts": {
+    "theme": "wear_os_standard",
+    "bezelNumerals": "Roboto Condensed",
+    "dateWindow": "Roboto",
+    "complications": "Roboto Condensed"
+  }
+}
