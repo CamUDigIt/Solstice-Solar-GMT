@@ -29,11 +29,11 @@ public class HandArt {
         out.mkdirs();
 
         // name, width, length (pivot->tip), tail (pivot->butt)
-        hand(out, "hand_hour", 18, 118, 22, HandArt::drawHour);
+        hand(out, "hand_hour", 24, 106, 22, HandArt::drawHour);
         hand(out, "hand_minute", 14, 178, 24, HandArt::drawMinute);
         hand(out, "hand_second", 14, 186, 42, HandArt::drawSecond);
         hand(out, "hand_gmt", 22, 194, 0, HandArt::drawGmt);
-        hand(out, "hand_hour_ambient", 18, 118, 22, (g, w, len, tail) -> outlineOnly(g, w, len, tail, HandArt::hourShape));
+        hand(out, "hand_hour_ambient", 24, 106, 22, (g, w, len, tail) -> outlineOnly(g, w, len, tail, HandArt::hourShape));
         hand(out, "hand_minute_ambient", 14, 178, 24, (g, w, len, tail) -> outlineOnly(g, w, len, tail, HandArt::minuteShape));
         pip(out);
         placeholderPreview(out);

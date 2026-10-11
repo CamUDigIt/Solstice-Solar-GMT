@@ -1,68 +1,67 @@
-# Solstice GMT — Wear OS 4 / Wear OS 5 Watch Face Project
+# Solstice GMT
 
-This project contains everything needed to install and run **Solstice GMT** on any Wear OS smartwatch:
-- **Google Pixel Watch 1 / 2 / 3**
-- **Samsung Galaxy Watch 4 / 5 / 6 / 7 / Ultra**
-- **OnePlus Watch 2 / 2R**
-- **Xiaomi Watch 2 / Pro**
-- Wear OS 4+ Android Studio Emulator
+A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
+(Wear OS 5.1+, API 35). It's a resource-only APK with no app code.
 
----
+## What's on the face
 
-## What's Included in this Export:
-1. `app/src/main/res/raw/watchface.xml` — Official declarative Watch Face Format (WFF) XML file.
-2. `app/src/main/AndroidManifest.xml` — Complete Wear OS watch face wallpaper service manifest.
-3. `build.gradle.kts` & `app/build.gradle.kts` — Ready-to-compile Gradle project.
-4. `solstice-config.json` — Snapshot of current colorway, airport (LHR - London), and complication layout.
-5. `preview-watchface.svg` — High-resolution scalable vector artwork of the watch face.
+- **12-hour solar bezel.** The two-tone ring is a rolling 12-hour daylight
+  window for the selected airport, read against the red GMT hand. The hand
+  always sits on "now" at the airport. Going clockwise from it, the ring shows
+  the day colour for the hours that will be daylight there and the night colour
+  for the rest. Sunrise and sunset are computed on the watch from the date and
+  the airport's latitude/longitude (NOAA approximation, within a few minutes).
+- **GMT hand + airport label.** These show the time at one of 15 airports
+  (UTC, LHR, CDG, DXB, DEL, SIN, HKG, HND, SYD, HNL, LAX, DEN, ORD, JFK, GRU).
+  Each airport's IANA time zone is applied with WFF `Localization`, so daylight
+  saving is handled by the OS.
+- **Local time.** Steel sword hands with lume, and a sweeping lollipop seconds hand.
+- **Complications.** Four arc complications (ranged value / goal progress /
+  short text) and a long-text slot at 6 o'clock.
+- **Date window** at 3 o'clock.
+- **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
+- **Customisation.** In the watch-face editor you can pick a bezel colourway
+  (Pepsi, Batman, Coke, Root Beer, Golden Hour, Polar), the GMT airport, and
+  each complication.
 
----
+## Project layout
 
-## Quick Method 1: Sideload in 5 Minutes (Wireless ADB)
+| Path | What it is |
+|---|---|
+| `tools/WatchFace.java` | **Source of truth.** Generates `res/raw/watchface.xml` and `res/values/strings.xml`. |
+| `tools/HandArt.java` | Renders the hand / bezel-pip PNGs into `res/drawable-nodpi`. |
+| `tools/Validate.java` | Validates the XML against the official WFF v3 schema (`tools/wff`, Apache 2.0, from google/watchface). |
+| `app/src/main/res/raw/watchface.xml` | Generated. Don't hand-edit. |
 
-### Step 1: Enable Developer Options on Watch
-1. On your watch, navigate to **Settings** > **System** > **About** > **Versions**.
-2. Tap **Build number** 7 times rapidly until you see *"You are now a developer!"*.
-3. Go back to **Settings** > **Developer options**.
-4. Turn ON **ADB debugging**.
-5. Turn ON **Wireless debugging** and tap into it.
-6. Make sure your computer and watch are connected to the same Wi-Fi network.
+## Edit → validate → build
 
-### Step 2: Connect & Install via ADB
-Open a terminal in this project root:
+Run these from the project root (JDK 17+):
+
 ```bash
-# 1. Pair with your watch (find pairing code & port under 'Pair new device' in watch settings):
-adb pair <WATCH_IP>:<PAIRING_PORT> <6_DIGIT_PAIRING_CODE>
-
-# 2. Connect to the watch:
-adb connect <WATCH_IP>:<CONNECT_PORT>
-
-# 3. Confirm connected device:
-adb devices
-
-# 4. Build and install directly onto your wrist:
-./gradlew installDebug
+java tools/HandArt.java
 ```
 
----
+```bash
+java tools/WatchFace.java
+```
 
-## Quick Method 2: Samsung Watch Face Studio (No Terminal Needed)
+```bash
+java -cp "tools/wff/lib/*" tools/Validate.java
+```
 
-1. Download **Samsung Watch Face Studio (WFS)** (free for macOS and Windows):
-   https://developer.samsung.com/watch-face-studio
-2. Launch WFS and create a new project.
-3. Import or copy the `watchface.xml` file.
-4. Click **Run on Device** in the top-right toolbar.
-5. Enter your watch's IP address. WFS packages and installs the watch face wirelessly in ~10 seconds!
+```bash
+./gradlew assembleDebug
+```
 
----
+## Install on a watch or emulator (Wear OS 5.1+)
 
-## Active Watch Face Features
-- **GMT Airport Hand**: Tracks **LHR** (London, United Kingdom).
-- **Astronomical Solar Horizon**: Day bezel (07:16 - 18:20) updates according to airport coordinates.
-- **Wear OS Perimeter Arc Complications**:
-  - Top-Left: Battery Reserve
-  - Top-Right: Weather / Temp
-  - Bottom-Left: Steps
-  - Bottom-Right: Heart Rate
-- **6 o'clock Complication**: Wear OS Native Long Text Slot
+```bash
+adb install -r app/build/outputs/apk/debug/app-debug.apk
+```
+
+Then long-press the current watch face, scroll to **Solstice GMT**, and select it.
+If the XML has a runtime error, the face renders blank; check the log with:
+
+```bash
+adb logcat -s WatchFace
+```

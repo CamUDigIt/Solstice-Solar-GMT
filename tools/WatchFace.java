@@ -161,6 +161,7 @@ public class WatchFace {
                 close("Ellipse");
             }
         }
+        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"140\"/>");
         close("PartDraw");
         close("Group");
     }
@@ -235,10 +236,10 @@ public class WatchFace {
         for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT")) {
             open("Complication type=\"%s\"", type);
             open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-            arc(COMP_R, s.start, s.end, "#2A313B", 5, "ROUND", null);
+            arc(COMP_R, s.start, s.end, "#2A313B", 12, "ROUND", null);
             if (!type.equals("SHORT_TEXT")) {
                 String frac = type.equals("RANGED_VALUE") ? ranged : goal;
-                arc(COMP_R, s.start, s.end, s.color, 5, "ROUND",
+                arc(COMP_R, s.start, s.end, s.color, 12, "ROUND",
                         "<Transform target=\"endAngle\" value=\"" + f(s.start) + " + " + frac + " * " + sweep + "\"/>");
             }
             close("PartDraw");
@@ -344,6 +345,7 @@ public class WatchFace {
         double thick = ambient ? 3 : BEZEL_THICK;
         double r = ambient ? BEZEL_INNER + 2 : BEZEL_MID;
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
+        line("<Localization timeZone=\"%s\"/>", a.zone);
         arc(r, 0, 360, "[CONFIGURATION.bezel.0]", thick, "BUTT", null);
         // Daylight intervals for yesterday, today and tomorrow, clipped to the window.
         for (int day = -1; day <= 1; day++) {
@@ -361,6 +363,7 @@ public class WatchFace {
     static void airportLabel(Airport a) {
         int w = 96, h = 24, x = (int) (C - w / 2), y = 120;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
+        line("<Localization timeZone=\"%s\"/>", a.zone);
         open("Text align=\"CENTER\"");
         open("Font family=\"SYNC_TO_DEVICE\" size=\"17\" weight=\"MEDIUM\" width=\"CONDENSED\" letterSpacing=\"0.08\" color=\"%s\"", STEEL);
         line("<Template>%s %%s:%%s<Parameter expression=\"[HOUR_0_23_Z]\"/><Parameter expression=\"[MINUTE_Z]\"/></Template>", a.code);
@@ -404,7 +407,7 @@ public class WatchFace {
             open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" angle=\"%s\"", x, y, w, hh, f(a));
             open("Text align=\"CENTER\"");
             open("Font family=\"SYNC_TO_DEVICE\" size=\"19\" weight=\"SEMI_BOLD\" width=\"CONDENSED\" color=\"#F1F2F4\"");
-            line("%d", h);
+            line("<Template>%%s<Parameter expression=\"%d\"/></Template>", h);
             close("Font");
             close("Text");
             close("PartText");
@@ -421,8 +424,8 @@ public class WatchFace {
     static void localHands() {
         comment("Local time: hour, minute, sweeping seconds (outline hands in ambient)");
         open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        hand("HourHand", "hand_hour", 18, 118, 22, 255, 0);
-        hand("HourHand", "hand_hour_ambient", 18, 118, 22, 0, 255);
+        hand("HourHand", "hand_hour", 24, 106, 22, 255, 0);
+        hand("HourHand", "hand_hour_ambient", 24, 106, 22, 0, 255);
         hand("MinuteHand", "hand_minute", 14, 178, 24, 255, 0);
         hand("MinuteHand", "hand_minute_ambient", 14, 178, 24, 0, 255);
         int sw = 14, sl = 186, st = 42;
