@@ -582,11 +582,10 @@
         </PartText>
       </Complication>
     </ComplicationSlot>
-    <!-- Per-airport group: everything inside is localised to the airport's time zone -->
+    <!-- Per-airport group: bezel, label and GMT hand in the airport's time zone -->
     <ListConfiguration id="airport">
       <ListOption id="UTC">
         <Group name="airport_UTC" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Etc/UTC"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Etc/UTC"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -654,7 +653,6 @@
       </ListOption>
       <ListOption id="LHR">
         <Group name="airport_LHR" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Europe/London"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Europe/London"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -722,7 +720,6 @@
       </ListOption>
       <ListOption id="CDG">
         <Group name="airport_CDG" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Europe/Paris"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Europe/Paris"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -790,7 +787,6 @@
       </ListOption>
       <ListOption id="DXB">
         <Group name="airport_DXB" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Asia/Dubai"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Asia/Dubai"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -858,7 +854,6 @@
       </ListOption>
       <ListOption id="DEL">
         <Group name="airport_DEL" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Asia/Kolkata"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Asia/Kolkata"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -926,7 +921,6 @@
       </ListOption>
       <ListOption id="SIN">
         <Group name="airport_SIN" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Asia/Singapore"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Asia/Singapore"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -994,7 +988,6 @@
       </ListOption>
       <ListOption id="HKG">
         <Group name="airport_HKG" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Asia/Hong_Kong"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Asia/Hong_Kong"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1062,7 +1055,6 @@
       </ListOption>
       <ListOption id="HND">
         <Group name="airport_HND" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Asia/Tokyo"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Asia/Tokyo"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1130,7 +1122,6 @@
       </ListOption>
       <ListOption id="SYD">
         <Group name="airport_SYD" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Australia/Sydney"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Australia/Sydney"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1198,7 +1189,6 @@
       </ListOption>
       <ListOption id="HNL">
         <Group name="airport_HNL" x="0" y="0" width="450" height="450">
-          <Localization timeZone="Pacific/Honolulu"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="Pacific/Honolulu"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1266,7 +1256,6 @@
       </ListOption>
       <ListOption id="LAX">
         <Group name="airport_LAX" x="0" y="0" width="450" height="450">
-          <Localization timeZone="America/Los_Angeles"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="America/Los_Angeles"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1334,7 +1323,6 @@
       </ListOption>
       <ListOption id="DEN">
         <Group name="airport_DEN" x="0" y="0" width="450" height="450">
-          <Localization timeZone="America/Denver"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="America/Denver"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1402,7 +1390,6 @@
       </ListOption>
       <ListOption id="ORD">
         <Group name="airport_ORD" x="0" y="0" width="450" height="450">
-          <Localization timeZone="America/Chicago"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="America/Chicago"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1470,7 +1457,6 @@
       </ListOption>
       <ListOption id="JFK">
         <Group name="airport_JFK" x="0" y="0" width="450" height="450">
-          <Localization timeZone="America/New_York"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="America/New_York"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">
@@ -1538,7 +1524,6 @@
       </ListOption>
       <ListOption id="GRU">
         <Group name="airport_GRU" x="0" y="0" width="450" height="450">
-          <Localization timeZone="America/Sao_Paulo"/>
           <PartDraw x="0" y="0" width="450" height="450" alpha="255">
             <Localization timeZone="America/Sao_Paulo"/>
             <Arc centerX="225" centerY="225" width="423" height="423" startAngle="0" endAngle="360">

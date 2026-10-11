@@ -236,6 +236,8 @@ public class WatchFace {
         for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT")) {
             open("Complication type=\"%s\"", type);
             open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            // The runtime draws strokes inside complications at roughly 0.4x the
+            // declared thickness (seen on the Wear OS 6 emulator): 12 renders ~5 px.
             arc(COMP_R, s.start, s.end, "#2A313B", 12, "ROUND", null);
             if (!type.equals("SHORT_TEXT")) {
                 String frac = type.equals("RANGED_VALUE") ? ranged : goal;
@@ -298,12 +300,13 @@ public class WatchFace {
     // ---- Airport-dependent parts: solar bezel, label, GMT hand ------------
 
     static void airportGroups() {
-        comment("Per-airport group: everything inside is localised to the airport's time zone");
+        // Localization must sit on each Part/AnalogClock: on a Group it does not
+        // change the time data sources used by its children's expressions.
+        comment("Per-airport group: bezel, label and GMT hand in the airport's time zone");
         open("ListConfiguration id=\"airport\"");
         for (Airport a : AIRPORTS) {
             open("ListOption id=\"%s\"", a.code);
             open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
-            line("<Localization timeZone=\"%s\"/>", a.zone);
             solarBezel(a, false);
             solarBezel(a, true);
             airportLabel(a);
