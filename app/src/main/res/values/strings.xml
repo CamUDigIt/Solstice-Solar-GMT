@@ -10,6 +10,7 @@
     <string name="bezel_rootbeer">Root Beer</string>
     <string name="bezel_golden_hour">Golden Hour</string>
     <string name="bezel_polar">Polar</string>
+    <string name="airport_local">LOCAL · Your time zone</string>
     <string name="airport_utc">UTC · Coordinated Universal Time</string>
     <string name="airport_hnl">HNL · Honolulu</string>
     <string name="airport_anc">ANC · Anchorage</string>

@@ -80,18 +80,107 @@ public class WatchFace {
             new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79));
 
     static final String DEFAULT_AIRPORT = "LHR";
+    /** Option id for "GMT hand follows local time"; its bezel uses the weather forecast. */
+    static final String LOCAL = "LOCAL";
 
-    // ---- Bezel colourways: first colour = night, second = day --------------
+    // ---- Destination UTC offset, computed from the UTC clock ----------------
+    //
+    // The offset label ("LHR +7H") needs the airport's offset and the wearer's
+    // offset in one expression. A part with <Localization> sees *every* time
+    // source in the airport's zone (including TIMEZONE_OFFSET_MINUTES_DST), so
+    // the label is not localised; instead the airport's current offset is built
+    // from [MINUTES_SINCE_EPOCH] plus its daylight-saving rule. DstCheck.java
+    // verifies these expressions against java.time for every hour of 2026-2040.
 
-    record Colorway(String id, String name, String night, String day) {}
+    enum Dst { NONE, EU, NA, AU, NZ, CL, EG }
+
+    static java.time.zone.ZoneRules rules(Airport a) {
+        return java.time.ZoneId.of(a.zone).getRules();
+    }
+
+    // Rules are classified from 2027 onward, so zones whose law changed recently
+    // (e.g. British Columbia's permanent UTC-7 from November 2026) use the new rule.
+    static final java.time.Instant RULES_FROM = java.time.Instant.parse("2027-01-01T00:00:00Z");
+
+    /** Standard offset in minutes (the year-round offset for zones without DST). */
+    static int stdMinutes(Airport a) {
+        var r = rules(a);
+        return (dstRule(a) == Dst.NONE ? r.getOffset(RULES_FROM) : r.getStandardOffset(RULES_FROM)).getTotalSeconds() / 60;
+    }
+
+    static Dst dstRule(Airport a) {
+        var r = rules(a);
+        var next = r.nextTransition(RULES_FROM);
+        if (r.isFixedOffset() || next == null || next.getInstant().isAfter(RULES_FROM.plusSeconds(366L * 86400))) {
+            return Dst.NONE;
+        }
+        String z = a.zone;
+        if (z.startsWith("Europe/")) return Dst.EU;
+        if (z.equals("America/Santiago")) return Dst.CL;
+        if (z.equals("Africa/Cairo")) return Dst.EG;
+        if (z.equals("Pacific/Auckland")) return Dst.NZ;
+        if (z.startsWith("Australia/")) return Dst.AU;
+        if (z.startsWith("America/")) return Dst.NA;
+        throw new IllegalStateException("No DST rule family for " + z);
+    }
+
+    /** Days since 1970-01-01 for month m (>= 3) / day d of [YEAR] (civil-from-days, Hinnant). */
+    static String day(int m, int d) {
+        int k = (153 * (m - 3) + 2) / 5 + d - 719469;
+        return "(365 * [YEAR] + floor([YEAR] / 4) - floor([YEAR] / 100) + floor([YEAR] / 400) + " + k + ")";
+    }
+
+    /** Last weekday wd (0 = Sunday) on or before day expression n. */
+    static String lastWd(String n, int wd) {
+        return "(" + n + " - (" + n + " + " + (11 - wd) + ") % 7)";
+    }
+
+    /** First weekday wd (0 = Sunday) on or after day expression n. */
+    static String firstWd(String n, int wd) {
+        return "(" + n + " + (" + (wd + 7) + " - (" + n + " + 4) % 7) % 7)";
+    }
+
+    /** UTC minute at which local clocks change, on day expression dayExpr. */
+    static String at(String dayExpr, int utcMinuteOfDay) {
+        return "((" + dayExpr + ") * 1440 + " + utcMinuteOfDay + ")";
+    }
+
+    /** Expression for the airport's current UTC offset in minutes. */
+    static String destOffset(Airport a) {
+        int s = stdMinutes(a);
+        String now = "[MINUTES_SINCE_EPOCH]";
+        String on = switch (dstRule(a)) {
+            case NONE -> null;
+            // Last Sunday of March / October, 01:00 UTC.
+            case EU -> now + " >= " + at(lastWd(day(3, 31), 0), 60) + " && " + now + " < " + at(lastWd(day(10, 31), 0), 60);
+            // Second Sunday of March 02:00 standard / first Sunday of November 02:00 daylight.
+            case NA -> now + " >= " + at(firstWd(day(3, 8), 0), 120 - s) + " && " + now + " < " + at(firstWd(day(11, 1), 0), 60 - s);
+            // First Sunday of October 02:00 standard / first Sunday of April 03:00 daylight.
+            case AU -> now + " >= " + at(firstWd(day(10, 1), 0), 120 - s) + " || " + now + " < " + at(firstWd(day(4, 1), 0), 120 - s);
+            // Last Sunday of September 02:00 standard / first Sunday of April 03:00 daylight.
+            case NZ -> now + " >= " + at(lastWd(day(9, 30), 0), 120 - s) + " || " + now + " < " + at(firstWd(day(4, 1), 0), 120 - s);
+            // Midnight starting the first Sunday on/after 2 Sep (standard) / 2 Apr (daylight).
+            case CL -> now + " >= " + at(firstWd(day(9, 2), 0), -s) + " || " + now + " < " + at(firstWd(day(4, 2), 0), -s - 60);
+            // Midnight starting the last Friday of April / ending the last Thursday of October.
+            case EG -> now + " >= " + at(lastWd(day(4, 30), 5), -s) + " && " + now + " < " + at(lastWd(day(10, 31), 4) + " + 1", -s - 60);
+        };
+        return on == null ? Integer.toString(s) : "(" + s + " + ((" + on + ") ? 60 : 0))";
+    }
+
+    // ---- Bezel colourways ---------------------------------------------------
+    // Colours: [0] night, [1] day, [2] night in always-on mode. The thin
+    // always-on ring sits on pure black, so near-black night colours are lifted
+    // there to keep the whole ring visible.
+
+    record Colorway(String id, String name, String night, String day, String ambientNight) {}
 
     static final List<Colorway> COLORWAYS = List.of(
-            new Colorway("pepsi", "Pepsi", "#1D4ED8", "#C81E1E"),
-            new Colorway("batman", "Batman", "#0B0B0E", "#2563EB"),
-            new Colorway("coke", "Coke", "#111318", "#B91C1C"),
-            new Colorway("rootbeer", "Root Beer", "#3A2A1F", "#B7791F"),
-            new Colorway("golden_hour", "Golden Hour", "#2E1065", "#EA580C"),
-            new Colorway("polar", "Polar", "#0F172A", "#CBD5E1"));
+            new Colorway("pepsi", "Pepsi", "#1D4ED8", "#C81E1E", "#1D4ED8"),
+            new Colorway("batman", "Batman", "#0B0B0E", "#2563EB", "#52525B"),
+            new Colorway("coke", "Coke", "#111318", "#B91C1C", "#52525B"),
+            new Colorway("rootbeer", "Root Beer", "#3A2A1F", "#B7791F", "#7C5A3F"),
+            new Colorway("golden_hour", "Golden Hour", "#2E1065", "#EA580C", "#6D28D9"),
+            new Colorway("polar", "Polar", "#0F172A", "#CBD5E1", "#475569"));
 
     // ---- Palette ----------------------------------------------------------
 
@@ -135,21 +224,114 @@ public class WatchFace {
 
         write("app/src/main/res/raw/watchface.xml", out.toString());
         write("app/src/main/res/values/strings.xml", strings());
-        System.out.println("Wrote watchface.xml and strings.xml");
+        icons(new File("app/src/main/res/drawable-nodpi"));
+        System.out.println("Wrote watchface.xml, strings.xml and editor icons");
+    }
+
+    // ---- Editor icons -----------------------------------------------------
+
+    static final int ICON = 96;
+
+    static void icons(File dir) throws Exception {
+        dir.mkdirs();
+        Colorway pepsi = COLORWAYS.get(0);
+        icon(dir, "icon_cfg_bezel", g -> bezelSwatch(g, pepsi));
+        for (Colorway c : COLORWAYS) icon(dir, "icon_bezel_" + c.id, g -> bezelSwatch(g, c));
+        icon(dir, "icon_cfg_airport", WatchFace::globe);
+        icon(dir, "icon_airport_local", g -> codeBadge(g, "LOCAL", 22));
+        for (Airport a : AIRPORTS) {
+            icon(dir, "icon_airport_" + a.code.toLowerCase(Locale.ROOT), g -> codeBadge(g, a.code, 30));
+        }
+    }
+
+    interface Painter { void paint(java.awt.Graphics2D g); }
+
+    static void icon(File dir, String name, Painter p) throws Exception {
+        int ss = 4;
+        var big = new java.awt.image.BufferedImage(ICON * ss, ICON * ss, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+        var g = big.createGraphics();
+        g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(java.awt.RenderingHints.KEY_TEXT_ANTIALIASING, java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g.scale(ss, ss);
+        p.paint(g);
+        g.dispose();
+        var img = new java.awt.image.BufferedImage(ICON, ICON, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+        var g2 = img.createGraphics();
+        g2.drawImage(big.getScaledInstance(ICON, ICON, java.awt.Image.SCALE_AREA_AVERAGING), 0, 0, null);
+        g2.dispose();
+        javax.imageio.ImageIO.write(img, "png", new File(dir, name + ".png"));
+    }
+
+    static java.awt.Color color(String hex) {
+        return java.awt.Color.decode(hex);
+    }
+
+    /** Two-tone bezel ring: day on the top half, night below. */
+    static void bezelSwatch(java.awt.Graphics2D g, Colorway c) {
+        double o = 4, d = ICON - 8;
+        g.setColor(color(c.night));
+        g.fill(new java.awt.geom.Ellipse2D.Double(o, o, d, d));
+        g.setColor(color(c.day));
+        g.fill(new java.awt.geom.Arc2D.Double(o, o, d, d, 0, 180, java.awt.geom.Arc2D.PIE));
+        g.setColor(color("#0B0E14"));
+        g.fill(new java.awt.geom.Ellipse2D.Double(24, 24, ICON - 48, ICON - 48));
+        g.setColor(new java.awt.Color(255, 255, 255, 90));
+        g.setStroke(new java.awt.BasicStroke(1.5f));
+        g.draw(new java.awt.geom.Ellipse2D.Double(o, o, d, d));
+    }
+
+    /** Globe with a red GMT arrow. */
+    static void globe(java.awt.Graphics2D g) {
+        g.setColor(color("#0B0E14"));
+        g.fill(new java.awt.geom.Ellipse2D.Double(4, 4, ICON - 8, ICON - 8));
+        g.setColor(color(STEEL));
+        g.setStroke(new java.awt.BasicStroke(3f));
+        g.draw(new java.awt.geom.Ellipse2D.Double(16, 16, ICON - 32, ICON - 32));
+        g.setStroke(new java.awt.BasicStroke(2f));
+        g.draw(new java.awt.geom.Ellipse2D.Double(34, 16, ICON - 68, ICON - 32));
+        g.draw(new java.awt.geom.Line2D.Double(16, ICON / 2.0, ICON - 16, ICON / 2.0));
+        g.draw(new java.awt.geom.Line2D.Double(ICON / 2.0, 16, ICON / 2.0, ICON - 16));
+        g.setColor(color(GMT_RED));
+        var arrow = new java.awt.geom.Path2D.Double();
+        arrow.moveTo(ICON - 14, 14);
+        arrow.lineTo(ICON - 34, 18);
+        arrow.lineTo(ICON - 18, 34);
+        arrow.closePath();
+        g.fill(arrow);
+        g.setStroke(new java.awt.BasicStroke(3f));
+        g.draw(new java.awt.geom.Line2D.Double(ICON / 2.0, ICON / 2.0, ICON - 22, 22));
+    }
+
+    /** Dark disc with the airport code and a red GMT underline. */
+    static void codeBadge(java.awt.Graphics2D g, String code, int size) {
+        g.setColor(color("#0B0E14"));
+        g.fill(new java.awt.geom.Ellipse2D.Double(4, 4, ICON - 8, ICON - 8));
+        g.setColor(color("#3A424D"));
+        g.setStroke(new java.awt.BasicStroke(2f));
+        g.draw(new java.awt.geom.Ellipse2D.Double(5, 5, ICON - 10, ICON - 10));
+        g.setFont(new java.awt.Font(java.awt.Font.SANS_SERIF, java.awt.Font.BOLD, size));
+        var fm = g.getFontMetrics();
+        g.setColor(color("#F1F2F4"));
+        g.drawString(code, (ICON - fm.stringWidth(code)) / 2f, ICON / 2f + fm.getAscent() / 2f - 4);
+        g.setColor(color(GMT_RED));
+        g.fill(new java.awt.geom.Rectangle2D.Double(ICON / 2.0 - 12, ICON / 2.0 + fm.getAscent() / 2.0 + 2, 24, 3));
     }
 
     // ---- User configuration -----------------------------------------------
 
     static void userConfigurations() {
         open("UserConfigurations");
-        open("ColorConfiguration id=\"bezel\" displayName=\"cfg_bezel\" screenReaderText=\"cfg_bezel\" defaultValue=\"pepsi\"");
+        open("ColorConfiguration id=\"bezel\" displayName=\"cfg_bezel\" screenReaderText=\"cfg_bezel\" icon=\"icon_cfg_bezel\" defaultValue=\"pepsi\"");
         for (Colorway c : COLORWAYS) {
-            line("<ColorOption id=\"%s\" displayName=\"bezel_%s\" colors=\"%s %s\"/>", c.id, c.id, c.night, c.day);
+            line("<ColorOption id=\"%s\" displayName=\"bezel_%s\" icon=\"icon_bezel_%s\" colors=\"%s %s %s\"/>",
+                    c.id, c.id, c.id, c.night, c.day, c.ambientNight);
         }
         close("ColorConfiguration");
-        open("ListConfiguration id=\"airport\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" defaultValue=\"%s\"", DEFAULT_AIRPORT);
+        open("ListConfiguration id=\"airport\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_AIRPORT);
+        line("<ListOption id=\"%s\" displayName=\"airport_local\" icon=\"icon_airport_local\"/>", LOCAL);
         for (Airport a : AIRPORTS) {
-            line("<ListOption id=\"%s\" displayName=\"airport_%s\"/>", a.code, a.code.toLowerCase(Locale.ROOT));
+            String id = a.code.toLowerCase(Locale.ROOT);
+            line("<ListOption id=\"%s\" displayName=\"airport_%s\" icon=\"icon_airport_%s\"/>", a.code, id, id);
         }
         close("ListConfiguration");
         close("UserConfigurations");
@@ -158,7 +340,7 @@ public class WatchFace {
     // ---- Static dial ------------------------------------------------------
 
     static void dial() {
-        comment("Dial: sunray-style radial gradient, minute track and applied indices");
+        comment("Dial: sunray-style radial gradient and minute track");
         open("Group name=\"dial\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
         open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(C - DIAL_R), f(C - DIAL_R), f(2 * DIAL_R), f(2 * DIAL_R));
@@ -181,39 +363,7 @@ public class WatchFace {
         }
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"110\"/>");
         close("PartDraw");
-
-        // Applied indices: lume dots, batons at 6 and 9, double baton at 12.
-        // 3 o'clock is the date window.
-        open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        for (int h = 1; h <= 12; h++) {
-            double a = h * 30;
-            if (h == 3) continue;
-            if (h == 6 || h == 9) {
-                baton(a, 154, 180, 11);
-            } else if (h == 12) {
-                baton(a - 3.2, 150, 180, 8);
-                baton(a + 3.2, 150, 180, 8);
-            } else {
-                double r = 168, d = 17;
-                open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(r, a) - d / 2), f(dy(r, a) - d / 2), f(d), f(d));
-                line("<Stroke color=\"%s\" thickness=\"1.6\"/>", STEEL);
-                line("<Fill color=\"%s\"/>", LUME);
-                close("Ellipse");
-            }
-        }
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"140\"/>");
-        close("PartDraw");
         close("Group");
-    }
-
-    /** A radial baton index, drawn as a thick capped line with a steel surround. */
-    static void baton(double a, double r1, double r2, double w) {
-        open("Line startX=\"%s\" startY=\"%s\" endX=\"%s\" endY=\"%s\"", px(r1, a), py(r1, a), px(r2, a), py(r2, a));
-        line("<Stroke color=\"%s\" thickness=\"%s\" cap=\"SQUARE\"/>", STEEL, f(w + 3));
-        close("Line");
-        open("Line startX=\"%s\" startY=\"%s\" endX=\"%s\" endY=\"%s\"", px(r1 + 1, a), py(r1 + 1, a), px(r2 - 1, a), py(r2 - 1, a));
-        line("<Stroke color=\"%s\" thickness=\"%s\" cap=\"SQUARE\"/>", LUME, f(w));
-        close("Line");
     }
 
     static void dateWindow() {
@@ -344,6 +494,16 @@ public class WatchFace {
         // change the time data sources used by its children's expressions.
         comment("Per-airport group: bezel, label and GMT hand in the airport's time zone");
         open("ListConfiguration id=\"airport\"");
+        open("ListOption id=\"%s\"", LOCAL);
+        open("Group name=\"airport_local\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+        weatherBezel(false);
+        weatherBezel(true);
+        label("LOCAL");
+        open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+        hand("HourHand", "hand_gmt", 22, 194, 0, 255, 200);
+        close("AnalogClock");
+        close("Group");
+        close("ListOption");
         for (Airport a : AIRPORTS) {
             open("ListOption id=\"%s\"", a.code);
             open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
@@ -389,7 +549,7 @@ public class WatchFace {
         double r = ambient ? BEZEL_INNER + 2 : BEZEL_MID;
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
         line("<Localization timeZone=\"%s\"/>", a.zone);
-        arc(r, 0, 360, "[CONFIGURATION.bezel.0]", thick, "BUTT", null);
+        arc(r, 0, 360, nightColor(ambient), thick, "BUTT", null);
         // Daylight intervals for today and tomorrow, clipped to the window. (Yesterday's
         // can only reach into the window if sunset is after midnight, which never
         // happens at these airports.)
@@ -405,13 +565,69 @@ public class WatchFace {
         close("PartDraw");
     }
 
+    static String nightColor(boolean ambient) {
+        return ambient ? "[CONFIGURATION.bezel.2]" : "[CONFIGURATION.bezel.0]";
+    }
+
+    /**
+     * LOCAL's bezel: the watch has no location source in WFF, so daylight comes
+     * from the hourly weather forecast's is-day flag for the wearer's location.
+     * Each clock hour in the 12-hour window is one segment; with no weather data
+     * the ring shows night colour only.
+     */
+    static void weatherBezel(boolean ambient) {
+        String now = "([HOUR_0_23] + [MINUTE] / 60)";
+        String end = "(" + now + " + 12)";
+        double thick = ambient ? 3 : BEZEL_THICK;
+        double r = ambient ? BEZEL_INNER + 2 : BEZEL_MID;
+        open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
+        arc(r, 0, 360, nightColor(ambient), thick, "BUTT", null);
+        for (int k = 0; k <= 12; k++) {
+            String src = k == 0 ? "WEATHER" : "WEATHER.HOURS." + k;
+            String isDay = "[" + src + ".IS_AVAILABLE] && [" + src + ".IS_DAY]";
+            String s = "clamp(floor(" + now + ") + " + k + ", " + now + ", " + end + ") * 30";
+            String e = "clamp(floor(" + now + ") + " + (k + 1) + ", " + now + ", " + end + ") * 30";
+            arc(r, 0, 0, "[CONFIGURATION.bezel.1]", thick, "BUTT",
+                    "<Transform target=\"startAngle\" value=\"" + xml(s) + "\"/>\n"
+                            + "<Transform target=\"endAngle\" value=\"" + xml("(" + isDay + ") ? " + e + " : " + s) + "\"/>");
+        }
+        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", ambient ? 255 : 0);
+        close("PartDraw");
+    }
+
     static void airportLabel(Airport a) {
-        int w = 96, h = 24, x = (int) (C - w / 2), y = 120;
+        label(a.code + " %s%s%s%sH", offsetParams(destOffset(a)));
+    }
+
+    /**
+     * Template parameters for "+7H" / "-3H" / "+5:30H": hours ahead of (or
+     * behind) the wearer's local time. Not localised, so
+     * [TIMEZONE_OFFSET_MINUTES_DST] is the wearer's offset.
+     */
+    static String[] offsetParams(String dest) {
+        String diff = "(" + dest + " - [TIMEZONE_OFFSET_MINUTES_DST])";
+        String whole = "abs(" + diff + ") % 60 == 0";
+        return new String[] {
+                diff + " > 0 ? \"+\" : (" + diff + " < 0 ? \"−\" : \"\")",
+                "floor(abs(" + diff + ") / 60)",
+                whole + " ? \"\" : \":\"",
+                whole + " ? \"\" : abs(" + diff + ") % 60",
+        };
+    }
+
+    /** The label above the dial centre, with an optional parameterised template. */
+    static void label(String template, String... params) {
+        int w = 130, h = 24, x = (int) (C - w / 2), y = 120;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
-        line("<Localization timeZone=\"%s\"/>", a.zone);
         open("Text align=\"CENTER\"");
         open("Font family=\"SYNC_TO_DEVICE\" size=\"17\" weight=\"MEDIUM\" width=\"CONDENSED\" letterSpacing=\"0.08\" color=\"%s\"", STEEL);
-        line("<Template>%s %%s:%%s<Parameter expression=\"[HOUR_0_23_Z]\"/><Parameter expression=\"[MINUTE_Z]\"/></Template>", a.code);
+        if (params.length == 0) {
+            line("<Template>%%s<Parameter expression=\"&quot;%s&quot;\"/></Template>", template);
+        } else {
+            StringBuilder t = new StringBuilder("<Template>").append(template);
+            for (String p : params) t.append("<Parameter expression=\"").append(xml(p)).append("\"/>");
+            line("%s", t.append("</Template>").toString());
+        }
         close("Font");
         close("Text");
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"170\"/>");
@@ -523,6 +739,11 @@ public class WatchFace {
     static String px(double r, double deg) { return f(dx(r, deg)); }
     static String py(double r, double deg) { return f(dy(r, deg)); }
 
+    /** Escapes an expression for use inside an XML attribute. */
+    static String xml(String s) {
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
+    }
+
     /** Coordinates: 2 decimals, trailing zeros trimmed. */
     static String f(double v) { return trim(String.format(Locale.ROOT, "%.2f", v)); }
     /** Constants in expressions: 6 decimals. */
@@ -562,6 +783,7 @@ public class WatchFace {
         str(s, "cfg_bezel", "Bezel colourway");
         str(s, "cfg_airport", "GMT airport");
         for (Colorway c : COLORWAYS) str(s, "bezel_" + c.id, c.name);
+        str(s, "airport_local", "LOCAL · Your time zone");
         for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), a.code + " · " + a.city);
         str(s, "slot_top_left", "Top left arc");
         str(s, "slot_top_right", "Top right arc");
