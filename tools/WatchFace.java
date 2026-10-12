@@ -79,6 +79,44 @@ public class WatchFace {
             new Airport("MEL", "Melbourne", "Australia/Melbourne", -37.67, 144.84),
             new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79));
 
+    // Editor order: continents in this order, cities A-Z within each.
+    static final java.util.LinkedHashMap<String, List<String>> CONTINENTS = new java.util.LinkedHashMap<>();
+    static {
+        CONTINENTS.put("Americas", List.of("ANC", "ATL", "BOG", "EZE", "DFW", "DEN", "LAX", "MEX", "MIA",
+                "JFK", "ORD", "PHX", "SFO", "SCL", "GRU", "SEA", "YYZ", "YVR"));
+        CONTINENTS.put("Europe", List.of("AMS", "DUB", "FRA", "IST", "LHR", "MAD", "CDG", "FCO", "ZRH"));
+        CONTINENTS.put("Africa", List.of("CAI", "JNB", "NBO"));
+        CONTINENTS.put("Middle East", List.of("DOH", "DXB"));
+        CONTINENTS.put("Asia", List.of("BKK", "PEK", "DEL", "HKG", "CGK", "KTM", "MNL", "BOM", "ICN", "SIN", "HND"));
+        CONTINENTS.put("Oceania", List.of("ADL", "AKL", "HNL", "MEL", "PER", "SYD"));
+    }
+
+    static String continent(Airport a) {
+        return CONTINENTS.entrySet().stream().filter(e -> e.getValue().contains(a.code)).map(java.util.Map.Entry::getKey)
+                .findFirst().orElse(null);
+    }
+
+    /** UTC first, then each continent's cities sorted by city name. */
+    static List<Airport> editorOrder() {
+        var byCode = new java.util.HashMap<String, Airport>();
+        for (Airport a : AIRPORTS) byCode.put(a.code, a);
+        var order = new java.util.ArrayList<Airport>();
+        order.add(byCode.get("UTC"));
+        for (var e : CONTINENTS.entrySet()) {
+            e.getValue().stream().map(byCode::get)
+                    .sorted(java.util.Comparator.comparing(Airport::city)).forEach(order::add);
+        }
+        if (order.size() != AIRPORTS.size() || order.contains(null)) {
+            throw new IllegalStateException("CONTINENTS must list every airport except UTC exactly once");
+        }
+        return order;
+    }
+
+    static String displayName(Airport a) {
+        String c = continent(a);
+        return c == null ? a.code + " · " + a.city : c + " · " + a.city + " (" + a.code + ")";
+    }
+
     static final String DEFAULT_AIRPORT = "LHR";
     /** Option id for "GMT hand follows local time"; its bezel uses the weather forecast. */
     static final String LOCAL = "LOCAL";
@@ -200,6 +238,13 @@ public class WatchFace {
     static final double BEZEL_THICK = BEZEL_OUTER - BEZEL_INNER;
     static final double DIAL_R = 196;
     static final double COMP_R = 166;   // radius of the arc complications (just inside the minute track)
+
+    // Text sizes, in face units. Wear OS quality guideline WO-V14 asks for 12sp
+    // essential / 10sp non-essential text. The face scales with the screen, so
+    // these are sized for the smallest common watch (384 px at 320 dpi, where
+    // one unit = 384/450 px = 0.43sp): 28 units = 12sp, 24 units = 10.2sp.
+    static final int TEXT_ESSENTIAL = 28;
+    static final int TEXT_SECONDARY = 24;
 
     static final StringBuilder out = new StringBuilder();
     static int indent = 0;
@@ -329,7 +374,7 @@ public class WatchFace {
         close("ColorConfiguration");
         open("ListConfiguration id=\"airport\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_AIRPORT);
         line("<ListOption id=\"%s\" displayName=\"airport_local\" icon=\"icon_airport_local\"/>", LOCAL);
-        for (Airport a : AIRPORTS) {
+        for (Airport a : editorOrder()) {
             String id = a.code.toLowerCase(Locale.ROOT);
             line("<ListOption id=\"%s\" displayName=\"airport_%s\" icon=\"icon_airport_%s\"/>", a.code, id, id);
         }
@@ -368,7 +413,7 @@ public class WatchFace {
 
     static void dateWindow() {
         comment("Date window at 3 o'clock");
-        int x = 366, y = 210, w = 40, h = 30;
+        int x = 351, y = 206, w = 48, h = 38;
         open("Group name=\"date\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
         open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", w, h);
         open("RoundRectangle x=\"1\" y=\"1\" width=\"%d\" height=\"%d\" cornerRadiusX=\"3\" cornerRadiusY=\"3\"", w - 2, h - 2);
@@ -386,7 +431,7 @@ public class WatchFace {
     static void dateText(int w, int h, String color, String variant, int alpha) {
         open("PartText x=\"0\" y=\"2\" width=\"%d\" height=\"%d\" alpha=\"%d\"", w, h - 4, alpha);
         open("Text align=\"CENTER\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"21\" weight=\"BOLD\" color=\"%s\"", color);
+        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"BOLD\" color=\"%s\"", TEXT_ESSENTIAL, color);
         line("<Template>%%s<Parameter expression=\"[DAY]\"/></Template>");
         close("Font");
         close("Text");
@@ -396,14 +441,16 @@ public class WatchFace {
 
     // ---- Complications ----------------------------------------------------
 
-    record ArcSlot(int id, String name, double start, double end, String color,
+    // textAngle places each value label near the horizontal so the 12sp text
+    // clears the airport label above and the 6 o'clock slot below.
+    record ArcSlot(int id, String name, double start, double end, double textAngle, String color,
                    String provider, String providerType) {}
 
     static final List<ArcSlot> ARC_SLOTS = List.of(
-            new ArcSlot(101, "slot_top_left", 280, 330, "#10B981", "WATCH_BATTERY", "RANGED_VALUE"),
-            new ArcSlot(102, "slot_top_right", 30, 80, "#F59E0B", "SUNRISE_SUNSET", "SHORT_TEXT"),
-            new ArcSlot(103, "slot_bottom_right", 100, 150, "#F43F5E", "HEART_RATE", "SHORT_TEXT"),
-            new ArcSlot(104, "slot_bottom_left", 210, 260, "#E2E8F0", "STEP_COUNT", "SHORT_TEXT"));
+            new ArcSlot(101, "slot_top_left", 280, 330, 290, "#10B981", "WATCH_BATTERY", "RANGED_VALUE"),
+            new ArcSlot(102, "slot_top_right", 30, 80, 70, "#F59E0B", "SUNRISE_SUNSET", "SHORT_TEXT"),
+            new ArcSlot(103, "slot_bottom_right", 100, 150, 110, "#F43F5E", "HEART_RATE", "SHORT_TEXT"),
+            new ArcSlot(104, "slot_bottom_left", 210, 260, 250, "#E2E8F0", "STEP_COUNT", "SHORT_TEXT"));
 
     static void complications() {
         comment("Arc complications in the four quadrants");
@@ -413,12 +460,14 @@ public class WatchFace {
     }
 
     static void arcSlot(ArcSlot s) {
-        double mid = (s.start + s.end) / 2;
         String sweep = f(s.end - s.start);
         open("ComplicationSlot slotId=\"%d\" displayName=\"%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\" supportedTypes=\"RANGED_VALUE GOAL_PROGRESS SHORT_TEXT EMPTY\"", s.id, s.name);
         line("<DefaultProviderPolicy defaultSystemProvider=\"%s\" defaultSystemProviderType=\"%s\"/>", s.provider, s.providerType);
-        line("<BoundingArc centerX=\"225\" centerY=\"225\" width=\"%s\" height=\"%s\" thickness=\"44\" startAngle=\"%s\" endAngle=\"%s\"/>",
-                f(2 * COMP_R - 4), f(2 * COMP_R - 4), f(s.start), f(s.end));
+        // The runtime clips a complication's drawing to its bounding shape, so the
+        // box must cover both the arc and its value label.
+        double[] b = slotBounds(s);
+        line("<BoundingBox x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"/>",
+                (int) b[0], (int) b[1], (int) (b[2] - b[0]), (int) (b[3] - b[1]));
 
         String ranged = "clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]), 0, 1)";
         String goal = "clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1)";
@@ -426,30 +475,47 @@ public class WatchFace {
         for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT")) {
             open("Complication type=\"%s\"", type);
             open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-            // The runtime draws strokes inside complications at roughly 0.4x the
-            // declared thickness (seen on the Wear OS 6 emulator): 12 renders ~5 px.
-            arc(COMP_R, s.start, s.end, "#2A313B", 12, "ROUND", null);
+            arc(COMP_R, s.start, s.end, "#2A313B", 5, "ROUND", null);
             if (!type.equals("SHORT_TEXT")) {
                 String frac = type.equals("RANGED_VALUE") ? ranged : goal;
-                arc(COMP_R, s.start, s.end, s.color, 12, "ROUND",
+                arc(COMP_R, s.start, s.end, s.color, 5, "ROUND",
                         "<Transform target=\"endAngle\" value=\"" + f(s.start) + " + " + frac + " * " + sweep + "\"/>");
             }
             close("PartDraw");
-            compText(mid, type.equals("SHORT_TEXT") ? STEEL : s.color);
+            compText(s.textAngle, type.equals("SHORT_TEXT") ? STEEL : s.color);
             close("Complication");
         }
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"150\"/>");
         close("ComplicationSlot");
     }
 
-    /** Small value label tucked just inside the arc's midpoint. */
-    static void compText(double mid, String color) {
-        double r = COMP_R - 24;
-        int w = 60, h = 20;
-        int x = (int) Math.round(dx(r, mid) - w / 2.0), y = (int) Math.round(dy(r, mid) - h / 2.0);
+    static final double COMP_TEXT_R = 108;
+    static final int COMP_TEXT_W = 88, COMP_TEXT_H = 32;
+
+    /** {minX, minY, maxX, maxY} covering the arc stroke and the value label. */
+    static double[] slotBounds(ArcSlot s) {
+        double minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
+        for (double t = s.start; t <= s.end; t += 1) {
+            for (double r : new double[] {COMP_R - 8, COMP_R + 8}) {
+                minX = Math.min(minX, dx(r, t)); maxX = Math.max(maxX, dx(r, t));
+                minY = Math.min(minY, dy(r, t)); maxY = Math.max(maxY, dy(r, t));
+            }
+        }
+        double cx = dx(COMP_TEXT_R, s.textAngle), cy = dy(COMP_TEXT_R, s.textAngle);
+        minX = Math.min(minX, cx - COMP_TEXT_W / 2.0); maxX = Math.max(maxX, cx + COMP_TEXT_W / 2.0);
+        minY = Math.min(minY, cy - COMP_TEXT_H / 2.0); maxY = Math.max(maxY, cy + COMP_TEXT_H / 2.0);
+        return new double[] {Math.floor(minX), Math.floor(minY), Math.ceil(maxX), Math.ceil(maxY)};
+    }
+
+    /** Value label inside the arc, at the slot's textAngle. */
+    static void compText(double angle, String color) {
+        // COMP_TEXT_R keeps the label box corners inside the arc stroke.
+        double r = COMP_TEXT_R;
+        int w = COMP_TEXT_W, h = COMP_TEXT_H;
+        int x = (int) Math.round(dx(r, angle) - w / 2.0), y = (int) Math.round(dy(r, angle) - h / 2.0);
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
         open("Text align=\"CENTER\" ellipsis=\"TRUE\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"15\" weight=\"MEDIUM\" width=\"CONDENSED\" color=\"%s\"", color);
+        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"MEDIUM\" width=\"CONDENSED\" color=\"%s\"", TEXT_ESSENTIAL, color);
         line("<Template>%%s<Parameter expression=\"[COMPLICATION.TEXT]\"/></Template>");
         close("Font");
         close("Text");
@@ -457,7 +523,7 @@ public class WatchFace {
     }
 
     static void longTextSlot() {
-        int x = 160, y = 300, w = 130, h = 44;
+        int x = 169, y = 288, w = 112, h = 64;
         open("ComplicationSlot slotId=\"301\" displayName=\"slot_bottom\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"LONG_TEXT SHORT_TEXT EMPTY\"", x, y, w, h);
         line("<DefaultProviderPolicy defaultSystemProvider=\"NEXT_EVENT\" defaultSystemProviderType=\"LONG_TEXT\"/>");
         line("<BoundingRoundBox x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadius=\"8\"/>", w, h);
@@ -470,8 +536,8 @@ public class WatchFace {
             close("RoundRectangle");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
             close("PartDraw");
-            textLine(4, 3, w - 8, 20, 16, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]");
-            textLine(4, 23, w - 8, 17, 12, "NORMAL", "#7DD3FC", "[COMPLICATION.TITLE]");
+            textLine(4, 2, w - 8, 32, TEXT_ESSENTIAL, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]");
+            textLine(4, 33, w - 8, 28, TEXT_SECONDARY, "NORMAL", "#7DD3FC", "[COMPLICATION.TITLE]");
             close("Complication");
         }
         close("ComplicationSlot");
@@ -617,10 +683,10 @@ public class WatchFace {
 
     /** The label above the dial centre, with an optional parameterised template. */
     static void label(String template, String... params) {
-        int w = 130, h = 24, x = (int) (C - w / 2), y = 120;
+        int w = 184, h = 34, x = (int) (C - w / 2), y = 84;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
         open("Text align=\"CENTER\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"17\" weight=\"MEDIUM\" width=\"CONDENSED\" letterSpacing=\"0.08\" color=\"%s\"", STEEL);
+        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"MEDIUM\" width=\"CONDENSED\" letterSpacing=\"0.04\" color=\"%s\"", TEXT_ESSENTIAL, STEEL);
         if (params.length == 0) {
             line("<Template>%%s<Parameter expression=\"&quot;%s&quot;\"/></Template>", template);
         } else {
@@ -680,11 +746,11 @@ public class WatchFace {
 
     static void numeral(int h, int ox, int oy, String color) {
         double a = h * 30;
-        int w = 30, hh = 24;
+        int w = 40, hh = 30;
         int x = (int) Math.round(dx(BEZEL_MID, a) - w / 2.0) + ox, y = (int) Math.round(dy(BEZEL_MID, a) - hh / 2.0) + oy;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" angle=\"%s\"", x, y, w, hh, f(a));
         open("Text align=\"CENTER\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"19\" weight=\"SEMI_BOLD\" width=\"CONDENSED\" color=\"%s\"", color);
+        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"SEMI_BOLD\" width=\"CONDENSED\" color=\"%s\"", TEXT_SECONDARY, color);
         line("<Template>%%s<Parameter expression=\"%d\"/></Template>", h);
         close("Font");
         close("Text");
@@ -784,7 +850,7 @@ public class WatchFace {
         str(s, "cfg_airport", "GMT airport");
         for (Colorway c : COLORWAYS) str(s, "bezel_" + c.id, c.name);
         str(s, "airport_local", "LOCAL · Your time zone");
-        for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), a.code + " · " + a.city);
+        for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), displayName(a));
         str(s, "slot_top_left", "Top left arc");
         str(s, "slot_top_right", "Top right arc");
         str(s, "slot_bottom_right", "Bottom right arc");
