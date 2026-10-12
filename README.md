@@ -11,10 +11,11 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   the day colour for the hours that will be daylight there and the night colour
   for the rest. Sunrise and sunset are computed on the watch from the date and
   the airport's latitude/longitude (NOAA approximation, within a few minutes).
-- **GMT hand + airport label.** These show the time at one of 15 airports
-  (UTC, LHR, CDG, DXB, DEL, SIN, HKG, HND, SYD, HNL, LAX, DEN, ORD, JFK, GRU).
-  Each airport's IANA time zone is applied with WFF `Localization`, so daylight
-  saving is handled by the OS.
+- **GMT hand + airport label.** These show the time at one of 50 airports,
+  listed west to east in the editor (UTC first, then HNL to AKL). Each airport's
+  IANA time zone is applied with WFF `Localization`, so daylight saving and
+  half-hour offsets (DEL, ADL, KTM's +5:45) are handled by the OS. Add or remove
+  airports in the `AIRPORTS` list in `tools/WatchFace.java`.
 - **Local time.** Steel sword hands with lume, and a sweeping lollipop seconds hand.
 - **Complications.** Four arc complications (ranged value / goal progress /
   short text) and a long-text slot at 6 o'clock.

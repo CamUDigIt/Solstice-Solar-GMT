@@ -17,7 +17,9 @@ java -cp "tools/wff/lib/*" tools/Validate.java
 "$ADB" -s "$SERIAL" install -r app/build/outputs/apk/debug/app-debug.apk > /dev/null
 "$ADB" -s "$SERIAL" shell am broadcast -a com.google.android.wearable.app.DEBUG_SURFACE \
     --es operation set-watchface --es watchFaceId "$PKG" > /dev/null
-sleep 5
+sleep 4
+"$ADB" -s "$SERIAL" shell input keyevent KEYCODE_BACK  # dismiss any overlay (e.g. Agenda)
+sleep 2
 mkdir -p "$(dirname "$OUT")"
 "$ADB" -s "$SERIAL" exec-out screencap -p > "$OUT"
 echo "Screenshot: $OUT"

@@ -22,22 +22,62 @@ public class WatchFace {
 
     record Airport(String code, String city, String zone, double lat, double lon) {}
 
+    // Ordered west to east (by standard UTC offset) so turning the crown in the
+    // editor moves steadily around the globe. UTC stays first.
     static final List<Airport> AIRPORTS = List.of(
             new Airport("UTC", "Coordinated Universal Time", "Etc/UTC", 51.48, 0.0),
+            // UTC-10 .. UTC-3
+            new Airport("HNL", "Honolulu", "Pacific/Honolulu", 21.32, -157.92),
+            new Airport("ANC", "Anchorage", "America/Anchorage", 61.17, -149.99),
+            new Airport("LAX", "Los Angeles", "America/Los_Angeles", 33.94, -118.41),
+            new Airport("SFO", "San Francisco", "America/Los_Angeles", 37.62, -122.38),
+            new Airport("SEA", "Seattle", "America/Los_Angeles", 47.45, -122.31),
+            new Airport("YVR", "Vancouver", "America/Vancouver", 49.19, -123.18),
+            new Airport("DEN", "Denver", "America/Denver", 39.86, -104.67),
+            new Airport("PHX", "Phoenix", "America/Phoenix", 33.43, -112.01),
+            new Airport("ORD", "Chicago", "America/Chicago", 41.97, -87.91),
+            new Airport("DFW", "Dallas", "America/Chicago", 32.90, -97.04),
+            new Airport("MEX", "Mexico City", "America/Mexico_City", 19.44, -99.07),
+            new Airport("JFK", "New York", "America/New_York", 40.64, -73.78),
+            new Airport("ATL", "Atlanta", "America/New_York", 33.64, -84.43),
+            new Airport("MIA", "Miami", "America/New_York", 25.79, -80.29),
+            new Airport("YYZ", "Toronto", "America/Toronto", 43.68, -79.63),
+            new Airport("BOG", "Bogota", "America/Bogota", 4.70, -74.15),
+            new Airport("SCL", "Santiago", "America/Santiago", -33.39, -70.79),
+            new Airport("GRU", "Sao Paulo", "America/Sao_Paulo", -23.43, -46.47),
+            new Airport("EZE", "Buenos Aires", "America/Argentina/Buenos_Aires", -34.82, -58.54),
+            // UTC+0 .. UTC+4
             new Airport("LHR", "London", "Europe/London", 51.47, -0.45),
+            new Airport("DUB", "Dublin", "Europe/Dublin", 53.43, -6.25),
             new Airport("CDG", "Paris", "Europe/Paris", 49.01, 2.55),
+            new Airport("AMS", "Amsterdam", "Europe/Amsterdam", 52.31, 4.76),
+            new Airport("FRA", "Frankfurt", "Europe/Berlin", 50.04, 8.56),
+            new Airport("ZRH", "Zurich", "Europe/Zurich", 47.46, 8.55),
+            new Airport("MAD", "Madrid", "Europe/Madrid", 40.49, -3.57),
+            new Airport("FCO", "Rome", "Europe/Rome", 41.80, 12.25),
+            new Airport("CAI", "Cairo", "Africa/Cairo", 30.12, 31.41),
+            new Airport("JNB", "Johannesburg", "Africa/Johannesburg", -26.14, 28.24),
+            new Airport("IST", "Istanbul", "Europe/Istanbul", 41.26, 28.74),
+            new Airport("NBO", "Nairobi", "Africa/Nairobi", -1.32, 36.93),
+            new Airport("DOH", "Doha", "Asia/Qatar", 25.27, 51.61),
             new Airport("DXB", "Dubai", "Asia/Dubai", 25.25, 55.36),
+            // UTC+5:30 .. UTC+13
             new Airport("DEL", "Delhi", "Asia/Kolkata", 28.56, 77.10),
+            new Airport("BOM", "Mumbai", "Asia/Kolkata", 19.09, 72.87),
+            new Airport("KTM", "Kathmandu", "Asia/Kathmandu", 27.70, 85.36),
+            new Airport("BKK", "Bangkok", "Asia/Bangkok", 13.69, 100.75),
+            new Airport("CGK", "Jakarta", "Asia/Jakarta", -6.13, 106.66),
             new Airport("SIN", "Singapore", "Asia/Singapore", 1.36, 103.99),
             new Airport("HKG", "Hong Kong", "Asia/Hong_Kong", 22.31, 113.91),
+            new Airport("PEK", "Beijing", "Asia/Shanghai", 40.08, 116.58),
+            new Airport("MNL", "Manila", "Asia/Manila", 14.51, 121.02),
+            new Airport("PER", "Perth", "Australia/Perth", -31.94, 115.97),
+            new Airport("ICN", "Seoul", "Asia/Seoul", 37.46, 126.44),
             new Airport("HND", "Tokyo", "Asia/Tokyo", 35.55, 139.78),
+            new Airport("ADL", "Adelaide", "Australia/Adelaide", -34.95, 138.53),
             new Airport("SYD", "Sydney", "Australia/Sydney", -33.95, 151.18),
-            new Airport("HNL", "Honolulu", "Pacific/Honolulu", 21.32, -157.92),
-            new Airport("LAX", "Los Angeles", "America/Los_Angeles", 33.94, -118.41),
-            new Airport("DEN", "Denver", "America/Denver", 39.86, -104.67),
-            new Airport("ORD", "Chicago", "America/Chicago", 41.97, -87.91),
-            new Airport("JFK", "New York", "America/New_York", 40.64, -73.78),
-            new Airport("GRU", "Sao Paulo", "America/Sao_Paulo", -23.43, -46.47));
+            new Airport("MEL", "Melbourne", "Australia/Melbourne", -37.67, 144.84),
+            new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79));
 
     static final String DEFAULT_AIRPORT = "LHR";
 
@@ -350,9 +390,11 @@ public class WatchFace {
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
         line("<Localization timeZone=\"%s\"/>", a.zone);
         arc(r, 0, 360, "[CONFIGURATION.bezel.0]", thick, "BUTT", null);
-        // Daylight intervals for yesterday, today and tomorrow, clipped to the window.
-        for (int day = -1; day <= 1; day++) {
-            String shift = day == 0 ? "" : (day > 0 ? " + 24" : " - 24");
+        // Daylight intervals for today and tomorrow, clipped to the window. (Yesterday's
+        // can only reach into the window if sunset is after midnight, which never
+        // happens at these airports.)
+        for (int day = 0; day <= 1; day++) {
+            String shift = day == 0 ? "" : " + 24";
             String s = "clamp(" + sunrise + shift + ", " + now + ", " + end + ") * 30";
             String e = "clamp(" + sunset + shift + ", " + now + ", " + end + ") * 30";
             arc(r, 0, 0, "[CONFIGURATION.bezel.1]", thick, "BUTT",
@@ -399,27 +441,38 @@ public class WatchFace {
         for (int h = 0; h < 12; h++) {
             double a = h * 30 + 15, d = 3.6;
             open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(BEZEL_MID, a) - d / 2), f(dy(BEZEL_MID, a) - d / 2), f(d), f(d));
+            line("<Stroke color=\"#0B0E14\" thickness=\"1.2\"/>");
             line("<Fill color=\"#E8EAED\"/>");
             close("Ellipse");
         }
         close("PartDraw");
+        // Numerals get a dark outline so they stay legible on light day colours
+        // (e.g. Polar). The Font <Outline> decoration validates but the runtime
+        // doesn't draw it, so the outline is built from offset dark copies.
+        int[][] halo = {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1, 0}, {-1, 1}, {0, 1}, {1, 1},
+                {-2, 0}, {2, 0}, {0, -2}, {0, 2}};
         for (int h = 1; h <= 11; h++) {
-            double a = h * 30;
-            int w = 30, hh = 24;
-            int x = (int) Math.round(dx(BEZEL_MID, a) - w / 2.0), y = (int) Math.round(dy(BEZEL_MID, a) - hh / 2.0);
-            open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" angle=\"%s\"", x, y, w, hh, f(a));
-            open("Text align=\"CENTER\"");
-            open("Font family=\"SYNC_TO_DEVICE\" size=\"19\" weight=\"SEMI_BOLD\" width=\"CONDENSED\" color=\"#F1F2F4\"");
-            line("<Template>%%s<Parameter expression=\"%d\"/></Template>", h);
-            close("Font");
-            close("Text");
-            close("PartText");
+            for (int[] o : halo) numeral(h, o[0], o[1], "#0B0E14");
+            numeral(h, 0, 0, "#F1F2F4");
         }
         open("PartImage x=\"214\" y=\"3\" width=\"22\" height=\"18\"");
         line("<Image resource=\"bezel_pip\"/>");
         close("PartImage");
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"120\"/>");
         close("Group");
+    }
+
+    static void numeral(int h, int ox, int oy, String color) {
+        double a = h * 30;
+        int w = 30, hh = 24;
+        int x = (int) Math.round(dx(BEZEL_MID, a) - w / 2.0) + ox, y = (int) Math.round(dy(BEZEL_MID, a) - hh / 2.0) + oy;
+        open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" angle=\"%s\"", x, y, w, hh, f(a));
+        open("Text align=\"CENTER\"");
+        open("Font family=\"SYNC_TO_DEVICE\" size=\"19\" weight=\"SEMI_BOLD\" width=\"CONDENSED\" color=\"%s\"", color);
+        line("<Template>%%s<Parameter expression=\"%d\"/></Template>", h);
+        close("Font");
+        close("Text");
+        close("PartText");
     }
 
     // ---- Local time hands -------------------------------------------------
