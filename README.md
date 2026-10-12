@@ -11,8 +11,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   the day colour for the hours that will be daylight there and the night colour
   for the rest. Sunrise and sunset are computed on the watch from the date and
   the airport's latitude/longitude (NOAA approximation, within a few minutes).
-- **GMT hand.** It shows the time at one of 50 airports, listed west to east in
-  the editor (UTC first, then HNL to AKL). Each airport's IANA time zone is
+- **GMT hand.** It shows the time at one of 50 airports. The editor lists LOCAL
+  and UTC first, then groups cities by continent (Americas, Europe, Africa,
+  Middle East, Asia, Oceania), A–Z by city name. Each airport's IANA time zone is
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
   handled by the OS. Add or remove airports in the `AIRPORTS` list in
   `tools/WatchFace.java`.
@@ -25,14 +26,23 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   because WFF has no location source, the bezel's daylight comes from the
   watch's hourly weather forecast (it snaps to whole hours and shows night only
   when there's no weather data).
-- **Local time.** Steel sword hands with lume, and a sweeping lollipop seconds hand.
-- **Complications.** Four arc complications (ranged value / goal progress /
-  short text) and a long-text slot at 6 o'clock.
+- **Two styles.** *Classic* uses the bundled Oswald font with steel sword
+  hands and an arrow-tipped GMT hand. *Modern* uses the bundled Roboto
+  Condensed with straight stick hands and a rectangular GMT tip. Both fonts are
+  SIL OFL 1.1 (licences in `licenses/`, shipped in the APK under
+  `assets/licenses/`).
+- **Text sizes** meet Wear OS guideline WO-V14 (12sp essential, 10sp
+  secondary) on watches as small as 384 px at 320 dpi.
+- **Complications.** A round slot at 9 o'clock (ranged value, goal progress,
+  short text or icon, with a progress ring in the bezel's day colour) and a
+  long-text slot at 6 o'clock. The long-text slot shows text over title, or
+  wraps the text onto two lines when the provider has no title (for example
+  calendar events like "Team Standup · 3:00 PM").
 - **Date window** at 3 o'clock.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
-- **Customisation.** In the watch-face editor you can pick a bezel colourway
-  (Pepsi, Batman, Coke, Root Beer, Golden Hour, Polar), the GMT airport, and
-  each complication.
+- **Customisation.** In the watch-face editor you can pick the style, a bezel
+  colourway (Pepsi, Batman, Coke, Root Beer, Golden Hour, Polar), the GMT
+  airport, and each complication.
 
 ## Project layout
 

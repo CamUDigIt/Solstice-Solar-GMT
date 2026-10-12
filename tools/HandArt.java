@@ -35,6 +35,14 @@ public class HandArt {
         hand(out, "hand_gmt", 22, 194, 0, HandArt::drawGmt);
         hand(out, "hand_hour_ambient", 24, 106, 22, (g, w, len, tail) -> outlineOnly(g, w, len, tail, HandArt::hourShape));
         hand(out, "hand_minute_ambient", 14, 178, 24, (g, w, len, tail) -> outlineOnly(g, w, len, tail, HandArt::minuteShape));
+
+        // Modern style: straight sticks with flat ends. Geometry must match MODERN in WatchFace.java.
+        hand(out, "modern_hand_hour", 14, 108, 18, HandArt::drawStickHour);
+        hand(out, "modern_hand_minute", 10, 178, 20, HandArt::drawStickMinute);
+        hand(out, "modern_hand_second", 10, 188, 40, HandArt::drawStickSecond);
+        hand(out, "modern_hand_gmt", 12, 194, 0, HandArt::drawStickGmt);
+        hand(out, "modern_hand_hour_ambient", 14, 108, 18, (g, w, len, tail) -> outlineOnly(g, w, len, tail, HandArt::stickShape));
+        hand(out, "modern_hand_minute_ambient", 10, 178, 20, (g, w, len, tail) -> outlineOnly(g, w, len, tail, HandArt::stickShape));
         pip(out);
         placeholderPreview(out);
         System.out.println("Wrote hand artwork to " + out.getPath());
@@ -143,6 +151,48 @@ public class HandArt {
         inset.closePath();
         g.setColor(LUME);
         g.fill(inset);
+    }
+
+    // ---- Modern stick hands ------------------------------------------------
+
+    static Shape stickShape(double w, double len, double tail) {
+        return new RoundRectangle2D.Double(1, 1, w - 2, len + tail - 2, 2, 2);
+    }
+
+    /** Brushed steel stick with a lume stripe from lumeTop to lumeBottom. */
+    static void drawStick(Graphics2D g, double w, double len, double tail, double lumeW, double lumeTop, double lumeBottom) {
+        g.setPaint(new GradientPaint(0, 0, STEEL_EDGE, (float) (w / 2), 0, STEEL, true));
+        g.fill(stickShape(w, len, tail));
+        g.setColor(STEEL_EDGE);
+        g.setStroke(new BasicStroke(0.6f));
+        g.draw(stickShape(w, len, tail));
+        g.setColor(LUME);
+        g.fill(new Rectangle2D.Double((w - lumeW) / 2, lumeTop, lumeW, lumeBottom - lumeTop));
+    }
+
+    static void drawStickHour(Graphics2D g, double w, double len, double tail) {
+        drawStick(g, w, len, tail, 6, 6, len - 24);
+    }
+
+    static void drawStickMinute(Graphics2D g, double w, double len, double tail) {
+        drawStick(g, w, len, tail, 4, 6, len - 28);
+    }
+
+    static void drawStickSecond(Graphics2D g, double w, double len, double tail) {
+        double c = w / 2;
+        g.setColor(GMT_RED);
+        g.fill(new Rectangle2D.Double(c - 1.1, 2, 2.2, len + tail - 4));
+        g.fill(new Rectangle2D.Double(c - 2.5, len + 12, 5, tail - 14));
+    }
+
+    static void drawStickGmt(Graphics2D g, double w, double len, double tail) {
+        double c = w / 2;
+        g.setColor(GMT_RED);
+        g.fill(new Rectangle2D.Double(c - 1.4, 20, 2.8, len - 20));
+        // Rectangular tip: red frame with a lume insert.
+        g.fill(new Rectangle2D.Double(1, 1, w - 2, 22));
+        g.setColor(LUME);
+        g.fill(new Rectangle2D.Double(3.5, 3.5, w - 7, 17));
     }
 
     interface ShapeFn { Shape make(double w, double len, double tail); }

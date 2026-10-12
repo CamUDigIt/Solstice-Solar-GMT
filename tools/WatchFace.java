@@ -114,7 +114,8 @@ public class WatchFace {
 
     static String displayName(Airport a) {
         String c = continent(a);
-        return c == null ? a.code + " · " + a.city : c + " · " + a.city + " (" + a.code + ")";
+        // Short enough to fit the editor chip on small watches; the list is still grouped by continent.
+        return c == null ? a.code + " · " + a.city : a.city + " · " + a.code;
     }
 
     static final String DEFAULT_AIRPORT = "LHR";
@@ -237,7 +238,6 @@ public class WatchFace {
     static final double BEZEL_MID = (BEZEL_OUTER + BEZEL_INNER) / 2;
     static final double BEZEL_THICK = BEZEL_OUTER - BEZEL_INNER;
     static final double DIAL_R = 196;
-    static final double COMP_R = 166;   // radius of the arc complications (just inside the minute track)
 
     // Text sizes, in face units. Wear OS quality guideline WO-V14 asks for 12sp
     // essential / 10sp non-essential text. The face scales with the screen, so
@@ -245,6 +245,51 @@ public class WatchFace {
     // one unit = 384/450 px = 0.43sp): 28 units = 12sp, 24 units = 10.2sp.
     static final int TEXT_ESSENTIAL = 28;
     static final int TEXT_SECONDARY = 24;
+
+    // ---- Styles -----------------------------------------------------------
+    // Classic: Oswald and sword hands. Modern: Roboto Condensed and stick hands.
+    // Fonts are bundled in res/font (SIL OFL 1.1, see /licenses). Hand geometry
+    // must match HandArt.java.
+
+    record HandGeom(int w, int len, int tail) {}
+
+    record Style(String id, String name, String font, String handPrefix,
+                 HandGeom hour, HandGeom minute, HandGeom second, HandGeom gmt) {}
+
+    static final Style CLASSIC = new Style("classic", "Classic", "classic", "",
+            new HandGeom(24, 106, 22), new HandGeom(14, 178, 24), new HandGeom(14, 186, 42), new HandGeom(22, 194, 0));
+    static final Style MODERN = new Style("modern", "Modern", "modern", "modern_",
+            new HandGeom(14, 108, 18), new HandGeom(10, 178, 20), new HandGeom(10, 188, 40), new HandGeom(12, 194, 0));
+    static final List<Style> STYLES = List.of(CLASSIC, MODERN);
+
+    /** The style being emitted inside a styled() block. */
+    static Style style = CLASSIC;
+
+    /**
+     * Emits body once per style, switched on the style setting. A Condition
+     * (not a ListConfiguration) is used because configurations can't be nested,
+     * and much of this lives inside the airport ListConfiguration.
+     */
+    static void styled(Runnable body) {
+        open("Condition");
+        open("Expressions");
+        line("<Expression name=\"modern\"><![CDATA[[CONFIGURATION.style] == \"modern\"]]></Expression>");
+        close("Expressions");
+        open("Compare expression=\"modern\"");
+        style = MODERN;
+        body.run();
+        close("Compare");
+        open("Default");
+        style = CLASSIC;
+        body.run();
+        close("Default");
+        close("Condition");
+    }
+
+    /** Font attributes for the current style. */
+    static String font(int size, String weight, String color) {
+        return String.format(Locale.ROOT, "Font family=\"%s\" size=\"%d\" weight=\"%s\" color=\"%s\"", style.font, size, weight, color);
+    }
 
     static final StringBuilder out = new StringBuilder();
     static int indent = 0;
@@ -282,6 +327,8 @@ public class WatchFace {
         Colorway pepsi = COLORWAYS.get(0);
         icon(dir, "icon_cfg_bezel", g -> bezelSwatch(g, pepsi));
         for (Colorway c : COLORWAYS) icon(dir, "icon_bezel_" + c.id, g -> bezelSwatch(g, c));
+        icon(dir, "icon_cfg_style", g -> styleBadge(g, CLASSIC));
+        for (Style s : STYLES) icon(dir, "icon_style_" + s.id, g -> styleBadge(g, s));
         icon(dir, "icon_cfg_airport", WatchFace::globe);
         icon(dir, "icon_airport_local", g -> codeBadge(g, "LOCAL", 22));
         for (Airport a : AIRPORTS) {
@@ -347,6 +394,25 @@ public class WatchFace {
         g.draw(new java.awt.geom.Line2D.Double(ICON / 2.0, ICON / 2.0, ICON - 22, 22));
     }
 
+    /** "12" set in the style's own bundled font. */
+    static void styleBadge(java.awt.Graphics2D g, Style s) {
+        g.setColor(color("#0B0E14"));
+        g.fill(new java.awt.geom.Ellipse2D.Double(4, 4, ICON - 8, ICON - 8));
+        g.setColor(color("#3A424D"));
+        g.setStroke(new java.awt.BasicStroke(2f));
+        g.draw(new java.awt.geom.Ellipse2D.Double(5, 5, ICON - 10, ICON - 10));
+        String file = s == MODERN ? "roboto_condensed_600.ttf" : "oswald_600.ttf";
+        try {
+            var f = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File("app/src/main/res/font/" + file));
+            g.setFont(f.deriveFont(44f));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        var fm = g.getFontMetrics();
+        g.setColor(color("#F1F2F4"));
+        g.drawString("12", (ICON - fm.stringWidth("12")) / 2f, ICON / 2f + fm.getAscent() / 2f - 6);
+    }
+
     /** Dark disc with the airport code and a red GMT underline. */
     static void codeBadge(java.awt.Graphics2D g, String code, int size) {
         g.setColor(color("#0B0E14"));
@@ -366,6 +432,11 @@ public class WatchFace {
 
     static void userConfigurations() {
         open("UserConfigurations");
+        open("ListConfiguration id=\"style\" displayName=\"cfg_style\" screenReaderText=\"cfg_style\" icon=\"icon_cfg_style\" defaultValue=\"classic\"");
+        for (Style s : STYLES) {
+            line("<ListOption id=\"%s\" displayName=\"style_%s\" icon=\"icon_style_%s\"/>", s.id, s.id, s.id);
+        }
+        close("ListConfiguration");
         open("ColorConfiguration id=\"bezel\" displayName=\"cfg_bezel\" screenReaderText=\"cfg_bezel\" icon=\"icon_cfg_bezel\" defaultValue=\"pepsi\"");
         for (Colorway c : COLORWAYS) {
             line("<ColorOption id=\"%s\" displayName=\"bezel_%s\" icon=\"icon_bezel_%s\" colors=\"%s %s %s\"/>",
@@ -423,15 +494,17 @@ public class WatchFace {
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
         close("PartDraw");
         // Active: dark numerals on white. Ambient: light numerals on black.
-        dateText(w, h, "#111111", "<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>", 255);
-        dateText(w, h, STEEL, "<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"255\"/>", 0);
+        styled(() -> {
+            dateText(w, h, "#111111", "<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>", 255);
+            dateText(w, h, STEEL, "<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"255\"/>", 0);
+        });
         close("Group");
     }
 
     static void dateText(int w, int h, String color, String variant, int alpha) {
-        open("PartText x=\"0\" y=\"2\" width=\"%d\" height=\"%d\" alpha=\"%d\"", w, h - 4, alpha);
+        open("PartText x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" alpha=\"%d\"", w, h, alpha);
         open("Text align=\"CENTER\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"BOLD\" color=\"%s\"", TEXT_ESSENTIAL, color);
+        open(font(TEXT_ESSENTIAL, "BOLD", color));
         line("<Template>%%s<Parameter expression=\"[DAY]\"/></Template>");
         close("Font");
         close("Text");
@@ -441,89 +514,74 @@ public class WatchFace {
 
     // ---- Complications ----------------------------------------------------
 
-    // textAngle places each value label near the horizontal so the 12sp text
-    // clears the airport label above and the 6 o'clock slot below.
-    record ArcSlot(int id, String name, double start, double end, double textAngle, String color,
-                   String provider, String providerType) {}
-
-    static final List<ArcSlot> ARC_SLOTS = List.of(
-            new ArcSlot(101, "slot_top_left", 280, 330, 290, "#10B981", "WATCH_BATTERY", "RANGED_VALUE"),
-            new ArcSlot(102, "slot_top_right", 30, 80, 70, "#F59E0B", "SUNRISE_SUNSET", "SHORT_TEXT"),
-            new ArcSlot(103, "slot_bottom_right", 100, 150, 110, "#F43F5E", "HEART_RATE", "SHORT_TEXT"),
-            new ArcSlot(104, "slot_bottom_left", 210, 260, 250, "#E2E8F0", "STEP_COUNT", "SHORT_TEXT"));
+    // Round slot at 9 o'clock, mirroring the date window at 3.
+    static final int ROUND_D = 100;
+    static final int ROUND_X = 63, ROUND_Y = (int) C - ROUND_D / 2;
 
     static void complications() {
-        comment("Arc complications in the four quadrants");
-        for (ArcSlot s : ARC_SLOTS) arcSlot(s);
+        comment("Round complication at 9 o'clock");
+        roundSlot();
         comment("6 o'clock long-text complication");
         longTextSlot();
     }
 
-    static void arcSlot(ArcSlot s) {
-        String sweep = f(s.end - s.start);
-        open("ComplicationSlot slotId=\"%d\" displayName=\"%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\" supportedTypes=\"RANGED_VALUE GOAL_PROGRESS SHORT_TEXT EMPTY\"", s.id, s.name);
-        line("<DefaultProviderPolicy defaultSystemProvider=\"%s\" defaultSystemProviderType=\"%s\"/>", s.provider, s.providerType);
-        // The runtime clips a complication's drawing to its bounding shape, so the
-        // box must cover both the arc and its value label.
-        double[] b = slotBounds(s);
-        line("<BoundingBox x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"/>",
-                (int) b[0], (int) b[1], (int) (b[2] - b[0]), (int) (b[3] - b[1]));
-
+    static void roundSlot() {
+        int d = ROUND_D;
+        double c = d / 2.0;
+        open("ComplicationSlot slotId=\"101\" displayName=\"slot_left\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"RANGED_VALUE GOAL_PROGRESS SHORT_TEXT MONOCHROMATIC_IMAGE EMPTY\"",
+                ROUND_X, ROUND_Y, d, d);
+        line("<DefaultProviderPolicy defaultSystemProvider=\"WATCH_BATTERY\" defaultSystemProviderType=\"RANGED_VALUE\"/>");
+        line("<BoundingOval x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"/>", d, d);
         String ranged = "clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]), 0, 1)";
         String goal = "clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1)";
-
-        for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT")) {
+        for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT", "MONOCHROMATIC_IMAGE")) {
             open("Complication type=\"%s\"", type);
-            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-            arc(COMP_R, s.start, s.end, "#2A313B", 5, "ROUND", null);
-            if (!type.equals("SHORT_TEXT")) {
-                String frac = type.equals("RANGED_VALUE") ? ranged : goal;
-                arc(COMP_R, s.start, s.end, s.color, 5, "ROUND",
-                        "<Transform target=\"endAngle\" value=\"" + f(s.start) + " + " + frac + " * " + sweep + "\"/>");
-            }
+            // Recessed sub-dial with a progress ring in the bezel's day colour.
+            open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", d, d);
+            open("Ellipse x=\"1\" y=\"1\" width=\"%d\" height=\"%d\"", d - 2, d - 2);
+            line("<Stroke color=\"#334155\" thickness=\"1\"/>");
+            line("<Fill color=\"#0A0D12\"/>");
+            close("Ellipse");
+            line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
             close("PartDraw");
-            compText(s.textAngle, type.equals("SHORT_TEXT") ? STEEL : s.color);
+            if (type.equals("RANGED_VALUE") || type.equals("GOAL_PROGRESS")) {
+                open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", d, d);
+                localArc(c, c - 7, 0, 360, "#2A313B", 4, null);
+                localArc(c, c - 7, 0, 0, "[CONFIGURATION.bezel.1]", 4,
+                        "<Transform target=\"endAngle\" value=\"" + (type.equals("RANGED_VALUE") ? ranged : goal) + " * 360\"/>");
+                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"170\"/>");
+                close("PartDraw");
+            }
+            if (type.equals("MONOCHROMATIC_IMAGE")) {
+                icon(c - 22, c - 22, 44);
+            } else {
+                icon(c - 12, 16, 24);
+                styled(() -> textLine(6, 42, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", STEEL, "[COMPLICATION.TEXT]"));
+            }
             close("Complication");
         }
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"150\"/>");
         close("ComplicationSlot");
     }
 
-    static final double COMP_TEXT_R = 108;
-    static final int COMP_TEXT_W = 88, COMP_TEXT_H = 32;
-
-    /** {minX, minY, maxX, maxY} covering the arc stroke and the value label. */
-    static double[] slotBounds(ArcSlot s) {
-        double minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
-        for (double t = s.start; t <= s.end; t += 1) {
-            for (double r : new double[] {COMP_R - 8, COMP_R + 8}) {
-                minX = Math.min(minX, dx(r, t)); maxX = Math.max(maxX, dx(r, t));
-                minY = Math.min(minY, dy(r, t)); maxY = Math.max(maxY, dy(r, t));
-            }
-        }
-        double cx = dx(COMP_TEXT_R, s.textAngle), cy = dy(COMP_TEXT_R, s.textAngle);
-        minX = Math.min(minX, cx - COMP_TEXT_W / 2.0); maxX = Math.max(maxX, cx + COMP_TEXT_W / 2.0);
-        minY = Math.min(minY, cy - COMP_TEXT_H / 2.0); maxY = Math.max(maxY, cy + COMP_TEXT_H / 2.0);
-        return new double[] {Math.floor(minX), Math.floor(minY), Math.ceil(maxX), Math.ceil(maxY)};
+    /** The provider's monochrome icon, tinted steel. */
+    static void icon(double x, double y, int size) {
+        open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" tintColor=\"%s\"", (int) x, (int) y, size, size, STEEL);
+        line("<Image resource=\"[COMPLICATION.MONOCHROMATIC_IMAGE]\"/>");
+        close("PartImage");
     }
 
-    /** Value label inside the arc, at the slot's textAngle. */
-    static void compText(double angle, String color) {
-        // COMP_TEXT_R keeps the label box corners inside the arc stroke.
-        double r = COMP_TEXT_R;
-        int w = COMP_TEXT_W, h = COMP_TEXT_H;
-        int x = (int) Math.round(dx(r, angle) - w / 2.0), y = (int) Math.round(dy(r, angle) - h / 2.0);
-        open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
-        open("Text align=\"CENTER\" ellipsis=\"TRUE\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"MEDIUM\" width=\"CONDENSED\" color=\"%s\"", TEXT_ESSENTIAL, color);
-        line("<Template>%%s<Parameter expression=\"[COMPLICATION.TEXT]\"/></Template>");
-        close("Font");
-        close("Text");
-        close("PartText");
+    /** Arc around (c, c) in a part's own coordinates. */
+    static void localArc(double c, double r, double start, double end, String color, double thick, String extra) {
+        open("Arc centerX=\"%s\" centerY=\"%s\" width=\"%s\" height=\"%s\" startAngle=\"%s\" endAngle=\"%s\"",
+                f(c), f(c), f(2 * r), f(2 * r), f(start), f(end));
+        line("<Stroke color=\"%s\" thickness=\"%s\" cap=\"ROUND\"/>", color, f(thick));
+        if (extra != null) line("%s", extra);
+        close("Arc");
     }
 
     static void longTextSlot() {
-        int x = 169, y = 288, w = 112, h = 64;
+        // As wide as the dial allows at this height (corners stay inside the minute track).
+        int x = 115, y = 284, w = 220, h = 72;
         open("ComplicationSlot slotId=\"301\" displayName=\"slot_bottom\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"LONG_TEXT SHORT_TEXT EMPTY\"", x, y, w, h);
         line("<DefaultProviderPolicy defaultSystemProvider=\"NEXT_EVENT\" defaultSystemProviderType=\"LONG_TEXT\"/>");
         line("<BoundingRoundBox x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadius=\"8\"/>", w, h);
@@ -536,17 +594,40 @@ public class WatchFace {
             close("RoundRectangle");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
             close("PartDraw");
-            textLine(4, 2, w - 8, 32, TEXT_ESSENTIAL, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]");
-            textLine(4, 33, w - 8, 28, TEXT_SECONDARY, "NORMAL", "#7DD3FC", "[COMPLICATION.TITLE]");
+            final int tw = w;
+            styled(() -> longTextBody(tw, h));
             close("Complication");
         }
         close("ComplicationSlot");
     }
 
+    /**
+     * Text over title when the provider sends a title; otherwise the text gets
+     * both lines (e.g. calendar providers that put "Event · 3:00 PM" in TEXT).
+     */
+    static void longTextBody(int w, int h) {
+        open("Condition");
+        open("Expressions");
+        line("<Expression name=\"hasTitle\"><![CDATA[[COMPLICATION.TITLE] != null && [COMPLICATION.TITLE] != \"\"]]></Expression>");
+        close("Expressions");
+        open("Compare expression=\"hasTitle\"");
+        textLine(4, 2, w - 8, 36, TEXT_ESSENTIAL, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]");
+        textLine(4, 38, w - 8, 30, TEXT_SECONDARY, "NORMAL", "#7DD3FC", "[COMPLICATION.TITLE]");
+        close("Compare");
+        open("Default");
+        textLine(4, 2, w - 8, h - 4, TEXT_ESSENTIAL, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]", 2);
+        close("Default");
+        close("Condition");
+    }
+
     static void textLine(int x, int y, int w, int h, int size, String weight, String color, String expr) {
+        textLine(x, y, w, h, size, weight, color, expr, 1);
+    }
+
+    static void textLine(int x, int y, int w, int h, int size, String weight, String color, String expr, int maxLines) {
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
-        open("Text align=\"CENTER\" ellipsis=\"TRUE\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"%s\" color=\"%s\"", size, weight, color);
+        open("Text align=\"CENTER\" ellipsis=\"TRUE\" maxLines=\"%d\"", maxLines);
+        open(font(size, weight, color));
         line("<Template>%%s<Parameter expression=\"%s\"/></Template>", expr);
         close("Font");
         close("Text");
@@ -565,9 +646,7 @@ public class WatchFace {
         weatherBezel(false);
         weatherBezel(true);
         label("LOCAL");
-        open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        hand("HourHand", "hand_gmt", 22, 194, 0, 255, 200);
-        close("AnalogClock");
+        gmtHand(null);
         close("Group");
         close("ListOption");
         for (Airport a : AIRPORTS) {
@@ -576,7 +655,7 @@ public class WatchFace {
             solarBezel(a, false);
             solarBezel(a, true);
             airportLabel(a);
-            gmtHand(a);
+            gmtHand(a.zone);
             close("Group");
             close("ListOption");
         }
@@ -682,11 +761,22 @@ public class WatchFace {
     }
 
     /** The label above the dial centre, with an optional parameterised template. */
+    static final int LABEL_W = 184, LABEL_H = 34, LABEL_Y = 84;
+
     static void label(String template, String... params) {
-        int w = 184, h = 34, x = (int) (C - w / 2), y = 84;
+        styled(() -> labelText(template, params));
+        // Red underline ties the label to the GMT hand.
+        open("PartDraw x=\"%d\" y=\"%d\" width=\"28\" height=\"3\"", (int) (C - 14), LABEL_Y + LABEL_H + 1);
+        line("<Rectangle x=\"0\" y=\"0\" width=\"28\" height=\"2\"><Fill color=\"%s\"/></Rectangle>", GMT_RED);
+        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+        close("PartDraw");
+    }
+
+    static void labelText(String template, String... params) {
+        int w = LABEL_W, h = LABEL_H, x = (int) (C - w / 2), y = LABEL_Y;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
         open("Text align=\"CENTER\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"MEDIUM\" width=\"CONDENSED\" letterSpacing=\"0.04\" color=\"%s\"", TEXT_ESSENTIAL, STEEL);
+        open(font(TEXT_ESSENTIAL, "MEDIUM", STEEL));
         if (params.length == 0) {
             line("<Template>%%s<Parameter expression=\"&quot;%s&quot;\"/></Template>", template);
         } else {
@@ -698,18 +788,16 @@ public class WatchFace {
         close("Text");
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"170\"/>");
         close("PartText");
-        // Red underline ties the label to the GMT hand.
-        open("PartDraw x=\"%d\" y=\"%d\" width=\"28\" height=\"3\"", (int) (C - 14), y + h + 1);
-        line("<Rectangle x=\"0\" y=\"0\" width=\"28\" height=\"2\"><Fill color=\"%s\"/></Rectangle>", GMT_RED);
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
-        close("PartDraw");
     }
 
-    static void gmtHand(Airport a) {
-        open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        line("<Localization timeZone=\"%s\"/>", a.zone);
-        hand("HourHand", "hand_gmt", 22, 194, 0, 255, 200);
-        close("AnalogClock");
+    /** GMT hand in the given zone, or local time when zone is null. */
+    static void gmtHand(String zone) {
+        styled(() -> {
+            open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
+            hand("HourHand", "hand_gmt", style.gmt, 255, 200);
+            close("AnalogClock");
+        });
     }
 
     // ---- Bezel markings (drawn above the coloured ring) --------------------
@@ -733,10 +821,12 @@ public class WatchFace {
         // doesn't draw it, so the outline is built from offset dark copies.
         int[][] halo = {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1, 0}, {-1, 1}, {0, 1}, {1, 1},
                 {-2, 0}, {2, 0}, {0, -2}, {0, 2}};
-        for (int h = 1; h <= 11; h++) {
-            for (int[] o : halo) numeral(h, o[0], o[1], "#0B0E14");
-            numeral(h, 0, 0, "#F1F2F4");
-        }
+        styled(() -> {
+            for (int h = 1; h <= 11; h++) {
+                for (int[] o : halo) numeral(h, o[0], o[1], "#0B0E14");
+                numeral(h, 0, 0, "#F1F2F4");
+            }
+        });
         open("PartImage x=\"214\" y=\"3\" width=\"22\" height=\"18\"");
         line("<Image resource=\"bezel_pip\"/>");
         close("PartImage");
@@ -750,7 +840,7 @@ public class WatchFace {
         int x = (int) Math.round(dx(BEZEL_MID, a) - w / 2.0) + ox, y = (int) Math.round(dy(BEZEL_MID, a) - hh / 2.0) + oy;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" angle=\"%s\"", x, y, w, hh, f(a));
         open("Text align=\"CENTER\"");
-        open("Font family=\"SYNC_TO_DEVICE\" size=\"%d\" weight=\"SEMI_BOLD\" width=\"CONDENSED\" color=\"%s\"", TEXT_SECONDARY, color);
+        open(font(TEXT_SECONDARY, "SEMI_BOLD", color));
         line("<Template>%%s<Parameter expression=\"%d\"/></Template>", h);
         close("Font");
         close("Text");
@@ -761,24 +851,27 @@ public class WatchFace {
 
     static void localHands() {
         comment("Local time: hour, minute, sweeping seconds (outline hands in ambient)");
-        open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        hand("HourHand", "hand_hour", 24, 106, 22, 255, 0);
-        hand("HourHand", "hand_hour_ambient", 24, 106, 22, 0, 255);
-        hand("MinuteHand", "hand_minute", 14, 178, 24, 255, 0);
-        hand("MinuteHand", "hand_minute_ambient", 14, 178, 24, 0, 255);
-        int sw = 14, sl = 186, st = 42;
-        open("SecondHand resource=\"hand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"",
-                (int) C - sw / 2, (int) C - sl, sw, sl + st, n((double) sl / (sl + st)));
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
-        line("<Sweep frequency=\"15\"/>");
-        close("SecondHand");
-        close("AnalogClock");
+        styled(() -> {
+            open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            hand("HourHand", "hand_hour", style.hour, 255, 0);
+            hand("HourHand", "hand_hour_ambient", style.hour, 0, 255);
+            hand("MinuteHand", "hand_minute", style.minute, 255, 0);
+            hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
+            HandGeom s = style.second;
+            open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"",
+                    style.handPrefix, (int) C - s.w / 2, (int) C - s.len, s.w, s.len + s.tail, n((double) s.len / (s.len + s.tail)));
+            line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+            line("<Sweep frequency=\"15\"/>");
+            close("SecondHand");
+            close("AnalogClock");
+        });
     }
 
-    /** A hand image whose pivot is `len` px down from its tip; geometry matches HandArt.java. */
-    static void hand(String tag, String res, int w, int len, int tail, int alpha, int ambientAlpha) {
-        open("%s resource=\"%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\" alpha=\"%d\"",
-                tag, res, (int) C - w / 2, (int) C - len, w, len + tail, n((double) len / (len + tail)), alpha);
+    /** A hand image for the current style; its pivot is `len` px down from the tip (see HandArt.java). */
+    static void hand(String tag, String res, HandGeom g, int alpha, int ambientAlpha) {
+        int w = g.w, len = g.len, tail = g.tail;
+        open("%s resource=\"%s%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\" alpha=\"%d\"",
+                tag, style.handPrefix, res, (int) C - w / 2, (int) C - len, w, len + tail, n((double) len / (len + tail)), alpha);
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", ambientAlpha);
         close(tag);
     }
@@ -846,15 +939,14 @@ public class WatchFace {
         s.append("<!-- GENERATED by tools/WatchFace.java. Edit the generator, not this file. -->\n");
         s.append("<resources>\n");
         str(s, "app_name", "Solstice GMT");
+        str(s, "cfg_style", "Style");
+        for (Style st : STYLES) str(s, "style_" + st.id, st.name);
         str(s, "cfg_bezel", "Bezel colourway");
         str(s, "cfg_airport", "GMT airport");
         for (Colorway c : COLORWAYS) str(s, "bezel_" + c.id, c.name);
         str(s, "airport_local", "LOCAL · Your time zone");
         for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), displayName(a));
-        str(s, "slot_top_left", "Top left arc");
-        str(s, "slot_top_right", "Top right arc");
-        str(s, "slot_bottom_right", "Bottom right arc");
-        str(s, "slot_bottom_left", "Bottom left arc");
+        str(s, "slot_left", "Left");
         str(s, "slot_bottom", "Bottom");
         s.append("</resources>\n");
         return s.toString();
