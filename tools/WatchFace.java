@@ -199,7 +199,7 @@ public class WatchFace {
     static final double BEZEL_MID = (BEZEL_OUTER + BEZEL_INNER) / 2;
     static final double BEZEL_THICK = BEZEL_OUTER - BEZEL_INNER;
     static final double DIAL_R = 196;
-    static final double COMP_R = 136;   // radius of the arc complications
+    static final double COMP_R = 166;   // radius of the arc complications (just inside the minute track)
 
     static final StringBuilder out = new StringBuilder();
     static int indent = 0;
@@ -444,8 +444,8 @@ public class WatchFace {
 
     /** Small value label tucked just inside the arc's midpoint. */
     static void compText(double mid, String color) {
-        double r = 114;
-        int w = 52, h = 20;
+        double r = COMP_R - 24;
+        int w = 60, h = 20;
         int x = (int) Math.round(dx(r, mid) - w / 2.0), y = (int) Math.round(dy(r, mid) - h / 2.0);
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
         open("Text align=\"CENTER\" ellipsis=\"TRUE\"");
@@ -457,7 +457,7 @@ public class WatchFace {
     }
 
     static void longTextSlot() {
-        int x = 160, y = 260, w = 130, h = 44;
+        int x = 160, y = 300, w = 130, h = 44;
         open("ComplicationSlot slotId=\"301\" displayName=\"slot_bottom\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"LONG_TEXT SHORT_TEXT EMPTY\"", x, y, w, h);
         line("<DefaultProviderPolicy defaultSystemProvider=\"NEXT_EVENT\" defaultSystemProviderType=\"LONG_TEXT\"/>");
         line("<BoundingRoundBox x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadius=\"8\"/>", w, h);

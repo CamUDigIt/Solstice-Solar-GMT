@@ -290,18 +290,18 @@
     <!-- Arc complications in the four quadrants -->
     <ComplicationSlot slotId="101" displayName="slot_top_left" x="0" y="0" width="450" height="450" supportedTypes="RANGED_VALUE GOAL_PROGRESS SHORT_TEXT EMPTY">
       <DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY" defaultSystemProviderType="RANGED_VALUE"/>
-      <BoundingArc centerX="225" centerY="225" width="268" height="268" thickness="44" startAngle="280" endAngle="330"/>
+      <BoundingArc centerX="225" centerY="225" width="328" height="328" thickness="44" startAngle="280" endAngle="330"/>
       <Complication type="RANGED_VALUE">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="280" endAngle="330">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="280" endAngle="330">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="280" endAngle="330">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="280" endAngle="330">
             <Stroke color="#10B981" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="280 + clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]), 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="106" y="150" width="52" height="20">
+        <PartText x="79" y="134" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#10B981">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -311,15 +311,15 @@
       </Complication>
       <Complication type="GOAL_PROGRESS">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="280" endAngle="330">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="280" endAngle="330">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="280" endAngle="330">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="280" endAngle="330">
             <Stroke color="#10B981" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="280 + clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="106" y="150" width="52" height="20">
+        <PartText x="79" y="134" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#10B981">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -329,11 +329,11 @@
       </Complication>
       <Complication type="SHORT_TEXT">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="280" endAngle="330">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="280" endAngle="330">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
         </PartDraw>
-        <PartText x="106" y="150" width="52" height="20">
+        <PartText x="79" y="134" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#C9CED6">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -345,18 +345,18 @@
     </ComplicationSlot>
     <ComplicationSlot slotId="102" displayName="slot_top_right" x="0" y="0" width="450" height="450" supportedTypes="RANGED_VALUE GOAL_PROGRESS SHORT_TEXT EMPTY">
       <DefaultProviderPolicy defaultSystemProvider="SUNRISE_SUNSET" defaultSystemProviderType="SHORT_TEXT"/>
-      <BoundingArc centerX="225" centerY="225" width="268" height="268" thickness="44" startAngle="30" endAngle="80"/>
+      <BoundingArc centerX="225" centerY="225" width="328" height="328" thickness="44" startAngle="30" endAngle="80"/>
       <Complication type="RANGED_VALUE">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="30" endAngle="80">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="30" endAngle="80">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="30" endAngle="80">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="30" endAngle="80">
             <Stroke color="#F59E0B" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="30 + clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]), 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="292" y="150" width="52" height="20">
+        <PartText x="311" y="134" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#F59E0B">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -366,15 +366,15 @@
       </Complication>
       <Complication type="GOAL_PROGRESS">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="30" endAngle="80">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="30" endAngle="80">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="30" endAngle="80">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="30" endAngle="80">
             <Stroke color="#F59E0B" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="30 + clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="292" y="150" width="52" height="20">
+        <PartText x="311" y="134" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#F59E0B">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -384,11 +384,11 @@
       </Complication>
       <Complication type="SHORT_TEXT">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="30" endAngle="80">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="30" endAngle="80">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
         </PartDraw>
-        <PartText x="292" y="150" width="52" height="20">
+        <PartText x="311" y="134" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#C9CED6">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -400,18 +400,18 @@
     </ComplicationSlot>
     <ComplicationSlot slotId="103" displayName="slot_bottom_right" x="0" y="0" width="450" height="450" supportedTypes="RANGED_VALUE GOAL_PROGRESS SHORT_TEXT EMPTY">
       <DefaultProviderPolicy defaultSystemProvider="HEART_RATE" defaultSystemProviderType="SHORT_TEXT"/>
-      <BoundingArc centerX="225" centerY="225" width="268" height="268" thickness="44" startAngle="100" endAngle="150"/>
+      <BoundingArc centerX="225" centerY="225" width="328" height="328" thickness="44" startAngle="100" endAngle="150"/>
       <Complication type="RANGED_VALUE">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="100" endAngle="150">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="100" endAngle="150">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="100" endAngle="150">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="100" endAngle="150">
             <Stroke color="#F43F5E" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="100 + clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]), 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="292" y="280" width="52" height="20">
+        <PartText x="311" y="296" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#F43F5E">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -421,15 +421,15 @@
       </Complication>
       <Complication type="GOAL_PROGRESS">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="100" endAngle="150">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="100" endAngle="150">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="100" endAngle="150">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="100" endAngle="150">
             <Stroke color="#F43F5E" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="100 + clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="292" y="280" width="52" height="20">
+        <PartText x="311" y="296" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#F43F5E">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -439,11 +439,11 @@
       </Complication>
       <Complication type="SHORT_TEXT">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="100" endAngle="150">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="100" endAngle="150">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
         </PartDraw>
-        <PartText x="292" y="280" width="52" height="20">
+        <PartText x="311" y="296" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#C9CED6">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -455,18 +455,18 @@
     </ComplicationSlot>
     <ComplicationSlot slotId="104" displayName="slot_bottom_left" x="0" y="0" width="450" height="450" supportedTypes="RANGED_VALUE GOAL_PROGRESS SHORT_TEXT EMPTY">
       <DefaultProviderPolicy defaultSystemProvider="STEP_COUNT" defaultSystemProviderType="SHORT_TEXT"/>
-      <BoundingArc centerX="225" centerY="225" width="268" height="268" thickness="44" startAngle="210" endAngle="260"/>
+      <BoundingArc centerX="225" centerY="225" width="328" height="328" thickness="44" startAngle="210" endAngle="260"/>
       <Complication type="RANGED_VALUE">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="210" endAngle="260">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="210" endAngle="260">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="210" endAngle="260">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="210" endAngle="260">
             <Stroke color="#E2E8F0" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="210 + clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]), 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="106" y="280" width="52" height="20">
+        <PartText x="79" y="296" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#E2E8F0">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -476,15 +476,15 @@
       </Complication>
       <Complication type="GOAL_PROGRESS">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="210" endAngle="260">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="210" endAngle="260">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="210" endAngle="260">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="210" endAngle="260">
             <Stroke color="#E2E8F0" thickness="12" cap="ROUND"/>
             <Transform target="endAngle" value="210 + clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1) * 50"/>
           </Arc>
         </PartDraw>
-        <PartText x="106" y="280" width="52" height="20">
+        <PartText x="79" y="296" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#E2E8F0">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -494,11 +494,11 @@
       </Complication>
       <Complication type="SHORT_TEXT">
         <PartDraw x="0" y="0" width="450" height="450">
-          <Arc centerX="225" centerY="225" width="272" height="272" startAngle="210" endAngle="260">
+          <Arc centerX="225" centerY="225" width="332" height="332" startAngle="210" endAngle="260">
             <Stroke color="#2A313B" thickness="12" cap="ROUND"/>
           </Arc>
         </PartDraw>
-        <PartText x="106" y="280" width="52" height="20">
+        <PartText x="79" y="296" width="60" height="20">
           <Text align="CENTER" ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" width="CONDENSED" color="#C9CED6">
               <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -509,7 +509,7 @@
       <Variant mode="AMBIENT" target="alpha" value="150"/>
     </ComplicationSlot>
     <!-- 6 o'clock long-text complication -->
-    <ComplicationSlot slotId="301" displayName="slot_bottom" x="160" y="260" width="130" height="44" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY">
+    <ComplicationSlot slotId="301" displayName="slot_bottom" x="160" y="300" width="130" height="44" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY">
       <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
       <BoundingRoundBox x="0" y="0" width="130" height="44" cornerRadius="8"/>
       <Complication type="LONG_TEXT">
