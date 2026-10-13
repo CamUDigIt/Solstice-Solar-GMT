@@ -28,7 +28,10 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 - **LOCAL.** The first airport option. The GMT hand follows local time, and
   because WFF has no location source, the bezel's daylight comes from the
   watch's hourly weather forecast (it snaps to whole hours and shows night only
-  when there's no weather data).
+  when there's no weather data). The label shows the local zone's abbreviation
+  (MDT, BST, CEST, NPT…). WFF's `[TIMEZONE_ABB]` only reports the standard
+  name, so summer names are derived from it; zones without a named
+  abbreviation show `UTC +13:45` style instead.
 - **Two styles.**
   - *Pilot* (inspired by classic GMT tool watches): bundled Oswald, Mercedes
     hour hand, sword minute hand, lollipop seconds, a GMT hand with a large
@@ -48,13 +51,15 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   long-text slot at 6 o'clock. The long-text slot shows text over title, or
   wraps the text onto two lines when the provider has no title (for example
   calendar events like "Team Standup · 3:00 PM").
-- **Date window** at 3 o'clock (Cyclops-style on Pilot, a plain box on Flat).
-- **Tap actions.** Two invisible complication slots sit over the date window
-  and the GMT label. They draw nothing; whatever provider you choose for them
-  in the editor's complications page ("Date tap action", "GMT label tap
-  action") decides what a tap opens. Choose **App shortcut** to open any app.
-  Defaults: the date opens the calendar (Date provider) and the label opens
-  World clock.
+- **Date** at 3 o'clock: a Cyclops-style window on Pilot, plain white
+  numerals on Flat.
+- **Tap actions.** Two invisible complication slots sit over the date and the
+  GMT label. They draw nothing; whatever provider you choose for them in the
+  editor's complications page ("Date tap action", "GMT label tap action")
+  decides what a tap opens. Choose **App shortcut** to open any app.
+  Defaults: the date slot is Empty, so taps fall through to the date's own
+  `Launch target="CALENDAR"` (the system calendar app); the label opens World
+  clock.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
 - **Customisation.** In the watch-face editor you can pick the style (Pilot or
   Flat), the bezel format (12h or 24h), a bezel colourway (Pepsi, Batman, Coke,

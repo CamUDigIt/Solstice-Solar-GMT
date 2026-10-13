@@ -528,31 +528,39 @@ public class WatchFace {
 
     static final int DATE_CX = 362;
 
+    // What tapping the date opens when no app is chosen for "Date tap action".
+    static String DATE_LAUNCH = "CALENDAR";
+
     static void dateWindow() {
-        comment("Date window at 3 o'clock: Pilot has a Cyclops-style magnified date, Flat a plain box");
+        comment("Date at 3 o'clock: Pilot has a Cyclops-style magnified window, Flat plain numerals");
         styled(() -> {
             boolean pilot = style == PILOT;
             int w = pilot ? 52 : 48, h = pilot ? 44 : 38, size = pilot ? 36 : TEXT_ESSENTIAL;
             int lens = pilot ? 4 : 0;
             int x = DATE_CX - w / 2 - lens, y = (int) C - h / 2 - lens;
             open("Group name=\"date_%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", style.id, x, y, w + 2 * lens, h + 2 * lens);
-            open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", w + 2 * lens, h + 2 * lens);
+            // Opens the system calendar unless the tap slot above has an app chosen.
+            line("<Launch target=\"%s\"/>", DATE_LAUNCH);
             if (pilot) {
+                open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", w + 2 * lens, h + 2 * lens);
                 // Lens rim and a faint glass tint around the window.
                 open("RoundRectangle x=\"0.6\" y=\"0.6\" width=\"%s\" height=\"%s\" cornerRadiusX=\"8\" cornerRadiusY=\"8\"", f(w + 2 * lens - 1.2), f(h + 2 * lens - 1.2));
                 line("<Stroke color=\"#AEB6C0\" thickness=\"1.2\"/>");
                 line("<Fill color=\"#1FFFFFFF\"/>");
                 close("RoundRectangle");
+                open("RoundRectangle x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" cornerRadiusX=\"3\" cornerRadiusY=\"3\"", lens + 1, lens + 1, w - 2, h - 2);
+                line("<Stroke color=\"%s\" thickness=\"2\"/>", STEEL);
+                line("<Fill color=\"#F5F5F2\"/>");
+                close("RoundRectangle");
+                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+                close("PartDraw");
+                // Active: dark numerals on white. Ambient: light numerals on black.
+                dateText(lens, w, h, size, "#111111", 255, 0);
+                dateText(lens, w, h, size, STEEL, 0, 255);
+            } else {
+                // Flat: white numerals straight on the dial.
+                dateText(0, w, h, size, "#FFFFFF", 255, 200);
             }
-            open("RoundRectangle x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" cornerRadiusX=\"3\" cornerRadiusY=\"3\"", lens + 1, lens + 1, w - 2, h - 2);
-            line("<Stroke color=\"%s\" thickness=\"2\"/>", STEEL);
-            line("<Fill color=\"#F5F5F2\"/>");
-            close("RoundRectangle");
-            line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
-            close("PartDraw");
-            // Active: dark numerals on white. Ambient: light numerals on black.
-            dateText(lens, w, h, size, "#111111", 255, 0);
-            dateText(lens, w, h, size, STEEL, 0, 255);
             close("Group");
         });
     }
@@ -589,7 +597,7 @@ public class WatchFace {
         comment("6 o'clock long-text complication");
         longTextSlot();
         comment("Invisible tap targets: the provider chosen for these sets what the date and GMT label open");
-        tapSlot(201, "slot_date_tap", DATE_CX - TAP_MIN / 2, (int) C - TAP_MIN / 2, TAP_MIN, TAP_MIN, "DATE");
+        tapSlot(201, "slot_date_tap", DATE_CX - TAP_MIN / 2, (int) C - TAP_MIN / 2, TAP_MIN, TAP_MIN, "EMPTY");
         tapSlot(202, "slot_label_tap", (int) C - LABEL_W / 2, LABEL_Y + LABEL_H / 2 - TAP_MIN / 2, LABEL_W, TAP_MIN, "WORLD_CLOCK");
     }
 
@@ -602,7 +610,7 @@ public class WatchFace {
         List<String> types = List.of("SHORT_TEXT", "LONG_TEXT", "SMALL_IMAGE", "MONOCHROMATIC_IMAGE", "RANGED_VALUE", "GOAL_PROGRESS");
         open("ComplicationSlot slotId=\"%d\" displayName=\"%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"%s EMPTY\"",
                 id, name, x, y, w, h, String.join(" ", types));
-        line("<DefaultProviderPolicy defaultSystemProvider=\"%s\" defaultSystemProviderType=\"SHORT_TEXT\"/>", provider);
+        line("<DefaultProviderPolicy defaultSystemProvider=\"%s\" defaultSystemProviderType=\"%s\"/>", provider, provider.equals("EMPTY") ? "EMPTY" : "SHORT_TEXT");
         line("<BoundingRoundBox x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadius=\"8\"/>", w, h);
         for (String t : types) line("<Complication type=\"%s\"/>", t);
         close("ComplicationSlot");
@@ -739,7 +747,7 @@ public class WatchFace {
             weatherBezel(false);
             weatherBezel(true);
         });
-        label("LOCAL");
+        localLabel();
         gmtHand(null);
         close("Group");
         close("ListOption");
@@ -859,14 +867,71 @@ public class WatchFace {
      * [TIMEZONE_OFFSET_MINUTES_DST] is the wearer's offset.
      */
     static String[] offsetParams(String dest) {
-        String diff = "(" + dest + " - [TIMEZONE_OFFSET_MINUTES_DST])";
-        String whole = "abs(" + diff + ") % 60 == 0";
+        return signedHours("(" + dest + " - [TIMEZONE_OFFSET_MINUTES_DST])");
+    }
+
+    /** Template parameters for a signed minute offset: sign, hours, ":" and minutes when not whole. */
+    static String[] signedHours(String minutes) {
+        String whole = "abs(" + minutes + ") % 60 == 0";
         return new String[] {
-                diff + " > 0 ? \"+\" : (" + diff + " < 0 ? \"−\" : \"\")",
-                "floor(abs(" + diff + ") / 60)",
+                minutes + " > 0 ? \"+\" : (" + minutes + " < 0 ? \"−\" : \"\")",
+                "floor(abs(" + minutes + ") / 60)",
                 whole + " ? \"\" : \":\"",
-                whole + " ? \"\" : abs(" + diff + ") % 60",
+                whole + " ? \"\" : abs(" + minutes + ") % 60",
         };
+    }
+
+    /**
+     * LOCAL's label: the local zone's abbreviation, e.g. "MDT".
+     *
+     * [TIMEZONE_ABB] always reports the standard-time name (MST even in
+     * summer), so during daylight saving the summer name is derived from it:
+     * xST -> xDT (MDT, PDT, AKDT, AEDT, NZDT), three-letter xxT -> xxST (CEST,
+     * EEST, WEST, CLST), and GMT -> BST (IST in Dublin). Zones without a named
+     * abbreviation ("GMT+12:45", "UTC-3", "+0545"), or summer names the rules
+     * can't derive, fall back to "UTC +12:45" from the local offset.
+     */
+    static void localLabel() {
+        String abb = "[TIMEZONE_ABB]", len = "textLength(" + abb + ")", dst = "[IS_DAYLIGHT_SAVING_TIME]";
+        String unnamed = "((subText(" + abb + ", 0, 3) == \"GMT\" || subText(" + abb + ", 0, 3) == \"UTC\") && " + len + " > 3)"
+                + " || subText(" + abb + ", 0, 1) == \"+\" || subText(" + abb + ", 0, 1) == \"-\"";
+        Runnable utc = () -> labelText("UTC %s%s%s%s", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]"));
+        label(() -> chain(new String[] {
+                unnamed,
+                dst + " && [TIMEZONE_ID] == \"Europe/Dublin\"",
+                dst + " && " + abb + " == \"GMT\"",
+                dst + " && subText(" + abb + ", " + len + " - 2, " + len + ") == \"ST\"",
+                dst + " && " + len + " == 3 && subText(" + abb + ", 2, 3) == \"T\"",
+                dst,
+        }, new Runnable[] {
+                utc,
+                () -> labelText("IST"),
+                () -> labelText("BST"),
+                () -> labelText("%sDT", "subText(" + abb + ", 0, " + len + " - 2)"),
+                () -> labelText("%sST", "subText(" + abb + ", 0, 2)"),
+                utc,
+        }, () -> labelText("%s", abb)));
+    }
+
+    /** A Condition that runs the body of the first matching expression, else the default. */
+    static void chain(String[] exprs, Runnable[] bodies, Runnable otherwise) {
+        open("Condition");
+        open("Expressions");
+        String[] names = new String[exprs.length];
+        for (int i = 0; i < exprs.length; i++) {
+            names[i] = "c" + (conditionCount++);
+            line("%s", "<Expression name=\"" + names[i] + "\"><![CDATA[" + exprs[i] + "]]></Expression>");
+        }
+        close("Expressions");
+        for (int i = 0; i < exprs.length; i++) {
+            open("Compare expression=\"%s\"", names[i]);
+            bodies[i].run();
+            close("Compare");
+        }
+        open("Default");
+        otherwise.run();
+        close("Default");
+        close("Condition");
     }
 
     // The GMT label is printed dial text just below 12 (10sp secondary size),
@@ -874,7 +939,11 @@ public class WatchFace {
     static final int LABEL_W = 160, LABEL_H = 28, LABEL_Y = 76;
 
     static void label(String template, String... params) {
-        styled(() -> labelText(template, params));
+        label(() -> labelText(template, params));
+    }
+
+    static void label(Runnable text) {
+        styled(text);
         // Red underline ties the label to the GMT hand.
         open("PartDraw x=\"%d\" y=\"%d\" width=\"24\" height=\"3\"", (int) (C - 12), LABEL_Y + LABEL_H + 1);
         line("<Rectangle x=\"0\" y=\"0\" width=\"24\" height=\"2\"><Fill color=\"%s\"/></Rectangle>", GMT_RED);
