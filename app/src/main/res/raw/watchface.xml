@@ -17,57 +17,57 @@
       <ColorOption id="polar" displayName="bezel_polar" icon="icon_bezel_polar" colors="#0F172A #CBD5E1 #475569"/>
     </ColorConfiguration>
     <ListConfiguration id="airport" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="LHR">
-      <ListOption id="LOCAL" displayName="airport_local" icon="icon_airport_local"/>
-      <ListOption id="UTC" displayName="airport_utc" icon="icon_airport_utc"/>
-      <ListOption id="ANC" displayName="airport_anc" icon="icon_airport_anc"/>
-      <ListOption id="ATL" displayName="airport_atl" icon="icon_airport_atl"/>
-      <ListOption id="BOG" displayName="airport_bog" icon="icon_airport_bog"/>
-      <ListOption id="EZE" displayName="airport_eze" icon="icon_airport_eze"/>
-      <ListOption id="ORD" displayName="airport_ord" icon="icon_airport_ord"/>
-      <ListOption id="DFW" displayName="airport_dfw" icon="icon_airport_dfw"/>
-      <ListOption id="DEN" displayName="airport_den" icon="icon_airport_den"/>
-      <ListOption id="LAX" displayName="airport_lax" icon="icon_airport_lax"/>
-      <ListOption id="MEX" displayName="airport_mex" icon="icon_airport_mex"/>
-      <ListOption id="MIA" displayName="airport_mia" icon="icon_airport_mia"/>
-      <ListOption id="JFK" displayName="airport_jfk" icon="icon_airport_jfk"/>
-      <ListOption id="PHX" displayName="airport_phx" icon="icon_airport_phx"/>
-      <ListOption id="SFO" displayName="airport_sfo" icon="icon_airport_sfo"/>
-      <ListOption id="SCL" displayName="airport_scl" icon="icon_airport_scl"/>
-      <ListOption id="GRU" displayName="airport_gru" icon="icon_airport_gru"/>
-      <ListOption id="SEA" displayName="airport_sea" icon="icon_airport_sea"/>
-      <ListOption id="YYZ" displayName="airport_yyz" icon="icon_airport_yyz"/>
-      <ListOption id="YVR" displayName="airport_yvr" icon="icon_airport_yvr"/>
-      <ListOption id="AMS" displayName="airport_ams" icon="icon_airport_ams"/>
-      <ListOption id="DUB" displayName="airport_dub" icon="icon_airport_dub"/>
-      <ListOption id="FRA" displayName="airport_fra" icon="icon_airport_fra"/>
-      <ListOption id="IST" displayName="airport_ist" icon="icon_airport_ist"/>
-      <ListOption id="LHR" displayName="airport_lhr" icon="icon_airport_lhr"/>
-      <ListOption id="MAD" displayName="airport_mad" icon="icon_airport_mad"/>
-      <ListOption id="CDG" displayName="airport_cdg" icon="icon_airport_cdg"/>
-      <ListOption id="FCO" displayName="airport_fco" icon="icon_airport_fco"/>
-      <ListOption id="ZRH" displayName="airport_zrh" icon="icon_airport_zrh"/>
-      <ListOption id="CAI" displayName="airport_cai" icon="icon_airport_cai"/>
-      <ListOption id="JNB" displayName="airport_jnb" icon="icon_airport_jnb"/>
-      <ListOption id="NBO" displayName="airport_nbo" icon="icon_airport_nbo"/>
-      <ListOption id="DOH" displayName="airport_doh" icon="icon_airport_doh"/>
-      <ListOption id="DXB" displayName="airport_dxb" icon="icon_airport_dxb"/>
-      <ListOption id="BKK" displayName="airport_bkk" icon="icon_airport_bkk"/>
-      <ListOption id="PEK" displayName="airport_pek" icon="icon_airport_pek"/>
-      <ListOption id="DEL" displayName="airport_del" icon="icon_airport_del"/>
-      <ListOption id="HKG" displayName="airport_hkg" icon="icon_airport_hkg"/>
-      <ListOption id="CGK" displayName="airport_cgk" icon="icon_airport_cgk"/>
-      <ListOption id="KTM" displayName="airport_ktm" icon="icon_airport_ktm"/>
-      <ListOption id="MNL" displayName="airport_mnl" icon="icon_airport_mnl"/>
-      <ListOption id="BOM" displayName="airport_bom" icon="icon_airport_bom"/>
-      <ListOption id="ICN" displayName="airport_icn" icon="icon_airport_icn"/>
-      <ListOption id="SIN" displayName="airport_sin" icon="icon_airport_sin"/>
-      <ListOption id="HND" displayName="airport_hnd" icon="icon_airport_hnd"/>
-      <ListOption id="ADL" displayName="airport_adl" icon="icon_airport_adl"/>
-      <ListOption id="AKL" displayName="airport_akl" icon="icon_airport_akl"/>
-      <ListOption id="HNL" displayName="airport_hnl" icon="icon_airport_hnl"/>
-      <ListOption id="MEL" displayName="airport_mel" icon="icon_airport_mel"/>
-      <ListOption id="PER" displayName="airport_per" icon="icon_airport_per"/>
-      <ListOption id="SYD" displayName="airport_syd" icon="icon_airport_syd"/>
+      <ListOption id="LOCAL" displayName="airport_local"/>
+      <ListOption id="UTC" displayName="airport_utc"/>
+      <ListOption id="ANC" displayName="airport_anc"/>
+      <ListOption id="ATL" displayName="airport_atl"/>
+      <ListOption id="BOG" displayName="airport_bog"/>
+      <ListOption id="EZE" displayName="airport_eze"/>
+      <ListOption id="ORD" displayName="airport_ord"/>
+      <ListOption id="DFW" displayName="airport_dfw"/>
+      <ListOption id="DEN" displayName="airport_den"/>
+      <ListOption id="LAX" displayName="airport_lax"/>
+      <ListOption id="MEX" displayName="airport_mex"/>
+      <ListOption id="MIA" displayName="airport_mia"/>
+      <ListOption id="JFK" displayName="airport_jfk"/>
+      <ListOption id="PHX" displayName="airport_phx"/>
+      <ListOption id="SFO" displayName="airport_sfo"/>
+      <ListOption id="SCL" displayName="airport_scl"/>
+      <ListOption id="GRU" displayName="airport_gru"/>
+      <ListOption id="SEA" displayName="airport_sea"/>
+      <ListOption id="YYZ" displayName="airport_yyz"/>
+      <ListOption id="YVR" displayName="airport_yvr"/>
+      <ListOption id="AMS" displayName="airport_ams"/>
+      <ListOption id="DUB" displayName="airport_dub"/>
+      <ListOption id="FRA" displayName="airport_fra"/>
+      <ListOption id="IST" displayName="airport_ist"/>
+      <ListOption id="LHR" displayName="airport_lhr"/>
+      <ListOption id="MAD" displayName="airport_mad"/>
+      <ListOption id="CDG" displayName="airport_cdg"/>
+      <ListOption id="FCO" displayName="airport_fco"/>
+      <ListOption id="ZRH" displayName="airport_zrh"/>
+      <ListOption id="CAI" displayName="airport_cai"/>
+      <ListOption id="JNB" displayName="airport_jnb"/>
+      <ListOption id="NBO" displayName="airport_nbo"/>
+      <ListOption id="DOH" displayName="airport_doh"/>
+      <ListOption id="DXB" displayName="airport_dxb"/>
+      <ListOption id="BKK" displayName="airport_bkk"/>
+      <ListOption id="PEK" displayName="airport_pek"/>
+      <ListOption id="DEL" displayName="airport_del"/>
+      <ListOption id="HKG" displayName="airport_hkg"/>
+      <ListOption id="CGK" displayName="airport_cgk"/>
+      <ListOption id="KTM" displayName="airport_ktm"/>
+      <ListOption id="MNL" displayName="airport_mnl"/>
+      <ListOption id="BOM" displayName="airport_bom"/>
+      <ListOption id="ICN" displayName="airport_icn"/>
+      <ListOption id="SIN" displayName="airport_sin"/>
+      <ListOption id="HND" displayName="airport_hnd"/>
+      <ListOption id="ADL" displayName="airport_adl"/>
+      <ListOption id="AKL" displayName="airport_akl"/>
+      <ListOption id="HNL" displayName="airport_hnl"/>
+      <ListOption id="MEL" displayName="airport_mel"/>
+      <ListOption id="PER" displayName="airport_per"/>
+      <ListOption id="SYD" displayName="airport_syd"/>
     </ListConfiguration>
   </UserConfigurations>
   <Scene backgroundColor="#000000">
@@ -618,6 +618,27 @@
           </Default>
         </Condition>
       </Complication>
+    </ComplicationSlot>
+    <!-- Invisible tap targets: the provider chosen for these sets what the date and GMT label open -->
+    <ComplicationSlot slotId="201" displayName="slot_date_tap" x="343" y="198" width="64" height="54" supportedTypes="SHORT_TEXT LONG_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE GOAL_PROGRESS EMPTY">
+      <DefaultProviderPolicy defaultSystemProvider="DATE" defaultSystemProviderType="SHORT_TEXT"/>
+      <BoundingRoundBox x="0" y="0" width="64" height="54" cornerRadius="8"/>
+      <Complication type="SHORT_TEXT"/>
+      <Complication type="LONG_TEXT"/>
+      <Complication type="SMALL_IMAGE"/>
+      <Complication type="MONOCHROMATIC_IMAGE"/>
+      <Complication type="RANGED_VALUE"/>
+      <Complication type="GOAL_PROGRESS"/>
+    </ComplicationSlot>
+    <ComplicationSlot slotId="202" displayName="slot_label_tap" x="133" y="80" width="184" height="42" supportedTypes="SHORT_TEXT LONG_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE GOAL_PROGRESS EMPTY">
+      <DefaultProviderPolicy defaultSystemProvider="WORLD_CLOCK" defaultSystemProviderType="SHORT_TEXT"/>
+      <BoundingRoundBox x="0" y="0" width="184" height="42" cornerRadius="8"/>
+      <Complication type="SHORT_TEXT"/>
+      <Complication type="LONG_TEXT"/>
+      <Complication type="SMALL_IMAGE"/>
+      <Complication type="MONOCHROMATIC_IMAGE"/>
+      <Complication type="RANGED_VALUE"/>
+      <Complication type="GOAL_PROGRESS"/>
     </ComplicationSlot>
     <!-- Per-airport group: bezel, label and GMT hand in the airport's time zone -->
     <ListConfiguration id="airport">

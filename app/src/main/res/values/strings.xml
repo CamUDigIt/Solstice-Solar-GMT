@@ -66,4 +66,6 @@
     <string name="airport_akl">Auckland · AKL</string>
     <string name="slot_left">Left</string>
     <string name="slot_bottom">Bottom</string>
+    <string name="slot_date_tap">Date tap action</string>
+    <string name="slot_label_tap">GMT label tap action</string>
 </resources>

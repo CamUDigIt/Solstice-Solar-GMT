@@ -330,10 +330,6 @@ public class WatchFace {
         icon(dir, "icon_cfg_style", g -> styleBadge(g, CLASSIC));
         for (Style s : STYLES) icon(dir, "icon_style_" + s.id, g -> styleBadge(g, s));
         icon(dir, "icon_cfg_airport", WatchFace::globe);
-        icon(dir, "icon_airport_local", g -> codeBadge(g, "LOCAL", 22));
-        for (Airport a : AIRPORTS) {
-            icon(dir, "icon_airport_" + a.code.toLowerCase(Locale.ROOT), g -> codeBadge(g, a.code, 30));
-        }
     }
 
     interface Painter { void paint(java.awt.Graphics2D g); }
@@ -413,21 +409,6 @@ public class WatchFace {
         g.drawString("12", (ICON - fm.stringWidth("12")) / 2f, ICON / 2f + fm.getAscent() / 2f - 6);
     }
 
-    /** Dark disc with the airport code and a red GMT underline. */
-    static void codeBadge(java.awt.Graphics2D g, String code, int size) {
-        g.setColor(color("#0B0E14"));
-        g.fill(new java.awt.geom.Ellipse2D.Double(4, 4, ICON - 8, ICON - 8));
-        g.setColor(color("#3A424D"));
-        g.setStroke(new java.awt.BasicStroke(2f));
-        g.draw(new java.awt.geom.Ellipse2D.Double(5, 5, ICON - 10, ICON - 10));
-        g.setFont(new java.awt.Font(java.awt.Font.SANS_SERIF, java.awt.Font.BOLD, size));
-        var fm = g.getFontMetrics();
-        g.setColor(color("#F1F2F4"));
-        g.drawString(code, (ICON - fm.stringWidth(code)) / 2f, ICON / 2f + fm.getAscent() / 2f - 4);
-        g.setColor(color(GMT_RED));
-        g.fill(new java.awt.geom.Rectangle2D.Double(ICON / 2.0 - 12, ICON / 2.0 + fm.getAscent() / 2.0 + 2, 24, 3));
-    }
-
     // ---- User configuration -----------------------------------------------
 
     static void userConfigurations() {
@@ -444,10 +425,10 @@ public class WatchFace {
         }
         close("ColorConfiguration");
         open("ListConfiguration id=\"airport\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_AIRPORT);
-        line("<ListOption id=\"%s\" displayName=\"airport_local\" icon=\"icon_airport_local\"/>", LOCAL);
+        line("<ListOption id=\"%s\" displayName=\"airport_local\"/>", LOCAL);
         for (Airport a : editorOrder()) {
             String id = a.code.toLowerCase(Locale.ROOT);
-            line("<ListOption id=\"%s\" displayName=\"airport_%s\" icon=\"icon_airport_%s\"/>", a.code, id, id);
+            line("<ListOption id=\"%s\" displayName=\"airport_%s\"/>", a.code, id);
         }
         close("ListConfiguration");
         close("UserConfigurations");
@@ -523,6 +504,24 @@ public class WatchFace {
         roundSlot();
         comment("6 o'clock long-text complication");
         longTextSlot();
+        comment("Invisible tap targets: the provider chosen for these sets what the date and GMT label open");
+        tapSlot(201, "slot_date_tap", 343, 198, 64, 54, "DATE");
+        tapSlot(202, "slot_label_tap", (int) C - LABEL_W / 2, LABEL_Y - 4, LABEL_W, LABEL_H + 8, "WORLD_CLOCK");
+    }
+
+    /**
+     * A complication slot that draws nothing. Tapping it runs the chosen
+     * provider's tap action, so picking "App shortcut" in the editor makes the
+     * area underneath open any app.
+     */
+    static void tapSlot(int id, String name, int x, int y, int w, int h, String provider) {
+        List<String> types = List.of("SHORT_TEXT", "LONG_TEXT", "SMALL_IMAGE", "MONOCHROMATIC_IMAGE", "RANGED_VALUE", "GOAL_PROGRESS");
+        open("ComplicationSlot slotId=\"%d\" displayName=\"%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"%s EMPTY\"",
+                id, name, x, y, w, h, String.join(" ", types));
+        line("<DefaultProviderPolicy defaultSystemProvider=\"%s\" defaultSystemProviderType=\"SHORT_TEXT\"/>", provider);
+        line("<BoundingRoundBox x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadius=\"8\"/>", w, h);
+        for (String t : types) line("<Complication type=\"%s\"/>", t);
+        close("ComplicationSlot");
     }
 
     static void roundSlot() {
@@ -948,6 +947,8 @@ public class WatchFace {
         for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), displayName(a));
         str(s, "slot_left", "Left");
         str(s, "slot_bottom", "Bottom");
+        str(s, "slot_date_tap", "Date tap action");
+        str(s, "slot_label_tap", "GMT label tap action");
         s.append("</resources>\n");
         return s.toString();
     }

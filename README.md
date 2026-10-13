@@ -39,6 +39,12 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   wraps the text onto two lines when the provider has no title (for example
   calendar events like "Team Standup · 3:00 PM").
 - **Date window** at 3 o'clock.
+- **Tap actions.** Two invisible complication slots sit over the date window
+  and the GMT label. They draw nothing; whatever provider you choose for them
+  in the editor's complications page ("Date tap action", "GMT label tap
+  action") decides what a tap opens. Choose **App shortcut** to open any app.
+  Defaults: the date opens the calendar (Date provider) and the label opens
+  World clock.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
 - **Customisation.** In the watch-face editor you can pick the style, a bezel
   colourway (Pepsi, Batman, Coke, Root Beer, Golden Hour, Polar), the GMT
