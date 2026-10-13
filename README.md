@@ -34,7 +34,7 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     hour hand, sword minute hand, lollipop seconds, a GMT hand with a large
     triangle, small lume plots with a triangle at 12, and a Cyclops-style
     magnified date. Its 24h bezel has even numerals with triangles between.
-  - *Flat* (inspired by flat smartwatch GMT faces): bundled Roboto Condensed,
+  - *Flat* (inspired by flat smartwatch GMT faces): bundled Inter (a wider, rounder sans),
     flat white stick hands with a thin neck, long lumed hour ticks and flat
     complication panels. Its 24h bezel is numbered every second hour.
   - Both fonts are SIL OFL 1.1 (licences in `licenses/`, shipped in the APK

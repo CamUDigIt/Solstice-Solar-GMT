@@ -252,7 +252,7 @@ public class WatchFace {
 
     // ---- Styles -----------------------------------------------------------
     // Pilot (GMT-Master II inspired): Oswald, Mercedes/sword hands, lume plots.
-    // Flat (Apple Watch GMT inspired): Roboto Condensed, flat stick hands, long
+    // Flat (Apple Watch GMT inspired): Inter, flat stick hands, long
     // hour ticks. Fonts are bundled in res/font (SIL OFL 1.1, see /licenses).
     // Hand geometry must match HandArt.java.
 
@@ -425,7 +425,7 @@ public class WatchFace {
         g.setColor(color("#3A424D"));
         g.setStroke(new java.awt.BasicStroke(2f));
         g.draw(new java.awt.geom.Ellipse2D.Double(5, 5, ICON - 10, ICON - 10));
-        String file = s == FLAT ? "roboto_condensed_600.ttf" : "oswald_600.ttf";
+        String file = s == FLAT ? "inter_600.ttf" : "oswald_600.ttf";
         try {
             var f = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File("app/src/main/res/font/" + file));
             g.setFont(f.deriveFont(44f));
@@ -871,7 +871,7 @@ public class WatchFace {
 
     // The GMT label is printed dial text just below 12 (10sp secondary size),
     // above where the hands usually sit.
-    static final int LABEL_W = 140, LABEL_H = 28, LABEL_Y = 76;
+    static final int LABEL_W = 160, LABEL_H = 28, LABEL_Y = 76;
 
     static void label(String template, String... params) {
         styled(() -> labelText(template, params));
