@@ -231,6 +231,7 @@ public class WatchFace {
     static final String MUTED = "#8A93A0";
     static final String GMT_RED = "#D72626";
     static final String FLAT_PANEL = "#1C2027";   // Flat complication backgrounds
+    static final String FLAT_DATE_GOLD = "#E3B341";
 
     // ---- Geometry ---------------------------------------------------------
 
@@ -558,8 +559,8 @@ public class WatchFace {
                 dateText(lens, w, h, size, "#111111", 255, 0);
                 dateText(lens, w, h, size, STEEL, 0, 255);
             } else {
-                // Flat: numerals straight on the dial in the colourway's day colour.
-                dateText(0, w, h, size, "[CONFIGURATION.bezel.1]", 255, 200);
+                // Flat: gold numerals straight on the dial (Apple-style date accent).
+                dateText(0, w, h, size, FLAT_DATE_GOLD, 255, 200);
             }
             close("Group");
         });

@@ -52,7 +52,7 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   wraps the text onto two lines when the provider has no title (for example
   calendar events like "Team Standup · 3:00 PM").
 - **Date** at 3 o'clock: a Cyclops-style window on Pilot, plain white
-  numerals on Flat in the colourway's day colour.
+  gold numerals on Flat (#E3B341, an Apple-style date accent).
 - **Tap actions.** Two invisible complication slots sit over the date and the
   GMT label. They draw nothing; whatever provider you choose for them in the
   editor's complications page ("Date tap action", "GMT label tap action")

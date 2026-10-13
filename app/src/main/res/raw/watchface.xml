@@ -374,7 +374,7 @@
           <Launch target="CALENDAR"/>
           <PartText x="0" y="0" width="48" height="38" alpha="255">
             <Text align="CENTER">
-              <Font family="flat" size="28" weight="BOLD" color="[CONFIGURATION.bezel.1]">
+              <Font family="flat" size="28" weight="BOLD" color="#E3B341">
                 <Template>%s<Parameter expression="[DAY]"/></Template>
               </Font>
             </Text>
