@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- modern style: roboto_condensed (SIL Open Font License 1.1, see /licenses). -->
+<!-- Flat style: roboto_condensed (SIL Open Font License 1.1, see /licenses). -->
 <font-family xmlns:android="http://schemas.android.com/apk/res/android">
     <font android:fontStyle="normal" android:fontWeight="400" android:font="@font/roboto_condensed_400" />
     <font android:fontStyle="normal" android:fontWeight="500" android:font="@font/roboto_condensed_500" />
