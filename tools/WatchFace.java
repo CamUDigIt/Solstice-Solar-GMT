@@ -310,11 +310,6 @@ public class WatchFace {
         close("Condition");
     }
 
-    /** Degrees per hour on the bezel for the current format. */
-    static double degPerHour() {
-        return h24 ? 15 : 30;
-    }
-
     /**
      * Font attributes for the current style. Each weight points straight at
      * its TTF (res/font/<font>_<weight>.ttf): an XML <font-family> resource
@@ -666,11 +661,25 @@ public class WatchFace {
                 icon(c - 22, c - 22, 44);
             } else {
                 icon(c - 12, o + 16, 24);
-                styled(() -> textLine(o + 6, o + 42, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", style == PILOT ? STEEL : "#FFFFFF", "[COMPLICATION.TEXT]"));
+                styled(() -> roundText(o, d, style == PILOT ? STEEL : "#FFFFFF"));
             }
             close("Complication");
         }
         close("ComplicationSlot");
+    }
+
+    /**
+     * Round slot text. Times like "7:00 AM" / "7:00PM" don't fit at 12sp, so a
+     * trailing AM/PM is split off: the time stays large and "AM" sits smaller
+     * underneath. Anything else is one line with an ellipsis.
+     */
+    static void roundText(int o, int d, String color) {
+        String t = "[COMPLICATION.TEXT]", len = "textLength(" + t + ")";
+        String tail = "subText(" + t + ", " + len + " - 2, " + len + ")";
+        switchOn(len + " > 2 && (" + tail + " == \"AM\" || " + tail + " == \"PM\")", () -> {
+            textLine(o + 6, o + 38, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", color, "subText(" + t + ", 0, " + len + " - 2)");
+            textLine(o + 6, o + 68, d - 12, 26, TEXT_SECONDARY, "NORMAL", MUTED, tail);
+        }, () -> textLine(o + 6, o + 42, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", color, t));
     }
 
     /** The provider's monochrome icon, tinted steel. */
@@ -721,7 +730,8 @@ public class WatchFace {
     static void longTextBody(int w, int h) {
         open("Condition");
         open("Expressions");
-        line("<Expression name=\"hasTitle\"><![CDATA[[COMPLICATION.TITLE] != null && [COMPLICATION.TITLE] != \"\"]]></Expression>");
+        // A blank or one-character title counts as no title, so the text gets both lines.
+        line("<Expression name=\"hasTitle\"><![CDATA[[COMPLICATION.TITLE] != null && textLength([COMPLICATION.TITLE]) > 1]]></Expression>");
         close("Expressions");
         open("Compare expression=\"hasTitle\"");
         textLine(4, 2, w - 8, 36, TEXT_ESSENTIAL, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]");
@@ -756,10 +766,8 @@ public class WatchFace {
         open("ListConfiguration id=\"airport\"");
         open("ListOption id=\"%s\"", LOCAL);
         open("Group name=\"airport_local\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        formatted(() -> {
-            weatherBezel(false);
-            weatherBezel(true);
-        });
+        weatherBezel(false);
+        weatherBezel(true);
         localLabel();
         gmtHand(null);
         close("Group");
@@ -767,10 +775,8 @@ public class WatchFace {
         for (Airport a : AIRPORTS) {
             open("ListOption id=\"%s\"", a.code);
             open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
-            formatted(() -> {
-                solarBezel(a, false);
-                solarBezel(a, true);
-            });
+            solarBezel(a, false);
+            solarBezel(a, true);
             airportLabel(a);
             gmtHand(a.zone);
             close("Group");
@@ -780,10 +786,9 @@ public class WatchFace {
     }
 
     /**
-     * Solar bezel. 12h: a 12-hour window centred on the GMT hand (six hours
-     * behind, six ahead), so sunrise and sunset in that span sit at their real
-     * clock positions around the hand. 24h: a
-     * fixed day scale, with day colour from sunrise to sunset.
+     * Solar bezel on a 24-hour scale (like Apple Watch's GMT face, whichever
+     * bezel labelling is chosen): midnight at the top, and the day colour runs
+     * from sunrise to sunset, so the bands show the real day and night lengths.
      *
      * Sunrise/sunset come from the NOAA approximation (equation of time and
      * solar declination from the day of year), accurate to a few minutes.
@@ -806,77 +811,48 @@ public class WatchFace {
         String sunrise = "((" + noonMin + " - " + halfDayMin + ") / 60)";
         String sunset = "((" + noonMin + " + " + halfDayMin + ") / 60)";
 
-        bezelPart(ambient, a.zone, () -> {
-            if (h24) {
-                dayArc(sunrise + " * 15", sunset + " * 15", ambient);
-                return;
-            }
-            String now = "([HOUR_0_23] + [MINUTE] / 60)";
-            String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
-            // Daylight intervals for yesterday, today and tomorrow, clipped to the window.
-            for (int day = -1; day <= 1; day++) {
-                String shift = day == 0 ? "" : (day > 0 ? " + 24" : " - 24");
-                dayArc("clamp(" + sunrise + shift + ", " + from + ", " + to + ") * 30",
-                        "clamp(" + sunset + shift + ", " + from + ", " + to + ") * 30", ambient);
-            }
-            seam(to + " * 30", ambient);
-        });
+        bezelPart(ambient, a.zone, () -> dayArc(sunrise + " * 15", sunset + " * 15"));
     }
 
     /**
      * LOCAL's bezel: the watch has no location source in WFF, so daylight comes
      * from the hourly weather forecast's is-day flag for the wearer's location.
-     * Each clock hour is one segment (12h: six hours either side of now; 24h:
-     * the whole day); with no weather data the ring shows night colour only.
-     * The forecast has no past hours, so hours behind "now" use the same clock
-     * hour from tomorrow's forecast, which has near-identical day/night.
+     * Each of the next 24 clock hours is one segment on the 24-hour scale; with
+     * no weather data the ring shows night colour only.
      */
     static void weatherBezel(boolean ambient) {
-        String now = "([HOUR_0_23] + [MINUTE] / 60)";
-        String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
+        String hour = "floor([HOUR_0_23] + [MINUTE] / 60)";
         bezelPart(ambient, null, () -> {
-            for (int j = 0; j < (h24 ? 24 : 13); j++) {
-                int k = h24 ? j : j - 6;                      // hours from the current hour
-                int idx = k < 0 ? k + 24 : k;
-                String src = idx == 0 ? "WEATHER" : "WEATHER.HOURS." + idx;
+            for (int k = 0; k < 24; k++) {
+                String src = k == 0 ? "WEATHER" : "WEATHER.HOURS." + k;
                 String isDay = "[" + src + ".IS_AVAILABLE] && [" + src + ".IS_DAY]";
-                String s, e;
-                if (h24) {
-                    s = "((floor(" + now + ") + " + k + ") % 24) * 15";
-                    e = "(" + s + " + 15)";
-                } else {
-                    s = "clamp(floor(" + now + ") + " + k + ", " + from + ", " + to + ") * 30";
-                    e = "clamp(floor(" + now + ") + " + (k + 1) + ", " + from + ", " + to + ") * 30";
-                }
-                dayArc(s, "(" + isDay + ") ? " + e + " : " + s, ambient);
+                String s = "((" + hour + " + " + k + ") % 24) * 15";
+                dayArc(s, "(" + isDay + ") ? (" + s + " + 15) : " + s);
             }
-            if (!h24) seam(to + " * 30", ambient);
         });
     }
 
-    /**
-     * 12h bezels show six hours either side of the GMT hand, so the window's
-     * two ends meet opposite the hand. A thin dark line marks that seam so a
-     * colour change there isn't read as a sunrise or sunset.
-     */
-    static void seam(String angleExpr, boolean ambient) {
-        arc(ambient ? BEZEL_INNER + 2 : BEZEL_MID, 0, 0, "#05070A", ambient ? 3 : BEZEL_THICK, "BUTT",
-                "<Transform target=\"startAngle\" value=\"" + xml(angleExpr + " - 0.9") + "\"/>\n"
-                        + "<Transform target=\"endAngle\" value=\"" + xml(angleExpr + " + 0.9") + "\"/>");
-    }
+    // In always-on mode the full-width bands stay visible at this alpha (~31%).
+    // That adds roughly 2-4% to the face's average brightness, well inside the
+    // 15% always-on limit (WO-P7).
+    static final int AMBIENT_BAND_ALPHA = 80;
 
-    /** A bezel ring part: night colour all round, with day arcs drawn by body. */
+    /**
+     * A bezel ring part: night colour all round, with day arcs drawn by body.
+     * The ambient copy uses the lifted always-on night colour, since near-black
+     * night colours vanish once dimmed.
+     */
     static void bezelPart(boolean ambient, String zone, Runnable body) {
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
         if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
-        arc(ambient ? BEZEL_INNER + 2 : BEZEL_MID, 0, 360, nightColor(ambient), ambient ? 3 : BEZEL_THICK, "BUTT", null);
+        arc(BEZEL_MID, 0, 360, nightColor(ambient), BEZEL_THICK, "BUTT", null);
         body.run();
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", ambient ? 255 : 0);
+        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", ambient ? AMBIENT_BAND_ALPHA : 0);
         close("PartDraw");
     }
 
-    static void dayArc(String startExpr, String endExpr, boolean ambient) {
-        arc(ambient ? BEZEL_INNER + 2 : BEZEL_MID, 0, 0, "[CONFIGURATION.bezel.1]", ambient ? 3 : BEZEL_THICK, "BUTT",
+    static void dayArc(String startExpr, String endExpr) {
+        arc(BEZEL_MID, 0, 0, "[CONFIGURATION.bezel.1]", BEZEL_THICK, "BUTT",
                 "<Transform target=\"startAngle\" value=\"" + xml(startExpr) + "\"/>\n"
                         + "<Transform target=\"endAngle\" value=\"" + xml(endExpr) + "\"/>");
     }
@@ -999,18 +975,11 @@ public class WatchFace {
     }
 
     /**
-     * GMT hand in the given zone, or local time when zone is null. 12h: an
-     * AnalogClock hour hand. 24h: one turn per day, so it's a rotated image.
+     * GMT hand in the given zone, or local time when zone is null.
      */
     static void gmtHand(String zone) {
-        styled(() -> formatted(() -> {
-            if (!h24) {
-                open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-                if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
-                hand("HourHand", "hand_gmt", style.gmt, 255, 200);
-                close("AnalogClock");
-                return;
-            }
+        // One turn per day against the 24-hour bezel scale, in either labelling.
+        styled(() -> {
             HandBox b = handBox(style.gmt);
             open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"", b.x, b.y, b.w, b.h, n(b.pivotY));
             if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
@@ -1018,7 +987,7 @@ public class WatchFace {
             line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15\"/>");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
             close("PartImage");
-        }));
+        });
     }
 
     // ---- Bezel markings (drawn above the coloured ring) --------------------
@@ -1030,7 +999,7 @@ public class WatchFace {
             {-2, 0}, {2, 0}, {0, -2}, {0, 2}};
 
     static void bezelMarkings() {
-        comment("Bezel scale: 12h (numerals 1-11, half-hour dots, pip) or 24h (Pilot: even numerals and triangles; Flat: every second hour and ticks)");
+        comment("Bezel scale on 24-hour positions, labelled 12h (Apple GMT style) or 24h; Pilot uses triangles between numerals, Flat ticks");
         open("Group name=\"bezel_markings\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
         // Engraved inner edge.
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
@@ -1041,16 +1010,22 @@ public class WatchFace {
         close("Group");
     }
 
+    /**
+     * The bezel is always a 24-hour scale; the setting only changes its labels.
+     * 24-hour: 2, 4 ... 22 (Pilot) or 2 ... 24 (Flat). 12-hour: the same
+     * positions labelled the way Apple's GMT face does, 2, 4 ... 10, 12 (noon,
+     * at the bottom), 2 ... 10, with 12 / the pip at the top for midnight.
+     */
+    static String hourLabel(int h) {
+        if (h24) return Integer.toString(h);
+        int h12 = h % 12;
+        return Integer.toString(h12 == 0 ? 12 : h12);
+    }
+
     static void bezelScale() {
         open("Group name=\"scale_%s_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id, h24 ? "24" : "12");
-        if (!h24) {
-            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-            for (int h = 0; h < 12; h++) dot(h * 30 + 15);
-            close("PartDraw");
-            for (int h = 1; h <= 11; h++) outlinedNumeral(Integer.toString(h), h * 30);
-            pip();
-        } else if (style == PILOT) {
-            for (int h = 2; h <= 22; h += 2) outlinedNumeral(Integer.toString(h), h * 15);
+        if (style == PILOT) {
+            for (int h = 2; h <= 22; h += 2) outlinedNumeral(hourLabel(h), h * 15);
             for (int h = 1; h <= 23; h += 2) {
                 double a = h * 15;
                 int w = 12, hh = 10;
@@ -1061,7 +1036,7 @@ public class WatchFace {
             }
             pip();
         } else {
-            for (int h = 2; h <= 24; h += 2) outlinedNumeral(Integer.toString(h), (h % 24) * 15);
+            for (int h = 2; h <= 24; h += 2) outlinedNumeral(hourLabel(h), (h % 24) * 15);
             open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
             for (int h = 1; h <= 23; h += 2) {
                 double a = h * 15;
@@ -1075,14 +1050,6 @@ public class WatchFace {
             close("PartDraw");
         }
         close("Group");
-    }
-
-    static void dot(double a) {
-        double d = 4.2;
-        open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(BEZEL_MID, a) - d / 2), f(dy(BEZEL_MID, a) - d / 2), f(d), f(d));
-        line("<Stroke color=\"#0B0E14\" thickness=\"1.2\"/>");
-        line("<Fill color=\"#E8EAED\"/>");
-        close("Ellipse");
     }
 
     /** Lume triangle at the top of the bezel (12 or 24). */
