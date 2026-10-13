@@ -265,9 +265,9 @@ public class WatchFace {
     record Style(String id, String name, String font, String handPrefix,
                  HandGeom hour, HandGeom minute, HandGeom second, HandGeom gmt) {}
 
-    static final Style PILOT = new Style("pilot", "Pilot", "pilot", "",
+    static final Style PILOT = new Style("pilot", "Pilot", "oswald", "",
             new HandGeom(26, 104, 20), new HandGeom(14, 176, 22), new HandGeom(14, 182, 40), new HandGeom(30, 186, 0));
-    static final Style FLAT = new Style("flat", "Flat", "flat", "flat_",
+    static final Style FLAT = new Style("flat", "Flat", "inter", "flat_",
             new HandGeom(12, 100, 12), new HandGeom(10, 174, 12), new HandGeom(10, 182, 36), new HandGeom(10, 186, 0));
     static final List<Style> STYLES = List.of(PILOT, FLAT);
 
@@ -315,9 +315,21 @@ public class WatchFace {
         return h24 ? 15 : 30;
     }
 
-    /** Font attributes for the current style. */
+    /**
+     * Font attributes for the current style. Each weight points straight at
+     * its TTF (res/font/<font>_<weight>.ttf): an XML <font-family> resource
+     * renders on the emulator but hangs the watch face runtime on a Pixel
+     * Watch 4 (Wear OS 6.1, API 37).
+     */
     static String font(int size, String weight, String color) {
-        return String.format(Locale.ROOT, "Font family=\"%s\" size=\"%d\" weight=\"%s\" color=\"%s\"", style.font, size, weight, color);
+        String w = switch (weight) {
+            case "BOLD" -> "700";
+            case "SEMI_BOLD" -> "600";
+            case "MEDIUM" -> "500";
+            case "NORMAL" -> "400";
+            default -> throw new IllegalArgumentException("No bundled weight for " + weight);
+        };
+        return String.format(Locale.ROOT, "Font family=\"%s_%s\" size=\"%d\" color=\"%s\"", style.font, w, size, color);
     }
 
     static final StringBuilder out = new StringBuilder();

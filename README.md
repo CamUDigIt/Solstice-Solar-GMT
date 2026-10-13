@@ -41,7 +41,10 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     flat white stick hands with a thin neck, long lumed hour ticks and flat
     complication panels. Its 24h bezel is numbered every second hour.
   - Both fonts are SIL OFL 1.1 (licences in `licenses/`, shipped in the APK
-    under `assets/licenses/`). All hands have a soft dark edge.
+    under `assets/licenses/`). Text points straight at each weight's TTF
+    (e.g. `oswald_600`): an XML font-family resource hangs the watch-face
+    runtime on a Pixel Watch 4 even though the emulator renders it.
+  - All hands have a soft dark edge.
 - **Readability.** Text meets Wear OS guideline WO-V14 (12sp essential, 10sp
   secondary) on watches as small as 384 px at 320 dpi, and every tap area is
   at least 48dp there (112 face units). The GMT label is printed just below
