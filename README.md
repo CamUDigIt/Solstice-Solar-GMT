@@ -8,10 +8,10 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 - **Solar bezel, 12h or 24h** (a "Bezel" setting). Sunrise and sunset are
   computed on the watch from the date and the airport's latitude/longitude
   (NOAA approximation, within a few minutes).
-  - *12-hour:* a rolling 12-hour daylight window read against the red GMT
-    hand. The hand always sits on "now" at the airport; going clockwise from
-    it, the ring shows the day colour for the hours that will be daylight
-    there.
+  - *12-hour:* a 12-hour window centred on the red GMT hand (six hours
+    behind, six ahead), so sunrise and sunset in that span sit at their real
+    clock positions. The two ends of the window meet opposite the hand, marked
+    by a thin dark seam.
   - *24-hour:* a fixed day scale. The GMT hand makes one turn a day and the
     day colour runs from sunrise to sunset.
 - **GMT hand.** It shows the time at one of 50 airports. The editor lists LOCAL

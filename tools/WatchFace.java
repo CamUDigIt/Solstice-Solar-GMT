@@ -780,9 +780,9 @@ public class WatchFace {
     }
 
     /**
-     * Solar bezel. 12h: a rolling 12-hour window read against the GMT hand: the
-     * hand always sits on "now" at the airport, and moving clockwise from it the
-     * ring shows day colour for the hours that will be daylight there. 24h: a
+     * Solar bezel. 12h: a 12-hour window centred on the GMT hand (six hours
+     * behind, six ahead), so sunrise and sunset in that span sit at their real
+     * clock positions around the hand. 24h: a
      * fixed day scale, with day colour from sunrise to sunset.
      *
      * Sunrise/sunset come from the NOAA approximation (equation of time and
@@ -812,42 +812,57 @@ public class WatchFace {
                 return;
             }
             String now = "([HOUR_0_23] + [MINUTE] / 60)";
-            String end = "(" + now + " + 12)";
-            // Daylight intervals for today and tomorrow, clipped to the window. (Yesterday's
-            // can only reach into the window if sunset is after midnight, which never
-            // happens at these airports.)
-            for (int day = 0; day <= 1; day++) {
-                String shift = day == 0 ? "" : " + 24";
-                dayArc("clamp(" + sunrise + shift + ", " + now + ", " + end + ") * 30",
-                        "clamp(" + sunset + shift + ", " + now + ", " + end + ") * 30", ambient);
+            String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
+            // Daylight intervals for yesterday, today and tomorrow, clipped to the window.
+            for (int day = -1; day <= 1; day++) {
+                String shift = day == 0 ? "" : (day > 0 ? " + 24" : " - 24");
+                dayArc("clamp(" + sunrise + shift + ", " + from + ", " + to + ") * 30",
+                        "clamp(" + sunset + shift + ", " + from + ", " + to + ") * 30", ambient);
             }
+            seam(to + " * 30", ambient);
         });
     }
 
     /**
      * LOCAL's bezel: the watch has no location source in WFF, so daylight comes
      * from the hourly weather forecast's is-day flag for the wearer's location.
-     * Each clock hour is one segment (12h: the next 12 hours from now; 24h: the
-     * whole day); with no weather data the ring shows night colour only.
+     * Each clock hour is one segment (12h: six hours either side of now; 24h:
+     * the whole day); with no weather data the ring shows night colour only.
+     * The forecast has no past hours, so hours behind "now" use the same clock
+     * hour from tomorrow's forecast, which has near-identical day/night.
      */
     static void weatherBezel(boolean ambient) {
         String now = "([HOUR_0_23] + [MINUTE] / 60)";
-        String end = "(" + now + " + 12)";
+        String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
         bezelPart(ambient, null, () -> {
-            for (int k = 0; k < (h24 ? 24 : 13); k++) {
-                String src = k == 0 ? "WEATHER" : "WEATHER.HOURS." + k;
+            for (int j = 0; j < (h24 ? 24 : 13); j++) {
+                int k = h24 ? j : j - 6;                      // hours from the current hour
+                int idx = k < 0 ? k + 24 : k;
+                String src = idx == 0 ? "WEATHER" : "WEATHER.HOURS." + idx;
                 String isDay = "[" + src + ".IS_AVAILABLE] && [" + src + ".IS_DAY]";
                 String s, e;
                 if (h24) {
                     s = "((floor(" + now + ") + " + k + ") % 24) * 15";
                     e = "(" + s + " + 15)";
                 } else {
-                    s = "clamp(floor(" + now + ") + " + k + ", " + now + ", " + end + ") * 30";
-                    e = "clamp(floor(" + now + ") + " + (k + 1) + ", " + now + ", " + end + ") * 30";
+                    s = "clamp(floor(" + now + ") + " + k + ", " + from + ", " + to + ") * 30";
+                    e = "clamp(floor(" + now + ") + " + (k + 1) + ", " + from + ", " + to + ") * 30";
                 }
                 dayArc(s, "(" + isDay + ") ? " + e + " : " + s, ambient);
             }
+            if (!h24) seam(to + " * 30", ambient);
         });
+    }
+
+    /**
+     * 12h bezels show six hours either side of the GMT hand, so the window's
+     * two ends meet opposite the hand. A thin dark line marks that seam so a
+     * colour change there isn't read as a sunrise or sunset.
+     */
+    static void seam(String angleExpr, boolean ambient) {
+        arc(ambient ? BEZEL_INNER + 2 : BEZEL_MID, 0, 0, "#05070A", ambient ? 3 : BEZEL_THICK, "BUTT",
+                "<Transform target=\"startAngle\" value=\"" + xml(angleExpr + " - 0.9") + "\"/>\n"
+                        + "<Transform target=\"endAngle\" value=\"" + xml(angleExpr + " + 0.9") + "\"/>");
     }
 
     /** A bezel ring part: night colour all round, with day arcs drawn by body. */
@@ -887,7 +902,8 @@ public class WatchFace {
     static String[] signedHours(String minutes) {
         String whole = "abs(" + minutes + ") % 60 == 0";
         return new String[] {
-                minutes + " > 0 ? \"+\" : (" + minutes + " < 0 ? \"−\" : \"\")",
+                // Same zone reads "+0H".
+                minutes + " < 0 ? \"−\" : \"+\"",
                 "floor(abs(" + minutes + ") / 60)",
                 whole + " ? \"\" : \":\"",
                 whole + " ? \"\" : abs(" + minutes + ") % 60",
