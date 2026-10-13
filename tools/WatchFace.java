@@ -558,8 +558,8 @@ public class WatchFace {
                 dateText(lens, w, h, size, "#111111", 255, 0);
                 dateText(lens, w, h, size, STEEL, 0, 255);
             } else {
-                // Flat: white numerals straight on the dial.
-                dateText(0, w, h, size, "#FFFFFF", 255, 200);
+                // Flat: numerals straight on the dial in the colourway's day colour.
+                dateText(0, w, h, size, "[CONFIGURATION.bezel.1]", 255, 200);
             }
             close("Group");
         });
