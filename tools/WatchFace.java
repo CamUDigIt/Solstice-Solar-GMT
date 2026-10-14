@@ -323,7 +323,7 @@ public class WatchFace {
     static final Style FLAT = new Style("flat", "Flat", "inter", "flat_",
             new HandGeom(12, 100, 12), new HandGeom(10, 174, 12), new HandGeom(10, 182, 36), new HandGeom(10, 186, 0));
     static final Style PIXEL = new Style("pixel", "Pixel", "googlesans", "pixel_",
-            new HandGeom(18, 100, 16), new HandGeom(14, 172, 16), new HandGeom(10, 182, 30), new HandGeom(14, 186, 0));
+            new HandGeom(18, 100, 16), new HandGeom(14, 172, 16), new HandGeom(10, 182, 30), new HandGeom(14, 160, 0));
     static final List<Style> STYLES = List.of(PILOT, FLAT, PIXEL);
 
     /** The style / bezel format being emitted inside styled() / formatted(). */
@@ -1092,9 +1092,13 @@ public class WatchFace {
 
     static void label(Runnable text) {
         styled(text);
-        // Red underline ties the label to the GMT hand.
+        // The underline ties the label to the GMT hand: red, or Pixel's accent colour.
+        switchOn("[CONFIGURATION.style] == \"pixel\"", () -> underline("[CONFIGURATION.bezel.1]"), () -> underline(GMT_RED));
+    }
+
+    static void underline(String color) {
         open("PartDraw x=\"%d\" y=\"%d\" width=\"24\" height=\"3\"", (int) (C - 12), LABEL_Y + LABEL_H + 1);
-        line("<Rectangle x=\"0\" y=\"0\" width=\"24\" height=\"2\"><Fill color=\"%s\"/></Rectangle>", GMT_RED);
+        line("<Rectangle x=\"0\" y=\"0\" width=\"24\" height=\"2\"><Fill color=\"%s\"/></Rectangle>", color);
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
         close("PartDraw");
     }
@@ -1125,7 +1129,9 @@ public class WatchFace {
         // 24-hour band (e.g. 18:15 at the 9:15 position of the 12-hour labels).
         styled(() -> {
             HandBox b = handBox(style.gmt);
-            open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"", b.x, b.y, b.w, b.h, n(b.pivotY));
+            // Pixel's white GMT hand takes the colourway's day colour as its accent.
+            open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s", b.x, b.y, b.w, b.h, n(b.pivotY),
+                    style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
             if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
             line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15\"/>");
@@ -1283,9 +1289,14 @@ public class WatchFace {
     }
 
     static void centerCap() {
+        // Red centre, or Pixel's accent colour to match its GMT and second hands.
+        switchOn("[CONFIGURATION.style] == \"pixel\"", () -> cap("[CONFIGURATION.bezel.1]"), () -> cap(GMT_RED));
+    }
+
+    static void cap(String centre) {
         open("PartDraw x=\"215\" y=\"215\" width=\"20\" height=\"20\"");
         line("<Ellipse x=\"3\" y=\"3\" width=\"14\" height=\"14\"><Fill color=\"%s\"/></Ellipse>", STEEL);
-        line("<Ellipse x=\"7.5\" y=\"7.5\" width=\"5\" height=\"5\"><Fill color=\"%s\"/></Ellipse>", GMT_RED);
+        line("<Ellipse x=\"7.5\" y=\"7.5\" width=\"5\" height=\"5\"><Fill color=\"%s\"/></Ellipse>", centre);
         close("PartDraw");
     }
 

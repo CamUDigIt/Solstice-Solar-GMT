@@ -50,7 +50,7 @@ public class HandArt {
         hand(out, "pixel_hand_hour", 18, 100, 16, true, (g, w, len, tail) -> capsule(g, w, len, tail));
         hand(out, "pixel_hand_minute", 14, 172, 16, true, (g, w, len, tail) -> capsule(g, w, len, tail));
         hand(out, "pixel_hand_second", 10, 182, 30, true, HandArt::drawPixelSecond);
-        hand(out, "pixel_hand_gmt", 14, 186, 0, true, HandArt::drawPixelGmt);
+        hand(out, "pixel_hand_gmt", 14, 160, 0, true, HandArt::drawPixelGmt);
         hand(out, "pixel_hand_hour_ambient", 18, 100, 16, false, (g, w, len, tail) -> outline(g, capsuleShape(w, len, tail)));
         hand(out, "pixel_hand_minute_ambient", 14, 172, 16, false, (g, w, len, tail) -> outline(g, capsuleShape(w, len, tail)));
 
@@ -269,10 +269,10 @@ public class HandArt {
         g.fill(new RoundRectangle2D.Double(c - 1.3, 0, 2.6, len + tail, 2.6, 2.6));
     }
 
-    /** Thin red stem ending in a round dot. */
+    /** Thin stem ending in a round dot, drawn white so WatchFace can tint it with the colourway. */
     static void drawPixelGmt(Graphics2D g, double w, double len, double tail) {
         double c = w / 2;
-        g.setColor(GMT_RED);
+        g.setColor(Color.WHITE);
         g.fill(new RoundRectangle2D.Double(c - 2, w / 2, 4, len - w / 2, 4, 4));
         g.fill(new Ellipse2D.Double(0, 0, w, w));
     }
