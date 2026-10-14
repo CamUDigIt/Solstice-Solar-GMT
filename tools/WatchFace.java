@@ -1289,8 +1289,8 @@ public class WatchFace {
     }
 
     static void centerCap() {
-        // Red centre, or Pixel's accent colour to match its GMT and second hands.
-        switchOn("[CONFIGURATION.style] == \"pixel\"", () -> cap("[CONFIGURATION.bezel.1]"), () -> cap(GMT_RED));
+        // Red centre, or the colourway's night colour on Pixel.
+        switchOn("[CONFIGURATION.style] == \"pixel\"", () -> cap("[CONFIGURATION.bezel.0]"), () -> cap(GMT_RED));
     }
 
     static void cap(String centre) {

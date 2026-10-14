@@ -53,9 +53,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     flat white stick hands with a thin neck, long lumed hour ticks and flat
     complication panels. Its 24h bezel is numbered every second hour.
   - *Pixel* (inspired by Pixel Watch faces): bundled Google Sans Flex, solid
-    white capsule hands; the second hand, a shorter GMT hand ending in a dot,
-    the centre cap and the label underline all take the colourway's day
-    colour as an accent. Round hour dots (larger at 12, 6 and 9) with
+    white capsule hands; the second hand, a shorter GMT hand ending in a dot
+    and the label underline take the colourway's day colour as an accent,
+    and the centre dot its night colour. Round hour dots (larger at 12, 6 and 9) with
     no minute track, a tonal filled complication disc, the date in a pill
     tinted with the day colour, and a dark gap between the dial and the bezel.
     Its 24h bezel matches Flat's.
