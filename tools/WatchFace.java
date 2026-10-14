@@ -214,20 +214,35 @@ public class WatchFace {
 
     record Colorway(String id, String name, String night, String day, String ambientNight, String ambientDay) {}
 
-    // Soft-drink colourways. Each pair stays in one colour family (no white, no
-    // clashing opposites like red/green); the darker shade is night.
+    // Soft-drink colourways, grouped colas / citrus / fruit / root beer and
+    // ginger. Each pair stays in one colour family (no white, no clashing
+    // opposites like red/green); the darker shade is night. Diet versions use
+    // their cans' silver as the day colour.
     static final List<Colorway> COLORWAYS = List.of(
+            // Colas
             new Colorway("pepsi", "Pepsi", "#1D4ED8", "#C81E1E", "#1D4ED8", "#C81E1E"),
-            new Colorway("coke", "Coke", "#111318", "#B91C1C", "#52525B", "#B91C1C"),
-            new Colorway("caffeine_free_coke", "Caffeine-Free Coke", "#8E1B1B", "#D4A72C", "#8E1B1B", "#8F711A"),
-            new Colorway("dr_pepper", "Dr Pepper", "#5C1324", "#A9B0B8", "#6A1A2C", "#737A82"),
-            new Colorway("cherry_coke", "Cherry Coke", "#3D0C1C", "#B0174F", "#6B1A33", "#B0174F"),
+            new Colorway("diet_pepsi", "Diet Pepsi", "#1D4ED8", "#B8BEC6", "#1D4ED8", "#6A7078"),
             new Colorway("pepsi_max", "Pepsi Max", "#0B0B10", "#1E5BD7", "#3F3F46", "#1E5BD7"),
+            new Colorway("coke", "Coke", "#111318", "#B91C1C", "#52525B", "#B91C1C"),
+            new Colorway("diet_coke", "Diet Coke", "#9F1D24", "#B8BEC6", "#9F1D24", "#6A7078"),
+            new Colorway("coke_zero", "Coke Zero", "#0B0B0D", "#E41E2B", "#3F3F46", "#E41E2B"),
+            new Colorway("caffeine_free_coke", "Caffeine-Free Coke", "#8E1B1B", "#D4A72C", "#8E1B1B", "#8F711A"),
+            new Colorway("cherry_coke", "Cherry Coke", "#3D0C1C", "#B0174F", "#6B1A33", "#B0174F"),
+            new Colorway("diet_cherry_coke", "Diet Cherry Coke", "#6B0F2E", "#B8BEC6", "#6B0F2E", "#6A7078"),
+            new Colorway("tab", "Tab", "#7A1446", "#E0569A", "#7A1446", "#B8457E"),
+            new Colorway("dr_pepper", "Dr Pepper", "#5C1324", "#A9B0B8", "#6A1A2C", "#737A82"),
+            new Colorway("pibb_xtra", "Pibb Xtra", "#4A0D1A", "#C8102E", "#6B1A2A", "#C8102E"),
+            // Citrus and lemon-lime
             new Colorway("sprite", "Sprite", "#0B3D91", "#1E9E4A", "#0B3D91", "#1A8A41"),
+            new Colorway("seven_up", "7UP", "#00553A", "#2DB34A", "#00553A", "#25913C"),
+            new Colorway("squirt", "Squirt", "#2E6B1E", "#E5C21F", "#2E6B1E", "#7F6C12"),
             new Colorway("mountain_dew", "Mountain Dew", "#0F5132", "#8DC63F", "#186040", "#577A24"),
+            new Colorway("diet_mountain_dew", "Diet Mountain Dew", "#0F5132", "#B8BEC6", "#186040", "#6A7078"),
+            // Fruit
             new Colorway("fanta", "Fanta", "#9A3412", "#F97316", "#9A3412", "#C85E12"),
-            new Colorway("aw_root_beer", "A&W Root Beer", "#4A2511", "#E39B0B", "#7C4A2A", "#976808"),
             new Colorway("grape_crush", "Grape Crush", "#3B0764", "#8B5CF6", "#5B21B6", "#7C4FD8"),
+            // Root beer and ginger
+            new Colorway("aw_root_beer", "A&W Root Beer", "#4A2511", "#E39B0B", "#7C4A2A", "#976808"),
             new Colorway("canada_dry", "Canada Dry", "#0B4D2C", "#C9A227", "#115C37", "#8A6F1A"));
 
     // ---- Palette ----------------------------------------------------------
