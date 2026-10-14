@@ -232,41 +232,41 @@ public class WatchFace {
     static final List<Colorway> COLORWAYS = List.of(
             // Colas
             new Colorway("blue_cola", "Blue Cola", "#1D4ED8", "#C81E1E", "#1D4ED8", "#C81E1E"),
-            new Colorway("diet_blue_cola", "Diet Blue Cola", "#1D4ED8", "#B8BEC6", "#1D4ED8", "#6A7078"),
+            new Colorway("diet_blue_cola", "Diet Blue Cola", "#1D4ED8", "#B8BEC6", "#1D4ED8", "#656B72"),
             new Colorway("midnight_cola", "Midnight Cola", "#0B0B10", "#1E5BD7", "#3F3F46", "#1E5BD7"),
             new Colorway("classic_cola", "Classic Cola", "#4A2512", "#B91C1C", "#6B3A20", "#B91C1C"),
-            new Colorway("diet_cola", "Diet Cola", "#9F1D24", "#B8BEC6", "#9F1D24", "#6A7078"),
+            new Colorway("diet_cola", "Diet Cola", "#9F1D24", "#B8BEC6", "#9F1D24", "#656B72"),
             new Colorway("zero_sugar_cola", "Zero Sugar Cola", "#0B0B0D", "#E41E2B", "#3F3F46", "#E41E2B"),
-            new Colorway("gold_cola", "Gold Cola", "#8E1B1B", "#D4A72C", "#8E1B1B", "#8F711A"),
+            new Colorway("gold_cola", "Gold Cola", "#8E1B1B", "#D4A72C", "#8E1B1B", "#866A18"),
             new Colorway("cherry_cola", "Cherry Cola", "#3D0C1C", "#B0174F", "#6B1A33", "#B0174F"),
-            new Colorway("diet_cherry_cola", "Diet Cherry Cola", "#B0174F", "#B8BEC6", "#B0174F", "#6A7078"),
-            new Colorway("spiced_cherry", "Spiced Cherry", "#5C1324", "#A9B0B8", "#6A1A2C", "#737A82"),
+            new Colorway("diet_cherry_cola", "Diet Cherry Cola", "#B0174F", "#B8BEC6", "#B0174F", "#656B72"),
+            new Colorway("spiced_cherry", "Spiced Cherry", "#5C1324", "#A9B0B8", "#6A1A2C", "#656B72"),
             new Colorway("spiced_red", "Spiced Red", "#4A0D1A", "#C8102E", "#6B1A2A", "#C8102E"),
             // Citrus and lemon-lime
-            new Colorway("lemon_lime", "Lemon-Lime", "#0B3D91", "#1E9E4A", "#0B3D91", "#1A8A41"),
-            new Colorway("lime_green", "Lime Green", "#00553A", "#2DB34A", "#00553A", "#25913C"),
+            new Colorway("lemon_lime", "Lemon-Lime", "#0B3D91", "#1E9E4A", "#0B3D91", "#19873F"),
+            new Colorway("lime_green", "Lime Green", "#00553A", "#2DB34A", "#00553A", "#228537"),
             new Colorway("grapefruit", "Grapefruit", "#2E6B1E", "#E5C21F", "#2E6B1E", "#7F6C12"),
-            new Colorway("neon_citrus", "Neon Citrus", "#0F5132", "#8DC63F", "#186040", "#577A24"),
-            new Colorway("diet_neon_citrus", "Diet Neon Citrus", "#0F5132", "#B8BEC6", "#186040", "#6A7078"),
+            new Colorway("neon_citrus", "Neon Citrus", "#0F5132", "#8DC63F", "#186040", "#557723"),
+            new Colorway("diet_neon_citrus", "Diet Neon Citrus", "#0F5132", "#B8BEC6", "#186040", "#656B72"),
             // Fruit
-            new Colorway("orange_soda", "Orange Soda", "#9A3412", "#F97316", "#9A3412", "#C85E12"),
+            new Colorway("orange_soda", "Orange Soda", "#9A3412", "#F97316", "#9A3412", "#BF5A11"),
             new Colorway("grape_soda", "Grape Soda", "#3B0764", "#8B5CF6", "#5B21B6", "#7C4FD8"),
             // Root beer and ginger
-            new Colorway("root_beer", "Root Beer", "#4A2511", "#E39B0B", "#7C4A2A", "#976808"),
-            new Colorway("ginger_ale", "Ginger Ale", "#0B4D2C", "#C9A227", "#115C37", "#8A6F1A"),
+            new Colorway("root_beer", "Root Beer", "#4A2511", "#E39B0B", "#7C4A2A", "#966707"),
+            new Colorway("ginger_ale", "Ginger Ale", "#0B4D2C", "#C9A227", "#115C37", "#846A19"),
             // Soft and earthy: cream soda, teas and lattes
-            new Colorway("cream_soda", "Cream Soda", "#5B4636", "#E8D3A8", "#5B4636", "#8C7A58"),
-            new Colorway("matcha_latte", "Matcha Latte", "#2F4A32", "#A9C49A", "#3A5A3E", "#5E7258"),
-            new Colorway("green_tea", "Green Tea", "#2F3519", "#8C9440", "#3A4220", "#6E7530"),
-            new Colorway("peach_tea", "Peach Tea", "#6B3B2A", "#F2B48C", "#6B3B2A", "#9A6E52"),
-            new Colorway("lavender_lemonade", "Lavender Lemonade", "#4B3F72", "#C9B8E8", "#4B3F72", "#7E72A0"),
-            new Colorway("hibiscus_tea", "Hibiscus Tea", "#5E1F3A", "#E8A0B4", "#6A2442", "#A0647A"),
-            new Colorway("blueberry_soda", "Blueberry Soda", "#2C3E66", "#A9BCE0", "#2C3E66", "#6A7B99"),
+            new Colorway("cream_soda", "Cream Soda", "#5B4636", "#E8D3A8", "#5B4636", "#78694C"),
+            new Colorway("matcha_latte", "Matcha Latte", "#2F4A32", "#A9C49A", "#3A5A3E", "#5C7056"),
+            new Colorway("green_tea", "Green Tea", "#2F3519", "#8C9440", "#3A4220", "#6A702E"),
+            new Colorway("peach_tea", "Peach Tea", "#6B3B2A", "#F2B48C", "#6B3B2A", "#8B634A"),
+            new Colorway("lavender_lemonade", "Lavender Lemonade", "#4B3F72", "#C9B8E8", "#4B3F72", "#70658E"),
+            new Colorway("hibiscus_tea", "Hibiscus Tea", "#5E1F3A", "#E8A0B4", "#6A2442", "#955D71"),
+            new Colorway("blueberry_soda", "Blueberry Soda", "#2C3E66", "#A9BCE0", "#2C3E66", "#5C6B86"),
             // Pixel-inspired tonal pairs
-            new Colorway("cucumber_water", "Cucumber Water", "#134E44", "#8ED1BC", "#1A5A4F", "#557F73"),
-            new Colorway("butterfly_pea_tea", "Butterfly Pea Tea", "#2C2F6B", "#9C9CF2", "#383C80", "#6E6EB0"),
-            new Colorway("yuzu_soda", "Yuzu Soda", "#5A4A10", "#F2D36B", "#5A4A10", "#8C7835"),
-            new Colorway("tonic_water", "Tonic Water", "#37414D", "#A7B3C2", "#3F4A57", "#6E7886"));
+            new Colorway("cucumber_water", "Cucumber Water", "#134E44", "#8ED1BC", "#1A5A4F", "#4D7368"),
+            new Colorway("butterfly_pea_tea", "Butterfly Pea Tea", "#2C2F6B", "#9C9CF2", "#383C80", "#6666A3"),
+            new Colorway("yuzu_soda", "Yuzu Soda", "#5A4A10", "#F2D36B", "#5A4A10", "#7C6B2F"),
+            new Colorway("tonic_water", "Tonic Water", "#37414D", "#A7B3C2", "#3F4A57", "#626B78"));
 
 
     // ---- Palette ----------------------------------------------------------
@@ -984,8 +984,8 @@ public class WatchFace {
     static void bezelPart(boolean ambient, String zone, Runnable body) {
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
         if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
-        arc(BEZEL_MID, 0, 360, nightColor(ambient), BEZEL_THICK, "BUTT", null);
         bandAmbient = ambient;
+        arc(bandR(), 0, 360, nightColor(ambient), bandThick(), "BUTT", null);
         body.run();
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", ambient ? AMBIENT_BAND_ALPHA : 0);
         close("PartDraw");
@@ -993,8 +993,15 @@ public class WatchFace {
 
     static boolean bandAmbient = false;   // set by bezelPart for its day arcs
 
+    // Always-on band: a thin ring just inside the numerals (radius 188-196)
+    // instead of the full 40-unit band, so far fewer pixels stay lit.
+    static final double AMBIENT_BAND_R = 192, AMBIENT_BAND_THICK = 8;
+
+    static double bandR() { return bandAmbient ? AMBIENT_BAND_R : BEZEL_MID; }
+    static double bandThick() { return bandAmbient ? AMBIENT_BAND_THICK : BEZEL_THICK; }
+
     static void dayArc(String startExpr, String endExpr) {
-        arc(BEZEL_MID, 0, 0, bandAmbient ? "[CONFIGURATION.bezel.3]" : "[CONFIGURATION.bezel.1]", BEZEL_THICK, "BUTT",
+        arc(bandR(), 0, 0, bandAmbient ? "[CONFIGURATION.bezel.3]" : "[CONFIGURATION.bezel.1]", bandThick(), "BUTT",
                 "<Transform target=\"startAngle\" value=\"" + xml(startExpr) + "\"/>\n"
                         + "<Transform target=\"endAngle\" value=\"" + xml(endExpr) + "\"/>");
     }

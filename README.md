@@ -17,10 +17,12 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   - On both faces the GMT hand turns once a day, so it always points at the
     destination's current time on the band (18:15 at the 9:15 position of
     the 12-hour labels), and its colour underneath is day or night there.
-  - In always-on mode the bands stay at the same brightness as the GMT hand
-    (about 78%); bright day colours use darker always-on shades so the face stays
-    under the 15% always-on brightness limit (all colourways estimated at
-    11.5% or less, even with day covering 80% of the ring).
+  - In always-on mode the band narrows to a thin 8-unit ring just inside the
+    numerals, at the same brightness as the GMT hand (about 78%), with darker
+    always-on shades of the day colours. Measured on a Pixel Watch 4, the
+    always-on face averages about 4% brightness with about 15% of pixels lit.
+    Even if the full band were shown all in day colour, every colourway would
+    stay at or under 12.8% average brightness (limit 15%).
 - **GMT hand.** It shows the time at one of 57 airports. The editor lists LOCAL
   first, then groups cities by continent (North America, South
   America, Europe, Africa, Asia including the Middle East, Oceania), west
