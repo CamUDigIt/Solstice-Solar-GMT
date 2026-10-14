@@ -512,7 +512,9 @@ public class WatchFace {
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
         for (int h = 1; h <= 12; h++) {
             double a = h * 30;
-            if (h == 3 || (style == PILOT && h == 12)) continue;
+            // 3 is the date; Pilot has its own 12 triangle and leaves 5 and 7 clear for
+            // the taller event box that two-line Oswald text needs.
+            if (h == 3 || (style == PILOT && (h == 12 || h == 5 || h == 7))) continue;
             if (style == PILOT) {
                 double d = 10;
                 open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(PLOT_R, a) - d / 2), f(dy(PLOT_R, a) - d / 2), f(d), f(d));
@@ -714,15 +716,22 @@ public class WatchFace {
         for (String type : List.of("LONG_TEXT", "SHORT_TEXT")) {
             open("Complication type=\"%s\"", type);
             styled(() -> {
-                open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", w, h);
-                int r = style == PILOT ? 8 : 14;
-                open("RoundRectangle x=\"0.5\" y=\"0.5\" width=\"%d\" height=\"%d\" cornerRadiusX=\"%d\" cornerRadiusY=\"%d\"", w - 1, h - 1, r, r);
-                if (style == PILOT) line("<Stroke color=\"#334155\" thickness=\"1\"/>");
-                line("<Fill color=\"%s\"/>", style == PILOT ? "#0A0D12" : FLAT_PANEL);
+                // Oswald's line height is ~41.5 units at 12sp, so two lines need a
+                // taller box on Pilot; it's narrower to keep its corners inside the
+                // minute track. Inter fits two lines in LONG_H.
+                boolean pilot = style == PILOT;
+                int bw = pilot ? 180 : w, bh = pilot ? 86 : h, bx = (w - bw) / 2;
+                open("Group name=\"long_text_%s\" x=\"%d\" y=\"0\" width=\"%d\" height=\"%d\"", style.id, bx, bw, bh);
+                open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", bw, bh);
+                int r = pilot ? 8 : 14;
+                open("RoundRectangle x=\"0.5\" y=\"0.5\" width=\"%d\" height=\"%d\" cornerRadiusX=\"%d\" cornerRadiusY=\"%d\"", bw - 1, bh - 1, r, r);
+                if (pilot) line("<Stroke color=\"#334155\" thickness=\"1\"/>");
+                line("<Fill color=\"%s\"/>", pilot ? "#0A0D12" : FLAT_PANEL);
                 close("RoundRectangle");
                 line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
                 close("PartDraw");
-                longTextBody(w, h);
+                longTextBody(bw, bh);
+                close("Group");
             });
             close("Complication");
         }
@@ -740,8 +749,9 @@ public class WatchFace {
         line("<Expression name=\"hasTitle\"><![CDATA[[COMPLICATION.TITLE] != null && textLength([COMPLICATION.TITLE]) > 1]]></Expression>");
         close("Expressions");
         open("Compare expression=\"hasTitle\"");
-        textLine(4, 2, w - 8, 36, TEXT_ESSENTIAL, "MEDIUM", STEEL, "[COMPLICATION.TEXT]");
-        textLine(4, 38, w - 8, 30, TEXT_SECONDARY, "NORMAL", MUTED, "[COMPLICATION.TITLE]");
+        int textH = style == PILOT ? 42 : 36;   // one line of Oswald / Inter at 12sp
+        textLine(4, 2, w - 8, textH, TEXT_ESSENTIAL, "MEDIUM", STEEL, "[COMPLICATION.TEXT]");
+        textLine(4, 2 + textH, w - 8, h - textH - 4, TEXT_SECONDARY, "NORMAL", MUTED, "[COMPLICATION.TITLE]");
         close("Compare");
         open("Default");
         textLine(4, 2, w - 8, h - 4, TEXT_ESSENTIAL, "MEDIUM", STEEL, "[COMPLICATION.TEXT]", 2);
@@ -775,10 +785,8 @@ public class WatchFace {
         open("ListConfiguration id=\"airport\"");
         open("ListOption id=\"%s\"", LOCAL);
         open("Group name=\"airport_local\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        formatted(() -> {
-            weatherBezel(false);
-            weatherBezel(true);
-        });
+        weatherBezel(false);
+        weatherBezel(true);
         localLabel();
         gmtHand(null);
         close("Group");
@@ -786,10 +794,8 @@ public class WatchFace {
         for (Airport a : AIRPORTS) {
             open("ListOption id=\"%s\"", a.code);
             open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
-            formatted(() -> {
-                solarBezel(a, false);
-                solarBezel(a, true);
-            });
+            solarBezel(a, false);
+            solarBezel(a, true);
             airportLabel(a);
             gmtHand(a.zone);
             close("Group");
@@ -799,16 +805,11 @@ public class WatchFace {
     }
 
     /**
-     * Solar bezel: red/blue shows whether it's day or night at the destination.
-     *
-     * 24h: a fixed 24-hour scale (midnight at the top); the day colour runs
-     * from sunrise to sunset, so the bands show the real day and night lengths.
-     *
-     * 12h: reads like a standard watch (12 at the top, 6 at the bottom). The
-     * band covers six hours either side of the GMT hand, so the colour at the
-     * hand is "now" at the destination and sunrise/sunset in that span sit at
-     * their real clock positions. The window's two ends meet opposite the
-     * hand, marked by a thin dark seam.
+     * Solar bezel: red/blue shows day and night at the destination, drawn on a
+     * 24-hour scale (midnight at the top) whichever bezel labels are chosen, so
+     * sunrise and sunset sit in the same place on the 12h and 24h faces: an
+     * 18:15 sunset is at 9:15 on the 12h labels and just past 18 on the 24h
+     * ones. The bands show the real day and night lengths.
      *
      * Sunrise/sunset come from the NOAA approximation (equation of time and
      * solar declination from the day of year), accurate to a few minutes.
@@ -831,64 +832,31 @@ public class WatchFace {
         String sunrise = "((" + noonMin + " - " + halfDayMin + ") / 60)";
         String sunset = "((" + noonMin + " + " + halfDayMin + ") / 60)";
 
-        bezelPart(ambient, a.zone, () -> {
-            if (h24) {
-                dayArc(sunrise + " * 15", sunset + " * 15");
-                return;
-            }
-            String now = "([HOUR_0_23] + [MINUTE] / 60)";
-            String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
-            // Daylight intervals for yesterday, today and tomorrow, clipped to the window.
-            for (int day = -1; day <= 1; day++) {
-                String shift = day == 0 ? "" : (day > 0 ? " + 24" : " - 24");
-                dayArc("clamp(" + sunrise + shift + ", " + from + ", " + to + ") * 30",
-                        "clamp(" + sunset + shift + ", " + from + ", " + to + ") * 30");
-            }
-            seam(to + " * 30");
-        });
+        bezelPart(ambient, a.zone, () -> dayArc(sunrise + " * 15", sunset + " * 15"));
     }
 
     /**
      * LOCAL's bezel: the watch has no location source in WFF, so daylight comes
-     * from the hourly weather forecast's is-day flags for the wearer's location.
+     * from the hourly weather forecast's is-day flags for the wearer's location,
+     * on the same 24-hour scale as the airport bezels.
      *
      * Each flag describes the start of its hour, so a change between two hours
      * is drawn halfway between them (within about 30 minutes of the real
      * sunrise/sunset). The current hour uses the hourly forecast too: the
-     * "current conditions" flag can lag by hours. The forecast has no past
-     * hours, so on the 12h window the hours behind "now" use the same clock
-     * hour from tomorrow's forecast. With no weather data the ring is night.
+     * "current conditions" flag can lag by hours. With no weather data the ring
+     * is night.
      */
     static void weatherBezel(boolean ambient) {
-        String now = "([HOUR_0_23] + [MINUTE] / 60)";
-        String hour = "floor(" + now + ")";
-        String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
+        String hour = "floor([HOUR_0_23] + [MINUTE] / 60)";
         bezelPart(ambient, null, () -> {
-            int first = h24 ? 0 : -6, last = h24 ? 23 : 6;
-            for (int k = first; k <= last; k++) {
-                int idx = k < 0 ? k + 24 : k;
-                String hourly = "[WEATHER.HOURS." + idx + ".IS_AVAILABLE] && [WEATHER.HOURS." + idx + ".IS_DAY]";
-                String isDay = idx != 0 ? hourly
+            for (int k = 0; k < 24; k++) {
+                String hourly = "[WEATHER.HOURS." + k + ".IS_AVAILABLE] && [WEATHER.HOURS." + k + ".IS_DAY]";
+                String isDay = k != 0 ? hourly
                         : "(" + hourly + ") || (![WEATHER.HOURS.0.IS_AVAILABLE] && [WEATHER.IS_AVAILABLE] && [WEATHER.IS_DAY])";
-                String s, e;
-                if (h24) {
-                    s = "(" + hour + " + " + k + " - 0.5) * 15";
-                    e = "(" + s + " + 15)";
-                } else {
-                    s = "clamp(" + hour + " + " + k + " - 0.5, " + from + ", " + to + ") * 30";
-                    e = "clamp(" + hour + " + " + k + " + 0.5, " + from + ", " + to + ") * 30";
-                }
-                dayArc(s, "(" + isDay + ") ? " + e + " : " + s);
+                String s = "(" + hour + " + " + k + " - 0.5) * 15";
+                dayArc(s, "(" + isDay + ") ? (" + s + " + 15) : " + s);
             }
-            if (!h24) seam(to + " * 30");
         });
-    }
-
-    /** Marks where the 12h window's two ends meet, opposite the GMT hand. */
-    static void seam(String angleExpr) {
-        arc(BEZEL_MID, 0, 0, "#05070A", BEZEL_THICK, "BUTT",
-                "<Transform target=\"startAngle\" value=\"" + xml(angleExpr + " - 0.9") + "\"/>\n"
-                        + "<Transform target=\"endAngle\" value=\"" + xml(angleExpr + " + 0.9") + "\"/>");
     }
 
     // In always-on mode the full-width bands stay at the same alpha as the GMT

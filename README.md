@@ -5,17 +5,17 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 
 ## What's on the face
 
-- **Solar bezel.** Red/blue shows whether it's day or night at the
-  destination. Sunrise and sunset are computed on the watch from the date and
-  the airport's latitude/longitude (NOAA approximation, within a few minutes).
-  The 40-unit band has numerals scaled to match.
-  - *12-hour:* reads like a standard watch (12 at the top, 6 at the bottom)
-    and the GMT hand turns twice a day. The band covers six hours either side
-    of the GMT hand, so the colour at the hand is "now" at the destination and
-    sunrise/sunset in that span sit at their real clock positions. The
-    window's ends meet opposite the hand, marked by a thin dark seam.
-  - *24-hour:* a fixed 24-hour scale (midnight at the top); the GMT hand turns
-    once a day and the bands show the real day and night lengths.
+- **Solar bezel.** Red/blue shows day and night at the destination, always
+  drawn on a 24-hour scale (midnight at the top) so the bands show the real
+  day and night lengths, and sunrise/sunset sit in the same place whichever
+  labels are chosen: an 18:15 sunset is at 9:15 on the 12-hour labels and just
+  past 18 on the 24-hour ones. Sunrise and sunset are computed on the watch
+  from the date and the airport's latitude/longitude (NOAA approximation,
+  within a few minutes). The 40-unit band has numerals scaled to match.
+  - *12-hour:* standard watch labels (12 at the top, 6 at the bottom); the GMT
+    hand turns twice a day like an hour hand.
+  - *24-hour:* 24-hour labels; the GMT hand turns once a day, so it points at
+    the destination's current time on the band.
   - In always-on mode the bands stay at the same brightness as the GMT hand
     (about 78%); Polar uses a darker always-on day shade so the face stays
     under the 15% always-on brightness limit (measured: Pepsi ~8%, Polar ~11%).
