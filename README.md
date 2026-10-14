@@ -18,8 +18,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     destination's current time on the band (18:15 at the 9:15 position of
     the 12-hour labels), and its colour underneath is day or night there.
   - In always-on mode the bands stay at the same brightness as the GMT hand
-    (about 78%); Polar uses a darker always-on day shade so the face stays
-    under the 15% always-on brightness limit (measured: Pepsi ~8%, Polar ~11%).
+    (about 78%); bright day colours use darker always-on shades so the face stays
+    under the 15% always-on brightness limit (all colourways estimated at
+    11.5% or less, even with day covering 80% of the ring).
 - **GMT hand.** It shows the time at one of 50 airports. The editor lists LOCAL
   and UTC first, then groups cities by continent (Americas, Europe, Africa,
   Middle East, Asia, Oceania), A–Z by city name. Each airport's IANA time zone is
@@ -72,8 +73,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   clock.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
 - **Customisation.** In the watch-face editor you can pick the style (Pilot or
-  Flat), the bezel format (12h or 24h), a bezel colourway (Pepsi, Batman, Coke,
-  Root Beer, Golden Hour, Polar), the GMT airport, and each complication.
+  Flat), the bezel format (12h or 24h), a soft-drink bezel colourway (Pepsi, Coke, Caffeine-Free Coke, Dr Pepper,
+  Cherry Coke, Pepsi Max, Sprite, Mountain Dew, Fanta, A&W Root Beer, Grape
+  Crush, Canada Dry), the GMT airport, and each complication.
 
 ## Project layout
 

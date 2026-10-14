@@ -209,18 +209,26 @@ public class WatchFace {
     // ---- Bezel colourways ---------------------------------------------------
     // Colours: [0] night, [1] day, [2] night and [3] day in always-on mode.
     // Always-on night colours lift near-black nights so the dimmed ring stays
-    // visible; Polar's always-on day is darker so its pale grey band keeps the
-    // face under the 15% always-on brightness limit (WO-P7).
+    // visible; bright days (silver, gold, lime, orange) are darker so the
+    // face stays under the 15% always-on brightness limit (WO-P7).
 
     record Colorway(String id, String name, String night, String day, String ambientNight, String ambientDay) {}
 
+    // Soft-drink colourways. Each pair stays in one colour family (no white, no
+    // clashing opposites like red/green); the darker shade is night.
     static final List<Colorway> COLORWAYS = List.of(
             new Colorway("pepsi", "Pepsi", "#1D4ED8", "#C81E1E", "#1D4ED8", "#C81E1E"),
-            new Colorway("batman", "Batman", "#0B0B0E", "#2563EB", "#52525B", "#2563EB"),
             new Colorway("coke", "Coke", "#111318", "#B91C1C", "#52525B", "#B91C1C"),
-            new Colorway("rootbeer", "Root Beer", "#3A2A1F", "#B7791F", "#7C5A3F", "#B7791F"),
-            new Colorway("golden_hour", "Golden Hour", "#2E1065", "#EA580C", "#6D28D9", "#EA580C"),
-            new Colorway("polar", "Polar", "#0F172A", "#CBD5E1", "#475569", "#8C97A6"));
+            new Colorway("caffeine_free_coke", "Caffeine-Free Coke", "#8E1B1B", "#D4A72C", "#8E1B1B", "#8F711A"),
+            new Colorway("dr_pepper", "Dr Pepper", "#5C1324", "#A9B0B8", "#6A1A2C", "#737A82"),
+            new Colorway("cherry_coke", "Cherry Coke", "#3D0C1C", "#B0174F", "#6B1A33", "#B0174F"),
+            new Colorway("pepsi_max", "Pepsi Max", "#0B0B10", "#1E5BD7", "#3F3F46", "#1E5BD7"),
+            new Colorway("sprite", "Sprite", "#0B3D91", "#1E9E4A", "#0B3D91", "#1A8A41"),
+            new Colorway("mountain_dew", "Mountain Dew", "#0F5132", "#8DC63F", "#186040", "#577A24"),
+            new Colorway("fanta", "Fanta", "#9A3412", "#F97316", "#9A3412", "#C85E12"),
+            new Colorway("aw_root_beer", "A&W Root Beer", "#4A2511", "#E39B0B", "#7C4A2A", "#976808"),
+            new Colorway("grape_crush", "Grape Crush", "#3B0764", "#8B5CF6", "#5B21B6", "#7C4FD8"),
+            new Colorway("canada_dry", "Canada Dry", "#0B4D2C", "#C9A227", "#115C37", "#8A6F1A"));
 
     // ---- Palette ----------------------------------------------------------
 
