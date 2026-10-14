@@ -42,63 +42,63 @@
     </ColorConfiguration>
     <ListConfiguration id="airport" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="LHR">
       <ListOption id="LOCAL" displayName="airport_local"/>
-      <ListOption id="ANC" displayName="airport_anc"/>
-      <ListOption id="ATL" displayName="airport_atl"/>
-      <ListOption id="ORD" displayName="airport_ord"/>
-      <ListOption id="DFW" displayName="airport_dfw"/>
-      <ListOption id="DEN" displayName="airport_den"/>
       <ListOption id="HNL" displayName="airport_hnl"/>
+      <ListOption id="ANC" displayName="airport_anc"/>
       <ListOption id="LAX" displayName="airport_lax"/>
-      <ListOption id="MEX" displayName="airport_mex"/>
-      <ListOption id="MIA" displayName="airport_mia"/>
-      <ListOption id="JFK" displayName="airport_jfk"/>
-      <ListOption id="PHX" displayName="airport_phx"/>
       <ListOption id="SFO" displayName="airport_sfo"/>
       <ListOption id="SEA" displayName="airport_sea"/>
-      <ListOption id="YYT" displayName="airport_yyt"/>
-      <ListOption id="YYZ" displayName="airport_yyz"/>
+      <ListOption id="DEN" displayName="airport_den"/>
+      <ListOption id="PHX" displayName="airport_phx"/>
       <ListOption id="YVR" displayName="airport_yvr"/>
+      <ListOption id="ORD" displayName="airport_ord"/>
+      <ListOption id="DFW" displayName="airport_dfw"/>
+      <ListOption id="MEX" displayName="airport_mex"/>
+      <ListOption id="ATL" displayName="airport_atl"/>
+      <ListOption id="MIA" displayName="airport_mia"/>
+      <ListOption id="JFK" displayName="airport_jfk"/>
+      <ListOption id="YYZ" displayName="airport_yyz"/>
+      <ListOption id="YYT" displayName="airport_yyt"/>
       <ListOption id="BOG" displayName="airport_bog"/>
-      <ListOption id="EZE" displayName="airport_eze"/>
       <ListOption id="SCL" displayName="airport_scl"/>
+      <ListOption id="EZE" displayName="airport_eze"/>
       <ListOption id="GRU" displayName="airport_gru"/>
-      <ListOption id="AMS" displayName="airport_ams"/>
       <ListOption id="DUB" displayName="airport_dub"/>
-      <ListOption id="FRA" displayName="airport_fra"/>
-      <ListOption id="IST" displayName="airport_ist"/>
       <ListOption id="LHR" displayName="airport_lhr"/>
+      <ListOption id="AMS" displayName="airport_ams"/>
+      <ListOption id="FRA" displayName="airport_fra"/>
       <ListOption id="MAD" displayName="airport_mad"/>
       <ListOption id="CDG" displayName="airport_cdg"/>
       <ListOption id="FCO" displayName="airport_fco"/>
       <ListOption id="ZRH" displayName="airport_zrh"/>
+      <ListOption id="IST" displayName="airport_ist"/>
       <ListOption id="CAI" displayName="airport_cai"/>
       <ListOption id="JNB" displayName="airport_jnb"/>
       <ListOption id="NBO" displayName="airport_nbo"/>
-      <ListOption id="BKK" displayName="airport_bkk"/>
-      <ListOption id="PEK" displayName="airport_pek"/>
-      <ListOption id="DEL" displayName="airport_del"/>
-      <ListOption id="DAC" displayName="airport_dac"/>
       <ListOption id="DOH" displayName="airport_doh"/>
+      <ListOption id="IKA" displayName="airport_ika"/>
       <ListOption id="DXB" displayName="airport_dxb"/>
-      <ListOption id="HKG" displayName="airport_hkg"/>
-      <ListOption id="CGK" displayName="airport_cgk"/>
       <ListOption id="KBL" displayName="airport_kbl"/>
       <ListOption id="KHI" displayName="airport_khi"/>
-      <ListOption id="KTM" displayName="airport_ktm"/>
-      <ListOption id="MNL" displayName="airport_mnl"/>
+      <ListOption id="DEL" displayName="airport_del"/>
       <ListOption id="BOM" displayName="airport_bom"/>
-      <ListOption id="ICN" displayName="airport_icn"/>
-      <ListOption id="SIN" displayName="airport_sin"/>
-      <ListOption id="IKA" displayName="airport_ika"/>
-      <ListOption id="HND" displayName="airport_hnd"/>
+      <ListOption id="KTM" displayName="airport_ktm"/>
+      <ListOption id="DAC" displayName="airport_dac"/>
       <ListOption id="RGN" displayName="airport_rgn"/>
-      <ListOption id="ADL" displayName="airport_adl"/>
-      <ListOption id="AKL" displayName="airport_akl"/>
-      <ListOption id="MEL" displayName="airport_mel"/>
-      <ListOption id="NOU" displayName="airport_nou"/>
-      <ListOption id="TBU" displayName="airport_tbu"/>
+      <ListOption id="BKK" displayName="airport_bkk"/>
+      <ListOption id="CGK" displayName="airport_cgk"/>
+      <ListOption id="PEK" displayName="airport_pek"/>
+      <ListOption id="HKG" displayName="airport_hkg"/>
+      <ListOption id="MNL" displayName="airport_mnl"/>
+      <ListOption id="SIN" displayName="airport_sin"/>
+      <ListOption id="ICN" displayName="airport_icn"/>
+      <ListOption id="HND" displayName="airport_hnd"/>
       <ListOption id="PER" displayName="airport_per"/>
+      <ListOption id="ADL" displayName="airport_adl"/>
+      <ListOption id="MEL" displayName="airport_mel"/>
       <ListOption id="SYD" displayName="airport_syd"/>
+      <ListOption id="NOU" displayName="airport_nou"/>
+      <ListOption id="AKL" displayName="airport_akl"/>
+      <ListOption id="TBU" displayName="airport_tbu"/>
     </ListConfiguration>
   </UserConfigurations>
   <Scene backgroundColor="#000000">

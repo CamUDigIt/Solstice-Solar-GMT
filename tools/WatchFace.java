@@ -86,7 +86,7 @@ public class WatchFace {
             new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79),
             new Airport("TBU", "Nuku'alofa", "Pacific/Tongatapu", -21.24, -175.15));
 
-    // Editor order: continents in this order, cities A-Z within each.
+    // Editor order: continents in this order; within each, west to east, then A-Z.
     static final java.util.LinkedHashMap<String, List<String>> CONTINENTS = new java.util.LinkedHashMap<>();
     static {
         CONTINENTS.put("North America", List.of("ANC", "ATL", "ORD", "DFW", "DEN", "HNL", "LAX", "MEX", "MIA",
@@ -100,14 +100,15 @@ public class WatchFace {
         CONTINENTS.put("Oceania", List.of("ADL", "AKL", "MEL", "NOU", "TBU", "PER", "SYD"));
     }
 
-    /** Each continent's cities sorted by city name. */
+    /** Each continent's cities west to east (by standard UTC offset), then A-Z by city. */
     static List<Airport> editorOrder() {
         var byCode = new java.util.HashMap<String, Airport>();
         for (Airport a : AIRPORTS) byCode.put(a.code, a);
         var order = new java.util.ArrayList<Airport>();
         for (var e : CONTINENTS.entrySet()) {
             e.getValue().stream().map(byCode::get)
-                    .sorted(java.util.Comparator.comparing(Airport::city)).forEach(order::add);
+                    .sorted(java.util.Comparator.comparingInt(WatchFace::stdMinutes).thenComparing(Airport::city))
+                    .forEach(order::add);
         }
         if (order.size() != AIRPORTS.size() || order.contains(null)) {
             throw new IllegalStateException("CONTINENTS must list every airport exactly once");
@@ -121,8 +122,7 @@ public class WatchFace {
      * name is fixed text, while the label on the face shows the live offset.
      */
     static String displayName(Airport a) {
-        int m = java.time.ZoneId.of(a.zone).getRules()
-                .getStandardOffset(java.time.Instant.now()).getTotalSeconds() / 60;
+        int m = stdMinutes(a);
         String off = (m < 0 ? "−" : "+") + Math.abs(m) / 60 + (m % 60 == 0 ? "" : String.format(":%02d", Math.abs(m) % 60));
         // No-break space keeps the dot with the code, so a wrapped name breaks before "UTC".
         return a.city + " · " + a.code + " · UTC" + off;

@@ -42,7 +42,7 @@
     <string name="airport_lax">Los Angeles · LAX · UTC−8</string>
     <string name="airport_sfo">San Francisco · SFO · UTC−8</string>
     <string name="airport_sea">Seattle · SEA · UTC−8</string>
-    <string name="airport_yvr">Vancouver · YVR · UTC−8</string>
+    <string name="airport_yvr">Vancouver · YVR · UTC−7</string>
     <string name="airport_den">Denver · DEN · UTC−7</string>
     <string name="airport_phx">Phoenix · PHX · UTC−7</string>
     <string name="airport_ord">Chicago · ORD · UTC−6</string>
