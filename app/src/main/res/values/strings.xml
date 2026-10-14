@@ -37,7 +37,6 @@
     <string name="bezel_hibiscus_tea">Hibiscus Tea</string>
     <string name="bezel_blueberry_soda">Blueberry Soda</string>
     <string name="airport_local">LOCAL · Your time zone</string>
-    <string name="airport_utc">UTC · Coordinated Universal Time</string>
     <string name="airport_hnl">Honolulu · HNL</string>
     <string name="airport_anc">Anchorage · ANC</string>
     <string name="airport_lax">Los Angeles · LAX</string>

@@ -23,9 +23,8 @@ public class WatchFace {
     record Airport(String code, String city, String zone, double lat, double lon) {}
 
     // Ordered west to east (by standard UTC offset) so turning the crown in the
-    // editor moves steadily around the globe. UTC stays first.
+    // editor moves steadily around the globe.
     static final List<Airport> AIRPORTS = List.of(
-            new Airport("UTC", "Coordinated Universal Time", "Etc/UTC", 51.48, 0.0),
             // UTC-10 .. UTC-3
             new Airport("HNL", "Honolulu", "Pacific/Honolulu", 21.32, -157.92),
             new Airport("ANC", "Anchorage", "America/Anchorage", 61.17, -149.99),
@@ -93,31 +92,24 @@ public class WatchFace {
         CONTINENTS.put("Oceania", List.of("ADL", "AKL", "MEL", "PER", "SYD"));
     }
 
-    static String continent(Airport a) {
-        return CONTINENTS.entrySet().stream().filter(e -> e.getValue().contains(a.code)).map(java.util.Map.Entry::getKey)
-                .findFirst().orElse(null);
-    }
-
-    /** UTC first, then each continent's cities sorted by city name. */
+    /** Each continent's cities sorted by city name. */
     static List<Airport> editorOrder() {
         var byCode = new java.util.HashMap<String, Airport>();
         for (Airport a : AIRPORTS) byCode.put(a.code, a);
         var order = new java.util.ArrayList<Airport>();
-        order.add(byCode.get("UTC"));
         for (var e : CONTINENTS.entrySet()) {
             e.getValue().stream().map(byCode::get)
                     .sorted(java.util.Comparator.comparing(Airport::city)).forEach(order::add);
         }
         if (order.size() != AIRPORTS.size() || order.contains(null)) {
-            throw new IllegalStateException("CONTINENTS must list every airport except UTC exactly once");
+            throw new IllegalStateException("CONTINENTS must list every airport exactly once");
         }
         return order;
     }
 
     static String displayName(Airport a) {
-        String c = continent(a);
         // Short enough to fit the editor chip on small watches; the list is still grouped by continent.
-        return c == null ? a.code + " · " + a.city : a.city + " · " + a.code;
+        return a.city + " · " + a.code;
     }
 
     static final String DEFAULT_AIRPORT = "LHR";
@@ -958,10 +950,9 @@ public class WatchFace {
         return ambient ? "[CONFIGURATION.bezel.2]" : "[CONFIGURATION.bezel.0]";
     }
 
-    /** "LHR +1H", "HNL −10H", "KTM +5:45H": the airport's offset from UTC; the UTC option reads just "UTC". */
+    /** "LHR +1H", "HNL −10H", "KTM +5:45H": the airport's offset from UTC. */
     static void airportLabel(Airport a) {
-        if (a.zone.equals("Etc/UTC")) label("UTC");
-        else label(a.code + " %s%s%s%sH", signedHours(destOffset(a)));
+        label(a.code + " %s%s%s%sH", signedHours(destOffset(a)));
     }
 
     /** Template parameters for a signed minute offset: sign, hours, ":" and minutes when not whole. */
@@ -977,7 +968,8 @@ public class WatchFace {
     }
 
     /**
-     * LOCAL's label: the local zone's abbreviation, e.g. "MDT".
+     * LOCAL's label: the local zone's abbreviation and its offset from UTC,
+     * e.g. "MDT −6H".
      *
      * [TIMEZONE_ABB] always reports the standard-time name (MST even in
      * summer), so during daylight saving the summer name is derived from it:
@@ -990,7 +982,8 @@ public class WatchFace {
         String abb = "[TIMEZONE_ABB]", len = "textLength(" + abb + ")", dst = "[IS_DAYLIGHT_SAVING_TIME]";
         String unnamed = "((subText(" + abb + ", 0, 3) == \"GMT\" || subText(" + abb + ", 0, 3) == \"UTC\") && " + len + " > 3)"
                 + " || subText(" + abb + ", 0, 1) == \"+\" || subText(" + abb + ", 0, 1) == \"-\"";
-        Runnable utc = () -> labelText("UTC %s%s%s%s", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]"));
+        String[] off = signedHours("[TIMEZONE_OFFSET_MINUTES_DST]");
+        Runnable utc = () -> labelText("UTC %s%s%s%s", off);
         label(() -> chain(new String[] {
                 unnamed,
                 dst + " && [TIMEZONE_ID] == \"Europe/Dublin\"",
@@ -1000,12 +993,19 @@ public class WatchFace {
                 dst,
         }, new Runnable[] {
                 utc,
-                () -> labelText("IST"),
-                () -> labelText("BST"),
-                () -> labelText("%sDT", "subText(" + abb + ", 0, " + len + " - 2)"),
-                () -> labelText("%sST", "subText(" + abb + ", 0, 2)"),
+                () -> labelText("IST %s%s%s%sH", off),
+                () -> labelText("BST %s%s%s%sH", off),
+                () -> labelText("%sDT %s%s%s%sH", cat("subText(" + abb + ", 0, " + len + " - 2)", off)),
+                () -> labelText("%sST %s%s%s%sH", cat("subText(" + abb + ", 0, 2)", off)),
                 utc,
-        }, () -> labelText("%s", abb)));
+        }, () -> labelText("%s %s%s%s%sH", cat(abb, off))));
+    }
+
+    static String[] cat(String first, String[] rest) {
+        String[] all = new String[rest.length + 1];
+        all[0] = first;
+        System.arraycopy(rest, 0, all, 1, rest.length);
+        return all;
     }
 
     /** A Condition that runs the body of the first matching expression, else the default. */

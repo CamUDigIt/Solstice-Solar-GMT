@@ -21,25 +21,25 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     (about 78%); bright day colours use darker always-on shades so the face stays
     under the 15% always-on brightness limit (all colourways estimated at
     11.5% or less, even with day covering 80% of the ring).
-- **GMT hand.** It shows the time at one of 50 airports. The editor lists LOCAL
-  and UTC first, then groups cities by continent (North America, South
+- **GMT hand.** It shows the time at one of 49 airports. The editor lists LOCAL
+  first, then groups cities by continent (North America, South
   America, Europe, Africa, Asia including the Middle East, Oceania), A–Z by
   city name. Each airport's IANA time zone is
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
   handled by the OS. Add or remove airports in the `AIRPORTS` list in
   `tools/WatchFace.java`.
 - **Offset label.** For example `LHR +1H`, `HNL −10H` or `KTM +5:45H`: the
-  airport's current offset from UTC, including daylight saving (the UTC option
-  reads just `UTC`). The label computes the offset from the UTC clock and the
-  airport's daylight-saving rule. `tools/DstCheck.java` verifies
-  those rules against `java.time` for every hour through 2040.
+  airport's current offset from UTC, including daylight saving. The label
+  computes it from the UTC clock and the airport's daylight-saving rule.
+  `tools/DstCheck.java` verifies those rules against `java.time` for every hour through 2040.
 - **LOCAL.** The first airport option. The GMT hand follows local time, and
   because WFF has no location source, the bezel's daylight comes from the
   watch's hourly weather forecast, with each day/night change drawn halfway
   between forecast hours (within about 30 minutes). With no forecast, or one
   that says "day" for all 24 hours (the watch-face editor's preview data), it
-  shows a nominal 06:00–18:00 day so both colours still appear. The label shows the local zone's abbreviation
-  (MDT, BST, CEST, NPT…). WFF's `[TIMEZONE_ABB]` only reports the standard
+  shows a nominal 06:00–18:00 day so both colours still appear. The label
+  shows the local zone's abbreviation and offset from UTC (`MDT −6H`,
+  `BST +1H`, `NPT +5:45H`). WFF's `[TIMEZONE_ABB]` only reports the standard
   name, so summer names are derived from it; zones without a named
   abbreviation show `UTC +13:45` style instead.
 - **Two styles.**

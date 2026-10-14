@@ -42,7 +42,6 @@
     </ColorConfiguration>
     <ListConfiguration id="airport" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="LHR">
       <ListOption id="LOCAL" displayName="airport_local"/>
-      <ListOption id="UTC" displayName="airport_utc"/>
       <ListOption id="ANC" displayName="airport_anc"/>
       <ListOption id="ATL" displayName="airport_atl"/>
       <ListOption id="ORD" displayName="airport_ord"/>
@@ -4620,7 +4619,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="inter_500" size="24" color="#C9CED6">
-                        <Template>%s<Parameter expression="&quot;IST&quot;"/></Template>
+                        <Template>IST %s%s%s%sH<Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4630,7 +4629,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="inter_500" size="24" color="#C9CED6">
-                        <Template>%s<Parameter expression="&quot;BST&quot;"/></Template>
+                        <Template>BST %s%s%s%sH<Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4640,7 +4639,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="inter_500" size="24" color="#C9CED6">
-                        <Template>%sDT<Parameter expression="subText([TIMEZONE_ABB], 0, textLength([TIMEZONE_ABB]) - 2)"/></Template>
+                        <Template>%sDT %s%s%s%sH<Parameter expression="subText([TIMEZONE_ABB], 0, textLength([TIMEZONE_ABB]) - 2)"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4650,7 +4649,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="inter_500" size="24" color="#C9CED6">
-                        <Template>%sST<Parameter expression="subText([TIMEZONE_ABB], 0, 2)"/></Template>
+                        <Template>%sST %s%s%s%sH<Parameter expression="subText([TIMEZONE_ABB], 0, 2)"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4670,7 +4669,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="inter_500" size="24" color="#C9CED6">
-                        <Template>%s<Parameter expression="[TIMEZONE_ABB]"/></Template>
+                        <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABB]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4702,7 +4701,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="oswald_500" size="24" color="#C9CED6">
-                        <Template>%s<Parameter expression="&quot;IST&quot;"/></Template>
+                        <Template>IST %s%s%s%sH<Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4712,7 +4711,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="oswald_500" size="24" color="#C9CED6">
-                        <Template>%s<Parameter expression="&quot;BST&quot;"/></Template>
+                        <Template>BST %s%s%s%sH<Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4722,7 +4721,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="oswald_500" size="24" color="#C9CED6">
-                        <Template>%sDT<Parameter expression="subText([TIMEZONE_ABB], 0, textLength([TIMEZONE_ABB]) - 2)"/></Template>
+                        <Template>%sDT %s%s%s%sH<Parameter expression="subText([TIMEZONE_ABB], 0, textLength([TIMEZONE_ABB]) - 2)"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4732,7 +4731,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="oswald_500" size="24" color="#C9CED6">
-                        <Template>%sST<Parameter expression="subText([TIMEZONE_ABB], 0, 2)"/></Template>
+                        <Template>%sST %s%s%s%sH<Parameter expression="subText([TIMEZONE_ABB], 0, 2)"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4752,7 +4751,7 @@
                   <PartText x="145" y="76" width="160" height="28">
                     <Text align="CENTER">
                       <Font family="oswald_500" size="24" color="#C9CED6">
-                        <Template>%s<Parameter expression="[TIMEZONE_ABB]"/></Template>
+                        <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABB]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
                       </Font>
                     </Text>
                     <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -4778,84 +4777,6 @@
             </Compare>
             <Default>
               <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
-                <Image resource="hand_gmt"/>
-                <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15"/>
-                <Variant mode="AMBIENT" target="alpha" value="200"/>
-              </PartImage>
-            </Default>
-          </Condition>
-        </Group>
-      </ListOption>
-      <ListOption id="UTC">
-        <Group name="airport_UTC" x="0" y="0" width="450" height="450">
-          <PartDraw x="0" y="0" width="450" height="450" alpha="255">
-            <Localization timeZone="Etc/UTC"/>
-            <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="360">
-              <Stroke color="[CONFIGURATION.bezel.0]" thickness="40" cap="BUTT"/>
-            </Arc>
-            <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="40" cap="BUTT"/>
-              <Transform target="startAngle" value="(((720 - 4 * 0 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.023344 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.256272 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
-              <Transform target="endAngle" value="(((720 - 4 * 0 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.023344 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.256272 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
-            </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="0"/>
-          </PartDraw>
-          <PartDraw x="0" y="0" width="450" height="450" alpha="0">
-            <Localization timeZone="Etc/UTC"/>
-            <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="360">
-              <Stroke color="[CONFIGURATION.bezel.2]" thickness="40" cap="BUTT"/>
-            </Arc>
-            <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.3]" thickness="40" cap="BUTT"/>
-              <Transform target="startAngle" value="(((720 - 4 * 0 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.023344 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.256272 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
-              <Transform target="endAngle" value="(((720 - 4 * 0 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.023344 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.256272 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
-            </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="200"/>
-          </PartDraw>
-          <Condition>
-            <Expressions>
-              <Expression name="c227"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
-            </Expressions>
-            <Compare expression="c227">
-              <PartText x="145" y="76" width="160" height="28">
-                <Text align="CENTER">
-                  <Font family="inter_500" size="24" color="#C9CED6">
-                    <Template>%s<Parameter expression="&quot;UTC&quot;"/></Template>
-                  </Font>
-                </Text>
-                <Variant mode="AMBIENT" target="alpha" value="170"/>
-              </PartText>
-            </Compare>
-            <Default>
-              <PartText x="145" y="76" width="160" height="28">
-                <Text align="CENTER">
-                  <Font family="oswald_500" size="24" color="#C9CED6">
-                    <Template>%s<Parameter expression="&quot;UTC&quot;"/></Template>
-                  </Font>
-                </Text>
-                <Variant mode="AMBIENT" target="alpha" value="170"/>
-              </PartText>
-            </Default>
-          </Condition>
-          <PartDraw x="213" y="105" width="24" height="3">
-            <Rectangle x="0" y="0" width="24" height="2"><Fill color="#D72626"/></Rectangle>
-            <Variant mode="AMBIENT" target="alpha" value="0"/>
-          </PartDraw>
-          <Condition>
-            <Expressions>
-              <Expression name="c228"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
-            </Expressions>
-            <Compare expression="c228">
-              <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
-                <Localization timeZone="Etc/UTC"/>
-                <Image resource="flat_hand_gmt"/>
-                <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15"/>
-                <Variant mode="AMBIENT" target="alpha" value="200"/>
-              </PartImage>
-            </Compare>
-            <Default>
-              <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
-                <Localization timeZone="Etc/UTC"/>
                 <Image resource="hand_gmt"/>
                 <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15"/>
                 <Variant mode="AMBIENT" target="alpha" value="200"/>
@@ -4892,9 +4813,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c229"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c227"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c229">
+            <Compare expression="c227">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -4921,9 +4842,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c230"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c228"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c230">
+            <Compare expression="c228">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Pacific/Honolulu"/>
                 <Image resource="flat_hand_gmt"/>
@@ -4970,9 +4891,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c231"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c229"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c231">
+            <Compare expression="c229">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -4999,9 +4920,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c232"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c230"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c232">
+            <Compare expression="c230">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Anchorage"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5048,9 +4969,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c233"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c231"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c233">
+            <Compare expression="c231">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5077,9 +4998,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c234"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c232"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c234">
+            <Compare expression="c232">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Los_Angeles"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5126,9 +5047,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c235"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c233"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c235">
+            <Compare expression="c233">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5155,9 +5076,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c236"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c234"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c236">
+            <Compare expression="c234">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Los_Angeles"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5204,9 +5125,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c237"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c235"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c237">
+            <Compare expression="c235">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5233,9 +5154,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c238"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c236"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c238">
+            <Compare expression="c236">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Los_Angeles"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5282,9 +5203,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c239"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c237"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c239">
+            <Compare expression="c237">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5311,9 +5232,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c240"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c238"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c240">
+            <Compare expression="c238">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Vancouver"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5360,9 +5281,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c241"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c239"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c241">
+            <Compare expression="c239">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5389,9 +5310,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c242"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c240"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c242">
+            <Compare expression="c240">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Denver"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5438,9 +5359,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c243"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c241"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c243">
+            <Compare expression="c241">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5467,9 +5388,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c244"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c242"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c244">
+            <Compare expression="c242">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Phoenix"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5516,9 +5437,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c245"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c243"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c245">
+            <Compare expression="c243">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5545,9 +5466,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c246"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c244"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c246">
+            <Compare expression="c244">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Chicago"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5594,9 +5515,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c247"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c245"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c247">
+            <Compare expression="c245">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5623,9 +5544,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c248"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c246"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c248">
+            <Compare expression="c246">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Chicago"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5672,9 +5593,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c249"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c247"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c249">
+            <Compare expression="c247">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5701,9 +5622,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c250"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c248"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c250">
+            <Compare expression="c248">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Mexico_City"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5750,9 +5671,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c251"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c249"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c251">
+            <Compare expression="c249">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5779,9 +5700,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c252"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c250"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c252">
+            <Compare expression="c250">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/New_York"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5828,9 +5749,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c253"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c251"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c253">
+            <Compare expression="c251">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5857,9 +5778,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c254"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c252"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c254">
+            <Compare expression="c252">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/New_York"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5906,9 +5827,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c255"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c253"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c255">
+            <Compare expression="c253">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -5935,9 +5856,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c256"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c254"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c256">
+            <Compare expression="c254">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/New_York"/>
                 <Image resource="flat_hand_gmt"/>
@@ -5984,9 +5905,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c257"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c255"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c257">
+            <Compare expression="c255">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6013,9 +5934,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c258"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c256"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c258">
+            <Compare expression="c256">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Toronto"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6062,9 +5983,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c259"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c257"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c259">
+            <Compare expression="c257">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6091,9 +6012,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c260"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c258"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c260">
+            <Compare expression="c258">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Bogota"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6140,9 +6061,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c261"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c259"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c261">
+            <Compare expression="c259">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6169,9 +6090,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c262"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c260"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c262">
+            <Compare expression="c260">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Santiago"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6218,9 +6139,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c263"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c261"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c263">
+            <Compare expression="c261">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6247,9 +6168,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c264"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c262"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c264">
+            <Compare expression="c262">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Sao_Paulo"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6296,9 +6217,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c265"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c263"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c265">
+            <Compare expression="c263">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6325,9 +6246,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c266"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c264"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c266">
+            <Compare expression="c264">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="America/Argentina/Buenos_Aires"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6374,9 +6295,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c267"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c265"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c267">
+            <Compare expression="c265">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6403,9 +6324,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c268"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c266"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c268">
+            <Compare expression="c266">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/London"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6452,9 +6373,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c269"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c267"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c269">
+            <Compare expression="c267">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6481,9 +6402,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c270"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c268"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c270">
+            <Compare expression="c268">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Dublin"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6530,9 +6451,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c271"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c269"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c271">
+            <Compare expression="c269">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6559,9 +6480,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c272"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c270"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c272">
+            <Compare expression="c270">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Paris"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6608,9 +6529,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c273"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c271"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c273">
+            <Compare expression="c271">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6637,9 +6558,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c274"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c272"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c274">
+            <Compare expression="c272">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Amsterdam"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6686,9 +6607,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c275"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c273"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c275">
+            <Compare expression="c273">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6715,9 +6636,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c276"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c274"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c276">
+            <Compare expression="c274">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Berlin"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6764,9 +6685,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c277"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c275"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c277">
+            <Compare expression="c275">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6793,9 +6714,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c278"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c276"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c278">
+            <Compare expression="c276">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Zurich"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6842,9 +6763,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c279"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c277"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c279">
+            <Compare expression="c277">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6871,9 +6792,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c280"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c278"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c280">
+            <Compare expression="c278">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Madrid"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6920,9 +6841,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c281"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c279"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c281">
+            <Compare expression="c279">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -6949,9 +6870,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c282"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c280"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c282">
+            <Compare expression="c280">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Rome"/>
                 <Image resource="flat_hand_gmt"/>
@@ -6998,9 +6919,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c283"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c281"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c283">
+            <Compare expression="c281">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7027,9 +6948,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c284"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c282"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c284">
+            <Compare expression="c282">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Africa/Cairo"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7076,9 +6997,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c285"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c283"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c285">
+            <Compare expression="c283">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7105,9 +7026,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c286"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c284"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c286">
+            <Compare expression="c284">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Africa/Johannesburg"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7154,9 +7075,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c287"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c285"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c287">
+            <Compare expression="c285">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7183,9 +7104,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c288"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c286"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c288">
+            <Compare expression="c286">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Europe/Istanbul"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7232,9 +7153,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c289"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c287"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c289">
+            <Compare expression="c287">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7261,9 +7182,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c290"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c288"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c290">
+            <Compare expression="c288">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Africa/Nairobi"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7310,9 +7231,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c291"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c289"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c291">
+            <Compare expression="c289">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7339,9 +7260,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c292"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c290"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c292">
+            <Compare expression="c290">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Qatar"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7388,9 +7309,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c293"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c291"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c293">
+            <Compare expression="c291">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7417,9 +7338,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c294"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c292"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c294">
+            <Compare expression="c292">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Dubai"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7466,9 +7387,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c295"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c293"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c295">
+            <Compare expression="c293">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7495,9 +7416,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c296"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c294"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c296">
+            <Compare expression="c294">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Kolkata"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7544,9 +7465,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c297"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c295"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c297">
+            <Compare expression="c295">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7573,9 +7494,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c298"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c296"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c298">
+            <Compare expression="c296">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Kolkata"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7622,9 +7543,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c299"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c297"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c299">
+            <Compare expression="c297">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7651,9 +7572,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c300"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c298"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c300">
+            <Compare expression="c298">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Kathmandu"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7700,9 +7621,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c301"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c299"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c301">
+            <Compare expression="c299">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7729,9 +7650,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c302"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c300"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c302">
+            <Compare expression="c300">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Bangkok"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7778,9 +7699,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c303"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c301"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c303">
+            <Compare expression="c301">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7807,9 +7728,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c304"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c302"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c304">
+            <Compare expression="c302">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Jakarta"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7856,9 +7777,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c305"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c303"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c305">
+            <Compare expression="c303">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7885,9 +7806,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c306"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c304"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c306">
+            <Compare expression="c304">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Singapore"/>
                 <Image resource="flat_hand_gmt"/>
@@ -7934,9 +7855,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c307"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c305"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c307">
+            <Compare expression="c305">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -7963,9 +7884,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c308"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c306"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c308">
+            <Compare expression="c306">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Hong_Kong"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8012,9 +7933,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c309"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c307"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c309">
+            <Compare expression="c307">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8041,9 +7962,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c310"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c308"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c310">
+            <Compare expression="c308">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Shanghai"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8090,9 +8011,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c311"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c309"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c311">
+            <Compare expression="c309">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8119,9 +8040,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c312"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c310"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c312">
+            <Compare expression="c310">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Manila"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8168,9 +8089,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c313"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c311"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c313">
+            <Compare expression="c311">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8197,9 +8118,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c314"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c312"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c314">
+            <Compare expression="c312">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Australia/Perth"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8246,9 +8167,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c315"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c313"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c315">
+            <Compare expression="c313">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8275,9 +8196,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c316"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c314"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c316">
+            <Compare expression="c314">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Seoul"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8324,9 +8245,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c317"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c315"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c317">
+            <Compare expression="c315">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8353,9 +8274,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c318"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c316"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c318">
+            <Compare expression="c316">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Asia/Tokyo"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8402,9 +8323,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c319"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c317"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c319">
+            <Compare expression="c317">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8431,9 +8352,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c320"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c318"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c320">
+            <Compare expression="c318">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Australia/Adelaide"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8480,9 +8401,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c321"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c319"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c321">
+            <Compare expression="c319">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8509,9 +8430,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c322"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c320"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c322">
+            <Compare expression="c320">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Australia/Sydney"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8558,9 +8479,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c323"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c321"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c323">
+            <Compare expression="c321">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8587,9 +8508,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c324"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c322"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c324">
+            <Compare expression="c322">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Australia/Melbourne"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8636,9 +8557,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c325"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c323"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c325">
+            <Compare expression="c323">
               <PartText x="145" y="76" width="160" height="28">
                 <Text align="CENTER">
                   <Font family="inter_500" size="24" color="#C9CED6">
@@ -8665,9 +8586,9 @@
           </PartDraw>
           <Condition>
             <Expressions>
-              <Expression name="c326"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c324"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c326">
+            <Compare expression="c324">
               <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
                 <Localization timeZone="Pacific/Auckland"/>
                 <Image resource="flat_hand_gmt"/>
@@ -8696,14 +8617,14 @@
       </PartDraw>
       <Condition>
         <Expressions>
-          <Expression name="c327"><![CDATA[[CONFIGURATION.bezel_format] == "24"]]></Expression>
+          <Expression name="c325"><![CDATA[[CONFIGURATION.bezel_format] == "24"]]></Expression>
         </Expressions>
-        <Compare expression="c327">
+        <Compare expression="c325">
           <Condition>
             <Expressions>
-              <Expression name="c328"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c326"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c328">
+            <Compare expression="c326">
               <Group name="scale_flat_24" x="0" y="0" width="450" height="450">
                 <PartText x="305" y="30" width="44" height="32" angle="30">
                   <Text align="CENTER">
@@ -10922,9 +10843,9 @@
         <Default>
           <Condition>
             <Expressions>
-              <Expression name="c329"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c327"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
             </Expressions>
-            <Compare expression="c329">
+            <Compare expression="c327">
               <Group name="scale_flat_12" x="0" y="0" width="450" height="450">
                 <PartDraw x="0" y="0" width="450" height="450">
                   <Ellipse x="275.76" y="24.69" width="4.6" height="4.6">
@@ -13048,9 +12969,9 @@
     <!-- Local time: hour, minute, sweeping seconds (outline hands in ambient) -->
     <Condition>
       <Expressions>
-        <Expression name="c330"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+        <Expression name="c328"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
       </Expressions>
-      <Compare expression="c330">
+      <Compare expression="c328">
         <AnalogClock x="0" y="0" width="450" height="450">
           <HourHand resource="flat_hand_hour" x="217" y="123" width="16" height="116" pivotX="0.5" pivotY="0.87931" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
