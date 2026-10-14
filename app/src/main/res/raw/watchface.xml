@@ -35,6 +35,7 @@
       <ColorOption id="ginger_ale" displayName="bezel_ginger_ale" icon="icon_bezel_ginger_ale" colors="#0B4D2C #C9A227 #115C37 #8A6F1A"/>
       <ColorOption id="cream_soda" displayName="bezel_cream_soda" icon="icon_bezel_cream_soda" colors="#5B4636 #E8D3A8 #5B4636 #8C7A58"/>
       <ColorOption id="matcha_latte" displayName="bezel_matcha_latte" icon="icon_bezel_matcha_latte" colors="#2F4A32 #A9C49A #3A5A3E #6E8466"/>
+      <ColorOption id="green_tea" displayName="bezel_green_tea" icon="icon_bezel_green_tea" colors="#2F3519 #8C9440 #3A4220 #6E7530"/>
       <ColorOption id="peach_tea" displayName="bezel_peach_tea" icon="icon_bezel_peach_tea" colors="#6B3B2A #F2B48C #6B3B2A #9A6E52"/>
       <ColorOption id="lavender_lemonade" displayName="bezel_lavender_lemonade" icon="icon_bezel_lavender_lemonade" colors="#4B3F72 #C9B8E8 #4B3F72 #7E72A0"/>
       <ColorOption id="hibiscus_tea" displayName="bezel_hibiscus_tea" icon="icon_bezel_hibiscus_tea" colors="#5E1F3A #E8A0B4 #6A2442 #A0647A"/>

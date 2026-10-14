@@ -257,6 +257,7 @@ public class WatchFace {
             // Soft and earthy: cream soda, teas and lattes
             new Colorway("cream_soda", "Cream Soda", "#5B4636", "#E8D3A8", "#5B4636", "#8C7A58"),
             new Colorway("matcha_latte", "Matcha Latte", "#2F4A32", "#A9C49A", "#3A5A3E", "#6E8466"),
+            new Colorway("green_tea", "Green Tea", "#2F3519", "#8C9440", "#3A4220", "#6E7530"),
             new Colorway("peach_tea", "Peach Tea", "#6B3B2A", "#F2B48C", "#6B3B2A", "#9A6E52"),
             new Colorway("lavender_lemonade", "Lavender Lemonade", "#4B3F72", "#C9B8E8", "#4B3F72", "#7E72A0"),
             new Colorway("hibiscus_tea", "Hibiscus Tea", "#5E1F3A", "#E8A0B4", "#6A2442", "#A0647A"),
