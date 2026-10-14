@@ -35,8 +35,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 - **LOCAL.** The first airport option. The GMT hand follows local time, and
   because WFF has no location source, the bezel's daylight comes from the
   watch's hourly weather forecast, with each day/night change drawn halfway
-  between forecast hours (within about 30 minutes; night only without weather
-  data). The label shows the local zone's abbreviation
+  between forecast hours (within about 30 minutes). With no forecast, or one
+  that says "day" for all 24 hours (the watch-face editor's preview data), it
+  shows a nominal 06:00–18:00 day so both colours still appear. The label shows the local zone's abbreviation
   (MDT, BST, CEST, NPT…). WFF's `[TIMEZONE_ABB]` only reports the standard
   name, so summer names are derived from it; zones without a named
   abbreviation show `UTC +13:45` style instead.

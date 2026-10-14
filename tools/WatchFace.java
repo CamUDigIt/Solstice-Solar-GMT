@@ -894,15 +894,26 @@ public class WatchFace {
      */
     static void weatherBezel(boolean ambient) {
         String hour = "floor([HOUR_0_23] + [MINUTE] / 60)";
-        bezelPart(ambient, null, () -> {
-            for (int k = 0; k < 24; k++) {
-                String hourly = "[WEATHER.HOURS." + k + ".IS_AVAILABLE] && [WEATHER.HOURS." + k + ".IS_DAY]";
-                String isDay = k != 0 ? hourly
-                        : "(" + hourly + ") || (![WEATHER.HOURS.0.IS_AVAILABLE] && [WEATHER.IS_AVAILABLE] && [WEATHER.IS_DAY])";
-                String s = "(" + hour + " + " + k + " - 0.5) * 15";
-                dayArc(s, "(" + isDay + ") ? (" + s + " + 15) : " + s);
-            }
-        });
+        // No forecast at all, or "day" for every one of the next 24 hours (what
+        // the watch-face editor's preview feeds in), can't place sunrise/sunset:
+        // show a nominal 06:00-18:00 day so the ring still shows both colours.
+        StringBuilder allDay = new StringBuilder();
+        for (int k = 0; k < 24; k++) {
+            if (k > 0) allDay.append(" && ");
+            allDay.append("[WEATHER.HOURS.").append(k).append(".IS_DAY]");
+        }
+        String noForecast = "![WEATHER.HOURS.0.IS_AVAILABLE] && ![WEATHER.IS_AVAILABLE]";
+        switchOn("(" + noForecast + ") || (" + allDay + ")",
+                () -> bezelPart(ambient, null, () -> dayArc("90", "270")),
+                () -> bezelPart(ambient, null, () -> {
+                    for (int k = 0; k < 24; k++) {
+                        String hourly = "[WEATHER.HOURS." + k + ".IS_AVAILABLE] && [WEATHER.HOURS." + k + ".IS_DAY]";
+                        String isDay = k != 0 ? hourly
+                                : "(" + hourly + ") || (![WEATHER.HOURS.0.IS_AVAILABLE] && [WEATHER.IS_AVAILABLE] && [WEATHER.IS_DAY])";
+                        String s = "(" + hour + " + " + k + " - 0.5) * 15";
+                        dayArc(s, "(" + isDay + ") ? (" + s + " + 15) : " + s);
+                    }
+                }));
     }
 
     // In always-on mode the full-width bands stay at the same alpha as the GMT
