@@ -117,15 +117,15 @@ public class WatchFace {
     }
 
     /**
-     * Editor name, e.g. "Denver · DEN · UTC−7". The offset is the zone's
+     * Editor name, e.g. "Denver" over "DEN · UTC−7". The offset is the zone's
      * standard (winter) offset, as time zone pickers usually list it: the
      * name is fixed text, while the label on the face shows the live offset.
      */
     static String displayName(Airport a) {
         int m = stdMinutes(a);
         String off = (m < 0 ? "−" : "+") + Math.abs(m) / 60 + (m % 60 == 0 ? "" : String.format(":%02d", Math.abs(m) % 60));
-        // No-break space keeps the dot with the code, so a wrapped name breaks before "UTC".
-        return a.city + " · " + a.code + " · UTC" + off;
+        // Always two lines (city, then code and offset) so every entry looks alike.
+        return a.city + "\n" + a.code + " · UTC" + off;
     }
 
     static final String DEFAULT_AIRPORT = "LHR";
@@ -1304,7 +1304,7 @@ public class WatchFace {
         str(s, "cfg_bezel", "Bezel colourway");
         str(s, "cfg_airport", "GMT airport");
         for (Colorway c : COLORWAYS) str(s, "bezel_" + c.id, c.name);
-        str(s, "airport_local", "LOCAL · Your time zone");
+        str(s, "airport_local", "LOCAL\nYour time zone");
         for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), displayName(a));
         str(s, "slot_left", "Left");
         str(s, "slot_bottom", "Bottom");
@@ -1316,7 +1316,7 @@ public class WatchFace {
 
     static void str(StringBuilder s, String name, String value) {
         s.append("    <string name=\"").append(name).append("\">")
-                .append(value.replace("&", "&amp;").replace("'", "\\'")).append("</string>\n");
+                .append(value.replace("&", "&amp;").replace("'", "\\'").replace("\n", "\\n")).append("</string>\n");
     }
 
     static void write(String path, String content) throws Exception {

@@ -24,7 +24,8 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 - **GMT hand.** It shows the time at one of 57 airports. The editor lists LOCAL
   first, then groups cities by continent (North America, South
   America, Europe, Africa, Asia including the Middle East, Oceania), west
-  to east by standard offset and then A–Z within each offset, each shown with its standard UTC offset (`Denver · DEN · UTC−7`).
+  to east by standard offset and then A–Z within each offset. Each entry has
+  two lines: the city, then its code and standard UTC offset (`DEN · UTC−7`).
   Each airport's IANA time zone is
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
   handled by the OS. Add or remove airports in the `AIRPORTS` list in
