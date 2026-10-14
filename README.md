@@ -21,7 +21,7 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     (about 78%); bright day colours use darker always-on shades so the face stays
     under the 15% always-on brightness limit (all colourways estimated at
     11.5% or less, even with day covering 80% of the ring).
-- **GMT hand.** It shows the time at one of 49 airports. The editor lists LOCAL
+- **GMT hand.** It shows the time at one of 57 airports. The editor lists LOCAL
   first, then groups cities by continent (North America, South
   America, Europe, Africa, Asia including the Middle East, Oceania), A–Z by
   city name, each shown with its standard UTC offset (`Denver · DEN · UTC−7`).

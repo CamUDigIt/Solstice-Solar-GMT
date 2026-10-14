@@ -54,6 +54,7 @@
     <string name="airport_yyz">Toronto · YYZ · UTC−5</string>
     <string name="airport_bog">Bogota · BOG · UTC−5</string>
     <string name="airport_scl">Santiago · SCL · UTC−4</string>
+    <string name="airport_yyt">St. John\'s · YYT · UTC−3:30</string>
     <string name="airport_gru">Sao Paulo · GRU · UTC−3</string>
     <string name="airport_eze">Buenos Aires · EZE · UTC−3</string>
     <string name="airport_lhr">London · LHR · UTC+0</string>
@@ -69,10 +70,15 @@
     <string name="airport_ist">Istanbul · IST · UTC+3</string>
     <string name="airport_nbo">Nairobi · NBO · UTC+3</string>
     <string name="airport_doh">Doha · DOH · UTC+3</string>
+    <string name="airport_ika">Tehran · IKA · UTC+3:30</string>
     <string name="airport_dxb">Dubai · DXB · UTC+4</string>
+    <string name="airport_kbl">Kabul · KBL · UTC+4:30</string>
+    <string name="airport_khi">Karachi · KHI · UTC+5</string>
     <string name="airport_del">Delhi · DEL · UTC+5:30</string>
     <string name="airport_bom">Mumbai · BOM · UTC+5:30</string>
     <string name="airport_ktm">Kathmandu · KTM · UTC+5:45</string>
+    <string name="airport_dac">Dhaka · DAC · UTC+6</string>
+    <string name="airport_rgn">Yangon · RGN · UTC+6:30</string>
     <string name="airport_bkk">Bangkok · BKK · UTC+7</string>
     <string name="airport_cgk">Jakarta · CGK · UTC+7</string>
     <string name="airport_sin">Singapore · SIN · UTC+8</string>
@@ -85,7 +91,9 @@
     <string name="airport_adl">Adelaide · ADL · UTC+9:30</string>
     <string name="airport_syd">Sydney · SYD · UTC+10</string>
     <string name="airport_mel">Melbourne · MEL · UTC+10</string>
+    <string name="airport_nou">Noumea · NOU · UTC+11</string>
     <string name="airport_akl">Auckland · AKL · UTC+12</string>
+    <string name="airport_tbu">Nuku\'alofa · TBU · UTC+13</string>
     <string name="slot_left">Left</string>
     <string name="slot_bottom">Bottom</string>
     <string name="slot_date_tap">Date tap action</string>

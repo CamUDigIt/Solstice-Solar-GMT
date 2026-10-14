@@ -25,7 +25,7 @@ public class WatchFace {
     // Ordered west to east (by standard UTC offset) so turning the crown in the
     // editor moves steadily around the globe.
     static final List<Airport> AIRPORTS = List.of(
-            // UTC-10 .. UTC-3
+            // UTC-10 .. UTC-3:30
             new Airport("HNL", "Honolulu", "Pacific/Honolulu", 21.32, -157.92),
             new Airport("ANC", "Anchorage", "America/Anchorage", 61.17, -149.99),
             new Airport("LAX", "Los Angeles", "America/Los_Angeles", 33.94, -118.41),
@@ -43,9 +43,10 @@ public class WatchFace {
             new Airport("YYZ", "Toronto", "America/Toronto", 43.68, -79.63),
             new Airport("BOG", "Bogota", "America/Bogota", 4.70, -74.15),
             new Airport("SCL", "Santiago", "America/Santiago", -33.39, -70.79),
+            new Airport("YYT", "St. John's", "America/St_Johns", 47.62, -52.75),
             new Airport("GRU", "Sao Paulo", "America/Sao_Paulo", -23.43, -46.47),
             new Airport("EZE", "Buenos Aires", "America/Argentina/Buenos_Aires", -34.82, -58.54),
-            // UTC+0 .. UTC+4
+            // UTC+0 .. UTC+5
             new Airport("LHR", "London", "Europe/London", 51.47, -0.45),
             new Airport("DUB", "Dublin", "Europe/Dublin", 53.43, -6.25),
             new Airport("CDG", "Paris", "Europe/Paris", 49.01, 2.55),
@@ -59,11 +60,16 @@ public class WatchFace {
             new Airport("IST", "Istanbul", "Europe/Istanbul", 41.26, 28.74),
             new Airport("NBO", "Nairobi", "Africa/Nairobi", -1.32, 36.93),
             new Airport("DOH", "Doha", "Asia/Qatar", 25.27, 51.61),
+            new Airport("IKA", "Tehran", "Asia/Tehran", 35.42, 51.15),
             new Airport("DXB", "Dubai", "Asia/Dubai", 25.25, 55.36),
+            new Airport("KBL", "Kabul", "Asia/Kabul", 34.57, 69.21),
+            new Airport("KHI", "Karachi", "Asia/Karachi", 24.91, 67.16),
             // UTC+5:30 .. UTC+13
             new Airport("DEL", "Delhi", "Asia/Kolkata", 28.56, 77.10),
             new Airport("BOM", "Mumbai", "Asia/Kolkata", 19.09, 72.87),
             new Airport("KTM", "Kathmandu", "Asia/Kathmandu", 27.70, 85.36),
+            new Airport("DAC", "Dhaka", "Asia/Dhaka", 23.84, 90.40),
+            new Airport("RGN", "Yangon", "Asia/Yangon", 16.91, 96.13),
             new Airport("BKK", "Bangkok", "Asia/Bangkok", 13.69, 100.75),
             new Airport("CGK", "Jakarta", "Asia/Jakarta", -6.13, 106.66),
             new Airport("SIN", "Singapore", "Asia/Singapore", 1.36, 103.99),
@@ -76,20 +82,22 @@ public class WatchFace {
             new Airport("ADL", "Adelaide", "Australia/Adelaide", -34.95, 138.53),
             new Airport("SYD", "Sydney", "Australia/Sydney", -33.95, 151.18),
             new Airport("MEL", "Melbourne", "Australia/Melbourne", -37.67, 144.84),
-            new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79));
+            new Airport("NOU", "Noumea", "Pacific/Noumea", -22.01, 166.21),
+            new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79),
+            new Airport("TBU", "Nuku'alofa", "Pacific/Tongatapu", -21.24, -175.15));
 
     // Editor order: continents in this order, cities A-Z within each.
     static final java.util.LinkedHashMap<String, List<String>> CONTINENTS = new java.util.LinkedHashMap<>();
     static {
         CONTINENTS.put("North America", List.of("ANC", "ATL", "ORD", "DFW", "DEN", "HNL", "LAX", "MEX", "MIA",
-                "JFK", "PHX", "SFO", "SEA", "YYZ", "YVR"));
+                "JFK", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR"));
         CONTINENTS.put("South America", List.of("BOG", "EZE", "SCL", "GRU"));
         CONTINENTS.put("Europe", List.of("AMS", "DUB", "FRA", "IST", "LHR", "MAD", "CDG", "FCO", "ZRH"));
         CONTINENTS.put("Africa", List.of("CAI", "JNB", "NBO"));
-        // Asia includes the Middle East (Doha, Dubai).
-        CONTINENTS.put("Asia", List.of("BKK", "PEK", "DEL", "DOH", "DXB", "HKG", "CGK", "KTM", "MNL", "BOM", "ICN",
-                "SIN", "HND"));
-        CONTINENTS.put("Oceania", List.of("ADL", "AKL", "MEL", "PER", "SYD"));
+        // Asia includes the Middle East (Doha, Dubai, Tehran).
+        CONTINENTS.put("Asia", List.of("BKK", "PEK", "DEL", "DAC", "DOH", "DXB", "HKG", "CGK", "KBL", "KHI", "KTM",
+                "MNL", "BOM", "ICN", "SIN", "IKA", "HND", "RGN"));
+        CONTINENTS.put("Oceania", List.of("ADL", "AKL", "MEL", "NOU", "TBU", "PER", "SYD"));
     }
 
     /** Each continent's cities sorted by city name. */
@@ -884,7 +892,12 @@ public class WatchFace {
                 + " - 0.002697 * cos(3 * " + g + ") + 0.00148 * sin(3 * " + g + "))";
         String halfDayMin = "(4 * deg(acos(clamp(" + n(k1) + " / cos(" + decl + ") - " + n(k2)
                 + " * tan(" + decl + "), -1, 1))))";
-        String noonMin = "(720 - 4 * " + n(a.lon) + " - " + eqTime + " + [TIMEZONE_OFFSET_MINUTES_DST])";
+        // Shift the longitude by 360 degrees where the zone sits across the date
+        // line from it (Tonga: UTC+13 at 175 W), so local noon lands near 12:00.
+        double lon = a.lon;
+        while (720 - 4 * lon + stdMinutes(a) > 1440) lon += 360;
+        while (720 - 4 * lon + stdMinutes(a) < 0) lon -= 360;
+        String noonMin = "(720 - 4 * " + n(lon) + " - " + eqTime + " + [TIMEZONE_OFFSET_MINUTES_DST])";
         String sunrise = "((" + noonMin + " - " + halfDayMin + ") / 60)";
         String sunset = "((" + noonMin + " + " + halfDayMin + ") / 60)";
 
