@@ -19,11 +19,8 @@
     <string name="bezel_zero_sugar_cola">Zero Sugar Cola</string>
     <string name="bezel_gold_cola">Gold Cola</string>
     <string name="bezel_cherry_cola">Cherry Cola</string>
-    <string name="bezel_diet_cherry_cola">Diet Cherry Cola</string>
     <string name="bezel_spiced_cherry">Spiced Cherry</string>
-    <string name="bezel_spiced_red">Spiced Red</string>
     <string name="bezel_lemon_lime">Lemon-Lime</string>
-    <string name="bezel_lime_green">Lime Green</string>
     <string name="bezel_grapefruit">Grapefruit</string>
     <string name="bezel_neon_citrus">Neon Citrus</string>
     <string name="bezel_diet_neon_citrus">Diet Neon Citrus</string>

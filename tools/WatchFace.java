@@ -239,12 +239,9 @@ public class WatchFace {
             new Colorway("zero_sugar_cola", "Zero Sugar Cola", "#0B0B0D", "#E41E2B", "#3F3F46", "#E41E2B"),
             new Colorway("gold_cola", "Gold Cola", "#8E1B1B", "#D4A72C", "#8E1B1B", "#866A18"),
             new Colorway("cherry_cola", "Cherry Cola", "#3D0C1C", "#B0174F", "#6B1A33", "#B0174F"),
-            new Colorway("diet_cherry_cola", "Diet Cherry Cola", "#B0174F", "#B8BEC6", "#B0174F", "#656B72"),
             new Colorway("spiced_cherry", "Spiced Cherry", "#5C1324", "#A9B0B8", "#6A1A2C", "#656B72"),
-            new Colorway("spiced_red", "Spiced Red", "#4A0D1A", "#C8102E", "#6B1A2A", "#C8102E"),
             // Citrus and lemon-lime
             new Colorway("lemon_lime", "Lemon-Lime", "#0B3D91", "#1E9E4A", "#0B3D91", "#19873F"),
-            new Colorway("lime_green", "Lime Green", "#00553A", "#2DB34A", "#00553A", "#228537"),
             new Colorway("grapefruit", "Grapefruit", "#2E6B1E", "#E5C21F", "#2E6B1E", "#7F6C12"),
             new Colorway("neon_citrus", "Neon Citrus", "#0F5132", "#8DC63F", "#186040", "#557723"),
             new Colorway("diet_neon_citrus", "Diet Neon Citrus", "#0F5132", "#B8BEC6", "#186040", "#656B72"),

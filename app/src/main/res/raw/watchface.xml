@@ -22,11 +22,8 @@
       <ColorOption id="zero_sugar_cola" displayName="bezel_zero_sugar_cola" icon="icon_bezel_zero_sugar_cola" colors="#0B0B0D #E41E2B #3F3F46 #E41E2B"/>
       <ColorOption id="gold_cola" displayName="bezel_gold_cola" icon="icon_bezel_gold_cola" colors="#8E1B1B #D4A72C #8E1B1B #866A18"/>
       <ColorOption id="cherry_cola" displayName="bezel_cherry_cola" icon="icon_bezel_cherry_cola" colors="#3D0C1C #B0174F #6B1A33 #B0174F"/>
-      <ColorOption id="diet_cherry_cola" displayName="bezel_diet_cherry_cola" icon="icon_bezel_diet_cherry_cola" colors="#B0174F #B8BEC6 #B0174F #656B72"/>
       <ColorOption id="spiced_cherry" displayName="bezel_spiced_cherry" icon="icon_bezel_spiced_cherry" colors="#5C1324 #A9B0B8 #6A1A2C #656B72"/>
-      <ColorOption id="spiced_red" displayName="bezel_spiced_red" icon="icon_bezel_spiced_red" colors="#4A0D1A #C8102E #6B1A2A #C8102E"/>
       <ColorOption id="lemon_lime" displayName="bezel_lemon_lime" icon="icon_bezel_lemon_lime" colors="#0B3D91 #1E9E4A #0B3D91 #19873F"/>
-      <ColorOption id="lime_green" displayName="bezel_lime_green" icon="icon_bezel_lime_green" colors="#00553A #2DB34A #00553A #228537"/>
       <ColorOption id="grapefruit" displayName="bezel_grapefruit" icon="icon_bezel_grapefruit" colors="#2E6B1E #E5C21F #2E6B1E #7F6C12"/>
       <ColorOption id="neon_citrus" displayName="bezel_neon_citrus" icon="icon_bezel_neon_citrus" colors="#0F5132 #8DC63F #186040 #557723"/>
       <ColorOption id="diet_neon_citrus" displayName="bezel_diet_neon_citrus" icon="icon_bezel_diet_neon_citrus" colors="#0F5132 #B8BEC6 #186040 #656B72"/>
