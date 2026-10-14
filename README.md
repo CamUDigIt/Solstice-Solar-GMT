@@ -24,7 +24,8 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 - **GMT hand.** It shows the time at one of 49 airports. The editor lists LOCAL
   first, then groups cities by continent (North America, South
   America, Europe, Africa, Asia including the Middle East, Oceania), A–Z by
-  city name. Each airport's IANA time zone is
+  city name, each shown with its standard UTC offset (`Denver · DEN · UTC−7`).
+  Each airport's IANA time zone is
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
   handled by the OS. Add or remove airports in the `AIRPORTS` list in
   `tools/WatchFace.java`.

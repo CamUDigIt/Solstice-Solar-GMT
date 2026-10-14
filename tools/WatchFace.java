@@ -107,9 +107,17 @@ public class WatchFace {
         return order;
     }
 
+    /**
+     * Editor name, e.g. "Denver · DEN · UTC−7". The offset is the zone's
+     * standard (winter) offset, as time zone pickers usually list it: the
+     * name is fixed text, while the label on the face shows the live offset.
+     */
     static String displayName(Airport a) {
-        // Short enough to fit the editor chip on small watches; the list is still grouped by continent.
-        return a.city + " · " + a.code;
+        int m = java.time.ZoneId.of(a.zone).getRules()
+                .getStandardOffset(java.time.Instant.now()).getTotalSeconds() / 60;
+        String off = (m < 0 ? "−" : "+") + Math.abs(m) / 60 + (m % 60 == 0 ? "" : String.format(":%02d", Math.abs(m) % 60));
+        // No-break space keeps the dot with the code, so a wrapped name breaks before "UTC".
+        return a.city + " · " + a.code + " · UTC" + off;
     }
 
     static final String DEFAULT_AIRPORT = "LHR";
