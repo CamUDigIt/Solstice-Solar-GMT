@@ -82,13 +82,15 @@ public class WatchFace {
     // Editor order: continents in this order, cities A-Z within each.
     static final java.util.LinkedHashMap<String, List<String>> CONTINENTS = new java.util.LinkedHashMap<>();
     static {
-        CONTINENTS.put("Americas", List.of("ANC", "ATL", "BOG", "EZE", "DFW", "DEN", "LAX", "MEX", "MIA",
-                "JFK", "ORD", "PHX", "SFO", "SCL", "GRU", "SEA", "YYZ", "YVR"));
+        CONTINENTS.put("North America", List.of("ANC", "ATL", "ORD", "DFW", "DEN", "HNL", "LAX", "MEX", "MIA",
+                "JFK", "PHX", "SFO", "SEA", "YYZ", "YVR"));
+        CONTINENTS.put("South America", List.of("BOG", "EZE", "SCL", "GRU"));
         CONTINENTS.put("Europe", List.of("AMS", "DUB", "FRA", "IST", "LHR", "MAD", "CDG", "FCO", "ZRH"));
         CONTINENTS.put("Africa", List.of("CAI", "JNB", "NBO"));
-        CONTINENTS.put("Middle East", List.of("DOH", "DXB"));
-        CONTINENTS.put("Asia", List.of("BKK", "PEK", "DEL", "HKG", "CGK", "KTM", "MNL", "BOM", "ICN", "SIN", "HND"));
-        CONTINENTS.put("Oceania", List.of("ADL", "AKL", "HNL", "MEL", "PER", "SYD"));
+        // Asia includes the Middle East (Doha, Dubai).
+        CONTINENTS.put("Asia", List.of("BKK", "PEK", "DEL", "DOH", "DXB", "HKG", "CGK", "KTM", "MNL", "BOM", "ICN",
+                "SIN", "HND"));
+        CONTINENTS.put("Oceania", List.of("ADL", "AKL", "MEL", "PER", "SYD"));
     }
 
     static String continent(Airport a) {
