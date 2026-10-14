@@ -961,26 +961,29 @@ public class WatchFace {
         switchOn("(" + noForecast + ") || (" + allDay + ")",
                 () -> bezelPart(ambient, null, () -> dayArc("90", "270")),
                 () -> bezelPart(ambient, null, () -> {
+                    // Forecasts can flag a single hour wrongly (seen on a Pixel Watch 4:
+                    // the 10 AM hour marked night, today and tomorrow, between day
+                    // hours). Each hour takes the majority of itself and the hours either
+                    // side of it on the ring (hour 23 sits next to hour 0), which removes
+                    // one-hour glitches without moving real sunrise/sunset edges.
                     for (int k = 0; k < 24; k++) {
-                        String hourly = hourlyDay(k);
-                        // The current hour's own flag can disagree with the hours either
-                        // side of it (seen on a Pixel Watch 4: night at 10:55 AM between
-                        // two day hours). When the next hour and the previous one (hour
-                        // 23, tomorrow) agree, follow them; the flag only decides at
-                        // sunrise and sunset, where they differ.
-                        String current = "(" + hourly + ") || (![WEATHER.HOURS.0.IS_AVAILABLE] && [WEATHER.IS_AVAILABLE] && [WEATHER.IS_DAY])";
-                        String next = "(" + hourlyDay(1) + ")", prev = "(" + hourlyDay(23) + ")";
-                        String isDay = k != 0 ? hourly
-                                : "(" + next + " && " + prev + ") || (" + next + " != " + prev + " && (" + current + "))";
+                        String a = "(" + hourlyDay((k + 23) % 24) + ")", b = "(" + hourlyDay(k) + ")", c = "(" + hourlyDay((k + 1) % 24) + ")";
+                        String isDay = "(" + a + " && " + b + ") || (" + a + " && " + c + ") || (" + b + " && " + c + ")";
                         String s = "(" + hour + " + " + k + " - 0.5) * 15";
                         dayArc(s, "(" + isDay + ") ? (" + s + " + 15) : " + s);
                     }
                 }));
     }
 
-    /** Whether forecast hour k (0 = this hour) is daytime; false when that hour isn't available. */
+    /**
+     * Whether forecast hour k (0 = this hour) is daytime; false when that hour
+     * isn't available. Hour 0 falls back to the current conditions when the
+     * hourly forecast doesn't include it.
+     */
     static String hourlyDay(int k) {
-        return "[WEATHER.HOURS." + k + ".IS_AVAILABLE] && [WEATHER.HOURS." + k + ".IS_DAY]";
+        String hourly = "[WEATHER.HOURS." + k + ".IS_AVAILABLE] && [WEATHER.HOURS." + k + ".IS_DAY]";
+        return k != 0 ? hourly
+                : "(" + hourly + ") || (![WEATHER.HOURS.0.IS_AVAILABLE] && [WEATHER.IS_AVAILABLE] && [WEATHER.IS_DAY])";
     }
 
     // In always-on mode the full-width bands stay at the same alpha as the GMT
