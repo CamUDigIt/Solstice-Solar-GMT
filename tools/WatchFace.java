@@ -749,7 +749,10 @@ public class WatchFace {
 
     static void textLine(int x, int y, int w, int h, int size, String weight, String color, String expr, int maxLines) {
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
-        open("Text align=\"CENTER\" ellipsis=\"TRUE\" maxLines=\"%d\"", maxLines);
+        // On a Pixel Watch 4 (API 37) ellipsis forces a single line even with
+        // maxLines > 1, so multi-line text relies on the part's bounds instead.
+        if (maxLines > 1) open("Text align=\"CENTER\" maxLines=\"%d\"", maxLines);
+        else open("Text align=\"CENTER\" ellipsis=\"TRUE\" maxLines=\"1\"");
         open(font(size, weight, color));
         line("<Template>%%s<Parameter expression=\"%s\"/></Template>", expr);
         close("Font");

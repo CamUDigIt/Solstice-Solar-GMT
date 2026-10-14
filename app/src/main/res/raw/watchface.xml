@@ -831,7 +831,7 @@
               </Compare>
               <Default>
                 <PartText x="4" y="2" width="212" height="68">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="2">
+                  <Text align="CENTER" maxLines="2">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
                     </Font>
@@ -870,7 +870,7 @@
               </Compare>
               <Default>
                 <PartText x="4" y="2" width="212" height="68">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="2">
+                  <Text align="CENTER" maxLines="2">
                     <Font family="oswald_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
                     </Font>
@@ -915,7 +915,7 @@
               </Compare>
               <Default>
                 <PartText x="4" y="2" width="212" height="68">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="2">
+                  <Text align="CENTER" maxLines="2">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
                     </Font>
@@ -954,7 +954,7 @@
               </Compare>
               <Default>
                 <PartText x="4" y="2" width="212" height="68">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="2">
+                  <Text align="CENTER" maxLines="2">
                     <Font family="oswald_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
                     </Font>
