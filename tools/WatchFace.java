@@ -958,24 +958,17 @@ public class WatchFace {
         return ambient ? "[CONFIGURATION.bezel.2]" : "[CONFIGURATION.bezel.0]";
     }
 
+    /** "LHR +1H", "HNL −10H", "KTM +5:45H": the airport's offset from UTC; the UTC option reads just "UTC". */
     static void airportLabel(Airport a) {
-        label(a.code + " %s%s%s%sH", offsetParams(destOffset(a)));
-    }
-
-    /**
-     * Template parameters for "+7H" / "-3H" / "+5:30H": hours ahead of (or
-     * behind) the wearer's local time. Not localised, so
-     * [TIMEZONE_OFFSET_MINUTES_DST] is the wearer's offset.
-     */
-    static String[] offsetParams(String dest) {
-        return signedHours("(" + dest + " - [TIMEZONE_OFFSET_MINUTES_DST])");
+        if (a.zone.equals("Etc/UTC")) label("UTC");
+        else label(a.code + " %s%s%s%sH", signedHours(destOffset(a)));
     }
 
     /** Template parameters for a signed minute offset: sign, hours, ":" and minutes when not whole. */
     static String[] signedHours(String minutes) {
         String whole = "abs(" + minutes + ") % 60 == 0";
         return new String[] {
-                // Same zone reads "+0H".
+                // Zero reads "+0H".
                 minutes + " < 0 ? \"−\" : \"+\"",
                 "floor(abs(" + minutes + ") / 60)",
                 whole + " ? \"\" : \":\"",

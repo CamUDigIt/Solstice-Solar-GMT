@@ -28,10 +28,10 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
   handled by the OS. Add or remove airports in the `AIRPORTS` list in
   `tools/WatchFace.java`.
-- **Offset label.** For example `LHR +7H`, `HNL −4H` or `KTM +11:45H`: how far
-  the airport is ahead of or behind local time. Text inside a localised part
-  can't see the wearer's offset, so the label computes the airport's offset
-  from the UTC clock and its daylight-saving rule. `tools/DstCheck.java` verifies
+- **Offset label.** For example `LHR +1H`, `HNL −10H` or `KTM +5:45H`: the
+  airport's current offset from UTC, including daylight saving (the UTC option
+  reads just `UTC`). The label computes the offset from the UTC clock and the
+  airport's daylight-saving rule. `tools/DstCheck.java` verifies
   those rules against `java.time` for every hour through 2040.
 - **LOCAL.** The first airport option. The GMT hand follows local time, and
   because WFF has no location source, the bezel's daylight comes from the
