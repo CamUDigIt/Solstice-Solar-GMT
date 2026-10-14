@@ -6300,7 +6300,7 @@
                 <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="0">
                   <Stroke color="[CONFIGURATION.bezel.1]" thickness="40" cap="BUTT"/>
                   <Transform target="startAngle" value="(floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15"/>
-                  <Transform target="endAngle" value="(([WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.0.IS_DAY]) || (![WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_DAY])) ? ((floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15 + 15) : (floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15"/>
+                  <Transform target="endAngle" value="((([WEATHER.HOURS.1.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.1.IS_DAY]) &amp;&amp; ([WEATHER.HOURS.23.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.23.IS_DAY])) || (([WEATHER.HOURS.1.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.1.IS_DAY]) != ([WEATHER.HOURS.23.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.23.IS_DAY]) &amp;&amp; (([WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.0.IS_DAY]) || (![WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_DAY])))) ? ((floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15 + 15) : (floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15"/>
                 </Arc>
                 <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="0">
                   <Stroke color="[CONFIGURATION.bezel.1]" thickness="40" cap="BUTT"/>
@@ -6446,7 +6446,7 @@
                 <Arc centerX="225" centerY="225" width="384" height="384" startAngle="0" endAngle="0">
                   <Stroke color="[CONFIGURATION.bezel.3]" thickness="8" cap="BUTT"/>
                   <Transform target="startAngle" value="(floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15"/>
-                  <Transform target="endAngle" value="(([WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.0.IS_DAY]) || (![WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_DAY])) ? ((floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15 + 15) : (floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15"/>
+                  <Transform target="endAngle" value="((([WEATHER.HOURS.1.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.1.IS_DAY]) &amp;&amp; ([WEATHER.HOURS.23.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.23.IS_DAY])) || (([WEATHER.HOURS.1.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.1.IS_DAY]) != ([WEATHER.HOURS.23.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.23.IS_DAY]) &amp;&amp; (([WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.0.IS_DAY]) || (![WEATHER.HOURS.0.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_DAY])))) ? ((floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15 + 15) : (floor([HOUR_0_23] + [MINUTE] / 60) + 0 - 0.5) * 15"/>
                 </Arc>
                 <Arc centerX="225" centerY="225" width="384" height="384" startAngle="0" endAngle="0">
                   <Stroke color="[CONFIGURATION.bezel.3]" thickness="8" cap="BUTT"/>
