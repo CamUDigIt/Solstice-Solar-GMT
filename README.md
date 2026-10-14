@@ -59,9 +59,10 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   12, clear of where the hands usually sit.
 - **Complications.** A round slot at 9 o'clock (ranged value, goal progress,
   short text or icon, with a progress ring in the bezel's day colour) and a
-  long-text slot at 6 o'clock. The long-text slot shows text over title, or
-  wraps the text onto two lines when the provider has no title (for example
-  calendar events like "Team Standup · 3:00 PM").
+  long-text slot at 6 o'clock, drawn straight on the dial (no box). It shows
+  text over title; text like "Daily Planning · Wed 7:00 AM" is split at the
+  separator into name and time on two lines; other text
+  wraps onto two lines.
 - **Date** at 3 o'clock: a Cyclops-style window on Pilot, plain white
   gold numerals on Flat (#E3B341, an Apple-style date accent).
 - **Tap actions.** Two invisible complication slots sit over the date and the

@@ -745,14 +745,7 @@ public class WatchFace {
                 boolean pilot = style == PILOT;
                 int bw = pilot ? 180 : w, bh = pilot ? 86 : h, bx = (w - bw) / 2;
                 open("Group name=\"long_text_%s\" x=\"%d\" y=\"0\" width=\"%d\" height=\"%d\"", style.id, bx, bw, bh);
-                open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", bw, bh);
-                int r = pilot ? 8 : 14;
-                open("RoundRectangle x=\"0.5\" y=\"0.5\" width=\"%d\" height=\"%d\" cornerRadiusX=\"%d\" cornerRadiusY=\"%d\"", bw - 1, bh - 1, r, r);
-                if (pilot) line("<Stroke color=\"#334155\" thickness=\"1\"/>");
-                line("<Fill color=\"%s\"/>", pilot ? "#0A0D12" : FLAT_PANEL);
-                close("RoundRectangle");
-                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
-                close("PartDraw");
+                // No box: the dial shows through behind the event text.
                 longTextBody(bw, bh);
                 close("Group");
             });
@@ -777,9 +770,39 @@ public class WatchFace {
         textLine(4, 2 + textH, w - 8, h - textH - 4, TEXT_SECONDARY, "NORMAL", MUTED, "[COMPLICATION.TITLE]");
         close("Compare");
         open("Default");
-        textLine(4, 2, w - 8, h - 4, TEXT_ESSENTIAL, "MEDIUM", STEEL, "[COMPLICATION.TEXT]", 2);
+        splitOnSeparator(w, h, textH);
         close("Default");
         close("Condition");
+    }
+
+    static final String[] SEPARATORS = {" · ", " - ", " – ", " — "};
+    static final int MAX_SPLIT = 48;   // longest event name the split looks for
+
+    /**
+     * Calendar providers often send one string like "Daily Planning · Wed
+     * 7:00 AM". WFF has no find function, so each position is checked for a
+     * separator: the first one found splits the text into the event name and
+     * the time on two lines, dropping the separator. Text without one wraps
+     * onto two lines as it is.
+     */
+    static void splitOnSeparator(int w, int h, int textH) {
+        String t = "[COMPLICATION.TEXT]", len = "textLength(" + t + ")";
+        String[] exprs = new String[MAX_SPLIT];
+        Runnable[] bodies = new Runnable[MAX_SPLIT];
+        for (int i = 1; i <= MAX_SPLIT; i++) {
+            StringBuilder any = new StringBuilder();
+            for (String sep : SEPARATORS) {
+                if (any.length() > 0) any.append(" || ");
+                any.append("subText(").append(t).append(", ").append(i).append(", ").append(i + 3).append(") == \"").append(sep).append("\"");
+            }
+            exprs[i - 1] = len + " > " + (i + 3) + " && (" + any + ")";
+            final int at = i;
+            bodies[i - 1] = () -> {
+                textLine(4, 2, w - 8, textH, TEXT_ESSENTIAL, "MEDIUM", STEEL, "subText(" + t + ", 0, " + at + ")");
+                textLine(4, 2 + textH, w - 8, textH, TEXT_ESSENTIAL, "MEDIUM", STEEL, "subText(" + t + ", " + (at + 3) + ", " + len + ")");
+            };
+        }
+        chain(exprs, bodies, () -> textLine(4, 2, w - 8, h - 4, TEXT_ESSENTIAL, "MEDIUM", STEEL, t, 2));
     }
 
     static void textLine(int x, int y, int w, int h, int size, String weight, String color, String expr) {
