@@ -22,7 +22,6 @@
       <ColorOption id="gold_cola" displayName="bezel_gold_cola" icon="icon_bezel_gold_cola" colors="#8E1B1B #D4A72C #8E1B1B #8F711A"/>
       <ColorOption id="cherry_cola" displayName="bezel_cherry_cola" icon="icon_bezel_cherry_cola" colors="#3D0C1C #B0174F #6B1A33 #B0174F"/>
       <ColorOption id="diet_cherry_cola" displayName="bezel_diet_cherry_cola" icon="icon_bezel_diet_cherry_cola" colors="#B0174F #B8BEC6 #B0174F #6A7078"/>
-      <ColorOption id="pink_cola" displayName="bezel_pink_cola" icon="icon_bezel_pink_cola" colors="#7A1446 #E0569A #7A1446 #B8457E"/>
       <ColorOption id="spiced_cherry" displayName="bezel_spiced_cherry" icon="icon_bezel_spiced_cherry" colors="#5C1324 #A9B0B8 #6A1A2C #737A82"/>
       <ColorOption id="spiced_red" displayName="bezel_spiced_red" icon="icon_bezel_spiced_red" colors="#4A0D1A #C8102E #6B1A2A #C8102E"/>
       <ColorOption id="lemon_lime" displayName="bezel_lemon_lime" icon="icon_bezel_lemon_lime" colors="#0B3D91 #1E9E4A #0B3D91 #1A8A41"/>

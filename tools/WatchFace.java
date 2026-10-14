@@ -230,7 +230,6 @@ public class WatchFace {
             new Colorway("gold_cola", "Gold Cola", "#8E1B1B", "#D4A72C", "#8E1B1B", "#8F711A"),
             new Colorway("cherry_cola", "Cherry Cola", "#3D0C1C", "#B0174F", "#6B1A33", "#B0174F"),
             new Colorway("diet_cherry_cola", "Diet Cherry Cola", "#B0174F", "#B8BEC6", "#B0174F", "#6A7078"),
-            new Colorway("pink_cola", "Pink Cola", "#7A1446", "#E0569A", "#7A1446", "#B8457E"),
             new Colorway("spiced_cherry", "Spiced Cherry", "#5C1324", "#A9B0B8", "#6A1A2C", "#737A82"),
             new Colorway("spiced_red", "Spiced Red", "#4A0D1A", "#C8102E", "#6B1A2A", "#C8102E"),
             // Citrus and lemon-lime
