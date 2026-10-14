@@ -13,12 +13,12 @@
       <ListOption id="24" displayName="bezel_format_24"/>
     </ListConfiguration>
     <ColorConfiguration id="bezel" displayName="cfg_bezel" screenReaderText="cfg_bezel" icon="icon_cfg_bezel" defaultValue="pepsi">
-      <ColorOption id="pepsi" displayName="bezel_pepsi" icon="icon_bezel_pepsi" colors="#1D4ED8 #C81E1E #1D4ED8"/>
-      <ColorOption id="batman" displayName="bezel_batman" icon="icon_bezel_batman" colors="#0B0B0E #2563EB #52525B"/>
-      <ColorOption id="coke" displayName="bezel_coke" icon="icon_bezel_coke" colors="#111318 #B91C1C #52525B"/>
-      <ColorOption id="rootbeer" displayName="bezel_rootbeer" icon="icon_bezel_rootbeer" colors="#3A2A1F #B7791F #7C5A3F"/>
-      <ColorOption id="golden_hour" displayName="bezel_golden_hour" icon="icon_bezel_golden_hour" colors="#2E1065 #EA580C #6D28D9"/>
-      <ColorOption id="polar" displayName="bezel_polar" icon="icon_bezel_polar" colors="#0F172A #CBD5E1 #475569"/>
+      <ColorOption id="pepsi" displayName="bezel_pepsi" icon="icon_bezel_pepsi" colors="#1D4ED8 #C81E1E #1D4ED8 #C81E1E"/>
+      <ColorOption id="batman" displayName="bezel_batman" icon="icon_bezel_batman" colors="#0B0B0E #2563EB #52525B #2563EB"/>
+      <ColorOption id="coke" displayName="bezel_coke" icon="icon_bezel_coke" colors="#111318 #B91C1C #52525B #B91C1C"/>
+      <ColorOption id="rootbeer" displayName="bezel_rootbeer" icon="icon_bezel_rootbeer" colors="#3A2A1F #B7791F #7C5A3F #B7791F"/>
+      <ColorOption id="golden_hour" displayName="bezel_golden_hour" icon="icon_bezel_golden_hour" colors="#2E1065 #EA580C #6D28D9 #EA580C"/>
+      <ColorOption id="polar" displayName="bezel_polar" icon="icon_bezel_polar" colors="#0F172A #CBD5E1 #475569 #8C97A6"/>
     </ColorConfiguration>
     <ListConfiguration id="airport" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="LHR">
       <ListOption id="LOCAL" displayName="airport_local"/>
@@ -471,9 +471,6 @@
             </PartDraw>
           </Default>
         </Condition>
-        <PartImage x="46" y="24" width="24" height="24" tintColor="#C9CED6">
-          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-        </PartImage>
         <Condition>
           <Expressions>
             <Expression name="c4"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
@@ -484,14 +481,17 @@
                 <Expression name="c5"><![CDATA[textLength([COMPLICATION.TEXT]) > 2 && (subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "AM" || subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "PM")]]></Expression>
               </Expressions>
               <Compare expression="c5">
-                <PartText x="14" y="46" width="88" height="34">
+                <PartImage x="49" y="20" width="18" height="18" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="36" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], 0, textLength([COMPLICATION.TEXT]) - 2)"/></Template>
                     </Font>
                   </Text>
                 </PartText>
-                <PartText x="14" y="76" width="88" height="26">
+                <PartText x="14" y="66" width="88" height="24">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_400" size="24" color="#8A93A0">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT]))"/></Template>
@@ -500,7 +500,10 @@
                 </PartText>
               </Compare>
               <Default>
-                <PartText x="14" y="50" width="88" height="34">
+                <PartImage x="47" y="19" width="22" height="22" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="41" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -516,14 +519,17 @@
                 <Expression name="c6"><![CDATA[textLength([COMPLICATION.TEXT]) > 2 && (subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "AM" || subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "PM")]]></Expression>
               </Expressions>
               <Compare expression="c6">
-                <PartText x="14" y="46" width="88" height="34">
+                <PartImage x="49" y="20" width="18" height="18" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="36" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_500" size="28" color="#C9CED6">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], 0, textLength([COMPLICATION.TEXT]) - 2)"/></Template>
                     </Font>
                   </Text>
                 </PartText>
-                <PartText x="14" y="76" width="88" height="26">
+                <PartText x="14" y="66" width="88" height="24">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_400" size="24" color="#8A93A0">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT]))"/></Template>
@@ -532,7 +538,10 @@
                 </PartText>
               </Compare>
               <Default>
-                <PartText x="14" y="50" width="88" height="34">
+                <PartImage x="47" y="19" width="22" height="22" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="41" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_500" size="28" color="#C9CED6">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -596,9 +605,6 @@
             </PartDraw>
           </Default>
         </Condition>
-        <PartImage x="46" y="24" width="24" height="24" tintColor="#C9CED6">
-          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-        </PartImage>
         <Condition>
           <Expressions>
             <Expression name="c9"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
@@ -609,14 +615,17 @@
                 <Expression name="c10"><![CDATA[textLength([COMPLICATION.TEXT]) > 2 && (subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "AM" || subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "PM")]]></Expression>
               </Expressions>
               <Compare expression="c10">
-                <PartText x="14" y="46" width="88" height="34">
+                <PartImage x="49" y="20" width="18" height="18" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="36" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], 0, textLength([COMPLICATION.TEXT]) - 2)"/></Template>
                     </Font>
                   </Text>
                 </PartText>
-                <PartText x="14" y="76" width="88" height="26">
+                <PartText x="14" y="66" width="88" height="24">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_400" size="24" color="#8A93A0">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT]))"/></Template>
@@ -625,7 +634,10 @@
                 </PartText>
               </Compare>
               <Default>
-                <PartText x="14" y="50" width="88" height="34">
+                <PartImage x="47" y="19" width="22" height="22" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="41" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -641,14 +653,17 @@
                 <Expression name="c11"><![CDATA[textLength([COMPLICATION.TEXT]) > 2 && (subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "AM" || subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "PM")]]></Expression>
               </Expressions>
               <Compare expression="c11">
-                <PartText x="14" y="46" width="88" height="34">
+                <PartImage x="49" y="20" width="18" height="18" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="36" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_500" size="28" color="#C9CED6">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], 0, textLength([COMPLICATION.TEXT]) - 2)"/></Template>
                     </Font>
                   </Text>
                 </PartText>
-                <PartText x="14" y="76" width="88" height="26">
+                <PartText x="14" y="66" width="88" height="24">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_400" size="24" color="#8A93A0">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT]))"/></Template>
@@ -657,7 +672,10 @@
                 </PartText>
               </Compare>
               <Default>
-                <PartText x="14" y="50" width="88" height="34">
+                <PartImage x="47" y="19" width="22" height="22" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="41" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_500" size="28" color="#C9CED6">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -692,9 +710,6 @@
             </PartDraw>
           </Default>
         </Condition>
-        <PartImage x="46" y="24" width="24" height="24" tintColor="#C9CED6">
-          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-        </PartImage>
         <Condition>
           <Expressions>
             <Expression name="c13"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
@@ -705,14 +720,17 @@
                 <Expression name="c14"><![CDATA[textLength([COMPLICATION.TEXT]) > 2 && (subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "AM" || subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "PM")]]></Expression>
               </Expressions>
               <Compare expression="c14">
-                <PartText x="14" y="46" width="88" height="34">
+                <PartImage x="49" y="20" width="18" height="18" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="36" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], 0, textLength([COMPLICATION.TEXT]) - 2)"/></Template>
                     </Font>
                   </Text>
                 </PartText>
-                <PartText x="14" y="76" width="88" height="26">
+                <PartText x="14" y="66" width="88" height="24">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_400" size="24" color="#8A93A0">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT]))"/></Template>
@@ -721,7 +739,10 @@
                 </PartText>
               </Compare>
               <Default>
-                <PartText x="14" y="50" width="88" height="34">
+                <PartImage x="47" y="19" width="22" height="22" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="41" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="inter_500" size="28" color="#FFFFFF">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -737,14 +758,17 @@
                 <Expression name="c15"><![CDATA[textLength([COMPLICATION.TEXT]) > 2 && (subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "AM" || subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT])) == "PM")]]></Expression>
               </Expressions>
               <Compare expression="c15">
-                <PartText x="14" y="46" width="88" height="34">
+                <PartImage x="49" y="20" width="18" height="18" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="36" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_500" size="28" color="#C9CED6">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], 0, textLength([COMPLICATION.TEXT]) - 2)"/></Template>
                     </Font>
                   </Text>
                 </PartText>
-                <PartText x="14" y="76" width="88" height="26">
+                <PartText x="14" y="66" width="88" height="24">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_400" size="24" color="#8A93A0">
                       <Template>%s<Parameter expression="subText([COMPLICATION.TEXT], textLength([COMPLICATION.TEXT]) - 2, textLength([COMPLICATION.TEXT]))"/></Template>
@@ -753,7 +777,10 @@
                 </PartText>
               </Compare>
               <Default>
-                <PartText x="14" y="50" width="88" height="34">
+                <PartImage x="47" y="19" width="22" height="22" tintColor="#C9CED6">
+                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+                <PartText x="14" y="41" width="88" height="34">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald_500" size="28" color="#C9CED6">
                       <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
@@ -1122,126 +1149,126 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 0) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.IS_AVAILABLE] &amp;&amp; [WEATHER.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 0) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 0) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 1) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.1.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.1.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 1) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 1) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 2) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.2.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.2.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 2) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 2) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 3) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.3.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.3.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 3) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 3) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 4) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.4.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.4.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 4) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 4) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 5) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.5.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.5.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 5) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 5) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 6) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.6.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.6.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 6) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 6) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 7) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.7.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.7.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 7) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 7) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 8) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.8.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.8.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 8) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 8) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 9) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.9.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.9.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 9) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 9) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 10) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.10.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.10.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 10) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 10) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 11) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.11.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.11.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 11) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 11) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 12) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.12.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.12.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 12) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 12) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 13) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.13.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.13.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 13) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 13) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 14) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.14.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.14.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 14) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 14) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 15) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.15.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.15.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 15) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 15) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 16) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.16.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.16.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 16) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 16) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 17) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.17.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.17.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 17) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 17) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 18) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.18.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.18.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 18) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 18) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 19) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.19.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.19.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 19) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 19) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 20) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.20.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.20.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 20) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 20) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 21) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.21.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.21.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 21) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 21) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 22) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.22.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.22.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 22) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 22) % 24) * 15"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="((floor([HOUR_0_23] + [MINUTE] / 60) + 23) % 24) * 15"/>
               <Transform target="endAngle" value="([WEATHER.HOURS.23.IS_AVAILABLE] &amp;&amp; [WEATHER.HOURS.23.IS_DAY]) ? (((floor([HOUR_0_23] + [MINUTE] / 60) + 23) % 24) * 15 + 15) : ((floor([HOUR_0_23] + [MINUTE] / 60) + 23) % 24) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -1457,11 +1484,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 0 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.023344 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.256272 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 0 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.023344 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.256272 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -1535,11 +1562,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -157.92 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.015606 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.390286 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -157.92 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.015606 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.390286 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -1613,11 +1640,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -149.99 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.030149 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.816739 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -149.99 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.030149 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.816739 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -1691,11 +1718,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -118.41 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017524 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.672986 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -118.41 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017524 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.672986 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -1769,11 +1796,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -122.38 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.018354 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.77066 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -122.38 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.018354 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.77066 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -1847,11 +1874,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -122.31 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.021499 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.089398 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -122.31 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.021499 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.089398 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -1925,11 +1952,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -123.18 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.022245 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.158102 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -123.18 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.022245 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.158102 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2003,11 +2030,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -104.67 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.018939 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.834944 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -104.67 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.018939 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.834944 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2081,11 +2108,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -112.01 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.01742 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.66013 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -112.01 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.01742 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.66013 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2159,11 +2186,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -87.91 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.019554 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.899456 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -87.91 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.019554 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.899456 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2237,11 +2264,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -97.04 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017315 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.646929 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -97.04 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017315 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.646929 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2315,11 +2342,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -99.07 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.015417 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.35294 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -99.07 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.015417 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.35294 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2393,11 +2420,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -73.78 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.019159 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.858315 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -73.78 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.019159 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.858315 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2471,11 +2498,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -84.43 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017462 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.665405 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -84.43 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017462 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.665405 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2549,11 +2576,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -80.29 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.016146 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.483204 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -80.29 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.016146 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.483204 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2627,11 +2654,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -79.63 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.020102 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.954953 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -79.63 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.020102 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.954953 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2705,11 +2732,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -74.15 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.014587 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.082215 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -74.15 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.014587 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.082215 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2783,11 +2810,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -70.79 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017412 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.659128 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -70.79 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017412 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.659128 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2861,11 +2888,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -46.47 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.015845 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.43336 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -46.47 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.015845 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.43336 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -2939,11 +2966,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -58.54 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017709 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.695536 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -58.54 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017709 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.695536 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3017,11 +3044,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -0.45 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.023338 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.255822 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -0.45 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.023338 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.255822 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3095,11 +3122,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -6.25 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.024401 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.347975 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -6.25 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.024401 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.347975 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3173,11 +3200,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 2.55 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.022164 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.150774 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 2.55 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.022164 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.150774 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3251,11 +3278,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 4.76 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.023779 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.294316 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 4.76 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.023779 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.294316 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3329,11 +3356,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 8.56 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.022636 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.193445 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 8.56 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.022636 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.193445 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3407,11 +3434,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 8.55 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.021503 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.08978 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 8.55 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.021503 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 1.08978 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3485,11 +3512,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * -3.57 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.019116 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.853779 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * -3.57 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.019116 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.853779 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3563,11 +3590,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 12.25 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.019502 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.894103 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 12.25 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.019502 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.894103 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3641,11 +3668,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 31.41 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.016807 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.580146 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 31.41 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.016807 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.580146 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3719,11 +3746,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 28.24 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.016194 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.490761 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 28.24 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.016194 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.490761 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3797,11 +3824,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 28.74 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.01934 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.877285 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 28.74 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.01934 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.877285 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3875,11 +3902,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 36.93 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.014542 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.023042 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 36.93 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.014542 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.023042 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -3953,11 +3980,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 51.61 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.016077 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.472057 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 51.61 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.016077 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.472057 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4031,11 +4058,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 55.36 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.016074 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.471631 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 55.36 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.016074 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.471631 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4109,11 +4136,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 77.1 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.016552 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.544312 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 77.1 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.016552 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.544312 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4187,11 +4214,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 72.87 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.015384 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.346086 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 72.87 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.015384 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.346086 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4265,11 +4292,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 85.36 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.01642 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.525012 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 85.36 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.01642 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.525012 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4343,11 +4370,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 100.75 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.014963 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.243589 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 100.75 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.014963 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.243589 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4421,11 +4448,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 106.66 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.014622 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.107399 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 106.66 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.014622 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.107399 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4499,11 +4526,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 103.99 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.014542 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.023741 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 103.99 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.014542 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.023741 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4577,11 +4604,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 113.91 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.015714 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.410334 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 113.91 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.015714 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.410334 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4655,11 +4682,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 116.58 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.019 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.841482 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 116.58 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.019 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.841482 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4733,11 +4760,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 121.02 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.015017 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.258804 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 121.02 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.015017 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.258804 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4811,11 +4838,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 115.97 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017132 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.623414 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 115.97 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017132 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.623414 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4889,11 +4916,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 126.44 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.018315 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.766218 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 126.44 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.018315 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.766218 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -4967,11 +4994,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 139.78 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017869 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.714611 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 139.78 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017869 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - 0.714611 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -5045,11 +5072,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 138.53 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017737 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.698908 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 138.53 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017737 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.698908 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -5123,11 +5150,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 151.18 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.017526 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.67324 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 151.18 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.017526 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.67324 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -5201,11 +5228,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 144.84 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.018367 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.772052 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 144.84 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.018367 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.772052 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>
@@ -5279,11 +5306,11 @@
               <Stroke color="[CONFIGURATION.bezel.2]" thickness="36" cap="BUTT"/>
             </Arc>
             <Arc centerX="225" centerY="225" width="414" height="414" startAngle="0" endAngle="0">
-              <Stroke color="[CONFIGURATION.bezel.1]" thickness="36" cap="BUTT"/>
+              <Stroke color="[CONFIGURATION.bezel.3]" thickness="36" cap="BUTT"/>
               <Transform target="startAngle" value="(((720 - 4 * 174.79 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) - (4 * deg(acos(clamp(-0.018206 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.753828 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
               <Transform target="endAngle" value="(((720 - 4 * 174.79 - (229.18 * (0.000075 + 0.001868 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.032077 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.014615 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.040849 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) + [TIMEZONE_OFFSET_MINUTES_DST]) + (4 * deg(acos(clamp(-0.018206 / cos((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))) - -0.753828 * tan((0.006918 - 0.399912 * cos((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.070257 * sin((6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.006758 * cos(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.000907 * sin(2 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) - 0.002697 * cos(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))) + 0.00148 * sin(3 * (6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))))), -1, 1))))) / 60) * 15"/>
             </Arc>
-            <Variant mode="AMBIENT" target="alpha" value="80"/>
+            <Variant mode="AMBIENT" target="alpha" value="200"/>
           </PartDraw>
           <Condition>
             <Expressions>

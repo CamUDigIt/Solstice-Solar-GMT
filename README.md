@@ -12,7 +12,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   airport's latitude/longitude (NOAA approximation, within a few minutes). The
   "Bezel" setting only changes the labels: *24-hour* (2 … 22/24) or *12-hour*
   (2 … 10, 12 for noon at the bottom, 2 … 10, 12 for midnight at the top).
-  In always-on mode the bands stay visible, dimmed to about 30%.
+  In always-on mode the bands stay at the same brightness as the GMT hand
+  (about 78%); Polar uses a darker always-on day shade so the face stays
+  under the 15% always-on brightness limit (measured: Pepsi ~8%, Polar ~11%).
 - **GMT hand.** It shows the time at one of 50 airports. The editor lists LOCAL
   and UTC first, then groups cities by continent (Americas, Europe, Africa,
   Middle East, Asia, Oceania), A–Z by city name. Each airport's IANA time zone is

@@ -207,19 +207,20 @@ public class WatchFace {
     }
 
     // ---- Bezel colourways ---------------------------------------------------
-    // Colours: [0] night, [1] day, [2] night in always-on mode. The thin
-    // always-on ring sits on pure black, so near-black night colours are lifted
-    // there to keep the whole ring visible.
+    // Colours: [0] night, [1] day, [2] night and [3] day in always-on mode.
+    // Always-on night colours lift near-black nights so the dimmed ring stays
+    // visible; Polar's always-on day is darker so its pale grey band keeps the
+    // face under the 15% always-on brightness limit (WO-P7).
 
-    record Colorway(String id, String name, String night, String day, String ambientNight) {}
+    record Colorway(String id, String name, String night, String day, String ambientNight, String ambientDay) {}
 
     static final List<Colorway> COLORWAYS = List.of(
-            new Colorway("pepsi", "Pepsi", "#1D4ED8", "#C81E1E", "#1D4ED8"),
-            new Colorway("batman", "Batman", "#0B0B0E", "#2563EB", "#52525B"),
-            new Colorway("coke", "Coke", "#111318", "#B91C1C", "#52525B"),
-            new Colorway("rootbeer", "Root Beer", "#3A2A1F", "#B7791F", "#7C5A3F"),
-            new Colorway("golden_hour", "Golden Hour", "#2E1065", "#EA580C", "#6D28D9"),
-            new Colorway("polar", "Polar", "#0F172A", "#CBD5E1", "#475569"));
+            new Colorway("pepsi", "Pepsi", "#1D4ED8", "#C81E1E", "#1D4ED8", "#C81E1E"),
+            new Colorway("batman", "Batman", "#0B0B0E", "#2563EB", "#52525B", "#2563EB"),
+            new Colorway("coke", "Coke", "#111318", "#B91C1C", "#52525B", "#B91C1C"),
+            new Colorway("rootbeer", "Root Beer", "#3A2A1F", "#B7791F", "#7C5A3F", "#B7791F"),
+            new Colorway("golden_hour", "Golden Hour", "#2E1065", "#EA580C", "#6D28D9", "#EA580C"),
+            new Colorway("polar", "Polar", "#0F172A", "#CBD5E1", "#475569", "#8C97A6"));
 
     // ---- Palette ----------------------------------------------------------
 
@@ -460,8 +461,8 @@ public class WatchFace {
         close("ListConfiguration");
         open("ColorConfiguration id=\"bezel\" displayName=\"cfg_bezel\" screenReaderText=\"cfg_bezel\" icon=\"icon_cfg_bezel\" defaultValue=\"pepsi\"");
         for (Colorway c : COLORWAYS) {
-            line("<ColorOption id=\"%s\" displayName=\"bezel_%s\" icon=\"icon_bezel_%s\" colors=\"%s %s %s\"/>",
-                    c.id, c.id, c.id, c.night, c.day, c.ambientNight);
+            line("<ColorOption id=\"%s\" displayName=\"bezel_%s\" icon=\"icon_bezel_%s\" colors=\"%s %s %s %s\"/>",
+                    c.id, c.id, c.id, c.night, c.day, c.ambientNight, c.ambientDay);
         }
         close("ColorConfiguration");
         open("ListConfiguration id=\"airport\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_AIRPORT);
@@ -660,8 +661,7 @@ public class WatchFace {
             if (type.equals("MONOCHROMATIC_IMAGE")) {
                 icon(c - 22, c - 22, 44);
             } else {
-                icon(c - 12, o + 16, 24);
-                styled(() -> roundText(o, d, style == PILOT ? STEEL : "#FFFFFF"));
+                styled(() -> roundText(o, d, c, style == PILOT ? STEEL : "#FFFFFF"));
             }
             close("Complication");
         }
@@ -669,17 +669,22 @@ public class WatchFace {
     }
 
     /**
-     * Round slot text. Times like "7:00 AM" / "7:00PM" don't fit at 12sp, so a
-     * trailing AM/PM is split off: the time stays large and "AM" sits smaller
-     * underneath. Anything else is one line with an ellipsis.
+     * Round slot icon and text, centred in the disc. The value sits on the
+     * disc's centre with the provider's icon (when it has one) above it. Times
+     * like "7:00 AM" don't fit at 12sp, so a trailing AM/PM is split off and
+     * drawn smaller under the time.
      */
-    static void roundText(int o, int d, String color) {
+    static void roundText(int o, int d, double c, String color) {
         String t = "[COMPLICATION.TEXT]", len = "textLength(" + t + ")";
         String tail = "subText(" + t + ", " + len + " - 2, " + len + ")";
         switchOn(len + " > 2 && (" + tail + " == \"AM\" || " + tail + " == \"PM\")", () -> {
-            textLine(o + 6, o + 38, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", color, "subText(" + t + ", 0, " + len + " - 2)");
-            textLine(o + 6, o + 68, d - 12, 26, TEXT_SECONDARY, "NORMAL", MUTED, tail);
-        }, () -> textLine(o + 6, o + 42, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", color, t));
+            icon(c - 9, o + 12, 18);
+            textLine(o + 6, o + 28, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", color, "subText(" + t + ", 0, " + len + " - 2)");
+            textLine(o + 6, o + 58, d - 12, 24, TEXT_SECONDARY, "NORMAL", MUTED, tail);
+        }, () -> {
+            icon(c - 11, o + 11, 22);
+            textLine(o + 6, o + 33, d - 12, 34, TEXT_ESSENTIAL, "MEDIUM", color, t);
+        });
     }
 
     /** The provider's monochrome icon, tinted steel. */
@@ -835,10 +840,10 @@ public class WatchFace {
         });
     }
 
-    // In always-on mode the full-width bands stay visible at this alpha (~31%).
-    // That adds roughly 2-4% to the face's average brightness, well inside the
-    // 15% always-on limit (WO-P7).
-    static final int AMBIENT_BAND_ALPHA = 80;
+    // In always-on mode the full-width bands stay at the same alpha as the GMT
+    // hand (200/255, ~78%), so they read as bright as the hands. Polar, the
+    // palest colourway, is the worst case for the 15% average-brightness limit.
+    static final int AMBIENT_BAND_ALPHA = 200;
 
     /**
      * A bezel ring part: night colour all round, with day arcs drawn by body.
@@ -849,13 +854,16 @@ public class WatchFace {
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
         if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
         arc(BEZEL_MID, 0, 360, nightColor(ambient), BEZEL_THICK, "BUTT", null);
+        bandAmbient = ambient;
         body.run();
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", ambient ? AMBIENT_BAND_ALPHA : 0);
         close("PartDraw");
     }
 
+    static boolean bandAmbient = false;   // set by bezelPart for its day arcs
+
     static void dayArc(String startExpr, String endExpr) {
-        arc(BEZEL_MID, 0, 0, "[CONFIGURATION.bezel.1]", BEZEL_THICK, "BUTT",
+        arc(BEZEL_MID, 0, 0, bandAmbient ? "[CONFIGURATION.bezel.3]" : "[CONFIGURATION.bezel.1]", BEZEL_THICK, "BUTT",
                 "<Transform target=\"startAngle\" value=\"" + xml(startExpr) + "\"/>\n"
                         + "<Transform target=\"endAngle\" value=\"" + xml(endExpr) + "\"/>");
     }
