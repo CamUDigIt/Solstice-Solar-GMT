@@ -31,6 +31,12 @@
     <string name="bezel_grape_soda">Grape Soda</string>
     <string name="bezel_root_beer">Root Beer</string>
     <string name="bezel_ginger_ale">Ginger Ale</string>
+    <string name="bezel_cream_soda">Cream Soda</string>
+    <string name="bezel_matcha_latte">Matcha Latte</string>
+    <string name="bezel_peach_tea">Peach Tea</string>
+    <string name="bezel_lavender_lemonade">Lavender Lemonade</string>
+    <string name="bezel_hibiscus_tea">Hibiscus Tea</string>
+    <string name="bezel_blueberry_soda">Blueberry Soda</string>
     <string name="airport_local">LOCAL · Your time zone</string>
     <string name="airport_utc">UTC · Coordinated Universal Time</string>
     <string name="airport_hnl">Honolulu · HNL</string>

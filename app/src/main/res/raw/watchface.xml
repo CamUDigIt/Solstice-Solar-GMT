@@ -34,6 +34,12 @@
       <ColorOption id="grape_soda" displayName="bezel_grape_soda" icon="icon_bezel_grape_soda" colors="#3B0764 #8B5CF6 #5B21B6 #7C4FD8"/>
       <ColorOption id="root_beer" displayName="bezel_root_beer" icon="icon_bezel_root_beer" colors="#4A2511 #E39B0B #7C4A2A #976808"/>
       <ColorOption id="ginger_ale" displayName="bezel_ginger_ale" icon="icon_bezel_ginger_ale" colors="#0B4D2C #C9A227 #115C37 #8A6F1A"/>
+      <ColorOption id="cream_soda" displayName="bezel_cream_soda" icon="icon_bezel_cream_soda" colors="#5B4636 #E8D3A8 #5B4636 #8C7A58"/>
+      <ColorOption id="matcha_latte" displayName="bezel_matcha_latte" icon="icon_bezel_matcha_latte" colors="#2F4A32 #A9C49A #3A5A3E #6E8466"/>
+      <ColorOption id="peach_tea" displayName="bezel_peach_tea" icon="icon_bezel_peach_tea" colors="#6B3B2A #F2B48C #6B3B2A #9A6E52"/>
+      <ColorOption id="lavender_lemonade" displayName="bezel_lavender_lemonade" icon="icon_bezel_lavender_lemonade" colors="#4B3F72 #C9B8E8 #4B3F72 #7E72A0"/>
+      <ColorOption id="hibiscus_tea" displayName="bezel_hibiscus_tea" icon="icon_bezel_hibiscus_tea" colors="#5E1F3A #E8A0B4 #6A2442 #A0647A"/>
+      <ColorOption id="blueberry_soda" displayName="bezel_blueberry_soda" icon="icon_bezel_blueberry_soda" colors="#2C3E66 #A9BCE0 #2C3E66 #6A7B99"/>
     </ColorConfiguration>
     <ListConfiguration id="airport" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="LHR">
       <ListOption id="LOCAL" displayName="airport_local"/>

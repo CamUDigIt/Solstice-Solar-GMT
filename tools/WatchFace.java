@@ -214,10 +214,11 @@ public class WatchFace {
 
     record Colorway(String id, String name, String night, String day, String ambientNight, String ambientDay) {}
 
-    // Soft-drink-inspired colourways with generic names, grouped colas, citrus,
-    // fruit, then root beer and ginger. Each pair stays in one colour family
-    // (no white, no clashing opposites like red/green); the darker shade is
-    // night. Diet versions use silver as the day colour.
+    // Drink-inspired colourways with generic names, grouped colas, citrus,
+    // fruit, root beer and ginger, then softer teas, lattes and cream soda.
+    // Each pair stays in one colour family (no white, no clashing opposites
+    // like red/green); the darker shade is night. Diet versions use silver as
+    // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
             // Colas
             new Colorway("blue_cola", "Blue Cola", "#1D4ED8", "#C81E1E", "#1D4ED8", "#C81E1E"),
@@ -243,7 +244,15 @@ public class WatchFace {
             new Colorway("grape_soda", "Grape Soda", "#3B0764", "#8B5CF6", "#5B21B6", "#7C4FD8"),
             // Root beer and ginger
             new Colorway("root_beer", "Root Beer", "#4A2511", "#E39B0B", "#7C4A2A", "#976808"),
-            new Colorway("ginger_ale", "Ginger Ale", "#0B4D2C", "#C9A227", "#115C37", "#8A6F1A"));
+            new Colorway("ginger_ale", "Ginger Ale", "#0B4D2C", "#C9A227", "#115C37", "#8A6F1A"),
+            // Soft and earthy: cream soda, teas and lattes
+            new Colorway("cream_soda", "Cream Soda", "#5B4636", "#E8D3A8", "#5B4636", "#8C7A58"),
+            new Colorway("matcha_latte", "Matcha Latte", "#2F4A32", "#A9C49A", "#3A5A3E", "#6E8466"),
+            new Colorway("peach_tea", "Peach Tea", "#6B3B2A", "#F2B48C", "#6B3B2A", "#9A6E52"),
+            new Colorway("lavender_lemonade", "Lavender Lemonade", "#4B3F72", "#C9B8E8", "#4B3F72", "#7E72A0"),
+            new Colorway("hibiscus_tea", "Hibiscus Tea", "#5E1F3A", "#E8A0B4", "#6A2442", "#A0647A"),
+            new Colorway("blueberry_soda", "Blueberry Soda", "#2C3E66", "#A9BCE0", "#2C3E66", "#6A7B99"));
+
 
     // ---- Palette ----------------------------------------------------------
 

@@ -75,8 +75,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   clock.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
 - **Customisation.** In the watch-face editor you can pick the style (Pilot or
-  Flat), the bezel format (12h or 24h), one of 21 soft-drink bezel colourways (colas and their diet versions,
-  citrus, fruit, root beer and ginger; see `COLORWAYS` in the generator),
+  Flat), the bezel format (12h or 24h), one of 27 drink-themed bezel colourways (colas and their diet versions,
+  citrus, fruit, root beer and ginger, plus softer earthy and pastel teas,
+  lattes and cream soda; see `COLORWAYS` in the generator),
   the GMT airport, and each complication.
 
 ## Project layout
