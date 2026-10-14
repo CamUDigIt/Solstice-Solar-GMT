@@ -44,7 +44,7 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   `BST +1H`, `NPT +5:45H`). WFF's `[TIMEZONE_ABB]` only reports the standard
   name, so summer names are derived from it; zones without a named
   abbreviation show `UTC +13:45` style instead.
-- **Two styles.**
+- **Three styles.**
   - *Pilot* (inspired by classic GMT tool watches): bundled Oswald, Mercedes
     hour hand, sword minute hand, lollipop seconds, a GMT hand with a large
     triangle, small lume plots with a triangle at 12, and a Cyclops-style
@@ -52,10 +52,20 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   - *Flat* (inspired by flat smartwatch GMT faces): bundled Inter (a wider, rounder sans),
     flat white stick hands with a thin neck, long lumed hour ticks and flat
     complication panels. Its 24h bezel is numbered every second hour.
-  - Both fonts are SIL OFL 1.1 (licences in `licenses/`, shipped in the APK
+  - *Pixel* (inspired by Pixel Watch faces): bundled Google Sans Flex, solid
+    white capsule hands, a thin second hand in the colourway's day colour, a
+    GMT hand ending in a red dot, round hour dots (larger at 12, 6 and 9) with
+    no minute track, a tonal filled complication disc, the date in a pill
+    tinted with the day colour, and a dark gap between the dial and the bezel.
+    Its 24h bezel matches Flat's.
+  - All three fonts are SIL OFL 1.1 (licences in `licenses/`, shipped in the APK
     under `assets/licenses/`). Text points straight at each weight's TTF
     (e.g. `oswald_600`): an XML font-family resource hangs the watch-face
     runtime on a Pixel Watch 4 even though the emulator renders it.
+  - Google publishes Google Sans Flex only as a variable font, which WFF
+    can't select weights from, so `googlesans_400`..`_700` are the static
+    Latin instances from Fontsource (`@fontsource/google-sans-flex` 5.3.2),
+    unwrapped from WOFF with `java tools/Woff2Ttf.java in.woff out.ttf`.
   - All hands have a soft dark edge.
 - **Readability.** Text meets Wear OS guideline WO-V14 (12sp essential, 10sp
   secondary) on watches as small as 384 px at 320 dpi, and every tap area is
@@ -77,8 +87,8 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   `Launch target="CALENDAR"` (the system calendar app); the label opens World
   clock.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
-- **Customisation.** In the watch-face editor you can pick the style (Pilot or
-  Flat), the bezel format (12h or 24h), one of 31 drink-themed bezel colourways (colas and their diet versions,
+- **Customisation.** In the watch-face editor you can pick the style (Pilot,
+  Flat or Pixel), the bezel format (12h or 24h), one of 31 drink-themed bezel colourways (colas and their diet versions,
   citrus, fruit, root beer and ginger, plus softer earthy and pastel teas,
   lattes and cream soda, and Pixel-style tonal pairs; see `COLORWAYS` in the generator),
   the GMT airport, and each complication.

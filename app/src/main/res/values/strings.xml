@@ -5,6 +5,7 @@
     <string name="cfg_style">Style</string>
     <string name="style_pilot">Pilot</string>
     <string name="style_flat">Flat</string>
+    <string name="style_pixel">Pixel</string>
     <string name="cfg_bezel_format">Bezel</string>
     <string name="bezel_format_12">12-hour</string>
     <string name="bezel_format_24">24-hour</string>

@@ -280,6 +280,8 @@ public class WatchFace {
     static final String GMT_RED = "#D72626";
     static final String FLAT_PANEL = "#1C2027";   // Flat complication backgrounds
     static final String FLAT_DATE_GOLD = "#E3B341";
+    static final String PIXEL_PANEL = "#262A31";  // Pixel tonal complication fill
+    static final String PIXEL_TRACK = "#3A3F48";  // Pixel progress ring track
 
     // ---- Geometry ---------------------------------------------------------
 
@@ -291,6 +293,7 @@ public class WatchFace {
     static final double TRACK_OUT = 181, TRACK_IN = 175, TRACK_IN_5 = 171;   // minute track radii
     static final double PLOT_R = 161;                                        // Pilot lume plots
     static final double TICK_IN = 154;                                       // Flat long hour ticks
+    static final double PIXEL_DOT_R = 168;                                   // Pixel hour dots
 
     // Text sizes, in face units. Wear OS quality guideline WO-V14 asks for 12sp
     // essential / 10sp non-essential text. The face scales with the screen, so
@@ -303,7 +306,8 @@ public class WatchFace {
     // ---- Styles -----------------------------------------------------------
     // Pilot (GMT-Master II inspired): Oswald, Mercedes/sword hands, lume plots.
     // Flat (Apple Watch GMT inspired): Inter, flat stick hands, long
-    // hour ticks. Fonts are bundled in res/font (SIL OFL 1.1, see /licenses).
+    // hour ticks. Pixel (Pixel Watch inspired): Google Sans Flex, capsule
+    // hands, dot markers, tonal panels. Fonts are bundled in res/font (SIL OFL 1.1, see /licenses).
     // Hand geometry must match HandArt.java.
 
     /** Hand width, pivot-to-tip and pivot-to-butt, without the HAND_PAD margin. */
@@ -318,7 +322,9 @@ public class WatchFace {
             new HandGeom(26, 104, 20), new HandGeom(14, 176, 22), new HandGeom(14, 182, 40), new HandGeom(30, 186, 0));
     static final Style FLAT = new Style("flat", "Flat", "inter", "flat_",
             new HandGeom(12, 100, 12), new HandGeom(10, 174, 12), new HandGeom(10, 182, 36), new HandGeom(10, 186, 0));
-    static final List<Style> STYLES = List.of(PILOT, FLAT);
+    static final Style PIXEL = new Style("pixel", "Pixel", "googlesans", "pixel_",
+            new HandGeom(18, 100, 16), new HandGeom(14, 172, 16), new HandGeom(10, 182, 30), new HandGeom(14, 186, 0));
+    static final List<Style> STYLES = List.of(PILOT, FLAT, PIXEL);
 
     /** The style / bezel format being emitted inside styled() / formatted(). */
     static Style style = PILOT;
@@ -331,7 +337,9 @@ public class WatchFace {
      */
     static void styled(Runnable body) {
         Style saved = style;
-        switchOn("[CONFIGURATION.style] == \"flat\"", () -> { style = FLAT; body.run(); }, () -> { style = PILOT; body.run(); });
+        chain(new String[] {"[CONFIGURATION.style] == \"flat\"", "[CONFIGURATION.style] == \"pixel\""},
+                new Runnable[] {() -> { style = FLAT; body.run(); }, () -> { style = PIXEL; body.run(); }},
+                () -> { style = PILOT; body.run(); });
         style = saved;
     }
 
@@ -482,7 +490,7 @@ public class WatchFace {
         g.setColor(color("#3A424D"));
         g.setStroke(new java.awt.BasicStroke(2f));
         g.draw(new java.awt.geom.Ellipse2D.Double(5, 5, ICON - 10, ICON - 10));
-        String file = s == FLAT ? "inter_600.ttf" : "oswald_600.ttf";
+        String file = s.font + "_600.ttf";
         try {
             var f = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File("app/src/main/res/font/" + file));
             g.setFont(f.deriveFont(44f));
@@ -537,23 +545,28 @@ public class WatchFace {
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
         close("PartDraw");
 
-        // Minute track: 60 ticks, heavier every 5 minutes.
-        open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        for (int m = 0; m < 60; m++) {
-            boolean five = m % 5 == 0;
-            double a = m * 6;
-            double r1 = five ? TRACK_IN_5 : TRACK_IN;
-            open("Line startX=\"%s\" startY=\"%s\" endX=\"%s\" endY=\"%s\"", px(r1, a), py(r1, a), px(TRACK_OUT, a), py(TRACK_OUT, a));
-            line("<Stroke color=\"%s\" thickness=\"%s\" cap=\"BUTT\"/>", five ? STEEL : MUTED, five ? "2" : "1");
-            close("Line");
-        }
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"110\"/>");
-        close("PartDraw");
+        // Minute track: 60 ticks, heavier every 5 minutes. Pixel has no track.
+        switchOn("[CONFIGURATION.style] != \"pixel\"", () -> {
+            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            for (int m = 0; m < 60; m++) {
+                boolean five = m % 5 == 0;
+                double a = m * 6;
+                double r1 = five ? TRACK_IN_5 : TRACK_IN;
+                open("Line startX=\"%s\" startY=\"%s\" endX=\"%s\" endY=\"%s\"", px(r1, a), py(r1, a), px(TRACK_OUT, a), py(TRACK_OUT, a));
+                line("<Stroke color=\"%s\" thickness=\"%s\" cap=\"BUTT\"/>", five ? STEEL : MUTED, five ? "2" : "1");
+                close("Line");
+            }
+            line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"110\"/>");
+            close("PartDraw");
+        }, () -> line("<Group name=\"no_track\" x=\"0\" y=\"0\" width=\"1\" height=\"1\"/>"));
         styled(WatchFace::hourMarkers);
         close("Group");
     }
 
-    /** Pilot: small lume plots with a triangle at 12. Flat: long lumed hour ticks. 3 o'clock is the date. */
+    /**
+     * Pilot: small lume plots with a triangle at 12. Flat: long lumed hour ticks.
+     * Pixel: round dots, larger at 12, 6 and 9. 3 o'clock is the date.
+     */
     static void hourMarkers() {
         open("Group name=\"markers_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id);
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
@@ -562,7 +575,12 @@ public class WatchFace {
             // 3 is the date; Pilot has its own 12 triangle and leaves 5 and 7 clear for
             // the taller event box that two-line Oswald text needs.
             if (h == 3 || (style == PILOT && (h == 12 || h == 5 || h == 7))) continue;
-            if (style == PILOT) {
+            if (style == PIXEL) {
+                double d = h % 3 == 0 ? 12 : 6;
+                open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(PIXEL_DOT_R, a) - d / 2), f(dy(PIXEL_DOT_R, a) - d / 2), f(d), f(d));
+                line("<Fill color=\"%s\"/>", h % 3 == 0 ? "#F1F2F4" : "#AEB4BD");
+                close("Ellipse");
+            } else if (style == PILOT) {
                 double d = 10;
                 open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(PLOT_R, a) - d / 2), f(dy(PLOT_R, a) - d / 2), f(d), f(d));
                 line("<Stroke color=\"%s\" thickness=\"1.4\"/>", STEEL);
@@ -616,6 +634,14 @@ public class WatchFace {
                 // Active: dark numerals on white. Ambient: light numerals on black.
                 dateText(lens, w, h, size, "#111111", 255, 0);
                 dateText(lens, w, h, size, STEEL, 0, 255);
+            } else if (style == PIXEL) {
+                // Pixel: white numerals in a pill tinted with the colourway's day colour.
+                open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" alpha=\"90\"", w, h);
+                line("<RoundRectangle x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadiusX=\"%s\" cornerRadiusY=\"%s\"><Fill color=\"[CONFIGURATION.bezel.1]\"/></RoundRectangle>",
+                        w, h, f(h / 2.0), f(h / 2.0));
+                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+                close("PartDraw");
+                dateText(0, w, h, size, "#FFFFFF", 255, 200);
             } else {
                 // Flat: gold numerals straight on the dial (Apple-style date accent).
                 dateText(0, w, h, size, FLAT_DATE_GOLD, 255, 200);
@@ -686,12 +712,12 @@ public class WatchFace {
         String goal = "clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1)";
         for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT", "MONOCHROMATIC_IMAGE")) {
             open("Complication type=\"%s\"", type);
-            // Pilot: recessed sub-dial with a hairline rim. Flat: solid flat disc.
+            // Pilot: recessed sub-dial with a hairline rim. Flat / Pixel: solid flat disc.
             styled(() -> {
                 open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", ROUND_TAP, ROUND_TAP);
                 open("Ellipse x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", o + 1, o + 1, d - 2, d - 2);
                 if (style == PILOT) line("<Stroke color=\"#334155\" thickness=\"1\"/>");
-                line("<Fill color=\"%s\"/>", style == PILOT ? "#0A0D12" : FLAT_PANEL);
+                line("<Fill color=\"%s\"/>", style == PILOT ? "#0A0D12" : style == PIXEL ? PIXEL_PANEL : FLAT_PANEL);
                 close("Ellipse");
                 line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
                 close("PartDraw");
@@ -699,9 +725,9 @@ public class WatchFace {
             if (type.equals("RANGED_VALUE") || type.equals("GOAL_PROGRESS")) {
                 String frac = type.equals("RANGED_VALUE") ? ranged : goal;
                 styled(() -> {
-                    double thick = style == PILOT ? 4 : 5;
+                    double thick = style == PILOT ? 4 : style == PIXEL ? 6 : 5;
                     open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", ROUND_TAP, ROUND_TAP);
-                    localArc(c, d / 2.0 - 7, 0, 360, style == PILOT ? "#2A313B" : "#343A44", thick, null);
+                    localArc(c, d / 2.0 - 7, 0, 360, style == PILOT ? "#2A313B" : style == PIXEL ? PIXEL_TRACK : "#343A44", thick, null);
                     localArc(c, d / 2.0 - 7, 0, 0, "[CONFIGURATION.bezel.1]", thick,
                             "<Transform target=\"endAngle\" value=\"" + frac + " * 360\"/>");
                     line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"170\"/>");
@@ -1119,10 +1145,16 @@ public class WatchFace {
     static void bezelMarkings() {
         comment("Bezel scale: 12h standard watch scale or 24h; Pilot uses triangles between 24h numerals, Flat ticks");
         open("Group name=\"bezel_markings\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        // Engraved inner edge.
-        open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        arc(BEZEL_INNER, 0, 360, "#05070A", 1.5, "BUTT", null);
-        close("PartDraw");
+        // Engraved inner edge; Pixel has a wider dark gap so the ring reads as its own layer.
+        switchOn("[CONFIGURATION.style] == \"pixel\"", () -> {
+            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            arc(BEZEL_INNER, 0, 360, BG, 6, "BUTT", null);
+            close("PartDraw");
+        }, () -> {
+            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            arc(BEZEL_INNER, 0, 360, "#05070A", 1.5, "BUTT", null);
+            close("PartDraw");
+        });
         formatted(() -> styled(WatchFace::bezelScale));
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"120\"/>");
         close("Group");
@@ -1177,8 +1209,18 @@ public class WatchFace {
         close("Ellipse");
     }
 
-    /** Lume triangle at the top of the bezel (12 or 24). */
+    /** Lume triangle at the top of the bezel (12 or 24); a round dot on Pixel. */
     static void pip() {
+        if (style == PIXEL) {
+            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            double d = 16, y = C - BEZEL_MID;
+            open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(C - d / 2), f(y - d / 2), f(d), f(d));
+            line("<Stroke color=\"#0B0E14\" thickness=\"2\"/>");
+            line("<Fill color=\"#F1F2F4\"/>");
+            close("Ellipse");
+            close("PartDraw");
+            return;
+        }
         int w = 26, h = 22;
         open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", (int) C - w / 2, (int) Math.round(C - BEZEL_MID - h / 2.0), w, h);
         line("<Image resource=\"bezel_pip\"/>");
@@ -1213,8 +1255,9 @@ public class WatchFace {
             hand("MinuteHand", "hand_minute", style.minute, 255, 0);
             hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
             HandBox b = handBox(style.second);
-            open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"",
-                    style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY));
+            // Pixel's white second hand takes the colourway's day colour as its accent.
+            open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
+                    style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
             line("<Sweep frequency=\"15\"/>");
             close("SecondHand");

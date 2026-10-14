@@ -46,6 +46,14 @@ public class HandArt {
         hand(out, "flat_hand_hour_ambient", 12, 100, 12, false, (g, w, len, tail) -> outline(g, stickShape(w, len, tail, 22)));
         hand(out, "flat_hand_minute_ambient", 10, 174, 12, false, (g, w, len, tail) -> outline(g, stickShape(w, len, tail, 22)));
 
+        // Pixel (Pixel Watch inspired). Geometry must match PIXEL in WatchFace.java.
+        hand(out, "pixel_hand_hour", 18, 100, 16, true, (g, w, len, tail) -> capsule(g, w, len, tail));
+        hand(out, "pixel_hand_minute", 14, 172, 16, true, (g, w, len, tail) -> capsule(g, w, len, tail));
+        hand(out, "pixel_hand_second", 10, 182, 30, true, HandArt::drawPixelSecond);
+        hand(out, "pixel_hand_gmt", 14, 186, 0, true, HandArt::drawPixelGmt);
+        hand(out, "pixel_hand_hour_ambient", 18, 100, 16, false, (g, w, len, tail) -> outline(g, capsuleShape(w, len, tail)));
+        hand(out, "pixel_hand_minute_ambient", 14, 172, 16, false, (g, w, len, tail) -> outline(g, capsuleShape(w, len, tail)));
+
         triangle(out, "bezel_pip", 26, 22, new Color(0xB8, 0xBF, 0xC8), LUME, 3);
         triangle(out, "pilot_marker_12", 20, 18, STEEL, LUME, 2.2);
         triangle(out, "bezel_triangle", 12, 10, new Color(0x0B, 0x0E, 0x14), new Color(0xF1, 0xF2, 0xF4), 1.4);
@@ -240,6 +248,33 @@ public class HandArt {
         g.setColor(GMT_RED);
         g.fill(new Rectangle2D.Double(c - 1.8, 20, 3.6, len - 20));
         g.fill(new RoundRectangle2D.Double(c - 4, 0, 8, 26, 8, 8));
+    }
+
+    // ---- Pixel ------------------------------------------------------------
+
+    /** Solid capsule with fully rounded ends, running through the pivot. */
+    static Shape capsuleShape(double w, double len, double tail) {
+        return new RoundRectangle2D.Double(0, 0, w, len + tail, w, w);
+    }
+
+    static void capsule(Graphics2D g, double w, double len, double tail) {
+        g.setColor(FLAT_WHITE);
+        g.fill(capsuleShape(w, len, tail));
+    }
+
+    /** Thin rounded line, drawn white so WatchFace can tint it with the colourway. */
+    static void drawPixelSecond(Graphics2D g, double w, double len, double tail) {
+        double c = w / 2;
+        g.setColor(Color.WHITE);
+        g.fill(new RoundRectangle2D.Double(c - 1.3, 0, 2.6, len + tail, 2.6, 2.6));
+    }
+
+    /** Thin red stem ending in a round dot. */
+    static void drawPixelGmt(Graphics2D g, double w, double len, double tail) {
+        double c = w / 2;
+        g.setColor(GMT_RED);
+        g.fill(new RoundRectangle2D.Double(c - 2, w / 2, 4, len - w / 2, 4, 4));
+        g.fill(new Ellipse2D.Double(0, 0, w, w));
     }
 
     // ---- Shared -----------------------------------------------------------
