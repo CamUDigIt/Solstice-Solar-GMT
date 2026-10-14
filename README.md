@@ -5,16 +5,20 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 
 ## What's on the face
 
-- **Solar bezel.** The ring is always a 24-hour scale (midnight at the top),
-  like Apple Watch's GMT face: the GMT hand makes one turn a day and the day
-  colour runs from sunrise to sunset, so the bands show the real day and night
-  lengths. Sunrise and sunset are computed on the watch from the date and the
-  airport's latitude/longitude (NOAA approximation, within a few minutes). The
-  "Bezel" setting only changes the labels: *24-hour* (2 … 22/24) or *12-hour*
-  (2 … 10, 12 for noon at the bottom, 2 … 10, 12 for midnight at the top).
-  In always-on mode the bands stay at the same brightness as the GMT hand
-  (about 78%); Polar uses a darker always-on day shade so the face stays
-  under the 15% always-on brightness limit (measured: Pepsi ~8%, Polar ~11%).
+- **Solar bezel.** Red/blue shows whether it's day or night at the
+  destination. Sunrise and sunset are computed on the watch from the date and
+  the airport's latitude/longitude (NOAA approximation, within a few minutes).
+  The 40-unit band has numerals scaled to match.
+  - *12-hour:* reads like a standard watch (12 at the top, 6 at the bottom)
+    and the GMT hand turns twice a day. The band covers six hours either side
+    of the GMT hand, so the colour at the hand is "now" at the destination and
+    sunrise/sunset in that span sit at their real clock positions. The
+    window's ends meet opposite the hand, marked by a thin dark seam.
+  - *24-hour:* a fixed 24-hour scale (midnight at the top); the GMT hand turns
+    once a day and the bands show the real day and night lengths.
+  - In always-on mode the bands stay at the same brightness as the GMT hand
+    (about 78%); Polar uses a darker always-on day shade so the face stays
+    under the 15% always-on brightness limit (measured: Pepsi ~8%, Polar ~11%).
 - **GMT hand.** It shows the time at one of 50 airports. The editor lists LOCAL
   and UTC first, then groups cities by continent (Americas, Europe, Africa,
   Middle East, Asia, Oceania), A–Z by city name. Each airport's IANA time zone is
@@ -28,8 +32,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   those rules against `java.time` for every hour through 2040.
 - **LOCAL.** The first airport option. The GMT hand follows local time, and
   because WFF has no location source, the bezel's daylight comes from the
-  watch's hourly weather forecast (it snaps to whole hours and shows night only
-  when there's no weather data). The label shows the local zone's abbreviation
+  watch's hourly weather forecast, with each day/night change drawn halfway
+  between forecast hours (within about 30 minutes; night only without weather
+  data). The label shows the local zone's abbreviation
   (MDT, BST, CEST, NPT…). WFF's `[TIMEZONE_ABB]` only reports the standard
   name, so summer names are derived from it; zones without a named
   abbreviation show `UTC +13:45` style instead.

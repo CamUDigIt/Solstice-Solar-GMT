@@ -237,13 +237,13 @@ public class WatchFace {
     // ---- Geometry ---------------------------------------------------------
 
     static final double C = 225;
-    static final double BEZEL_OUTER = 225, BEZEL_INNER = 189;   // 36-unit band
+    static final double BEZEL_OUTER = 225, BEZEL_INNER = 185;   // 40-unit band
     static final double BEZEL_MID = (BEZEL_OUTER + BEZEL_INNER) / 2;
     static final double BEZEL_THICK = BEZEL_OUTER - BEZEL_INNER;
     static final double DIAL_R = BEZEL_INNER - 2;
-    static final double TRACK_OUT = 185, TRACK_IN = 179, TRACK_IN_5 = 175;   // minute track radii
-    static final double PLOT_R = 165;                                        // Pilot lume plots
-    static final double TICK_IN = 158;                                       // Flat long hour ticks
+    static final double TRACK_OUT = 181, TRACK_IN = 175, TRACK_IN_5 = 171;   // minute track radii
+    static final double PLOT_R = 161;                                        // Pilot lume plots
+    static final double TICK_IN = 154;                                       // Flat long hour ticks
 
     // Text sizes, in face units. Wear OS quality guideline WO-V14 asks for 12sp
     // essential / 10sp non-essential text. The face scales with the screen, so
@@ -251,6 +251,7 @@ public class WatchFace {
     // one unit = 384/450 px = 0.43sp): 28 units = 12sp, 24 units = 10.2sp.
     static final int TEXT_ESSENTIAL = 28;
     static final int TEXT_SECONDARY = 24;
+    static final int BEZEL_NUMERAL = 26;   // bezel numerals, scaled with the 40-unit band
 
     // ---- Styles -----------------------------------------------------------
     // Pilot (GMT-Master II inspired): Oswald, Mercedes/sword hands, lume plots.
@@ -594,11 +595,11 @@ public class WatchFace {
     // Round slot at 9 o'clock, mirroring the date window at 3.
     static final int ROUND_D = 100;            // drawn disc
     static final int ROUND_TAP = 116;          // tap circle (>= TAP_MIN)
-    static final int ROUND_CX = 119;
+    static final int ROUND_CX = 122;
     static final int ROUND_X = ROUND_CX - ROUND_TAP / 2, ROUND_Y = (int) C - ROUND_TAP / 2;
 
     // 6 o'clock long text: drawn box LONG_H tall at the top of a TAP_MIN-tall tap box.
-    static final int LONG_X = 115, LONG_Y = 284, LONG_W = 220, LONG_H = 72;
+    static final int LONG_X = 120, LONG_Y = 284, LONG_W = 210, LONG_H = 72;
 
     static void complications() {
         comment("Round complication at 9 o'clock");
@@ -739,11 +740,11 @@ public class WatchFace {
         line("<Expression name=\"hasTitle\"><![CDATA[[COMPLICATION.TITLE] != null && textLength([COMPLICATION.TITLE]) > 1]]></Expression>");
         close("Expressions");
         open("Compare expression=\"hasTitle\"");
-        textLine(4, 2, w - 8, 36, TEXT_ESSENTIAL, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]");
-        textLine(4, 38, w - 8, 30, TEXT_SECONDARY, "NORMAL", "#7DD3FC", "[COMPLICATION.TITLE]");
+        textLine(4, 2, w - 8, 36, TEXT_ESSENTIAL, "MEDIUM", STEEL, "[COMPLICATION.TEXT]");
+        textLine(4, 38, w - 8, 30, TEXT_SECONDARY, "NORMAL", MUTED, "[COMPLICATION.TITLE]");
         close("Compare");
         open("Default");
-        textLine(4, 2, w - 8, h - 4, TEXT_ESSENTIAL, "MEDIUM", "#FFFFFF", "[COMPLICATION.TEXT]", 2);
+        textLine(4, 2, w - 8, h - 4, TEXT_ESSENTIAL, "MEDIUM", STEEL, "[COMPLICATION.TEXT]", 2);
         close("Default");
         close("Condition");
     }
@@ -774,8 +775,10 @@ public class WatchFace {
         open("ListConfiguration id=\"airport\"");
         open("ListOption id=\"%s\"", LOCAL);
         open("Group name=\"airport_local\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        weatherBezel(false);
-        weatherBezel(true);
+        formatted(() -> {
+            weatherBezel(false);
+            weatherBezel(true);
+        });
         localLabel();
         gmtHand(null);
         close("Group");
@@ -783,8 +786,10 @@ public class WatchFace {
         for (Airport a : AIRPORTS) {
             open("ListOption id=\"%s\"", a.code);
             open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
-            solarBezel(a, false);
-            solarBezel(a, true);
+            formatted(() -> {
+                solarBezel(a, false);
+                solarBezel(a, true);
+            });
             airportLabel(a);
             gmtHand(a.zone);
             close("Group");
@@ -794,9 +799,16 @@ public class WatchFace {
     }
 
     /**
-     * Solar bezel on a 24-hour scale (like Apple Watch's GMT face, whichever
-     * bezel labelling is chosen): midnight at the top, and the day colour runs
+     * Solar bezel: red/blue shows whether it's day or night at the destination.
+     *
+     * 24h: a fixed 24-hour scale (midnight at the top); the day colour runs
      * from sunrise to sunset, so the bands show the real day and night lengths.
+     *
+     * 12h: reads like a standard watch (12 at the top, 6 at the bottom). The
+     * band covers six hours either side of the GMT hand, so the colour at the
+     * hand is "now" at the destination and sunrise/sunset in that span sit at
+     * their real clock positions. The window's two ends meet opposite the
+     * hand, marked by a thin dark seam.
      *
      * Sunrise/sunset come from the NOAA approximation (equation of time and
      * solar declination from the day of year), accurate to a few minutes.
@@ -819,25 +831,64 @@ public class WatchFace {
         String sunrise = "((" + noonMin + " - " + halfDayMin + ") / 60)";
         String sunset = "((" + noonMin + " + " + halfDayMin + ") / 60)";
 
-        bezelPart(ambient, a.zone, () -> dayArc(sunrise + " * 15", sunset + " * 15"));
+        bezelPart(ambient, a.zone, () -> {
+            if (h24) {
+                dayArc(sunrise + " * 15", sunset + " * 15");
+                return;
+            }
+            String now = "([HOUR_0_23] + [MINUTE] / 60)";
+            String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
+            // Daylight intervals for yesterday, today and tomorrow, clipped to the window.
+            for (int day = -1; day <= 1; day++) {
+                String shift = day == 0 ? "" : (day > 0 ? " + 24" : " - 24");
+                dayArc("clamp(" + sunrise + shift + ", " + from + ", " + to + ") * 30",
+                        "clamp(" + sunset + shift + ", " + from + ", " + to + ") * 30");
+            }
+            seam(to + " * 30");
+        });
     }
 
     /**
      * LOCAL's bezel: the watch has no location source in WFF, so daylight comes
-     * from the hourly weather forecast's is-day flag for the wearer's location.
-     * Each of the next 24 clock hours is one segment on the 24-hour scale; with
-     * no weather data the ring shows night colour only.
+     * from the hourly weather forecast's is-day flags for the wearer's location.
+     *
+     * Each flag describes the start of its hour, so a change between two hours
+     * is drawn halfway between them (within about 30 minutes of the real
+     * sunrise/sunset). The current hour uses the hourly forecast too: the
+     * "current conditions" flag can lag by hours. The forecast has no past
+     * hours, so on the 12h window the hours behind "now" use the same clock
+     * hour from tomorrow's forecast. With no weather data the ring is night.
      */
     static void weatherBezel(boolean ambient) {
-        String hour = "floor([HOUR_0_23] + [MINUTE] / 60)";
+        String now = "([HOUR_0_23] + [MINUTE] / 60)";
+        String hour = "floor(" + now + ")";
+        String from = "(" + now + " - 6)", to = "(" + now + " + 6)";
         bezelPart(ambient, null, () -> {
-            for (int k = 0; k < 24; k++) {
-                String src = k == 0 ? "WEATHER" : "WEATHER.HOURS." + k;
-                String isDay = "[" + src + ".IS_AVAILABLE] && [" + src + ".IS_DAY]";
-                String s = "((" + hour + " + " + k + ") % 24) * 15";
-                dayArc(s, "(" + isDay + ") ? (" + s + " + 15) : " + s);
+            int first = h24 ? 0 : -6, last = h24 ? 23 : 6;
+            for (int k = first; k <= last; k++) {
+                int idx = k < 0 ? k + 24 : k;
+                String hourly = "[WEATHER.HOURS." + idx + ".IS_AVAILABLE] && [WEATHER.HOURS." + idx + ".IS_DAY]";
+                String isDay = idx != 0 ? hourly
+                        : "(" + hourly + ") || (![WEATHER.HOURS.0.IS_AVAILABLE] && [WEATHER.IS_AVAILABLE] && [WEATHER.IS_DAY])";
+                String s, e;
+                if (h24) {
+                    s = "(" + hour + " + " + k + " - 0.5) * 15";
+                    e = "(" + s + " + 15)";
+                } else {
+                    s = "clamp(" + hour + " + " + k + " - 0.5, " + from + ", " + to + ") * 30";
+                    e = "clamp(" + hour + " + " + k + " + 0.5, " + from + ", " + to + ") * 30";
+                }
+                dayArc(s, "(" + isDay + ") ? " + e + " : " + s);
             }
+            if (!h24) seam(to + " * 30");
         });
+    }
+
+    /** Marks where the 12h window's two ends meet, opposite the GMT hand. */
+    static void seam(String angleExpr) {
+        arc(BEZEL_MID, 0, 0, "#05070A", BEZEL_THICK, "BUTT",
+                "<Transform target=\"startAngle\" value=\"" + xml(angleExpr + " - 0.9") + "\"/>\n"
+                        + "<Transform target=\"endAngle\" value=\"" + xml(angleExpr + " + 0.9") + "\"/>");
     }
 
     // In always-on mode the full-width bands stay at the same alpha as the GMT
@@ -989,16 +1040,16 @@ public class WatchFace {
      * GMT hand in the given zone, or local time when zone is null.
      */
     static void gmtHand(String zone) {
-        // One turn per day against the 24-hour bezel scale, in either labelling.
-        styled(() -> {
+        // 12h bezel: two turns a day like an hour hand. 24h bezel: one turn a day.
+        styled(() -> formatted(() -> {
             HandBox b = handBox(style.gmt);
             open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"", b.x, b.y, b.w, b.h, n(b.pivotY));
             if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
-            line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15\"/>");
+            line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * %d\"/>", h24 ? 15 : 30);
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
             close("PartImage");
-        });
+        }));
     }
 
     // ---- Bezel markings (drawn above the coloured ring) --------------------
@@ -1010,7 +1061,7 @@ public class WatchFace {
             {-2, 0}, {2, 0}, {0, -2}, {0, 2}};
 
     static void bezelMarkings() {
-        comment("Bezel scale on 24-hour positions, labelled 12h (Apple GMT style) or 24h; Pilot uses triangles between numerals, Flat ticks");
+        comment("Bezel scale: 12h standard watch scale or 24h; Pilot uses triangles between 24h numerals, Flat ticks");
         open("Group name=\"bezel_markings\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
         // Engraved inner edge.
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
@@ -1022,21 +1073,20 @@ public class WatchFace {
     }
 
     /**
-     * The bezel is always a 24-hour scale; the setting only changes its labels.
-     * 24-hour: 2, 4 ... 22 (Pilot) or 2 ... 24 (Flat). 12-hour: the same
-     * positions labelled the way Apple's GMT face does, 2, 4 ... 10, 12 (noon,
-     * at the bottom), 2 ... 10, with 12 / the pip at the top for midnight.
+     * 12-hour: a standard watch scale, 1-11 with the lume pip at 12 and dots at
+     * the half hours. 24-hour: 2, 4 ... 22 with triangles between (Pilot) or
+     * 2 ... 24 with ticks between (Flat).
      */
-    static String hourLabel(int h) {
-        if (h24) return Integer.toString(h);
-        int h12 = h % 12;
-        return Integer.toString(h12 == 0 ? 12 : h12);
-    }
-
     static void bezelScale() {
         open("Group name=\"scale_%s_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id, h24 ? "24" : "12");
-        if (style == PILOT) {
-            for (int h = 2; h <= 22; h += 2) outlinedNumeral(hourLabel(h), h * 15);
+        if (!h24) {
+            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            for (int h = 0; h < 12; h++) halfHourDot(h * 30 + 15);
+            close("PartDraw");
+            for (int h = 1; h <= 11; h++) outlinedNumeral(Integer.toString(h), h * 30);
+            pip();
+        } else if (style == PILOT) {
+            for (int h = 2; h <= 22; h += 2) outlinedNumeral(Integer.toString(h), h * 15);
             for (int h = 1; h <= 23; h += 2) {
                 double a = h * 15;
                 int w = 12, hh = 10;
@@ -1047,7 +1097,7 @@ public class WatchFace {
             }
             pip();
         } else {
-            for (int h = 2; h <= 24; h += 2) outlinedNumeral(hourLabel(h), (h % 24) * 15);
+            for (int h = 2; h <= 24; h += 2) outlinedNumeral(Integer.toString(h), (h % 24) * 15);
             open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
             for (int h = 1; h <= 23; h += 2) {
                 double a = h * 15;
@@ -1061,6 +1111,14 @@ public class WatchFace {
             close("PartDraw");
         }
         close("Group");
+    }
+
+    static void halfHourDot(double a) {
+        double d = 4.6;
+        open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(BEZEL_MID, a) - d / 2), f(dy(BEZEL_MID, a) - d / 2), f(d), f(d));
+        line("<Stroke color=\"#0B0E14\" thickness=\"1.2\"/>");
+        line("<Fill color=\"#E8EAED\"/>");
+        close("Ellipse");
     }
 
     /** Lume triangle at the top of the bezel (12 or 24). */
@@ -1077,11 +1135,11 @@ public class WatchFace {
     }
 
     static void numeral(String text, double a, int ox, int oy, String color) {
-        int w = 40, hh = 30;
+        int w = 44, hh = 32;
         int x = (int) Math.round(dx(BEZEL_MID, a) - w / 2.0) + ox, y = (int) Math.round(dy(BEZEL_MID, a) - hh / 2.0) + oy;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" angle=\"%s\"", x, y, w, hh, f(a));
         open("Text align=\"CENTER\"");
-        open(font(TEXT_SECONDARY, "SEMI_BOLD", color));
+        open(font(BEZEL_NUMERAL, "SEMI_BOLD", color));
         line("<Template>%%s<Parameter expression=\"%s\"/></Template>", text);
         close("Font");
         close("Text");
