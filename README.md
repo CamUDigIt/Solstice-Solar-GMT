@@ -12,10 +12,11 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   past 18 on the 24-hour ones. Sunrise and sunset are computed on the watch
   from the date and the airport's latitude/longitude (NOAA approximation,
   within a few minutes). The 40-unit band has numerals scaled to match.
-  - *12-hour:* standard watch labels (12 at the top, 6 at the bottom); the GMT
-    hand turns twice a day like an hour hand.
-  - *24-hour:* 24-hour labels; the GMT hand turns once a day, so it points at
-    the destination's current time on the band.
+  - *12-hour:* standard watch labels (12 at the top, 6 at the bottom).
+  - *24-hour:* 24-hour labels.
+  - On both faces the GMT hand turns once a day, so it always points at the
+    destination's current time on the band (18:15 at the 9:15 position of
+    the 12-hour labels), and its colour underneath is day or night there.
   - In always-on mode the bands stay at the same brightness as the GMT hand
     (about 78%); Polar uses a darker always-on day shade so the face stays
     under the 15% always-on brightness limit (measured: Pepsi ~8%, Polar ~11%).

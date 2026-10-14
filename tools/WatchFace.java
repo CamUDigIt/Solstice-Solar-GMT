@@ -1008,16 +1008,17 @@ public class WatchFace {
      * GMT hand in the given zone, or local time when zone is null.
      */
     static void gmtHand(String zone) {
-        // 12h bezel: two turns a day like an hour hand. 24h bezel: one turn a day.
-        styled(() -> formatted(() -> {
+        // One turn per day on both faces, so the hand points at its time on the
+        // 24-hour band (e.g. 18:15 at the 9:15 position of the 12-hour labels).
+        styled(() -> {
             HandBox b = handBox(style.gmt);
             open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"", b.x, b.y, b.w, b.h, n(b.pivotY));
             if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
-            line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * %d\"/>", h24 ? 15 : 30);
+            line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15\"/>");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
             close("PartImage");
-        }));
+        });
     }
 
     // ---- Bezel markings (drawn above the coloured ring) --------------------
