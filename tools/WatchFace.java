@@ -261,7 +261,12 @@ public class WatchFace {
             new Colorway("peach_tea", "Peach Tea", "#6B3B2A", "#F2B48C", "#6B3B2A", "#9A6E52"),
             new Colorway("lavender_lemonade", "Lavender Lemonade", "#4B3F72", "#C9B8E8", "#4B3F72", "#7E72A0"),
             new Colorway("hibiscus_tea", "Hibiscus Tea", "#5E1F3A", "#E8A0B4", "#6A2442", "#A0647A"),
-            new Colorway("blueberry_soda", "Blueberry Soda", "#2C3E66", "#A9BCE0", "#2C3E66", "#6A7B99"));
+            new Colorway("blueberry_soda", "Blueberry Soda", "#2C3E66", "#A9BCE0", "#2C3E66", "#6A7B99"),
+            // Pixel-inspired tonal pairs
+            new Colorway("cucumber_water", "Cucumber Water", "#134E44", "#8ED1BC", "#1A5A4F", "#557F73"),
+            new Colorway("butterfly_pea_tea", "Butterfly Pea Tea", "#2C2F6B", "#9C9CF2", "#383C80", "#6E6EB0"),
+            new Colorway("yuzu_soda", "Yuzu Soda", "#5A4A10", "#F2D36B", "#5A4A10", "#8C7835"),
+            new Colorway("tonic_water", "Tonic Water", "#37414D", "#A7B3C2", "#3F4A57", "#6E7886"));
 
 
     // ---- Palette ----------------------------------------------------------
