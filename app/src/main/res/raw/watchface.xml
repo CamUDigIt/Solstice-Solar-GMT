@@ -12,28 +12,28 @@
       <ListOption id="12" displayName="bezel_format_12"/>
       <ListOption id="24" displayName="bezel_format_24"/>
     </ListConfiguration>
-    <ColorConfiguration id="bezel" displayName="cfg_bezel" screenReaderText="cfg_bezel" icon="icon_cfg_bezel" defaultValue="pepsi">
-      <ColorOption id="pepsi" displayName="bezel_pepsi" icon="icon_bezel_pepsi" colors="#1D4ED8 #C81E1E #1D4ED8 #C81E1E"/>
-      <ColorOption id="diet_pepsi" displayName="bezel_diet_pepsi" icon="icon_bezel_diet_pepsi" colors="#1D4ED8 #B8BEC6 #1D4ED8 #6A7078"/>
-      <ColorOption id="pepsi_max" displayName="bezel_pepsi_max" icon="icon_bezel_pepsi_max" colors="#0B0B10 #1E5BD7 #3F3F46 #1E5BD7"/>
-      <ColorOption id="coke" displayName="bezel_coke" icon="icon_bezel_coke" colors="#111318 #B91C1C #52525B #B91C1C"/>
-      <ColorOption id="diet_coke" displayName="bezel_diet_coke" icon="icon_bezel_diet_coke" colors="#9F1D24 #B8BEC6 #9F1D24 #6A7078"/>
-      <ColorOption id="coke_zero" displayName="bezel_coke_zero" icon="icon_bezel_coke_zero" colors="#0B0B0D #E41E2B #3F3F46 #E41E2B"/>
-      <ColorOption id="caffeine_free_coke" displayName="bezel_caffeine_free_coke" icon="icon_bezel_caffeine_free_coke" colors="#8E1B1B #D4A72C #8E1B1B #8F711A"/>
-      <ColorOption id="cherry_coke" displayName="bezel_cherry_coke" icon="icon_bezel_cherry_coke" colors="#3D0C1C #B0174F #6B1A33 #B0174F"/>
-      <ColorOption id="diet_cherry_coke" displayName="bezel_diet_cherry_coke" icon="icon_bezel_diet_cherry_coke" colors="#6B0F2E #B8BEC6 #6B0F2E #6A7078"/>
-      <ColorOption id="tab" displayName="bezel_tab" icon="icon_bezel_tab" colors="#7A1446 #E0569A #7A1446 #B8457E"/>
-      <ColorOption id="dr_pepper" displayName="bezel_dr_pepper" icon="icon_bezel_dr_pepper" colors="#5C1324 #A9B0B8 #6A1A2C #737A82"/>
-      <ColorOption id="pibb_xtra" displayName="bezel_pibb_xtra" icon="icon_bezel_pibb_xtra" colors="#4A0D1A #C8102E #6B1A2A #C8102E"/>
-      <ColorOption id="sprite" displayName="bezel_sprite" icon="icon_bezel_sprite" colors="#0B3D91 #1E9E4A #0B3D91 #1A8A41"/>
-      <ColorOption id="seven_up" displayName="bezel_seven_up" icon="icon_bezel_seven_up" colors="#00553A #2DB34A #00553A #25913C"/>
-      <ColorOption id="squirt" displayName="bezel_squirt" icon="icon_bezel_squirt" colors="#2E6B1E #E5C21F #2E6B1E #7F6C12"/>
-      <ColorOption id="mountain_dew" displayName="bezel_mountain_dew" icon="icon_bezel_mountain_dew" colors="#0F5132 #8DC63F #186040 #577A24"/>
-      <ColorOption id="diet_mountain_dew" displayName="bezel_diet_mountain_dew" icon="icon_bezel_diet_mountain_dew" colors="#0F5132 #B8BEC6 #186040 #6A7078"/>
-      <ColorOption id="fanta" displayName="bezel_fanta" icon="icon_bezel_fanta" colors="#9A3412 #F97316 #9A3412 #C85E12"/>
-      <ColorOption id="grape_crush" displayName="bezel_grape_crush" icon="icon_bezel_grape_crush" colors="#3B0764 #8B5CF6 #5B21B6 #7C4FD8"/>
-      <ColorOption id="aw_root_beer" displayName="bezel_aw_root_beer" icon="icon_bezel_aw_root_beer" colors="#4A2511 #E39B0B #7C4A2A #976808"/>
-      <ColorOption id="canada_dry" displayName="bezel_canada_dry" icon="icon_bezel_canada_dry" colors="#0B4D2C #C9A227 #115C37 #8A6F1A"/>
+    <ColorConfiguration id="bezel" displayName="cfg_bezel" screenReaderText="cfg_bezel" icon="icon_cfg_bezel" defaultValue="blue_cola">
+      <ColorOption id="blue_cola" displayName="bezel_blue_cola" icon="icon_bezel_blue_cola" colors="#1D4ED8 #C81E1E #1D4ED8 #C81E1E"/>
+      <ColorOption id="diet_blue_cola" displayName="bezel_diet_blue_cola" icon="icon_bezel_diet_blue_cola" colors="#1D4ED8 #B8BEC6 #1D4ED8 #6A7078"/>
+      <ColorOption id="midnight_cola" displayName="bezel_midnight_cola" icon="icon_bezel_midnight_cola" colors="#0B0B10 #1E5BD7 #3F3F46 #1E5BD7"/>
+      <ColorOption id="classic_cola" displayName="bezel_classic_cola" icon="icon_bezel_classic_cola" colors="#111318 #B91C1C #52525B #B91C1C"/>
+      <ColorOption id="diet_cola" displayName="bezel_diet_cola" icon="icon_bezel_diet_cola" colors="#9F1D24 #B8BEC6 #9F1D24 #6A7078"/>
+      <ColorOption id="zero_sugar_cola" displayName="bezel_zero_sugar_cola" icon="icon_bezel_zero_sugar_cola" colors="#0B0B0D #E41E2B #3F3F46 #E41E2B"/>
+      <ColorOption id="gold_cola" displayName="bezel_gold_cola" icon="icon_bezel_gold_cola" colors="#8E1B1B #D4A72C #8E1B1B #8F711A"/>
+      <ColorOption id="cherry_cola" displayName="bezel_cherry_cola" icon="icon_bezel_cherry_cola" colors="#3D0C1C #B0174F #6B1A33 #B0174F"/>
+      <ColorOption id="diet_cherry_cola" displayName="bezel_diet_cherry_cola" icon="icon_bezel_diet_cherry_cola" colors="#6B0F2E #B8BEC6 #6B0F2E #6A7078"/>
+      <ColorOption id="pink_cola" displayName="bezel_pink_cola" icon="icon_bezel_pink_cola" colors="#7A1446 #E0569A #7A1446 #B8457E"/>
+      <ColorOption id="spiced_cherry" displayName="bezel_spiced_cherry" icon="icon_bezel_spiced_cherry" colors="#5C1324 #A9B0B8 #6A1A2C #737A82"/>
+      <ColorOption id="spiced_red" displayName="bezel_spiced_red" icon="icon_bezel_spiced_red" colors="#4A0D1A #C8102E #6B1A2A #C8102E"/>
+      <ColorOption id="lemon_lime" displayName="bezel_lemon_lime" icon="icon_bezel_lemon_lime" colors="#0B3D91 #1E9E4A #0B3D91 #1A8A41"/>
+      <ColorOption id="lime_green" displayName="bezel_lime_green" icon="icon_bezel_lime_green" colors="#00553A #2DB34A #00553A #25913C"/>
+      <ColorOption id="grapefruit" displayName="bezel_grapefruit" icon="icon_bezel_grapefruit" colors="#2E6B1E #E5C21F #2E6B1E #7F6C12"/>
+      <ColorOption id="neon_citrus" displayName="bezel_neon_citrus" icon="icon_bezel_neon_citrus" colors="#0F5132 #8DC63F #186040 #577A24"/>
+      <ColorOption id="diet_neon_citrus" displayName="bezel_diet_neon_citrus" icon="icon_bezel_diet_neon_citrus" colors="#0F5132 #B8BEC6 #186040 #6A7078"/>
+      <ColorOption id="orange_soda" displayName="bezel_orange_soda" icon="icon_bezel_orange_soda" colors="#9A3412 #F97316 #9A3412 #C85E12"/>
+      <ColorOption id="grape_soda" displayName="bezel_grape_soda" icon="icon_bezel_grape_soda" colors="#3B0764 #8B5CF6 #5B21B6 #7C4FD8"/>
+      <ColorOption id="root_beer" displayName="bezel_root_beer" icon="icon_bezel_root_beer" colors="#4A2511 #E39B0B #7C4A2A #976808"/>
+      <ColorOption id="ginger_ale" displayName="bezel_ginger_ale" icon="icon_bezel_ginger_ale" colors="#0B4D2C #C9A227 #115C37 #8A6F1A"/>
     </ColorConfiguration>
     <ListConfiguration id="airport" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="LHR">
       <ListOption id="LOCAL" displayName="airport_local"/>
