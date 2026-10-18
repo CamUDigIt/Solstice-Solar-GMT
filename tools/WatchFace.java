@@ -591,8 +591,10 @@ public class WatchFace {
         close("Group");
     }
 
-    // Notification pill on the 6 o'clock marker, below the event text (which ends by y = 370).
-    static final int PILL_W = 40, PILL_H = 28, PILL_CY = (int) Math.round(C + PIXEL_DOT_R);
+    // Notification pill below the event text and above the system's status chip
+    // at the bottom of the screen (measured on a Pixel Watch 4 at y ~375-440).
+    // The text box is taller than the pill so the 10sp line isn't clipped.
+    static final int PILL_W = 40, PILL_H = 26, PILL_BOX = 32, PILL_CY = 360;
 
     /**
      * Unread notification count ("1".."9", then "9+") in a pill: red with white
@@ -600,15 +602,15 @@ public class WatchFace {
      * colour on Pixel (like its date pill). Stays visible, dimmed, in always-on.
      */
     static void notificationPill() {
-        int x = (int) C - PILL_W / 2, y = PILL_CY - PILL_H / 2;
-        open("Group name=\"notifications_%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", style.id, x, y, PILL_W, PILL_H);
+        int x = (int) C - PILL_W / 2, y = PILL_CY - PILL_BOX / 2, inset = (PILL_BOX - PILL_H) / 2;
+        open("Group name=\"notifications_%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", style.id, x, y, PILL_W, PILL_BOX);
         boolean pixel = style == PIXEL;
-        open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" alpha=\"%d\"", PILL_W, PILL_H, pixel ? 110 : 255);
+        open("PartDraw x=\"0\" y=\"%d\" width=\"%d\" height=\"%d\" alpha=\"%d\"", inset, PILL_W, PILL_H, pixel ? 110 : 255);
         line("<RoundRectangle x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadiusX=\"%s\" cornerRadiusY=\"%s\"><Fill color=\"%s\"/></RoundRectangle>",
                 PILL_W, PILL_H, f(PILL_H / 2.0), f(PILL_H / 2.0), pixel ? "[CONFIGURATION.bezel.1]" : GMT_RED);
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", pixel ? 70 : 120);
         close("PartDraw");
-        open("PartText x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", PILL_W, PILL_H);
+        open("PartText x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", PILL_W, PILL_BOX);
         open("Text align=\"CENTER\"");
         open(font(TEXT_SECONDARY, "SEMI_BOLD", "#FFFFFF"));
         line("<Template>%%s<Parameter expression=\"%s\"/></Template>",
@@ -691,7 +693,7 @@ public class WatchFace {
     static final int ROUND_X = ROUND_CX - ROUND_TAP / 2, ROUND_Y = (int) C - ROUND_TAP / 2;
 
     // 6 o'clock long text: drawn box LONG_H tall at the top of a TAP_MIN-tall tap box.
-    static final int LONG_X = 120, LONG_Y = 284, LONG_W = 210, LONG_H = 72;
+    static final int LONG_X = 120, LONG_Y = 268, LONG_W = 210, LONG_H = 72;
 
     static void complications() {
         comment("Round complication at 9 o'clock");

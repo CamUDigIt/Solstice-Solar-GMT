@@ -386,12 +386,12 @@
               <Expression name="c3"><![CDATA[[UNREAD_NOTIFICATION_COUNT] > 0]]></Expression>
             </Expressions>
             <Compare expression="c3">
-              <Group name="notifications_flat" x="205" y="379" width="40" height="28">
-                <PartDraw x="0" y="0" width="40" height="28" alpha="255">
-                  <RoundRectangle x="0" y="0" width="40" height="28" cornerRadiusX="14" cornerRadiusY="14"><Fill color="#D72626"/></RoundRectangle>
+              <Group name="notifications_flat" x="205" y="344" width="40" height="32">
+                <PartDraw x="0" y="3" width="40" height="26" alpha="255">
+                  <RoundRectangle x="0" y="0" width="40" height="26" cornerRadiusX="13" cornerRadiusY="13"><Fill color="#D72626"/></RoundRectangle>
                   <Variant mode="AMBIENT" target="alpha" value="120"/>
                 </PartDraw>
-                <PartText x="0" y="0" width="40" height="28">
+                <PartText x="0" y="0" width="40" height="32">
                   <Text align="CENTER">
                     <Font family="inter_600" size="24" color="#FFFFFF">
                       <Template>%s<Parameter expression="[UNREAD_NOTIFICATION_COUNT] &gt; 9 ? &quot;9+&quot; : [UNREAD_NOTIFICATION_COUNT]"/></Template>
@@ -454,12 +454,12 @@
               <Expression name="c4"><![CDATA[[UNREAD_NOTIFICATION_COUNT] > 0]]></Expression>
             </Expressions>
             <Compare expression="c4">
-              <Group name="notifications_pixel" x="205" y="379" width="40" height="28">
-                <PartDraw x="0" y="0" width="40" height="28" alpha="110">
-                  <RoundRectangle x="0" y="0" width="40" height="28" cornerRadiusX="14" cornerRadiusY="14"><Fill color="[CONFIGURATION.bezel.1]"/></RoundRectangle>
+              <Group name="notifications_pixel" x="205" y="344" width="40" height="32">
+                <PartDraw x="0" y="3" width="40" height="26" alpha="110">
+                  <RoundRectangle x="0" y="0" width="40" height="26" cornerRadiusX="13" cornerRadiusY="13"><Fill color="[CONFIGURATION.bezel.1]"/></RoundRectangle>
                   <Variant mode="AMBIENT" target="alpha" value="70"/>
                 </PartDraw>
-                <PartText x="0" y="0" width="40" height="28">
+                <PartText x="0" y="0" width="40" height="32">
                   <Text align="CENTER">
                     <Font family="googlesans_600" size="24" color="#FFFFFF">
                       <Template>%s<Parameter expression="[UNREAD_NOTIFICATION_COUNT] &gt; 9 ? &quot;9+&quot; : [UNREAD_NOTIFICATION_COUNT]"/></Template>
@@ -523,12 +523,12 @@
               <Expression name="c5"><![CDATA[[UNREAD_NOTIFICATION_COUNT] > 0]]></Expression>
             </Expressions>
             <Compare expression="c5">
-              <Group name="notifications_pilot" x="205" y="379" width="40" height="28">
-                <PartDraw x="0" y="0" width="40" height="28" alpha="255">
-                  <RoundRectangle x="0" y="0" width="40" height="28" cornerRadiusX="14" cornerRadiusY="14"><Fill color="#D72626"/></RoundRectangle>
+              <Group name="notifications_pilot" x="205" y="344" width="40" height="32">
+                <PartDraw x="0" y="3" width="40" height="26" alpha="255">
+                  <RoundRectangle x="0" y="0" width="40" height="26" cornerRadiusX="13" cornerRadiusY="13"><Fill color="#D72626"/></RoundRectangle>
                   <Variant mode="AMBIENT" target="alpha" value="120"/>
                 </PartDraw>
-                <PartText x="0" y="0" width="40" height="28">
+                <PartText x="0" y="0" width="40" height="32">
                   <Text align="CENTER">
                     <Font family="oswald_600" size="24" color="#FFFFFF">
                       <Template>%s<Parameter expression="[UNREAD_NOTIFICATION_COUNT] &gt; 9 ? &quot;9+&quot; : [UNREAD_NOTIFICATION_COUNT]"/></Template>
@@ -1207,7 +1207,7 @@
       </Complication>
     </ComplicationSlot>
     <!-- 6 o'clock long-text complication -->
-    <ComplicationSlot slotId="301" displayName="slot_bottom" x="120" y="284" width="210" height="112" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY">
+    <ComplicationSlot slotId="301" displayName="slot_bottom" x="120" y="268" width="210" height="112" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY">
       <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
       <BoundingRoundBox x="0" y="0" width="210" height="112" cornerRadius="8"/>
       <Complication type="LONG_TEXT">

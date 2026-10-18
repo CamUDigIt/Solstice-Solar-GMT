@@ -80,7 +80,8 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   wraps onto two lines.
 - **Notifications.** When there are unread notifications
   (`[UNREAD_NOTIFICATION_COUNT]`), the 6 o'clock marker is replaced by a
-  small pill with the count (`1`..`9`, then `9+`): red on Pilot and Flat,
+  small pill with the count, placed between the event text and the system's
+  status chip at the bottom of the screen (`1`..`9`, then `9+`): red on Pilot and Flat,
   tinted with the colourway's day colour on Pixel. It stays visible, dimmed,
   in always-on mode.
 - **Date** at 3 o'clock: a Cyclops-style window on Pilot, plain white
