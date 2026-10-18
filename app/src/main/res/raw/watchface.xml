@@ -65,6 +65,16 @@
       <ListOption id="YYZ" displayName="airport_yyz"/>
       <ListOption id="IAD" displayName="airport_iad"/>
       <ListOption id="YYT" displayName="airport_yyt"/>
+      <ListOption id="MEX" displayName="airport_mex"/>
+      <ListOption id="BOG" displayName="airport_bog"/>
+      <ListOption id="CUN" displayName="airport_cun"/>
+      <ListOption id="LIM" displayName="airport_lim"/>
+      <ListOption id="PTY" displayName="airport_pty"/>
+      <ListOption id="SJU" displayName="airport_sju"/>
+      <ListOption id="SCL" displayName="airport_scl"/>
+      <ListOption id="EZE" displayName="airport_eze"/>
+      <ListOption id="GIG" displayName="airport_gig"/>
+      <ListOption id="GRU" displayName="airport_gru"/>
       <ListOption id="DUB" displayName="airport_dub"/>
       <ListOption id="LIS" displayName="airport_lis"/>
       <ListOption id="LHR" displayName="airport_lhr"/>
@@ -81,6 +91,21 @@
       <ListOption id="ATH" displayName="airport_ath"/>
       <ListOption id="IST" displayName="airport_ist"/>
       <ListOption id="SVO" displayName="airport_svo"/>
+      <ListOption id="LOS" displayName="airport_los"/>
+      <ListOption id="CAI" displayName="airport_cai"/>
+      <ListOption id="CPT" displayName="airport_cpt"/>
+      <ListOption id="JNB" displayName="airport_jnb"/>
+      <ListOption id="ADD" displayName="airport_add"/>
+      <ListOption id="NBO" displayName="airport_nbo"/>
+      <ListOption id="DOH" displayName="airport_doh"/>
+      <ListOption id="JED" displayName="airport_jed"/>
+      <ListOption id="RUH" displayName="airport_ruh"/>
+      <ListOption id="IKA" displayName="airport_ika"/>
+      <ListOption id="AUH" displayName="airport_auh"/>
+      <ListOption id="DXB" displayName="airport_dxb"/>
+      <ListOption id="KBL" displayName="airport_kbl"/>
+      <ListOption id="KHI" displayName="airport_khi"/>
+      <ListOption id="TAS" displayName="airport_tas"/>
       <ListOption id="BLR" displayName="airport_blr"/>
       <ListOption id="DEL" displayName="airport_del"/>
       <ListOption id="BOM" displayName="airport_bom"/>
@@ -101,15 +126,6 @@
       <ListOption id="KIX" displayName="airport_kix"/>
       <ListOption id="ICN" displayName="airport_icn"/>
       <ListOption id="HND" displayName="airport_hnd"/>
-      <ListOption id="DOH" displayName="airport_doh"/>
-      <ListOption id="JED" displayName="airport_jed"/>
-      <ListOption id="RUH" displayName="airport_ruh"/>
-      <ListOption id="IKA" displayName="airport_ika"/>
-      <ListOption id="AUH" displayName="airport_auh"/>
-      <ListOption id="DXB" displayName="airport_dxb"/>
-      <ListOption id="KBL" displayName="airport_kbl"/>
-      <ListOption id="KHI" displayName="airport_khi"/>
-      <ListOption id="TAS" displayName="airport_tas"/>
       <ListOption id="PER" displayName="airport_per"/>
       <ListOption id="ADL" displayName="airport_adl"/>
       <ListOption id="BNE" displayName="airport_bne"/>
@@ -118,22 +134,6 @@
       <ListOption id="NOU" displayName="airport_nou"/>
       <ListOption id="AKL" displayName="airport_akl"/>
       <ListOption id="TBU" displayName="airport_tbu"/>
-      <ListOption id="MEX" displayName="airport_mex"/>
-      <ListOption id="BOG" displayName="airport_bog"/>
-      <ListOption id="CUN" displayName="airport_cun"/>
-      <ListOption id="LIM" displayName="airport_lim"/>
-      <ListOption id="PTY" displayName="airport_pty"/>
-      <ListOption id="SJU" displayName="airport_sju"/>
-      <ListOption id="SCL" displayName="airport_scl"/>
-      <ListOption id="EZE" displayName="airport_eze"/>
-      <ListOption id="GIG" displayName="airport_gig"/>
-      <ListOption id="GRU" displayName="airport_gru"/>
-      <ListOption id="LOS" displayName="airport_los"/>
-      <ListOption id="CAI" displayName="airport_cai"/>
-      <ListOption id="CPT" displayName="airport_cpt"/>
-      <ListOption id="JNB" displayName="airport_jnb"/>
-      <ListOption id="ADD" displayName="airport_add"/>
-      <ListOption id="NBO" displayName="airport_nbo"/>
     </ListConfiguration>
   </UserConfigurations>
   <Scene backgroundColor="#000000">

@@ -119,23 +119,25 @@ public class WatchFace {
             new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79),
             new Airport("TBU", "Nuku'alofa", "Pacific/Tongatapu", -21.24, -175.15));
 
-    // Editor order: regions in this order; within each, west to east, then A-Z.
-    // The two-letter prefix leads each picker entry so the regions read as groups.
+    // Editor order: regions in columns from west to east, north to south within
+    // each column (North America, then Latin America; Europe, then Africa; ...).
+    // Within a region, west to east, then A-Z. The two-letter prefix leads each
+    // picker entry so the regions read as groups.
     record Region(String prefix, String name, List<String> codes) {}
 
     static final List<Region> REGIONS = List.of(
             new Region("NA", "North America", List.of("ANC", "ATL", "BOS", "ORD", "DFW", "DEN", "HNL", "IAH", "LAS",
                     "LAX", "MIA", "YUL", "JFK", "MCO", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR", "IAD")),
-            new Region("EU", "Europe", List.of("AMS", "ATH", "BCN", "CPH", "DUB", "FRA", "IST", "LIS", "LHR", "MAD",
-                    "SVO", "MUC", "CDG", "FCO", "VIE", "ZRH")),
-            new Region("AS", "Asia", List.of("BKK", "PEK", "BLR", "DAC", "CAN", "SGN", "HKG", "CGK", "KTM", "KUL",
-                    "MNL", "BOM", "DEL", "KIX", "ICN", "PVG", "SIN", "TPE", "HND", "RGN")),
-            new Region("ME", "Middle East & Central Asia", List.of("AUH", "DOH", "DXB", "JED", "KBL", "KHI", "RUH",
-                    "TAS", "IKA")),
-            new Region("OC", "Oceania & Pacific", List.of("ADL", "AKL", "BNE", "MEL", "NOU", "TBU", "PER", "SYD")),
             new Region("LA", "Latin America & Caribbean", List.of("BOG", "EZE", "CUN", "LIM", "MEX", "PTY", "GIG",
                     "SJU", "SCL", "GRU")),
-            new Region("AF", "Africa", List.of("ADD", "CAI", "CPT", "JNB", "LOS", "NBO")));
+            new Region("EU", "Europe", List.of("AMS", "ATH", "BCN", "CPH", "DUB", "FRA", "IST", "LIS", "LHR", "MAD",
+                    "SVO", "MUC", "CDG", "FCO", "VIE", "ZRH")),
+            new Region("AF", "Africa", List.of("ADD", "CAI", "CPT", "JNB", "LOS", "NBO")),
+            new Region("ME", "Middle East & Central Asia", List.of("AUH", "DOH", "DXB", "JED", "KBL", "KHI", "RUH",
+                    "TAS", "IKA")),
+            new Region("AS", "Asia", List.of("BKK", "PEK", "BLR", "DAC", "CAN", "SGN", "HKG", "CGK", "KTM", "KUL",
+                    "MNL", "BOM", "DEL", "KIX", "ICN", "PVG", "SIN", "TPE", "HND", "RGN")),
+            new Region("OC", "Oceania & Pacific", List.of("ADL", "AKL", "BNE", "MEL", "NOU", "TBU", "PER", "SYD")));
 
     static Region region(Airport a) {
         return REGIONS.stream().filter(r -> r.codes.contains(a.code)).findFirst().orElseThrow();

@@ -24,9 +24,10 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     Even if the full band were shown all in day colour, every colourway would
     stay at or under 12.8% average brightness (limit 15%).
 - **GMT hand.** It shows the time at one of 90 airports, one per metro area
-  (the busiest where a city has several). The editor groups them by region:
-  North America, Europe, Asia, Middle East & Central Asia, Oceania & Pacific,
-  Latin America & Caribbean, Africa; within each, west to east by standard
+  (the busiest where a city has several). The editor groups them by region, in
+  columns from west to east and north to south within each column: North
+  America, Latin America & Caribbean, Europe, Africa, Middle East & Central
+  Asia, Asia, Oceania & Pacific; within each region, west to east by standard
   offset and then A–Z. Each entry has two lines: a two-letter region prefix
   and the city, then its code and standard UTC offset (`NA · Denver` over
   `DEN · UTC−7`). Each airport's IANA time zone is
