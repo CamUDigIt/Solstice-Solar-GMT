@@ -78,6 +78,11 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   text over title; text like "Daily Planning · Wed 7:00 AM" is split at the
   separator into name and time on two lines; other text
   wraps onto two lines.
+- **Notifications.** When there are unread notifications
+  (`[UNREAD_NOTIFICATION_COUNT]`), the 12 o'clock marker is replaced by a
+  small pill with the count (`1`..`9`, then `9+`): red on Pilot and Flat,
+  tinted with the colourway's day colour on Pixel. It stays visible, dimmed,
+  in always-on mode.
 - **Date** at 3 o'clock: a Cyclops-style window on Pilot, plain white
   gold numerals on Flat (#E3B341, an Apple-style date accent).
 - **Tap actions.** Two invisible complication slots sit over the date and the
