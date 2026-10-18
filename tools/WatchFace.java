@@ -541,10 +541,9 @@ public class WatchFace {
         open("Group name=\"markers_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id);
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
         for (int h = 1; h <= 12; h++) {
-            // 3 is the date and 6 is drawn by sixMarker (it gives way to the
-            // notification pill); Pilot has its own 12 triangle and leaves 5 and 7
-            // clear for the taller event box that two-line Oswald text needs.
-            if (h == 3 || h == 6 || (style == PILOT && (h == 12 || h == 5 || h == 7))) continue;
+            // 3 is the date; Pilot has its own 12 triangle and leaves 5 and 7 clear
+            // for the taller event box that two-line Oswald text needs.
+            if (h == 3 || (style == PILOT && (h == 12 || h == 5 || h == 7))) continue;
             marker(h);
         }
         close("PartDraw");
@@ -556,8 +555,6 @@ public class WatchFace {
         }
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"140\"/>");
         close("Group");
-        // Unread notifications replace the 6 o'clock marker with a count pill.
-        switchOn("[UNREAD_NOTIFICATION_COUNT] > 0", WatchFace::notificationPill, WatchFace::sixMarker);
     }
 
     /** One hour marker, inside a PartDraw: Pixel dot, Pilot lume plot or Flat tick. */
@@ -579,47 +576,6 @@ public class WatchFace {
             line("<Stroke color=\"%s\" thickness=\"4\" cap=\"BUTT\"/>", LUME);
             close("Line");
         }
-    }
-
-    /** The style's 6 o'clock marker, shown when there are no unread notifications. */
-    static void sixMarker() {
-        open("Group name=\"marker6_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id);
-        open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        marker(6);
-        close("PartDraw");
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"140\"/>");
-        close("Group");
-    }
-
-    // Notification pill below the event text and above the system's status chip
-    // at the bottom of the screen (measured on a Pixel Watch 4 at y ~375-440).
-    // The text box is taller than the pill so the 10sp line isn't clipped.
-    static final int PILL_W = 40, PILL_H = 26, PILL_BOX = 32, PILL_CY = 360;
-
-    /**
-     * Unread notification count ("1".."9", then "9+") in a pill: red with white
-     * text on Pilot and Flat (like the GMT hand), tinted with the colourway's day
-     * colour on Pixel (like its date pill). Stays visible, dimmed, in always-on.
-     */
-    static void notificationPill() {
-        int x = (int) C - PILL_W / 2, y = PILL_CY - PILL_BOX / 2, inset = (PILL_BOX - PILL_H) / 2;
-        open("Group name=\"notifications_%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", style.id, x, y, PILL_W, PILL_BOX);
-        boolean pixel = style == PIXEL;
-        open("PartDraw x=\"0\" y=\"%d\" width=\"%d\" height=\"%d\" alpha=\"%d\"", inset, PILL_W, PILL_H, pixel ? 110 : 255);
-        line("<RoundRectangle x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadiusX=\"%s\" cornerRadiusY=\"%s\"><Fill color=\"%s\"/></RoundRectangle>",
-                PILL_W, PILL_H, f(PILL_H / 2.0), f(PILL_H / 2.0), pixel ? "[CONFIGURATION.bezel.1]" : GMT_RED);
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", pixel ? 70 : 120);
-        close("PartDraw");
-        open("PartText x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", PILL_W, PILL_BOX);
-        open("Text align=\"CENTER\"");
-        open(font(TEXT_SECONDARY, "SEMI_BOLD", "#FFFFFF"));
-        line("<Template>%%s<Parameter expression=\"%s\"/></Template>",
-                xml("[UNREAD_NOTIFICATION_COUNT] > 9 ? \"9+\" : [UNREAD_NOTIFICATION_COUNT]"));
-        close("Font");
-        close("Text");
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
-        close("PartText");
-        close("Group");
     }
 
     static final int DATE_CX = 362;
@@ -693,7 +649,7 @@ public class WatchFace {
     static final int ROUND_X = ROUND_CX - ROUND_TAP / 2, ROUND_Y = (int) C - ROUND_TAP / 2;
 
     // 6 o'clock long text: drawn box LONG_H tall at the top of a TAP_MIN-tall tap box.
-    static final int LONG_X = 120, LONG_Y = 268, LONG_W = 210, LONG_H = 72;
+    static final int LONG_X = 120, LONG_Y = 284, LONG_W = 210, LONG_H = 72;
 
     static void complications() {
         comment("Round complication at 9 o'clock");
