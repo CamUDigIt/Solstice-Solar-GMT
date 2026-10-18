@@ -31,106 +31,145 @@ public class WatchFace {
             new Airport("LAX", "Los Angeles", "America/Los_Angeles", 33.94, -118.41),
             new Airport("SFO", "San Francisco", "America/Los_Angeles", 37.62, -122.38),
             new Airport("SEA", "Seattle", "America/Los_Angeles", 47.45, -122.31),
+            new Airport("LAS", "Las Vegas", "America/Los_Angeles", 36.08, -115.15),
             new Airport("YVR", "Vancouver", "America/Vancouver", 49.19, -123.18),
             new Airport("DEN", "Denver", "America/Denver", 39.86, -104.67),
             new Airport("PHX", "Phoenix", "America/Phoenix", 33.43, -112.01),
             new Airport("ORD", "Chicago", "America/Chicago", 41.97, -87.91),
             new Airport("DFW", "Dallas", "America/Chicago", 32.90, -97.04),
+            new Airport("IAH", "Houston", "America/Chicago", 29.98, -95.34),
             new Airport("MEX", "Mexico City", "America/Mexico_City", 19.44, -99.07),
+            new Airport("CUN", "Cancun", "America/Cancun", 21.04, -86.87),
             new Airport("JFK", "New York", "America/New_York", 40.64, -73.78),
             new Airport("ATL", "Atlanta", "America/New_York", 33.64, -84.43),
             new Airport("MIA", "Miami", "America/New_York", 25.79, -80.29),
+            new Airport("BOS", "Boston", "America/New_York", 42.36, -71.01),
+            new Airport("MCO", "Orlando", "America/New_York", 28.43, -81.31),
+            new Airport("IAD", "Washington", "America/New_York", 38.95, -77.46),
             new Airport("YYZ", "Toronto", "America/Toronto", 43.68, -79.63),
+            new Airport("YUL", "Montreal", "America/Toronto", 45.47, -73.74),
             new Airport("BOG", "Bogota", "America/Bogota", 4.70, -74.15),
+            new Airport("LIM", "Lima", "America/Lima", -12.02, -77.11),
+            new Airport("PTY", "Panama City", "America/Panama", 9.07, -79.38),
             new Airport("SCL", "Santiago", "America/Santiago", -33.39, -70.79),
+            new Airport("SJU", "San Juan", "America/Puerto_Rico", 18.44, -66.00),
             new Airport("YYT", "St. John's", "America/St_Johns", 47.62, -52.75),
             new Airport("GRU", "Sao Paulo", "America/Sao_Paulo", -23.43, -46.47),
+            new Airport("GIG", "Rio de Janeiro", "America/Sao_Paulo", -22.81, -43.25),
             new Airport("EZE", "Buenos Aires", "America/Argentina/Buenos_Aires", -34.82, -58.54),
             // UTC+0 .. UTC+5
             new Airport("LHR", "London", "Europe/London", 51.47, -0.45),
             new Airport("DUB", "Dublin", "Europe/Dublin", 53.43, -6.25),
+            new Airport("LIS", "Lisbon", "Europe/Lisbon", 38.77, -9.13),
             new Airport("CDG", "Paris", "Europe/Paris", 49.01, 2.55),
             new Airport("AMS", "Amsterdam", "Europe/Amsterdam", 52.31, 4.76),
             new Airport("FRA", "Frankfurt", "Europe/Berlin", 50.04, 8.56),
             new Airport("ZRH", "Zurich", "Europe/Zurich", 47.46, 8.55),
             new Airport("MAD", "Madrid", "Europe/Madrid", 40.49, -3.57),
             new Airport("FCO", "Rome", "Europe/Rome", 41.80, 12.25),
+            new Airport("MUC", "Munich", "Europe/Berlin", 48.35, 11.79),
+            new Airport("BCN", "Barcelona", "Europe/Madrid", 41.30, 2.08),
+            new Airport("CPH", "Copenhagen", "Europe/Copenhagen", 55.62, 12.65),
+            new Airport("VIE", "Vienna", "Europe/Vienna", 48.11, 16.57),
+            new Airport("LOS", "Lagos", "Africa/Lagos", 6.58, 3.32),
             new Airport("CAI", "Cairo", "Africa/Cairo", 30.12, 31.41),
             new Airport("JNB", "Johannesburg", "Africa/Johannesburg", -26.14, 28.24),
+            new Airport("ATH", "Athens", "Europe/Athens", 37.94, 23.94),
+            new Airport("CPT", "Cape Town", "Africa/Johannesburg", -33.97, 18.60),
             new Airport("IST", "Istanbul", "Europe/Istanbul", 41.26, 28.74),
             new Airport("NBO", "Nairobi", "Africa/Nairobi", -1.32, 36.93),
+            new Airport("SVO", "Moscow", "Europe/Moscow", 55.97, 37.41),
+            new Airport("ADD", "Addis Ababa", "Africa/Addis_Ababa", 8.98, 38.80),
+            new Airport("RUH", "Riyadh", "Asia/Riyadh", 24.96, 46.70),
+            new Airport("JED", "Jeddah", "Asia/Riyadh", 21.68, 39.16),
             new Airport("DOH", "Doha", "Asia/Qatar", 25.27, 51.61),
             new Airport("IKA", "Tehran", "Asia/Tehran", 35.42, 51.15),
             new Airport("DXB", "Dubai", "Asia/Dubai", 25.25, 55.36),
+            new Airport("AUH", "Abu Dhabi", "Asia/Dubai", 24.43, 54.65),
             new Airport("KBL", "Kabul", "Asia/Kabul", 34.57, 69.21),
             new Airport("KHI", "Karachi", "Asia/Karachi", 24.91, 67.16),
+            new Airport("TAS", "Tashkent", "Asia/Tashkent", 41.26, 69.28),
             // UTC+5:30 .. UTC+13
             new Airport("DEL", "Delhi", "Asia/Kolkata", 28.56, 77.10),
             new Airport("BOM", "Mumbai", "Asia/Kolkata", 19.09, 72.87),
+            new Airport("BLR", "Bengaluru", "Asia/Kolkata", 13.20, 77.71),
             new Airport("KTM", "Kathmandu", "Asia/Kathmandu", 27.70, 85.36),
             new Airport("DAC", "Dhaka", "Asia/Dhaka", 23.84, 90.40),
             new Airport("RGN", "Yangon", "Asia/Yangon", 16.91, 96.13),
             new Airport("BKK", "Bangkok", "Asia/Bangkok", 13.69, 100.75),
+            new Airport("SGN", "Ho Chi Minh City", "Asia/Ho_Chi_Minh", 10.82, 106.66),
             new Airport("CGK", "Jakarta", "Asia/Jakarta", -6.13, 106.66),
             new Airport("SIN", "Singapore", "Asia/Singapore", 1.36, 103.99),
+            new Airport("KUL", "Kuala Lumpur", "Asia/Kuala_Lumpur", 2.75, 101.71),
             new Airport("HKG", "Hong Kong", "Asia/Hong_Kong", 22.31, 113.91),
             new Airport("PEK", "Beijing", "Asia/Shanghai", 40.08, 116.58),
+            new Airport("PVG", "Shanghai", "Asia/Shanghai", 31.14, 121.81),
+            new Airport("CAN", "Guangzhou", "Asia/Shanghai", 23.39, 113.30),
+            new Airport("TPE", "Taipei", "Asia/Taipei", 25.08, 121.23),
             new Airport("MNL", "Manila", "Asia/Manila", 14.51, 121.02),
             new Airport("PER", "Perth", "Australia/Perth", -31.94, 115.97),
             new Airport("ICN", "Seoul", "Asia/Seoul", 37.46, 126.44),
             new Airport("HND", "Tokyo", "Asia/Tokyo", 35.55, 139.78),
+            new Airport("KIX", "Osaka", "Asia/Tokyo", 34.43, 135.24),
             new Airport("ADL", "Adelaide", "Australia/Adelaide", -34.95, 138.53),
+            new Airport("BNE", "Brisbane", "Australia/Brisbane", -27.38, 153.12),
             new Airport("SYD", "Sydney", "Australia/Sydney", -33.95, 151.18),
             new Airport("MEL", "Melbourne", "Australia/Melbourne", -37.67, 144.84),
             new Airport("NOU", "Noumea", "Pacific/Noumea", -22.01, 166.21),
             new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79),
             new Airport("TBU", "Nuku'alofa", "Pacific/Tongatapu", -21.24, -175.15));
 
-    // Editor order: continents in this order; within each, west to east, then A-Z.
-    static final java.util.LinkedHashMap<String, List<String>> CONTINENTS = new java.util.LinkedHashMap<>();
-    static {
-        CONTINENTS.put("North America", List.of("ANC", "ATL", "ORD", "DFW", "DEN", "HNL", "LAX", "MEX", "MIA",
-                "JFK", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR"));
-        CONTINENTS.put("South America", List.of("BOG", "EZE", "SCL", "GRU"));
-        CONTINENTS.put("Europe", List.of("AMS", "DUB", "FRA", "IST", "LHR", "MAD", "CDG", "FCO", "ZRH"));
-        CONTINENTS.put("Africa", List.of("CAI", "JNB", "NBO"));
-        // Asia includes the Middle East (Doha, Dubai, Tehran).
-        CONTINENTS.put("Asia", List.of("BKK", "PEK", "DEL", "DAC", "DOH", "DXB", "HKG", "CGK", "KBL", "KHI", "KTM",
-                "MNL", "BOM", "ICN", "SIN", "IKA", "HND", "RGN"));
-        CONTINENTS.put("Oceania", List.of("ADL", "AKL", "MEL", "NOU", "TBU", "PER", "SYD"));
+    // Editor order: regions in this order; within each, west to east, then A-Z.
+    // The two-letter prefix leads each picker entry so the regions read as groups.
+    record Region(String prefix, String name, List<String> codes) {}
+
+    static final List<Region> REGIONS = List.of(
+            new Region("NA", "North America", List.of("ANC", "ATL", "BOS", "ORD", "DFW", "DEN", "HNL", "IAH", "LAS",
+                    "LAX", "MIA", "YUL", "JFK", "MCO", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR", "IAD")),
+            new Region("EU", "Europe", List.of("AMS", "ATH", "BCN", "CPH", "DUB", "FRA", "IST", "LIS", "LHR", "MAD",
+                    "SVO", "MUC", "CDG", "FCO", "VIE", "ZRH")),
+            new Region("AS", "Asia", List.of("BKK", "PEK", "BLR", "DAC", "CAN", "SGN", "HKG", "CGK", "KTM", "KUL",
+                    "MNL", "BOM", "DEL", "KIX", "ICN", "PVG", "SIN", "TPE", "HND", "RGN")),
+            new Region("ME", "Middle East & Central Asia", List.of("AUH", "DOH", "DXB", "JED", "KBL", "KHI", "RUH",
+                    "TAS", "IKA")),
+            new Region("OC", "Oceania & Pacific", List.of("ADL", "AKL", "BNE", "MEL", "NOU", "TBU", "PER", "SYD")),
+            new Region("LA", "Latin America & Caribbean", List.of("BOG", "EZE", "CUN", "LIM", "MEX", "PTY", "GIG",
+                    "SJU", "SCL", "GRU")),
+            new Region("AF", "Africa", List.of("ADD", "CAI", "CPT", "JNB", "LOS", "NBO")));
+
+    static Region region(Airport a) {
+        return REGIONS.stream().filter(r -> r.codes.contains(a.code)).findFirst().orElseThrow();
     }
 
-    /** Each continent's cities west to east (by standard UTC offset), then A-Z by city. */
+    /** Each region's cities west to east (by standard UTC offset), then A-Z by city. */
     static List<Airport> editorOrder() {
         var byCode = new java.util.HashMap<String, Airport>();
         for (Airport a : AIRPORTS) byCode.put(a.code, a);
         var order = new java.util.ArrayList<Airport>();
-        for (var e : CONTINENTS.entrySet()) {
-            e.getValue().stream().map(byCode::get)
+        for (Region r : REGIONS) {
+            r.codes.stream().map(byCode::get)
                     .sorted(java.util.Comparator.comparingInt(WatchFace::stdMinutes).thenComparing(Airport::city))
                     .forEach(order::add);
         }
-        if (order.size() != AIRPORTS.size() || order.contains(null)) {
-            throw new IllegalStateException("CONTINENTS must list every airport exactly once");
+        if (order.size() != AIRPORTS.size() || order.contains(null) || new java.util.HashSet<>(order).size() != order.size()) {
+            throw new IllegalStateException("REGIONS must list every airport exactly once");
         }
         return order;
     }
 
     /**
-     * Editor name, e.g. "Denver" over "DEN · UTC−7". The offset is the zone's
-     * standard (winter) offset, as time zone pickers usually list it: the
-     * name is fixed text, while the label on the face shows the live offset.
+     * Editor name, e.g. "NA · Denver" over "DEN · UTC−7". The offset is the
+     * zone's standard (winter) offset, as time zone pickers usually list it:
+     * the name is fixed text, while the label on the face shows the live offset.
      */
     static String displayName(Airport a) {
         int m = stdMinutes(a);
         String off = (m < 0 ? "−" : "+") + Math.abs(m) / 60 + (m % 60 == 0 ? "" : String.format(":%02d", Math.abs(m) % 60));
-        // Always two lines (city, then code and offset) so every entry looks alike.
-        return a.city + "\n" + a.code + " · UTC" + off;
+        // Always two lines (region and city, then code and offset) so every entry looks alike.
+        return region(a).prefix + " · " + a.city + "\n" + a.code + " · UTC" + off;
     }
 
     static final String DEFAULT_AIRPORT = "LHR";
-    /** Option id for "GMT hand follows local time"; its bezel uses the weather forecast. */
-    static final String LOCAL = "LOCAL";
 
     // ---- Destination UTC offset, computed from the UTC clock ----------------
     //
@@ -519,7 +558,6 @@ public class WatchFace {
         }
         close("ColorConfiguration");
         open("ListConfiguration id=\"airport\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_AIRPORT);
-        line("<ListOption id=\"%s\" displayName=\"airport_local\"/>", LOCAL);
         for (Airport a : editorOrder()) {
             String id = a.code.toLowerCase(Locale.ROOT);
             line("<ListOption id=\"%s\" displayName=\"airport_%s\"/>", a.code, id);
@@ -876,14 +914,6 @@ public class WatchFace {
         // change the time data sources used by its children's expressions.
         comment("Per-airport group: bezel, label and GMT hand in the airport's time zone");
         open("ListConfiguration id=\"airport\"");
-        open("ListOption id=\"%s\"", LOCAL);
-        open("Group name=\"airport_local\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        localBezel(false);
-        localBezel(true);
-        localLabel();
-        gmtHand(null);
-        close("Group");
-        close("ListOption");
         for (Airport a : AIRPORTS) {
             open("ListOption id=\"%s\"", a.code);
             open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
@@ -941,120 +971,6 @@ public class WatchFace {
         dayArc(sunrise + " * 15", sunset + " * 15");
     }
 
-    // LOCAL's position: WFF has no location source, but [TIMEZONE_ID] names the
-    // wearer's zone, so its principal city stands in. Airport zones plus common
-    // North American and other zones; others fall back to the weather forecast.
-    static final java.util.LinkedHashMap<String, double[]> ZONE_CITIES = new java.util.LinkedHashMap<>();
-    static {
-        for (Airport a : AIRPORTS) ZONE_CITIES.putIfAbsent(a.zone, new double[] {a.lat, a.lon});
-        double[][] extra = {
-                {39.74, -104.99}, {43.62, -116.20}, {42.33, -83.05}, {39.77, -86.16}, {38.25, -85.76},
-                {53.55, -113.49}, {49.90, -97.14}, {50.45, -104.62}, {44.65, -63.57}, {18.47, -66.11},
-                {-27.47, 153.03}, {-42.88, 147.33}, {-12.46, 130.84}, {38.72, -9.14}, {37.98, 23.73},
-                {60.17, 24.94}, {59.33, 18.07}, {59.91, 10.75}, {55.68, 12.57}, {52.23, 21.01},
-                {50.08, 14.44}, {48.21, 16.37}, {47.50, 19.04}, {44.43, 26.10}, {50.85, 4.35},
-                {55.76, 37.62}, {31.77, 35.21}, {24.71, 46.68}, {33.89, 35.50}, {6.52, 3.38},
-                {33.57, -7.59}, {-33.92, 18.42}, {3.14, 101.69}, {21.03, 105.85}, {10.82, 106.63},
-                {25.03, 121.57}, {31.23, 121.47}, {35.68, 139.69}, {-41.29, 174.78}, {-17.71, 178.07},
-                {19.43, -99.13}, {-12.05, -77.04}, {10.49, -66.88}, {-0.18, -78.47}, {9.93, -84.08},
-                {14.63, -90.51}, {23.11, -82.37}, {18.49, -69.93}, {21.31, -157.86}};
-        String[] extraZones = {
-                "America/Denver", "America/Boise", "America/Detroit", "America/Indiana/Indianapolis", "America/Kentucky/Louisville",
-                "America/Edmonton", "America/Winnipeg", "America/Regina", "America/Halifax", "America/Puerto_Rico",
-                "Australia/Brisbane", "Australia/Hobart", "Australia/Darwin", "Europe/Lisbon", "Europe/Athens",
-                "Europe/Helsinki", "Europe/Stockholm", "Europe/Oslo", "Europe/Copenhagen", "Europe/Warsaw",
-                "Europe/Prague", "Europe/Vienna", "Europe/Budapest", "Europe/Bucharest", "Europe/Brussels",
-                "Europe/Moscow", "Asia/Jerusalem", "Asia/Riyadh", "Asia/Beirut", "Africa/Lagos",
-                "Africa/Casablanca", "Africa/Johannesburg", "Asia/Kuala_Lumpur", "Asia/Bangkok", "Asia/Ho_Chi_Minh",
-                "Asia/Taipei", "Asia/Shanghai", "Asia/Tokyo", "Pacific/Auckland", "Pacific/Fiji",
-                "America/Mexico_City", "America/Lima", "America/Caracas", "America/Guayaquil", "America/Costa_Rica",
-                "America/Guatemala", "America/Havana", "America/Santo_Domingo", "Pacific/Honolulu"};
-        // The principal city wins over an airport's coordinates where both exist (e.g. Denver
-        // city rather than DEN, 30 km away); the airport list fills in everything else.
-        for (int i = 0; i < extraZones.length; i++) ZONE_CITIES.put(extraZones[i], extra[i]);
-    }
-
-    /** Nested ternary picking one value per zone from [TIMEZONE_ID]; "0" if unknown. */
-    static String byZone(java.util.function.ToDoubleFunction<String> value) {
-        String e = "0";
-        var zones = new java.util.ArrayList<>(ZONE_CITIES.keySet());
-        java.util.Collections.reverse(zones);
-        for (String z : zones) e = "([TIMEZONE_ID] == \"" + z + "\" ? " + n(value.applyAsDouble(z)) + " : " + e + ")";
-        return e;
-    }
-
-    /**
-     * LOCAL's bezel: sunrise/sunset computed like the airports' from the
-     * principal city of the wearer's time zone, so it matches the real sky
-     * where that city is (and within the zone's spread elsewhere). Zones not
-     * in ZONE_CITIES use the weather forecast instead.
-     */
-    static void localBezel(boolean ambient) {
-        StringBuilder known = new StringBuilder();
-        for (String z : ZONE_CITIES.keySet()) {
-            if (known.length() > 0) known.append(" || ");
-            known.append("[TIMEZONE_ID] == \"").append(z).append("\"");
-        }
-        java.util.function.Function<Integer, String> param = i -> byZone(z -> {
-            double[] c = ZONE_CITIES.get(z);
-            return solarParams(c[0], c[1], z)[i];
-        });
-        String k1 = param.apply(0), k2 = param.apply(1), lon = param.apply(2);
-        switchOn(known.toString(),
-                () -> bezelPart(ambient, null, () -> solarArc(k1, k2, lon)),
-                () -> weatherBezel(ambient));
-    }
-
-    /**
-     * LOCAL's bezel: the watch has no location source in WFF, so daylight comes
-     * from the hourly weather forecast's is-day flags for the wearer's location,
-     * on the same 24-hour scale as the airport bezels.
-     *
-     * Each flag describes the start of its hour, so a change between two hours
-     * is drawn halfway between them (within about 30 minutes of the real
-     * sunrise/sunset). The current hour uses the hourly forecast too: the
-     * "current conditions" flag can lag by hours. With no weather data the ring
-     * is night.
-     */
-    static void weatherBezel(boolean ambient) {
-        String hour = "floor([HOUR_0_23] + [MINUTE] / 60)";
-        // No forecast at all, or "day" for every one of the next 24 hours (what
-        // the watch-face editor's preview feeds in), can't place sunrise/sunset:
-        // show a nominal 06:00-18:00 day so the ring still shows both colours.
-        StringBuilder allDay = new StringBuilder();
-        for (int k = 0; k < 24; k++) {
-            if (k > 0) allDay.append(" && ");
-            allDay.append("[WEATHER.HOURS.").append(k).append(".IS_DAY]");
-        }
-        String noForecast = "![WEATHER.HOURS.0.IS_AVAILABLE] && ![WEATHER.IS_AVAILABLE]";
-        switchOn("(" + noForecast + ") || (" + allDay + ")",
-                () -> bezelPart(ambient, null, () -> dayArc("90", "270")),
-                () -> bezelPart(ambient, null, () -> {
-                    // Forecasts can flag a single hour wrongly (seen on a Pixel Watch 4:
-                    // the 10 AM hour marked night, today and tomorrow, between day
-                    // hours). Each hour takes the majority of itself and the hours either
-                    // side of it on the ring (hour 23 sits next to hour 0), which removes
-                    // one-hour glitches without moving real sunrise/sunset edges.
-                    for (int k = 0; k < 24; k++) {
-                        String a = "(" + hourlyDay((k + 23) % 24) + ")", b = "(" + hourlyDay(k) + ")", c = "(" + hourlyDay((k + 1) % 24) + ")";
-                        String isDay = "(" + a + " && " + b + ") || (" + a + " && " + c + ") || (" + b + " && " + c + ")";
-                        String s = "(" + hour + " + " + k + " - 0.5) * 15";
-                        dayArc(s, "(" + isDay + ") ? (" + s + " + 15) : " + s);
-                    }
-                }));
-    }
-
-    /**
-     * Whether forecast hour k (0 = this hour) is daytime; false when that hour
-     * isn't available. Hour 0 falls back to the current conditions when the
-     * hourly forecast doesn't include it.
-     */
-    static String hourlyDay(int k) {
-        String hourly = "[WEATHER.HOURS." + k + ".IS_AVAILABLE] && [WEATHER.HOURS." + k + ".IS_DAY]";
-        return k != 0 ? hourly
-                : "(" + hourly + ") || (![WEATHER.HOURS.0.IS_AVAILABLE] && [WEATHER.IS_AVAILABLE] && [WEATHER.IS_DAY])";
-    }
-
     // In always-on mode the full-width bands stay at the same alpha as the GMT
     // hand (200/255, ~78%), so they read as bright as the hands. Polar, the
     // palest colourway, is the worst case for the 15% average-brightness limit.
@@ -1067,7 +983,7 @@ public class WatchFace {
      */
     static void bezelPart(boolean ambient, String zone, Runnable body) {
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
-        if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
+        line("<Localization timeZone=\"%s\"/>", zone);
         bandAmbient = ambient;
         arc(bandR(), 0, 360, nightColor(ambient), bandThick(), "BUTT", null);
         body.run();
@@ -1109,47 +1025,6 @@ public class WatchFace {
                 whole + " ? \"\" : \":\"",
                 whole + " ? \"\" : abs(" + minutes + ") % 60",
         };
-    }
-
-    /**
-     * LOCAL's label: the local zone's abbreviation and its offset from UTC,
-     * e.g. "MDT −6H".
-     *
-     * [TIMEZONE_ABB] always reports the standard-time name (MST even in
-     * summer), so during daylight saving the summer name is derived from it:
-     * xST -> xDT (MDT, PDT, AKDT, AEDT, NZDT), three-letter xxT -> xxST (CEST,
-     * EEST, WEST, CLST), and GMT -> BST (IST in Dublin). Zones without a named
-     * abbreviation ("GMT+12:45", "UTC-3", "+0545"), or summer names the rules
-     * can't derive, fall back to "UTC +12:45" from the local offset.
-     */
-    static void localLabel() {
-        String abb = "[TIMEZONE_ABB]", len = "textLength(" + abb + ")", dst = "[IS_DAYLIGHT_SAVING_TIME]";
-        String unnamed = "((subText(" + abb + ", 0, 3) == \"GMT\" || subText(" + abb + ", 0, 3) == \"UTC\") && " + len + " > 3)"
-                + " || subText(" + abb + ", 0, 1) == \"+\" || subText(" + abb + ", 0, 1) == \"-\"";
-        String[] off = signedHours("[TIMEZONE_OFFSET_MINUTES_DST]");
-        Runnable utc = () -> labelText("UTC %s%s%s%s", off);
-        label(() -> chain(new String[] {
-                unnamed,
-                dst + " && [TIMEZONE_ID] == \"Europe/Dublin\"",
-                dst + " && " + abb + " == \"GMT\"",
-                dst + " && subText(" + abb + ", " + len + " - 2, " + len + ") == \"ST\"",
-                dst + " && " + len + " == 3 && subText(" + abb + ", 2, 3) == \"T\"",
-                dst,
-        }, new Runnable[] {
-                utc,
-                () -> labelText("IST %s%s%s%sH", off),
-                () -> labelText("BST %s%s%s%sH", off),
-                () -> labelText("%sDT %s%s%s%sH", cat("subText(" + abb + ", 0, " + len + " - 2)", off)),
-                () -> labelText("%sST %s%s%s%sH", cat("subText(" + abb + ", 0, 2)", off)),
-                utc,
-        }, () -> labelText("%s %s%s%s%sH", cat(abb, off))));
-    }
-
-    static String[] cat(String first, String[] rest) {
-        String[] all = new String[rest.length + 1];
-        all[0] = first;
-        System.arraycopy(rest, 0, all, 1, rest.length);
-        return all;
     }
 
     /** A Condition that runs the body of the first matching expression, else the default. */
@@ -1212,9 +1087,7 @@ public class WatchFace {
         close("PartText");
     }
 
-    /**
-     * GMT hand in the given zone, or local time when zone is null.
-     */
+    /** GMT hand in the airport's time zone. */
     static void gmtHand(String zone) {
         // One turn per day on both faces, so the hand points at its time on the
         // 24-hour band (e.g. 18:15 at the 9:15 position of the 12-hour labels).
@@ -1223,7 +1096,7 @@ public class WatchFace {
             // Pixel's white GMT hand takes the colourway's day colour as its accent.
             open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s", b.x, b.y, b.w, b.h, n(b.pivotY),
                     style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
-            if (zone != null) line("<Localization timeZone=\"%s\"/>", zone);
+            line("<Localization timeZone=\"%s\"/>", zone);
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
             line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15\"/>");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
@@ -1455,7 +1328,6 @@ public class WatchFace {
         str(s, "cfg_bezel", "Bezel colourway");
         str(s, "cfg_airport", "GMT airport");
         for (Colorway c : COLORWAYS) str(s, "bezel_" + c.id, c.name);
-        str(s, "airport_local", "LOCAL\nYour time zone");
         for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), displayName(a));
         str(s, "slot_left", "Left");
         str(s, "slot_bottom", "Bottom");

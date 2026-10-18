@@ -23,32 +23,25 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     always-on face averages about 4% brightness with about 15% of pixels lit.
     Even if the full band were shown all in day colour, every colourway would
     stay at or under 12.8% average brightness (limit 15%).
-- **GMT hand.** It shows the time at one of 57 airports. The editor lists LOCAL
-  first, then groups cities by continent (North America, South
-  America, Europe, Africa, Asia including the Middle East, Oceania), west
-  to east by standard offset and then A–Z within each offset. Each entry has
-  two lines: the city, then its code and standard UTC offset (`DEN · UTC−7`).
-  Each airport's IANA time zone is
+- **GMT hand.** It shows the time at one of 90 airports, one per metro area
+  (the busiest where a city has several). The editor groups them by region:
+  North America, Europe, Asia, Middle East & Central Asia, Oceania & Pacific,
+  Latin America & Caribbean, Africa; within each, west to east by standard
+  offset and then A–Z. Each entry has two lines: a two-letter region prefix
+  and the city, then its code and standard UTC offset (`NA · Denver` over
+  `DEN · UTC−7`). Each airport's IANA time zone is
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
-  handled by the OS. Add or remove airports in the `AIRPORTS` list in
-  `tools/WatchFace.java`.
+  handled by the OS. Add or remove airports in the `AIRPORTS` list and
+  `REGIONS` in `tools/WatchFace.java`; zones with irregular daylight-saving
+  rules (e.g. Morocco, Israel) need a rule in `dstRule` first.
+- **Sunrise and sunset** are computed on the watch for the selected airport
+  from its latitude/longitude and the date (NOAA approximation, within a few
+  minutes). There is no "local time" option: WFF has no location source, so
+  pick your home airport to follow local time.
 - **Offset label.** For example `LHR +1H`, `HNL −10H` or `KTM +5:45H`: the
   airport's current offset from UTC, including daylight saving. The label
   computes it from the UTC clock and the airport's daylight-saving rule.
   `tools/DstCheck.java` verifies those rules against `java.time` for every hour through 2040.
-- **LOCAL.** The first airport option. The GMT hand follows local time, and
-  sunrise and sunset are computed like the airports', using the principal
-  city of the watch's time zone (`[TIMEZONE_ID]`, e.g. Denver for
-  America/Denver), since WFF has no location source. That is exact in that
-  city and within the zone's spread elsewhere. About 90 zones are known
-  (`ZONE_CITIES`); in any other zone the band falls back to the hourly
-  weather forecast's day/night flags (within about 30 minutes, each hour
-  taking the majority of itself and its neighbours, a nominal 06:00–18:00
-  day without a forecast). The label
-  shows the local zone's abbreviation and offset from UTC (`MDT −6H`,
-  `BST +1H`, `NPT +5:45H`). WFF's `[TIMEZONE_ABB]` only reports the standard
-  name, so summer names are derived from it; zones without a named
-  abbreviation show `UTC +13:45` style instead.
 - **Three styles.**
   - *Pilot* (inspired by classic GMT tool watches): bundled Oswald, Mercedes
     hour hand, sword minute hand, lollipop seconds, a GMT hand with a large
