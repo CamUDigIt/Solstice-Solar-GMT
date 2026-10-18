@@ -360,9 +360,6 @@
               <Line startX="302" startY="358.37" endX="315.5" endY="381.75">
                 <Stroke color="#F4F1E4" thickness="4" cap="BUTT"/>
               </Line>
-              <Line startX="225" startY="379" endX="225" endY="406">
-                <Stroke color="#F4F1E4" thickness="4" cap="BUTT"/>
-              </Line>
               <Line startX="148" startY="358.37" endX="134.5" endY="381.75">
                 <Stroke color="#F4F1E4" thickness="4" cap="BUTT"/>
               </Line>
@@ -378,6 +375,9 @@
               <Line startX="148" startY="91.63" endX="134.5" endY="68.25">
                 <Stroke color="#F4F1E4" thickness="4" cap="BUTT"/>
               </Line>
+              <Line startX="225" startY="71" endX="225" endY="44">
+                <Stroke color="#F4F1E4" thickness="4" cap="BUTT"/>
+              </Line>
             </PartDraw>
             <Variant mode="AMBIENT" target="alpha" value="140"/>
           </Group>
@@ -386,7 +386,7 @@
               <Expression name="c3"><![CDATA[[UNREAD_NOTIFICATION_COUNT] > 0]]></Expression>
             </Expressions>
             <Compare expression="c3">
-              <Group name="notifications_flat" x="205" y="45" width="40" height="28">
+              <Group name="notifications_flat" x="205" y="379" width="40" height="28">
                 <PartDraw x="0" y="0" width="40" height="28" alpha="255">
                   <RoundRectangle x="0" y="0" width="40" height="28" cornerRadiusX="14" cornerRadiusY="14"><Fill color="#D72626"/></RoundRectangle>
                   <Variant mode="AMBIENT" target="alpha" value="120"/>
@@ -402,9 +402,9 @@
               </Group>
             </Compare>
             <Default>
-              <Group name="marker12_flat" x="0" y="0" width="450" height="450">
+              <Group name="marker6_flat" x="0" y="0" width="450" height="450">
                 <PartDraw x="0" y="0" width="450" height="450">
-                  <Line startX="225" startY="71" endX="225" endY="44">
+                  <Line startX="225" startY="379" endX="225" endY="406">
                     <Stroke color="#F4F1E4" thickness="4" cap="BUTT"/>
                   </Line>
                 </PartDraw>
@@ -428,9 +428,6 @@
               <Ellipse x="306" y="367.49" width="6" height="6">
                 <Fill color="#AEB4BD"/>
               </Ellipse>
-              <Ellipse x="219" y="387" width="12" height="12">
-                <Fill color="#F1F2F4"/>
-              </Ellipse>
               <Ellipse x="138" y="367.49" width="6" height="6">
                 <Fill color="#AEB4BD"/>
               </Ellipse>
@@ -446,6 +443,9 @@
               <Ellipse x="138" y="76.51" width="6" height="6">
                 <Fill color="#AEB4BD"/>
               </Ellipse>
+              <Ellipse x="219" y="51" width="12" height="12">
+                <Fill color="#F1F2F4"/>
+              </Ellipse>
             </PartDraw>
             <Variant mode="AMBIENT" target="alpha" value="140"/>
           </Group>
@@ -454,7 +454,7 @@
               <Expression name="c4"><![CDATA[[UNREAD_NOTIFICATION_COUNT] > 0]]></Expression>
             </Expressions>
             <Compare expression="c4">
-              <Group name="notifications_pixel" x="205" y="45" width="40" height="28">
+              <Group name="notifications_pixel" x="205" y="379" width="40" height="28">
                 <PartDraw x="0" y="0" width="40" height="28" alpha="110">
                   <RoundRectangle x="0" y="0" width="40" height="28" cornerRadiusX="14" cornerRadiusY="14"><Fill color="[CONFIGURATION.bezel.1]"/></RoundRectangle>
                   <Variant mode="AMBIENT" target="alpha" value="70"/>
@@ -470,9 +470,11 @@
               </Group>
             </Compare>
             <Default>
-              <Group name="marker12_pixel" x="0" y="0" width="450" height="450">
+              <Group name="marker6_pixel" x="0" y="0" width="450" height="450">
                 <PartDraw x="0" y="0" width="450" height="450">
-                  <Ellipse x="219" y="51" width="12" height="12"><Fill color="#F1F2F4"/></Ellipse>
+                  <Ellipse x="219" y="387" width="12" height="12">
+                    <Fill color="#F1F2F4"/>
+                  </Ellipse>
                 </PartDraw>
                 <Variant mode="AMBIENT" target="alpha" value="140"/>
               </Group>
@@ -494,10 +496,6 @@
                 <Stroke color="#C9CED6" thickness="1.4"/>
                 <Fill color="#F4F1E4"/>
               </Ellipse>
-              <Ellipse x="220" y="381" width="10" height="10">
-                <Stroke color="#C9CED6" thickness="1.4"/>
-                <Fill color="#F4F1E4"/>
-              </Ellipse>
               <Ellipse x="80.57" y="300.5" width="10" height="10">
                 <Stroke color="#C9CED6" thickness="1.4"/>
                 <Fill color="#F4F1E4"/>
@@ -515,6 +513,9 @@
                 <Fill color="#F4F1E4"/>
               </Ellipse>
             </PartDraw>
+            <PartImage x="215" y="55" width="20" height="18">
+              <Image resource="pilot_marker_12"/>
+            </PartImage>
             <Variant mode="AMBIENT" target="alpha" value="140"/>
           </Group>
           <Condition>
@@ -522,7 +523,7 @@
               <Expression name="c5"><![CDATA[[UNREAD_NOTIFICATION_COUNT] > 0]]></Expression>
             </Expressions>
             <Compare expression="c5">
-              <Group name="notifications_pilot" x="205" y="45" width="40" height="28">
+              <Group name="notifications_pilot" x="205" y="379" width="40" height="28">
                 <PartDraw x="0" y="0" width="40" height="28" alpha="255">
                   <RoundRectangle x="0" y="0" width="40" height="28" cornerRadiusX="14" cornerRadiusY="14"><Fill color="#D72626"/></RoundRectangle>
                   <Variant mode="AMBIENT" target="alpha" value="120"/>
@@ -538,10 +539,13 @@
               </Group>
             </Compare>
             <Default>
-              <Group name="marker12_pilot" x="0" y="0" width="450" height="450">
-                <PartImage x="215" y="55" width="20" height="18">
-                  <Image resource="pilot_marker_12"/>
-                </PartImage>
+              <Group name="marker6_pilot" x="0" y="0" width="450" height="450">
+                <PartDraw x="0" y="0" width="450" height="450">
+                  <Ellipse x="220" y="381" width="10" height="10">
+                    <Stroke color="#C9CED6" thickness="1.4"/>
+                    <Fill color="#F4F1E4"/>
+                  </Ellipse>
+                </PartDraw>
                 <Variant mode="AMBIENT" target="alpha" value="140"/>
               </Group>
             </Default>

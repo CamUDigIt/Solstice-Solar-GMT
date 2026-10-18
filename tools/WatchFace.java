@@ -541,62 +541,58 @@ public class WatchFace {
         open("Group name=\"markers_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id);
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
         for (int h = 1; h <= 12; h++) {
-            double a = h * 30;
-            // 3 is the date and 12 is drawn by twelveMarker (it gives way to the
-            // notification pill); Pilot leaves 5 and 7 clear for the taller event
-            // box that two-line Oswald text needs.
-            if (h == 3 || h == 12 || (style == PILOT && (h == 5 || h == 7))) continue;
-            if (style == PIXEL) {
-                double d = h % 3 == 0 ? 12 : 6;
-                open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(PIXEL_DOT_R, a) - d / 2), f(dy(PIXEL_DOT_R, a) - d / 2), f(d), f(d));
-                line("<Fill color=\"%s\"/>", h % 3 == 0 ? "#F1F2F4" : "#AEB4BD");
-                close("Ellipse");
-            } else if (style == PILOT) {
-                double d = 10;
-                open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(PLOT_R, a) - d / 2), f(dy(PLOT_R, a) - d / 2), f(d), f(d));
-                line("<Stroke color=\"%s\" thickness=\"1.4\"/>", STEEL);
-                line("<Fill color=\"%s\"/>", LUME);
-                close("Ellipse");
-            } else {
-                open("Line startX=\"%s\" startY=\"%s\" endX=\"%s\" endY=\"%s\"", px(TICK_IN, a), py(TICK_IN, a), px(TRACK_OUT, a), py(TRACK_OUT, a));
-                line("<Stroke color=\"%s\" thickness=\"4\" cap=\"BUTT\"/>", LUME);
-                close("Line");
-            }
+            // 3 is the date and 6 is drawn by sixMarker (it gives way to the
+            // notification pill); Pilot has its own 12 triangle and leaves 5 and 7
+            // clear for the taller event box that two-line Oswald text needs.
+            if (h == 3 || h == 6 || (style == PILOT && (h == 12 || h == 5 || h == 7))) continue;
+            marker(h);
         }
         close("PartDraw");
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"140\"/>");
-        close("Group");
-        // Unread notifications replace the 12 o'clock marker with a count pill.
-        switchOn("[UNREAD_NOTIFICATION_COUNT] > 0", WatchFace::notificationPill, WatchFace::twelveMarker);
-    }
-
-    /** The style's 12 o'clock marker: Pilot's triangle, Flat's tick, Pixel's large dot. */
-    static void twelveMarker() {
-        open("Group name=\"marker12_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id);
         if (style == PILOT) {
             int w = 20, h = 18;
             open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", (int) C - w / 2, (int) (C - PLOT_R - h / 2.0), w, h);
             line("<Image resource=\"pilot_marker_12\"/>");
             close("PartImage");
-        } else {
-            open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-            if (style == PIXEL) {
-                double d = 12;
-                line("<Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"><Fill color=\"#F1F2F4\"/></Ellipse>",
-                        f(C - d / 2), f(C - PIXEL_DOT_R - d / 2), f(d), f(d));
-            } else {
-                open("Line startX=\"%s\" startY=\"%s\" endX=\"%s\" endY=\"%s\"", px(TICK_IN, 0), py(TICK_IN, 0), px(TRACK_OUT, 0), py(TRACK_OUT, 0));
-                line("<Stroke color=\"%s\" thickness=\"4\" cap=\"BUTT\"/>", LUME);
-                close("Line");
-            }
-            close("PartDraw");
         }
+        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"140\"/>");
+        close("Group");
+        // Unread notifications replace the 6 o'clock marker with a count pill.
+        switchOn("[UNREAD_NOTIFICATION_COUNT] > 0", WatchFace::notificationPill, WatchFace::sixMarker);
+    }
+
+    /** One hour marker, inside a PartDraw: Pixel dot, Pilot lume plot or Flat tick. */
+    static void marker(int h) {
+        double a = h * 30;
+        if (style == PIXEL) {
+            double d = h % 3 == 0 ? 12 : 6;
+            open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(PIXEL_DOT_R, a) - d / 2), f(dy(PIXEL_DOT_R, a) - d / 2), f(d), f(d));
+            line("<Fill color=\"%s\"/>", h % 3 == 0 ? "#F1F2F4" : "#AEB4BD");
+            close("Ellipse");
+        } else if (style == PILOT) {
+            double d = 10;
+            open("Ellipse x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\"", f(dx(PLOT_R, a) - d / 2), f(dy(PLOT_R, a) - d / 2), f(d), f(d));
+            line("<Stroke color=\"%s\" thickness=\"1.4\"/>", STEEL);
+            line("<Fill color=\"%s\"/>", LUME);
+            close("Ellipse");
+        } else {
+            open("Line startX=\"%s\" startY=\"%s\" endX=\"%s\" endY=\"%s\"", px(TICK_IN, a), py(TICK_IN, a), px(TRACK_OUT, a), py(TRACK_OUT, a));
+            line("<Stroke color=\"%s\" thickness=\"4\" cap=\"BUTT\"/>", LUME);
+            close("Line");
+        }
+    }
+
+    /** The style's 6 o'clock marker, shown when there are no unread notifications. */
+    static void sixMarker() {
+        open("Group name=\"marker6_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", style.id);
+        open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+        marker(6);
+        close("PartDraw");
         line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"140\"/>");
         close("Group");
     }
 
-    // Notification pill at 12 o'clock: clear of the GMT label below it (LABEL_Y).
-    static final int PILL_W = 40, PILL_H = 28, PILL_CY = 59;
+    // Notification pill on the 6 o'clock marker, below the event text (which ends by y = 370).
+    static final int PILL_W = 40, PILL_H = 28, PILL_CY = (int) Math.round(C + PIXEL_DOT_R);
 
     /**
      * Unread notification count ("1".."9", then "9+") in a pill: red with white

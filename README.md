@@ -79,7 +79,7 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   separator into name and time on two lines; other text
   wraps onto two lines.
 - **Notifications.** When there are unread notifications
-  (`[UNREAD_NOTIFICATION_COUNT]`), the 12 o'clock marker is replaced by a
+  (`[UNREAD_NOTIFICATION_COUNT]`), the 6 o'clock marker is replaced by a
   small pill with the count (`1`..`9`, then `9+`): red on Pilot and Flat,
   tinted with the colourway's day colour on Pixel. It stays visible, dimmed,
   in always-on mode.
