@@ -173,88 +173,21 @@ public class WatchFace {
 
     static final String DEFAULT_AIRPORT = "LHR";
 
-    // ---- Destination UTC offset, computed from the UTC clock ----------------
-    //
-    // The offset label ("LHR +7H") needs the airport's offset and the wearer's
-    // offset in one expression. A part with <Localization> sees *every* time
-    // source in the airport's zone (including TIMEZONE_OFFSET_MINUTES_DST), so
-    // the label is not localised; instead the airport's current offset is built
-    // from [MINUTES_SINCE_EPOCH] plus its daylight-saving rule. DstCheck.java
-    // verifies these expressions against java.time for every hour of 2026-2040.
+    // ---- Standard UTC offsets (picker labels and ordering) -------------------
+    // The label on the face reads the airport's live offset from the OS (it is
+    // localised to the airport's zone); these build-time offsets only name and
+    // order the picker entries.
 
-    enum Dst { NONE, EU, NA, AU, NZ, CL, EG }
-
-    static java.time.zone.ZoneRules rules(Airport a) {
-        return java.time.ZoneId.of(a.zone).getRules();
-    }
-
-    // Rules are classified from 2027 onward, so zones whose law changed recently
+    // Rules are read from 2027 onward, so zones whose law changed recently
     // (e.g. British Columbia's permanent UTC-7 from November 2026) use the new rule.
     static final java.time.Instant RULES_FROM = java.time.Instant.parse("2027-01-01T00:00:00Z");
 
-    /** Standard offset in minutes (the year-round offset for zones without DST). */
+    /** Standard offset in minutes (the year-round offset for zones without daylight saving). */
     static int stdMinutes(Airport a) {
-        var r = rules(a);
-        return (dstRule(a) == Dst.NONE ? r.getOffset(RULES_FROM) : r.getStandardOffset(RULES_FROM)).getTotalSeconds() / 60;
-    }
-
-    static Dst dstRule(Airport a) {
-        var r = rules(a);
+        var r = java.time.ZoneId.of(a.zone).getRules();
         var next = r.nextTransition(RULES_FROM);
-        if (r.isFixedOffset() || next == null || next.getInstant().isAfter(RULES_FROM.plusSeconds(366L * 86400))) {
-            return Dst.NONE;
-        }
-        String z = a.zone;
-        if (z.startsWith("Europe/")) return Dst.EU;
-        if (z.equals("America/Santiago")) return Dst.CL;
-        if (z.equals("Africa/Cairo")) return Dst.EG;
-        if (z.equals("Pacific/Auckland")) return Dst.NZ;
-        if (z.startsWith("Australia/")) return Dst.AU;
-        if (z.startsWith("America/")) return Dst.NA;
-        throw new IllegalStateException("No DST rule family for " + z);
-    }
-
-    /** Days since 1970-01-01 for month m (>= 3) / day d of [YEAR] (civil-from-days, Hinnant). */
-    static String day(int m, int d) {
-        int k = (153 * (m - 3) + 2) / 5 + d - 719469;
-        return "(365 * [YEAR] + floor([YEAR] / 4) - floor([YEAR] / 100) + floor([YEAR] / 400) + " + k + ")";
-    }
-
-    /** Last weekday wd (0 = Sunday) on or before day expression n. */
-    static String lastWd(String n, int wd) {
-        return "(" + n + " - (" + n + " + " + (11 - wd) + ") % 7)";
-    }
-
-    /** First weekday wd (0 = Sunday) on or after day expression n. */
-    static String firstWd(String n, int wd) {
-        return "(" + n + " + (" + (wd + 7) + " - (" + n + " + 4) % 7) % 7)";
-    }
-
-    /** UTC minute at which local clocks change, on day expression dayExpr. */
-    static String at(String dayExpr, int utcMinuteOfDay) {
-        return "((" + dayExpr + ") * 1440 + " + utcMinuteOfDay + ")";
-    }
-
-    /** Expression for the airport's current UTC offset in minutes. */
-    static String destOffset(Airport a) {
-        int s = stdMinutes(a);
-        String now = "[MINUTES_SINCE_EPOCH]";
-        String on = switch (dstRule(a)) {
-            case NONE -> null;
-            // Last Sunday of March / October, 01:00 UTC.
-            case EU -> now + " >= " + at(lastWd(day(3, 31), 0), 60) + " && " + now + " < " + at(lastWd(day(10, 31), 0), 60);
-            // Second Sunday of March 02:00 standard / first Sunday of November 02:00 daylight.
-            case NA -> now + " >= " + at(firstWd(day(3, 8), 0), 120 - s) + " && " + now + " < " + at(firstWd(day(11, 1), 0), 60 - s);
-            // First Sunday of October 02:00 standard / first Sunday of April 03:00 daylight.
-            case AU -> now + " >= " + at(firstWd(day(10, 1), 0), 120 - s) + " || " + now + " < " + at(firstWd(day(4, 1), 0), 120 - s);
-            // Last Sunday of September 02:00 standard / first Sunday of April 03:00 daylight.
-            case NZ -> now + " >= " + at(lastWd(day(9, 30), 0), 120 - s) + " || " + now + " < " + at(firstWd(day(4, 1), 0), 120 - s);
-            // Midnight starting the first Sunday on/after 2 Sep (standard) / 2 Apr (daylight).
-            case CL -> now + " >= " + at(firstWd(day(9, 2), 0), -s) + " || " + now + " < " + at(firstWd(day(4, 2), 0), -s - 60);
-            // Midnight starting the last Friday of April / ending the last Thursday of October.
-            case EG -> now + " >= " + at(lastWd(day(4, 30), 5), -s) + " && " + now + " < " + at(lastWd(day(10, 31), 4) + " + 1", -s - 60);
-        };
-        return on == null ? Integer.toString(s) : "(" + s + " + ((" + on + ") ? 60 : 0))";
+        boolean dst = next != null && next.getInstant().isBefore(RULES_FROM.plusSeconds(366L * 86400));
+        return (dst ? r.getStandardOffset(RULES_FROM) : r.getOffset(RULES_FROM)).getTotalSeconds() / 60;
     }
 
     // ---- Bezel colourways ---------------------------------------------------
@@ -1014,7 +947,9 @@ public class WatchFace {
 
     /** "LHR +1H", "HNL −10H", "KTM +5:45H": the airport's offset from UTC. */
     static void airportLabel(Airport a) {
-        label(a.code + " %s%s%s%sH", signedHours(destOffset(a)));
+        // Localised to the airport's zone, so [TIMEZONE_OFFSET_MINUTES_DST] is the airport's own
+        // current offset, kept up to date by the OS: no per-minute daylight-saving maths.
+        label(() -> labelText(a.zone, a.code + " %s%s%s%sH", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
     }
 
     /** Template parameters for a signed minute offset: sign, hours, ":" and minutes when not whole. */
@@ -1054,10 +989,6 @@ public class WatchFace {
     // above where the hands usually sit.
     static final int LABEL_W = 160, LABEL_H = 28, LABEL_Y = 76;
 
-    static void label(String template, String... params) {
-        label(() -> labelText(template, params));
-    }
-
     static void label(Runnable text) {
         styled(text);
         // The underline ties the label to the GMT hand: red, or Pixel's accent colour.
@@ -1071,9 +1002,10 @@ public class WatchFace {
         close("PartDraw");
     }
 
-    static void labelText(String template, String... params) {
+    static void labelText(String zone, String template, String... params) {
         int w = LABEL_W, h = LABEL_H, x = (int) (C - w / 2), y = LABEL_Y;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
+        line("<Localization timeZone=\"%s\"/>", zone);
         open("Text align=\"CENTER\"");
         open(font(TEXT_SECONDARY, "MEDIUM", STEEL));
         if (params.length == 0) {

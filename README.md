@@ -33,16 +33,17 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   `DEN · UTC−7`). Each airport's IANA time zone is
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
   handled by the OS. Add or remove airports in the `AIRPORTS` list and
-  `REGIONS` in `tools/WatchFace.java`; zones with irregular daylight-saving
-  rules (e.g. Morocco, Israel) need a rule in `dstRule` first.
+  `REGIONS` in `tools/WatchFace.java`. Any IANA zone works, including ones
+  with irregular daylight-saving rules (e.g. Morocco, Israel).
 - **Sunrise and sunset** are computed on the watch for the selected airport
   from its latitude/longitude and the date (NOAA approximation, within a few
   minutes). There is no "local time" option: WFF has no location source, so
   pick your home airport to follow local time.
 - **Offset label.** For example `LHR +1H`, `HNL −10H` or `KTM +5:45H`: the
   airport's current offset from UTC, including daylight saving. The label
-  computes it from the UTC clock and the airport's daylight-saving rule.
-  `tools/DstCheck.java` verifies those rules against `java.time` for every hour through 2040.
+  is localised to the airport's time zone and reads the offset the OS keeps
+  for it, so it needs no daylight-saving maths and only changes when the
+  offset does.
 - **Three styles.**
   - *Pilot* (inspired by classic GMT tool watches): bundled Oswald, Mercedes
     hour hand, sword minute hand, lollipop seconds, a GMT hand with a large
@@ -89,7 +90,9 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   an app to it to make the label tappable.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
 - **Efficiency.** Bezel numerals are pre-rendered images (one per style and
-  format) instead of outlined text, and the GMT hand updates once a minute.
+  format) instead of outlined text, the GMT hand updates once a minute, and
+  nothing depends on the per-minute clock in always-on mode (measured on a
+  Pixel Watch 4: about 0.2% of a CPU core in always-on mode, down from 3.7%).
 - **Customisation.** In the watch-face editor you can pick the style (Pilot,
   Flat or Pixel), the bezel format (12h or 24h), one of 28 drink-themed bezel colourways (colas and their diet versions,
   citrus, fruit, root beer and ginger, plus softer earthy and pastel teas,
@@ -103,7 +106,6 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 | `tools/WatchFace.java` | **Source of truth.** Generates `res/raw/watchface.xml`, `res/values/strings.xml` and the editor icons. |
 | `tools/HandArt.java` | Renders the hand / bezel-pip PNGs into `res/drawable-nodpi`. |
 | `tools/Validate.java` | Validates the XML against the official WFF v3 schema (`tools/wff`, Apache 2.0, from google/watchface). |
-| `tools/DstCheck.java` | Checks the offset label's daylight-saving rules against `java.time`. Run it after changing airports. |
 | `tools/preview.sh` | Regenerates, validates, builds, installs on a device and saves a screenshot. |
 | `app/src/main/res/raw/watchface.xml` | Generated. Don't hand-edit. |
 
@@ -121,10 +123,6 @@ java tools/WatchFace.java
 
 ```bash
 java -cp "tools/wff/lib/*" tools/Validate.java
-```
-
-```bash
-javac -d tools/out/cls tools/WatchFace.java tools/DstCheck.java && java -cp tools/out/cls DstCheck
 ```
 
 ```bash
