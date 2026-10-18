@@ -37,12 +37,14 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   computes it from the UTC clock and the airport's daylight-saving rule.
   `tools/DstCheck.java` verifies those rules against `java.time` for every hour through 2040.
 - **LOCAL.** The first airport option. The GMT hand follows local time, and
-  because WFF has no location source, the bezel's daylight comes from the
-  watch's hourly weather forecast, with each day/night change drawn halfway
-  between forecast hours (within about 30 minutes). Each hour takes the majority of
-  itself and its two neighbours, since forecasts can flag a single hour wrongly. With no forecast, or one
-  that says "day" for all 24 hours (the watch-face editor's preview data), it
-  shows a nominal 06:00–18:00 day so both colours still appear. The label
+  sunrise and sunset are computed like the airports', using the principal
+  city of the watch's time zone (`[TIMEZONE_ID]`, e.g. Denver for
+  America/Denver), since WFF has no location source. That is exact in that
+  city and within the zone's spread elsewhere. About 90 zones are known
+  (`ZONE_CITIES`); in any other zone the band falls back to the hourly
+  weather forecast's day/night flags (within about 30 minutes, each hour
+  taking the majority of itself and its neighbours, a nominal 06:00–18:00
+  day without a forecast). The label
   shows the local zone's abbreviation and offset from UTC (`MDT −6H`,
   `BST +1H`, `NPT +5:45H`). WFF's `[TIMEZONE_ABB]` only reports the standard
   name, so summer names are derived from it; zones without a named

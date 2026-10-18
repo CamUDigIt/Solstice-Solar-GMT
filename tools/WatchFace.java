@@ -878,8 +878,8 @@ public class WatchFace {
         open("ListConfiguration id=\"airport\"");
         open("ListOption id=\"%s\"", LOCAL);
         open("Group name=\"airport_local\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-        weatherBezel(false);
-        weatherBezel(true);
+        localBezel(false);
+        localBezel(true);
         localLabel();
         gmtHand(null);
         close("Group");
@@ -908,29 +908,101 @@ public class WatchFace {
      * solar declination from the day of year), accurate to a few minutes.
      */
     static void solarBezel(Airport a, boolean ambient) {
-        double latR = Math.toRadians(a.lat);
-        // cos(90.833 deg) / cos(lat), and tan(lat): constant per airport.
-        double k1 = Math.cos(Math.toRadians(90.833)) / Math.cos(latR);
-        double k2 = Math.tan(latR);
+        double[] p = solarParams(a.lat, a.lon, a.zone);
+        bezelPart(ambient, a.zone, () -> solarArc(n(p[0]), n(p[1]), n(p[2])));
+    }
 
+    /**
+     * Constants for solarArc: cos(90.833 deg) / cos(lat), tan(lat), and the
+     * longitude, shifted by 360 degrees where the zone sits across the date
+     * line from it (Tonga: UTC+13 at 175 W) so local noon lands near 12:00.
+     */
+    static double[] solarParams(double lat, double lon, String zone) {
+        double latR = Math.toRadians(lat);
+        int std = java.time.ZoneId.of(zone).getRules().getStandardOffset(RULES_FROM).getTotalSeconds() / 60;
+        while (720 - 4 * lon + std > 1440) lon += 360;
+        while (720 - 4 * lon + std < 0) lon -= 360;
+        return new double[] {Math.cos(Math.toRadians(90.833)) / Math.cos(latR), Math.tan(latR), lon};
+    }
+
+    /** Day arc from sunrise to sunset, given solarParams' three values as expressions. */
+    static void solarArc(String k1, String k2, String lon) {
         String g = "(6.283185 / 365 * ([DAY_OF_YEAR] - 0.5))";
         String eqTime = "(229.18 * (0.000075 + 0.001868 * cos(" + g + ") - 0.032077 * sin(" + g + ")"
                 + " - 0.014615 * cos(2 * " + g + ") - 0.040849 * sin(2 * " + g + ")))";
         String decl = "(0.006918 - 0.399912 * cos(" + g + ") + 0.070257 * sin(" + g + ")"
                 + " - 0.006758 * cos(2 * " + g + ") + 0.000907 * sin(2 * " + g + ")"
                 + " - 0.002697 * cos(3 * " + g + ") + 0.00148 * sin(3 * " + g + "))";
-        String halfDayMin = "(4 * deg(acos(clamp(" + n(k1) + " / cos(" + decl + ") - " + n(k2)
+        String halfDayMin = "(4 * deg(acos(clamp(" + k1 + " / cos(" + decl + ") - " + k2
                 + " * tan(" + decl + "), -1, 1))))";
-        // Shift the longitude by 360 degrees where the zone sits across the date
-        // line from it (Tonga: UTC+13 at 175 W), so local noon lands near 12:00.
-        double lon = a.lon;
-        while (720 - 4 * lon + stdMinutes(a) > 1440) lon += 360;
-        while (720 - 4 * lon + stdMinutes(a) < 0) lon -= 360;
-        String noonMin = "(720 - 4 * " + n(lon) + " - " + eqTime + " + [TIMEZONE_OFFSET_MINUTES_DST])";
+        String noonMin = "(720 - 4 * " + lon + " - " + eqTime + " + [TIMEZONE_OFFSET_MINUTES_DST])";
         String sunrise = "((" + noonMin + " - " + halfDayMin + ") / 60)";
         String sunset = "((" + noonMin + " + " + halfDayMin + ") / 60)";
+        dayArc(sunrise + " * 15", sunset + " * 15");
+    }
 
-        bezelPart(ambient, a.zone, () -> dayArc(sunrise + " * 15", sunset + " * 15"));
+    // LOCAL's position: WFF has no location source, but [TIMEZONE_ID] names the
+    // wearer's zone, so its principal city stands in. Airport zones plus common
+    // North American and other zones; others fall back to the weather forecast.
+    static final java.util.LinkedHashMap<String, double[]> ZONE_CITIES = new java.util.LinkedHashMap<>();
+    static {
+        for (Airport a : AIRPORTS) ZONE_CITIES.putIfAbsent(a.zone, new double[] {a.lat, a.lon});
+        double[][] extra = {
+                {39.74, -104.99}, {43.62, -116.20}, {42.33, -83.05}, {39.77, -86.16}, {38.25, -85.76},
+                {53.55, -113.49}, {49.90, -97.14}, {50.45, -104.62}, {44.65, -63.57}, {18.47, -66.11},
+                {-27.47, 153.03}, {-42.88, 147.33}, {-12.46, 130.84}, {38.72, -9.14}, {37.98, 23.73},
+                {60.17, 24.94}, {59.33, 18.07}, {59.91, 10.75}, {55.68, 12.57}, {52.23, 21.01},
+                {50.08, 14.44}, {48.21, 16.37}, {47.50, 19.04}, {44.43, 26.10}, {50.85, 4.35},
+                {55.76, 37.62}, {31.77, 35.21}, {24.71, 46.68}, {33.89, 35.50}, {6.52, 3.38},
+                {33.57, -7.59}, {-33.92, 18.42}, {3.14, 101.69}, {21.03, 105.85}, {10.82, 106.63},
+                {25.03, 121.57}, {31.23, 121.47}, {35.68, 139.69}, {-41.29, 174.78}, {-17.71, 178.07},
+                {19.43, -99.13}, {-12.05, -77.04}, {10.49, -66.88}, {-0.18, -78.47}, {9.93, -84.08},
+                {14.63, -90.51}, {23.11, -82.37}, {18.49, -69.93}, {21.31, -157.86}};
+        String[] extraZones = {
+                "America/Denver", "America/Boise", "America/Detroit", "America/Indiana/Indianapolis", "America/Kentucky/Louisville",
+                "America/Edmonton", "America/Winnipeg", "America/Regina", "America/Halifax", "America/Puerto_Rico",
+                "Australia/Brisbane", "Australia/Hobart", "Australia/Darwin", "Europe/Lisbon", "Europe/Athens",
+                "Europe/Helsinki", "Europe/Stockholm", "Europe/Oslo", "Europe/Copenhagen", "Europe/Warsaw",
+                "Europe/Prague", "Europe/Vienna", "Europe/Budapest", "Europe/Bucharest", "Europe/Brussels",
+                "Europe/Moscow", "Asia/Jerusalem", "Asia/Riyadh", "Asia/Beirut", "Africa/Lagos",
+                "Africa/Casablanca", "Africa/Johannesburg", "Asia/Kuala_Lumpur", "Asia/Bangkok", "Asia/Ho_Chi_Minh",
+                "Asia/Taipei", "Asia/Shanghai", "Asia/Tokyo", "Pacific/Auckland", "Pacific/Fiji",
+                "America/Mexico_City", "America/Lima", "America/Caracas", "America/Guayaquil", "America/Costa_Rica",
+                "America/Guatemala", "America/Havana", "America/Santo_Domingo", "Pacific/Honolulu"};
+        // The principal city wins over an airport's coordinates where both exist (e.g. Denver
+        // city rather than DEN, 30 km away); the airport list fills in everything else.
+        for (int i = 0; i < extraZones.length; i++) ZONE_CITIES.put(extraZones[i], extra[i]);
+    }
+
+    /** Nested ternary picking one value per zone from [TIMEZONE_ID]; "0" if unknown. */
+    static String byZone(java.util.function.ToDoubleFunction<String> value) {
+        String e = "0";
+        var zones = new java.util.ArrayList<>(ZONE_CITIES.keySet());
+        java.util.Collections.reverse(zones);
+        for (String z : zones) e = "([TIMEZONE_ID] == \"" + z + "\" ? " + n(value.applyAsDouble(z)) + " : " + e + ")";
+        return e;
+    }
+
+    /**
+     * LOCAL's bezel: sunrise/sunset computed like the airports' from the
+     * principal city of the wearer's time zone, so it matches the real sky
+     * where that city is (and within the zone's spread elsewhere). Zones not
+     * in ZONE_CITIES use the weather forecast instead.
+     */
+    static void localBezel(boolean ambient) {
+        StringBuilder known = new StringBuilder();
+        for (String z : ZONE_CITIES.keySet()) {
+            if (known.length() > 0) known.append(" || ");
+            known.append("[TIMEZONE_ID] == \"").append(z).append("\"");
+        }
+        java.util.function.Function<Integer, String> param = i -> byZone(z -> {
+            double[] c = ZONE_CITIES.get(z);
+            return solarParams(c[0], c[1], z)[i];
+        });
+        String k1 = param.apply(0), k2 = param.apply(1), lon = param.apply(2);
+        switchOn(known.toString(),
+                () -> bezelPart(ambient, null, () -> solarArc(k1, k2, lon)),
+                () -> weatherBezel(ambient));
     }
 
     /**
