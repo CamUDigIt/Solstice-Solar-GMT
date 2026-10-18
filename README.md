@@ -84,9 +84,12 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
   editor's complications page ("Date tap action", "GMT label tap action")
   decides what a tap opens. Choose **App shortcut** to open any app.
   Defaults: the date slot is Empty, so taps fall through to the date's own
-  `Launch target="CALENDAR"` (the system calendar app); the label opens World
-  clock.
+  `Launch target="CALENDAR"` (the system calendar app). The label slot is
+  also Empty by default, so no hidden provider keeps sending updates; assign
+  an app to it to make the label tappable.
 - **Always-on mode.** Outline hands, thin bezel, no seconds, and no dial fill.
+- **Efficiency.** Bezel numerals are pre-rendered images (one per style and
+  format) instead of outlined text, and the GMT hand updates once a minute.
 - **Customisation.** In the watch-face editor you can pick the style (Pilot,
   Flat or Pixel), the bezel format (12h or 24h), one of 28 drink-themed bezel colourways (colas and their diet versions,
   citrus, fruit, root beer and ginger, plus softer earthy and pastel teas,

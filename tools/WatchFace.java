@@ -720,7 +720,7 @@ public class WatchFace {
         longTextSlot();
         comment("Invisible tap targets: the provider chosen for these sets what the date and GMT label open");
         tapSlot(201, "slot_date_tap", DATE_CX - TAP_MIN / 2, (int) C - TAP_MIN / 2, TAP_MIN, TAP_MIN, "EMPTY");
-        tapSlot(202, "slot_label_tap", (int) C - LABEL_W / 2, LABEL_Y + LABEL_H / 2 - TAP_MIN / 2, LABEL_W, TAP_MIN, "WORLD_CLOCK");
+        tapSlot(202, "slot_label_tap", (int) C - LABEL_W / 2, LABEL_Y + LABEL_H / 2 - TAP_MIN / 2, LABEL_W, TAP_MIN, "EMPTY");
     }
 
     /**
@@ -1100,7 +1100,8 @@ public class WatchFace {
                     style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
             line("<Localization timeZone=\"%s\"/>", zone);
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
-            line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60 + [SECOND] / 3600) * 15\"/>");
+            // Minute resolution: a second moves the hand 0.004 degrees, so finer updates only cost redraws.
+            line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60) * 15\"/>");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
             close("PartImage");
         });
@@ -1108,11 +1109,13 @@ public class WatchFace {
 
     // ---- Bezel markings (drawn above the coloured ring) --------------------
 
-    // Numerals get a dark outline so they stay legible on light day colours
-    // (e.g. Polar). The Font <Outline> decoration validates but the runtime
-    // doesn't draw it, so the outline is built from offset dark copies.
-    static final int[][] HALO = {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1, 0}, {-1, 1}, {0, 1}, {1, 1},
-            {-2, 0}, {2, 0}, {0, -2}, {0, 2}};
+    // Numerals get a dark outline so they stay legible on light day colours.
+    // The Font <Outline> decoration validates but the runtime doesn't draw it,
+    // and building the outline from a dozen offset text copies cost ~300 text
+    // draws per frame, so each style/format's numerals are pre-rendered into one
+    // image (bezel_nums_<style>_<12|24>) with the style's bundled font.
+    static final int NUMERALS_PX = 480;   // image size: Pixel Watch 4's screen width
+    static final File DRAWABLES = new File("app/src/main/res/drawable-nodpi");
 
     static void bezelMarkings() {
         comment("Bezel scale: 12h standard watch scale or 24h; Pilot uses triangles between 24h numerals, Flat ticks");
@@ -1143,10 +1146,10 @@ public class WatchFace {
             open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
             for (int h = 0; h < 12; h++) halfHourDot(h * 30 + 15);
             close("PartDraw");
-            for (int h = 1; h <= 11; h++) outlinedNumeral(Integer.toString(h), h * 30);
+            numerals(1, 11, 1, 30);
             pip();
         } else if (style == PILOT) {
-            for (int h = 2; h <= 22; h += 2) outlinedNumeral(Integer.toString(h), h * 15);
+            numerals(2, 22, 2, 15);
             for (int h = 1; h <= 23; h += 2) {
                 double a = h * 15;
                 int w = 12, hh = 10;
@@ -1157,7 +1160,7 @@ public class WatchFace {
             }
             pip();
         } else {
-            for (int h = 2; h <= 24; h += 2) outlinedNumeral(Integer.toString(h), (h % 24) * 15);
+            numerals(2, 24, 2, 15);
             open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
             for (int h = 1; h <= 23; h += 2) {
                 double a = h * 15;
@@ -1199,21 +1202,56 @@ public class WatchFace {
         close("PartImage");
     }
 
-    static void outlinedNumeral(String text, double angle) {
-        for (int[] o : HALO) numeral(text, angle, o[0], o[1], "#0B0E14");
-        numeral(text, angle, 0, 0, "#F1F2F4");
+    /**
+     * Numerals first..last step `step`, each at (n * degPer) mod 360 on the
+     * bezel, rotated to follow it, with a dark outline: rendered into one image
+     * for the current style and format, and placed over the whole face.
+     */
+    static void numerals(int first, int last, int step, double degPer) {
+        String name = "bezel_nums_" + style.id + "_" + (h24 ? "24" : "12");
+        try {
+            renderNumerals(new File(DRAWABLES, name + ".png"), first, last, step, degPer);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        open("PartImage x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+        line("<Image resource=\"%s\"/>", name);
+        close("PartImage");
     }
 
-    static void numeral(String text, double a, int ox, int oy, String color) {
-        int w = 44, hh = 32;
-        int x = (int) Math.round(dx(BEZEL_MID, a) - w / 2.0) + ox, y = (int) Math.round(dy(BEZEL_MID, a) - hh / 2.0) + oy;
-        open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" angle=\"%s\"", x, y, w, hh, f(a));
-        open("Text align=\"CENTER\"");
-        open(font(BEZEL_NUMERAL, "SEMI_BOLD", color));
-        line("<Template>%%s<Parameter expression=\"%s\"/></Template>", text);
-        close("Font");
-        close("Text");
-        close("PartText");
+    static void renderNumerals(File out, int first, int last, int step, double degPer) throws Exception {
+        int ss = 3, px = NUMERALS_PX * ss;
+        var big = new java.awt.image.BufferedImage(px, px, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+        var g = big.createGraphics();
+        g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(java.awt.RenderingHints.KEY_FRACTIONALMETRICS, java.awt.RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        g.scale(px / 450.0, px / 450.0);   // draw in face units
+        var font = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File("app/src/main/res/font/" + style.font + "_600.ttf"))
+                .deriveFont((float) BEZEL_NUMERAL);
+        var frc = g.getFontRenderContext();
+        for (int n = first; n <= last; n += step) {
+            String text = Integer.toString(n);
+            double a = (n * degPer) % 360;
+            var layout = new java.awt.font.TextLayout(text, font, frc);
+            // Centre the line box (ascent + descent) on the bezel, as PartText does in its box.
+            double baseline = (layout.getAscent() - layout.getDescent()) / 2;
+            var glyphs = layout.getOutline(java.awt.geom.AffineTransform.getTranslateInstance(-layout.getAdvance() / 2, baseline));
+            var t = new java.awt.geom.AffineTransform();
+            t.translate(dx(BEZEL_MID, a), dy(BEZEL_MID, a));
+            t.rotate(Math.toRadians(a));
+            var shape = t.createTransformedShape(glyphs);
+            g.setColor(color("#0B0E14"));
+            g.setStroke(new java.awt.BasicStroke(4f, java.awt.BasicStroke.CAP_ROUND, java.awt.BasicStroke.JOIN_ROUND));
+            g.draw(shape);
+            g.setColor(color("#F1F2F4"));
+            g.fill(shape);
+        }
+        g.dispose();
+        var img = new java.awt.image.BufferedImage(NUMERALS_PX, NUMERALS_PX, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+        var g2 = img.createGraphics();
+        g2.drawImage(big.getScaledInstance(NUMERALS_PX, NUMERALS_PX, java.awt.Image.SCALE_AREA_AVERAGING), 0, 0, null);
+        g2.dispose();
+        javax.imageio.ImageIO.write(img, "png", out);
     }
 
     // ---- Local time hands -------------------------------------------------
