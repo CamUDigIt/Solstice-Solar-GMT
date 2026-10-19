@@ -119,59 +119,60 @@ public class WatchFace {
             new Airport("AKL", "Auckland", "Pacific/Auckland", -37.01, 174.79),
             new Airport("TBU", "Nuku'alofa", "Pacific/Tongatapu", -21.24, -175.15));
 
-    // Editor order: regions in columns from west to east, north to south within
-    // each column (North America, then Latin America; Europe, then Africa; ...).
-    // Within a region, west to east, then A-Z. The two-letter prefix leads each
-    // picker entry so the regions read as groups.
-    record Region(String prefix, String name, List<String> codes) {}
-
-    static final List<Region> REGIONS = List.of(
-            new Region("NA", "North America", List.of("ANC", "ATL", "BOS", "ORD", "DFW", "DEN", "HNL", "IAH", "LAS",
-                    "LAX", "MIA", "YUL", "JFK", "MCO", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR", "IAD")),
-            new Region("LA", "Latin America & Caribbean", List.of("BOG", "EZE", "CUN", "LIM", "MEX", "PTY", "GIG",
-                    "SJU", "SCL", "GRU")),
-            new Region("EU", "Europe", List.of("AMS", "ATH", "BCN", "CPH", "DUB", "FRA", "IST", "LIS", "LHR", "MAD",
-                    "SVO", "MUC", "CDG", "FCO", "VIE", "ZRH")),
-            new Region("AF", "Africa", List.of("ADD", "CAI", "CPT", "JNB", "LOS", "NBO")),
-            new Region("ME", "Middle East & Central Asia", List.of("AUH", "DOH", "DXB", "JED", "KBL", "KHI", "RUH",
-                    "TAS", "IKA")),
-            new Region("AS", "Asia", List.of("BKK", "PEK", "BLR", "DAC", "CAN", "SGN", "HKG", "CGK", "KTM", "KUL",
-                    "MNL", "BOM", "DEL", "KIX", "ICN", "PVG", "SIN", "TPE", "HND", "RGN")),
-            new Region("OC", "Oceania & Pacific", List.of("ADL", "AKL", "BNE", "MEL", "NOU", "TBU", "PER", "SYD")));
-
-    static Region region(Airport a) {
-        return REGIONS.stream().filter(r -> r.codes.contains(a.code)).findFirst().orElseThrow();
+    // Picker: a Region list (WFF v5 childSettingIds), and for each region an
+    // Airport list that opens from it. Regions run in columns from west to east,
+    // north to south within each column (North America, then Latin America;
+    // Europe, then Africa; ...). Within a region, west to east, then A-Z.
+    record Region(String id, String name, String defaultCode, List<String> codes) {
+        String configId() { return "airport_" + id; }
     }
 
-    /** Each region's cities west to east (by standard UTC offset), then A-Z by city. */
-    static List<Airport> editorOrder() {
+    static final List<Region> REGIONS = List.of(
+            new Region("na", "North America", "JFK", List.of("ANC", "ATL", "BOS", "ORD", "DFW", "DEN", "HNL", "IAH", "LAS",
+                    "LAX", "MIA", "YUL", "JFK", "MCO", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR", "IAD")),
+            new Region("la", "Latin America & Caribbean", "GRU", List.of("BOG", "EZE", "CUN", "LIM", "MEX", "PTY", "GIG",
+                    "SJU", "SCL", "GRU")),
+            new Region("eu", "Europe", "LHR", List.of("AMS", "ATH", "BCN", "CPH", "DUB", "FRA", "IST", "LIS", "LHR", "MAD",
+                    "SVO", "MUC", "CDG", "FCO", "VIE", "ZRH")),
+            new Region("af", "Africa", "JNB", List.of("ADD", "CAI", "CPT", "JNB", "LOS", "NBO")),
+            new Region("me", "Middle East & Central Asia", "DXB", List.of("AUH", "DOH", "DXB", "JED", "KBL", "KHI", "RUH",
+                    "TAS", "IKA")),
+            new Region("as", "Asia", "HND", List.of("BKK", "PEK", "BLR", "DAC", "CAN", "SGN", "HKG", "CGK", "KTM", "KUL",
+                    "MNL", "BOM", "DEL", "KIX", "ICN", "PVG", "SIN", "TPE", "HND", "RGN")),
+            new Region("oc", "Oceania & Pacific", "SYD", List.of("ADL", "AKL", "BNE", "MEL", "NOU", "TBU", "PER", "SYD")));
+
+    static final String DEFAULT_REGION = "eu";
+
+    /** A region's airports west to east (by standard UTC offset), then A-Z by city. */
+    static List<Airport> regionAirports(Region r) {
         var byCode = new java.util.HashMap<String, Airport>();
         for (Airport a : AIRPORTS) byCode.put(a.code, a);
-        var order = new java.util.ArrayList<Airport>();
+        return r.codes.stream().map(byCode::get)
+                .sorted(java.util.Comparator.comparingInt(WatchFace::stdMinutes).thenComparing(Airport::city))
+                .toList();
+    }
+
+    static {
+        var listed = new java.util.HashSet<String>();
         for (Region r : REGIONS) {
-            r.codes.stream().map(byCode::get)
-                    .sorted(java.util.Comparator.comparingInt(WatchFace::stdMinutes).thenComparing(Airport::city))
-                    .forEach(order::add);
+            if (!r.codes.contains(r.defaultCode)) throw new IllegalStateException("Default not in region " + r.id);
+            for (String c : r.codes) if (!listed.add(c)) throw new IllegalStateException("Listed twice: " + c);
         }
-        if (order.size() != AIRPORTS.size() || order.contains(null) || new java.util.HashSet<>(order).size() != order.size()) {
-            throw new IllegalStateException("REGIONS must list every airport exactly once");
-        }
-        return order;
+        for (Airport a : AIRPORTS) if (!listed.remove(a.code)) throw new IllegalStateException("No region for " + a.code);
+        if (!listed.isEmpty()) throw new IllegalStateException("Unknown airports in REGIONS: " + listed);
     }
 
     /**
-     * Editor name, e.g. "NA · Denver" over "DEN · UTC−7". The offset is the
-     * zone's standard (winter) offset, as time zone pickers usually list it:
-     * the name is fixed text, while the label on the face shows the live offset.
+     * Editor name, e.g. "Denver" over "DEN · UTC−7". The offset is the zone's
+     * standard (winter) offset, as time zone pickers usually list it: the name
+     * is fixed text, while the label on the face shows the live offset.
      */
     static String displayName(Airport a) {
         int m = stdMinutes(a);
         String off = (m < 0 ? "−" : "+") + Math.abs(m) / 60 + (m % 60 == 0 ? "" : String.format(":%02d", Math.abs(m) % 60));
-        // Always two lines (region and city, then code and offset) so every entry looks alike.
-        return region(a).prefix + " · " + a.city + "\n" + a.code + " · UTC" + off;
+        // Always two lines (city, then code and offset) so every entry looks alike.
+        return a.city + "\n" + a.code + " · UTC" + off;
     }
-
-    static final String DEFAULT_AIRPORT = "LHR";
 
     // ---- Standard UTC offsets (picker labels and ordering) -------------------
     // The label on the face reads the airport's live offset from the OS (it is
@@ -492,12 +493,20 @@ public class WatchFace {
                     c.id, c.id, c.id, c.night, c.day, c.ambientNight, c.ambientDay);
         }
         close("ColorConfiguration");
-        open("ListConfiguration id=\"airport\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_AIRPORT);
-        for (Airport a : editorOrder()) {
-            String id = a.code.toLowerCase(Locale.ROOT);
-            line("<ListOption id=\"%s\" displayName=\"airport_%s\"/>", a.code, id);
+        // Region, with each option's airport list nested under it (childSettingIds).
+        open("ListConfiguration id=\"region\" displayName=\"cfg_region\" screenReaderText=\"cfg_region\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_REGION);
+        for (Region r : REGIONS) {
+            line("<ListOption id=\"%s\" displayName=\"region_%s\" childSettingIds=\"%s\"/>", r.id, r.id, r.configId());
         }
         close("ListConfiguration");
+        for (Region r : REGIONS) {
+            open("ListConfiguration id=\"%s\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"",
+                    r.configId(), r.defaultCode);
+            for (Airport a : regionAirports(r)) {
+                line("<ListOption id=\"%s\" displayName=\"airport_%s\"/>", a.code, a.code.toLowerCase(Locale.ROOT));
+            }
+            close("ListConfiguration");
+        }
         close("UserConfigurations");
     }
 
@@ -852,15 +861,23 @@ public class WatchFace {
     static void airportGroups() {
         // Localization must sit on each Part/AnalogClock: on a Group it does not
         // change the time data sources used by its children's expressions.
-        comment("Per-airport group: bezel, label and GMT hand in the airport's time zone");
-        open("ListConfiguration id=\"airport\"");
-        for (Airport a : AIRPORTS) {
-            open("ListOption id=\"%s\"", a.code);
-            open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
-            solarBezel(a, false);
-            solarBezel(a, true);
-            airportLabel(a);
-            gmtHand(a.zone);
+        comment("Per-airport group (chosen region, then its airport): bezel, label and GMT hand in the airport's time zone");
+        open("ListConfiguration id=\"region\"");
+        for (Region r : REGIONS) {
+            open("ListOption id=\"%s\"", r.id);
+            open("Group name=\"region_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", r.id);
+            open("ListConfiguration id=\"%s\"", r.configId());
+            for (Airport a : regionAirports(r)) {
+                open("ListOption id=\"%s\"", a.code);
+                open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
+                solarBezel(a, false);
+                solarBezel(a, true);
+                airportLabel(a);
+                gmtHand(a.zone);
+                close("Group");
+                close("ListOption");
+            }
+            close("ListConfiguration");
             close("Group");
             close("ListOption");
         }
@@ -1303,6 +1320,8 @@ public class WatchFace {
         str(s, "bezel_format_12", "12-hour");
         str(s, "bezel_format_24", "24-hour");
         str(s, "cfg_bezel", "Bezel colourway");
+        str(s, "cfg_region", "GMT region");
+        for (Region r : REGIONS) str(s, "region_" + r.id, r.name);
         str(s, "cfg_airport", "GMT airport");
         for (Colorway c : COLORWAYS) str(s, "bezel_" + c.id, c.name);
         for (Airport a : AIRPORTS) str(s, "airport_" + a.code.toLowerCase(Locale.ROOT), displayName(a));

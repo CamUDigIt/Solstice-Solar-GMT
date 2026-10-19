@@ -1,7 +1,8 @@
 # Solstice GMT
 
-A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
-(Wear OS 5.1+, API 35). It's a resource-only APK with no app code.
+A luxury tool-watch style Wear OS watch face built with **Watch Face Format v5**
+(API 37+, e.g. a Pixel Watch 4 on Android 17; its watch-face runtime reports
+format version 5). It's a resource-only APK with no app code.
 
 ## What's on the face
 
@@ -24,13 +25,14 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
     Even if the full band were shown all in day colour, every colourway would
     stay at or under 12.8% average brightness (limit 15%).
 - **GMT hand.** It shows the time at one of 90 airports, one per metro area
-  (the busiest where a city has several). The editor groups them by region, in
-  columns from west to east and north to south within each column: North
-  America, Latin America & Caribbean, Europe, Africa, Middle East & Central
-  Asia, Asia, Oceania & Pacific; within each region, west to east by standard
-  offset and then A–Z. Each entry has two lines: a two-letter region prefix
-  and the city, then its code and standard UTC offset (`NA · Denver` over
-  `DEN · UTC−7`). Each airport's IANA time zone is
+  (the busiest where a city has several). The editor picks them in two steps
+  (WFF v5 `childSettingIds`): a **GMT region** page (North America, Latin
+  America & Caribbean, Europe, Africa, Middle East & Central Asia, Asia,
+  Oceania & Pacific: west to east, north to south within each column), then a
+  **GMT airport** page listing only that region's airports, west to east by
+  standard offset and then A–Z. Each entry has two lines: the city, then its
+  code and standard UTC offset (`Denver` over `DEN · UTC−7`). Each region has
+  a default airport (e.g. Europe → London) for when it is first picked. Each airport's IANA time zone is
   applied with WFF `Localization`, so daylight saving and half-hour offsets are
   handled by the OS. Add or remove airports in the `AIRPORTS` list and
   `REGIONS` in `tools/WatchFace.java`. Any IANA zone works, including ones
@@ -105,7 +107,7 @@ A luxury tool-watch style Wear OS watch face built with **Watch Face Format v3**
 |---|---|
 | `tools/WatchFace.java` | **Source of truth.** Generates `res/raw/watchface.xml`, `res/values/strings.xml` and the editor icons. |
 | `tools/HandArt.java` | Renders the hand / bezel-pip PNGs into `res/drawable-nodpi`. |
-| `tools/Validate.java` | Validates the XML against the official WFF v3 schema (`tools/wff`, Apache 2.0, from google/watchface). |
+| `tools/Validate.java` | Validates the XML against the official WFF v5 schema (`tools/wff`, Apache 2.0, from google/watchface). |
 | `tools/preview.sh` | Regenerates, validates, builds, installs on a device and saves a screenshot. |
 | `app/src/main/res/raw/watchface.xml` | Generated. Don't hand-edit. |
 
@@ -129,7 +131,7 @@ java -cp "tools/wff/lib/*" tools/Validate.java
 ./gradlew assembleDebug
 ```
 
-## Install on a watch or emulator (Wear OS 5.1+)
+## Install on a watch or emulator (API 37+, WFF v5 runtime)
 
 ```bash
 adb install -r app/build/outputs/apk/debug/app-debug.apk
