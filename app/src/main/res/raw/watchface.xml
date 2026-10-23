@@ -6403,7 +6403,7 @@
                     <PartText x="145" y="76" width="160" height="28">
                       <Text align="CENTER">
                         <Font family="inter_500" size="24" color="#C9CED6">
-                          <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABBREVIATION]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
+                          <Template>%s %s%s%s%sH<Parameter expression="([TIMEZONE_ABBREVIATION] != null &amp;&amp; textLength([TIMEZONE_ABBREVIATION]) &gt; 0 ? [TIMEZONE_ABBREVIATION] : &quot;LOCAL&quot;)"/><Parameter expression="([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0) &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) / 60)"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60"/></Template>
                         </Font>
                       </Text>
                       <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -6413,7 +6413,7 @@
                     <PartText x="145" y="76" width="160" height="28">
                       <Text align="CENTER">
                         <Font family="googlesans_500" size="24" color="#C9CED6">
-                          <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABBREVIATION]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
+                          <Template>%s %s%s%s%sH<Parameter expression="([TIMEZONE_ABBREVIATION] != null &amp;&amp; textLength([TIMEZONE_ABBREVIATION]) &gt; 0 ? [TIMEZONE_ABBREVIATION] : &quot;LOCAL&quot;)"/><Parameter expression="([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0) &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) / 60)"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60"/></Template>
                         </Font>
                       </Text>
                       <Variant mode="AMBIENT" target="alpha" value="170"/>
@@ -6423,7 +6423,7 @@
                     <PartText x="145" y="76" width="160" height="28">
                       <Text align="CENTER">
                         <Font family="oswald_500" size="24" color="#C9CED6">
-                          <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABBREVIATION]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
+                          <Template>%s %s%s%s%sH<Parameter expression="([TIMEZONE_ABBREVIATION] != null &amp;&amp; textLength([TIMEZONE_ABBREVIATION]) &gt; 0 ? [TIMEZONE_ABBREVIATION] : &quot;LOCAL&quot;)"/><Parameter expression="([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0) &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) / 60)"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60"/></Template>
                         </Font>
                       </Text>
                       <Variant mode="AMBIENT" target="alpha" value="170"/>

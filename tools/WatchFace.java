@@ -922,16 +922,18 @@ public class WatchFace {
     }
 
     static void localLabel() {
-        label(() -> labelTextLocal("%s %s%s%s%sH", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
+        String safeZone = "([TIMEZONE_ABBREVIATION] != null && textLength([TIMEZONE_ABBREVIATION]) > 0 ? [TIMEZONE_ABBREVIATION] : \"LOCAL\")";
+        String safeOffset = "([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)";
+        label(() -> labelTextLocal("%s %s%s%s%sH", safeZone, signedHours(safeOffset)));
     }
 
-    static void labelTextLocal(String template, String... params) {
+    static void labelTextLocal(String template, String zoneExpr, String... params) {
         int w = LABEL_W, h = LABEL_H, x = (int) (C - w / 2), y = LABEL_Y;
         open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
         open("Text align=\"CENTER\"");
         open(font(TEXT_SECONDARY, "MEDIUM", STEEL));
         StringBuilder t = new StringBuilder("<Template>").append(template);
-        t.append("<Parameter expression=\"[TIMEZONE_ABBREVIATION]\"/>");
+        t.append("<Parameter expression=\"").append(xml(zoneExpr)).append("\"/>");
         for (String p : params) t.append("<Parameter expression=\"").append(xml(p)).append("\"/>");
         t.append("</Template>");
         line("%s", t.toString());
