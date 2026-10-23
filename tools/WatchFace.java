@@ -25,7 +25,6 @@ public class WatchFace {
     // Ordered west to east (by standard UTC offset) so turning the crown in the
     // editor moves steadily around the globe.
     static final List<Airport> AIRPORTS = List.of(
-            new Airport("LOCAL", "Local Time", "UTC", 0.0, 0.0),
             // UTC-10 .. UTC-3:30
             new Airport("HNL", "Honolulu", "Pacific/Honolulu", 21.32, -157.92),
             new Airport("ANC", "Anchorage", "America/Anchorage", 61.17, -149.99),
@@ -130,7 +129,6 @@ public class WatchFace {
     }
 
     static final List<Region> REGIONS = List.of(
-            new Region("local", "Local Time", "LOCAL", List.of("LOCAL")),
             new Region("na", "North America", "JFK", List.of("ANC", "ATL", "BOS", "ORD", "DFW", "DEN", "HNL", "IAH", "LAS",
                     "LAX", "MIA", "YUL", "JFK", "MCO", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR", "IAD")),
             new Region("la", "Latin America & Caribbean", "GRU", List.of("BOG", "EZE", "CUN", "LIM", "MEX", "PTY", "GIG",
@@ -144,7 +142,7 @@ public class WatchFace {
                     "MNL", "BOM", "DEL", "KIX", "ICN", "PVG", "SIN", "TPE", "HND", "RGN")),
             new Region("oc", "Oceania & Pacific", "SYD", List.of("ADL", "AKL", "BNE", "MEL", "NOU", "TBU", "PER", "SYD")));
 
-    static final String DEFAULT_REGION = "local";
+    static final String DEFAULT_REGION = "eu";
 
     /** A region's airports west to east (by standard UTC offset), then A-Z by city. */
     static List<Airport> regionAirports(Region r) {
@@ -171,7 +169,6 @@ public class WatchFace {
      * is fixed text, while the label on the face shows the live offset.
      */
     static String displayName(Airport a) {
-        if (a.code.equals("LOCAL")) return "Local Time\nFollow Watch System Time";
         int m = stdMinutes(a);
         String off = (m < 0 ? "−" : "+") + Math.abs(m) / 60 + (m % 60 == 0 ? "" : String.format(":%02d", Math.abs(m) % 60));
         // Always two lines (city, then code and offset) so every entry looks alike.
@@ -883,21 +880,11 @@ public class WatchFace {
                 open("ListOption id=\"%s\"", a.code);
                 open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
                 open("Group name=\"solar_bezel\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-                if (a.code.equals("LOCAL")) {
-                    solarBezelLocal(false);
-                    solarBezelLocal(true);
-                } else {
-                    solarBezel(a, false);
-                    solarBezel(a, true);
-                }
+                solarBezel(a, false);
+                solarBezel(a, true);
                 close("Group");
-                if (a.code.equals("LOCAL")) {
-                    localLabel();
-                    localGmtHand();
-                } else {
-                    airportLabel(a);
-                    gmtHand(a.zone);
-                }
+                airportLabel(a);
+                gmtHand(a.zone);
                 close("Group");
                 close("ListOption");
             }
@@ -906,51 +893,6 @@ public class WatchFace {
             close("ListOption");
         }
         close("ListConfiguration");
-    }
-
-    static void solarBezelLocal(boolean ambient) {
-        bezelPartLocal(ambient, () -> dayArc("90.0", "270.0"));
-    }
-
-    static void bezelPartLocal(boolean ambient, Runnable body) {
-        open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
-        bandAmbient = ambient;
-        arc(bandR(), 0, 360, nightColor(ambient), bandThick(), "BUTT", null);
-        body.run();
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"%d\"/>", ambient ? AMBIENT_BAND_ALPHA : 0);
-        close("PartDraw");
-    }
-
-    static void localLabel() {
-        label(() -> labelTextLocal("%s %s%s%s%sH", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
-    }
-
-    static void labelTextLocal(String template, String... params) {
-        int w = LABEL_W, h = LABEL_H, x = (int) (C - w / 2), y = LABEL_Y;
-        open("PartText x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"", x, y, w, h);
-        open("Text align=\"CENTER\"");
-        open(font(TEXT_SECONDARY, "MEDIUM", STEEL));
-        StringBuilder t = new StringBuilder("<Template>").append(template);
-        t.append("<Parameter expression=\"[TIMEZONE_ABBREVIATION]\"/>");
-        for (String p : params) t.append("<Parameter expression=\"").append(xml(p)).append("\"/>");
-        t.append("</Template>");
-        line("%s", t.toString());
-        close("Font");
-        close("Text");
-        line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"170\"/>");
-        close("PartText");
-    }
-
-    static void localGmtHand() {
-        styled(() -> {
-            HandBox b = handBox(style.gmt);
-            open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s", b.x, b.y, b.w, b.h, n(b.pivotY),
-                    style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
-            line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
-            line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60) * 15\"/>");
-            line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
-            close("PartImage");
-        });
     }
     /**
      * Solar bezel: red/blue shows day and night at the destination, drawn on a
