@@ -11,6 +11,7 @@
     <string name="bezel_format_24">24-hour</string>
     <string name="cfg_bezel">Bezel colourway</string>
     <string name="cfg_region">GMT region</string>
+    <string name="region_local">Local Time</string>
     <string name="region_na">North America</string>
     <string name="region_la">Latin America &amp; Caribbean</string>
     <string name="region_eu">Europe &amp; UTC</string>
@@ -47,6 +48,7 @@
     <string name="bezel_butterfly_pea_tea">Butterfly Pea Tea</string>
     <string name="bezel_yuzu_soda">Yuzu Soda</string>
     <string name="bezel_tonic_water">Tonic Water</string>
+    <string name="airport_local">Local Time\nFollow Watch System Time</string>
     <string name="airport_hnl">Honolulu\nHNL · UTC−10</string>
     <string name="airport_anc">Anchorage\nANC · UTC−9</string>
     <string name="airport_lax">Los Angeles\nLAX · UTC−8</string>
