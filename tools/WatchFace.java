@@ -1220,34 +1220,20 @@ public class WatchFace {
     // ---- Local time hands -------------------------------------------------
 
     static void localHands() {
-        comment("Local time: hour, minute, sweeping seconds (1Hz tick when battery &lt; 20)");
+        comment("Local time: hour, minute, sweeping seconds");
         styled(() -> {
-            switchOn("[BATTERY_LEVEL] < 20", () -> {
-                open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-                hand("HourHand", "hand_hour", style.hour, 255, 0);
-                hand("HourHand", "hand_hour_ambient", style.hour, 0, 255);
-                hand("MinuteHand", "hand_minute", style.minute, 255, 0);
-                hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
-                HandBox b = handBox(style.second);
-                open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
-                        style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
-                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
-                close("SecondHand");
-                close("AnalogClock");
-            }, () -> {
-                open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-                hand("HourHand", "hand_hour", style.hour, 255, 0);
-                hand("HourHand", "hand_hour_ambient", style.hour, 0, 255);
-                hand("MinuteHand", "hand_minute", style.minute, 255, 0);
-                hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
-                HandBox b = handBox(style.second);
-                open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
-                        style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
-                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
-                line("<Sweep frequency=\"15\"/>");
-                close("SecondHand");
-                close("AnalogClock");
-            });
+            open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+            hand("HourHand", "hand_hour", style.hour, 255, 0);
+            hand("HourHand", "hand_hour_ambient", style.hour, 0, 255);
+            hand("MinuteHand", "hand_minute", style.minute, 255, 0);
+            hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
+            HandBox b = handBox(style.second);
+            open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
+                    style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
+            line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+            line("<Sweep frequency=\"15\"/>");
+            close("SecondHand");
+            close("AnalogClock");
         });
     }
 
