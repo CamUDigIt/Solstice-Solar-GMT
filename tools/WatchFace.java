@@ -504,10 +504,15 @@ public class WatchFace {
         // Region, with each option's airport list nested under it (childSettingIds).
         open("ListConfiguration id=\"region\" displayName=\"cfg_region\" screenReaderText=\"cfg_region\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"", DEFAULT_REGION);
         for (Region r : REGIONS) {
-            line("<ListOption id=\"%s\" displayName=\"region_%s\" childSettingIds=\"%s\"/>", r.id, r.id, r.configId());
+            if (r.id.equals("local")) {
+                line("<ListOption id=\"%s\" displayName=\"region_%s\"/>", r.id, r.id);
+            } else {
+                line("<ListOption id=\"%s\" displayName=\"region_%s\" childSettingIds=\"%s\"/>", r.id, r.id, r.configId());
+            }
         }
         close("ListConfiguration");
         for (Region r : REGIONS) {
+            if (r.id.equals("local")) continue;
             open("ListConfiguration id=\"%s\" displayName=\"cfg_airport\" screenReaderText=\"cfg_airport\" icon=\"icon_cfg_airport\" defaultValue=\"%s\"",
                     r.configId(), r.defaultCode);
             for (Airport a : regionAirports(r)) {
@@ -877,32 +882,33 @@ public class WatchFace {
         open("ListConfiguration id=\"region\"");
         for (Region r : REGIONS) {
             open("ListOption id=\"%s\"", r.id);
-            open("Group name=\"region_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", r.id);
-            open("ListConfiguration id=\"%s\"", r.configId());
-            for (Airport a : regionAirports(r)) {
-                open("ListOption id=\"%s\"", a.code);
-                open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
+            if (r.id.equals("local")) {
+                open("Group name=\"region_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", r.id);
                 open("Group name=\"solar_bezel\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-                if (a.code.equals("LOCAL")) {
-                    solarBezelLocal(false);
-                    solarBezelLocal(true);
-                } else {
+                solarBezelLocal(false);
+                solarBezelLocal(true);
+                close("Group");
+                localLabel();
+                localGmtHand();
+                close("Group");
+            } else {
+                open("Group name=\"region_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", r.id);
+                open("ListConfiguration id=\"%s\"", r.configId());
+                for (Airport a : regionAirports(r)) {
+                    open("ListOption id=\"%s\"", a.code);
+                    open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
+                    open("Group name=\"solar_bezel\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
                     solarBezel(a, false);
                     solarBezel(a, true);
-                }
-                close("Group");
-                if (a.code.equals("LOCAL")) {
-                    localLabel();
-                    localGmtHand();
-                } else {
+                    close("Group");
                     airportLabel(a);
                     gmtHand(a.zone);
+                    close("Group");
+                    close("ListOption");
                 }
+                close("ListConfiguration");
                 close("Group");
-                close("ListOption");
             }
-            close("ListConfiguration");
-            close("Group");
             close("ListOption");
         }
         close("ListConfiguration");
@@ -914,6 +920,7 @@ public class WatchFace {
 
     static void bezelPartLocal(boolean ambient, Runnable body) {
         open("PartDraw x=\"0\" y=\"0\" width=\"450\" height=\"450\" alpha=\"%d\"", ambient ? 0 : 255);
+        line("<Localization/>");
         bandAmbient = ambient;
         arc(bandR(), 0, 360, nightColor(ambient), bandThick(), "BUTT", null);
         body.run();
@@ -922,9 +929,7 @@ public class WatchFace {
     }
 
     static void localLabel() {
-        String safeZone = "([TIMEZONE_ABBREVIATION] != null && textLength([TIMEZONE_ABBREVIATION]) > 0 ? [TIMEZONE_ABBREVIATION] : \"LOCAL\")";
-        String safeOffset = "([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)";
-        label(() -> labelTextLocal("%s %s%s%s%sH", safeZone, signedHours(safeOffset)));
+        label(() -> labelTextLocal("%s %s%s%s%sH", "[TIMEZONE_ABBREVIATION]", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
     }
 
     static void labelTextLocal(String template, String zoneExpr, String... params) {
@@ -948,6 +953,7 @@ public class WatchFace {
             HandBox b = handBox(style.gmt);
             open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s", b.x, b.y, b.w, b.h, n(b.pivotY),
                     style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
+            line("<Localization/>");
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
             line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60) * 15\"/>");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");

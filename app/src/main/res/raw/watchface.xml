@@ -44,7 +44,7 @@
       <ColorOption id="tonic_water" displayName="bezel_tonic_water" icon="icon_bezel_tonic_water" colors="#37414D #A7B3C2 #3F4A57 #626B78"/>
     </ColorConfiguration>
     <ListConfiguration id="region" displayName="cfg_region" screenReaderText="cfg_region" icon="icon_cfg_airport" defaultValue="local">
-      <ListOption id="local" displayName="region_local" childSettingIds="airport_local"/>
+      <ListOption id="local" displayName="region_local"/>
       <ListOption id="na" displayName="region_na" childSettingIds="airport_na"/>
       <ListOption id="la" displayName="region_la" childSettingIds="airport_la"/>
       <ListOption id="eu" displayName="region_eu" childSettingIds="airport_eu"/>
@@ -52,9 +52,6 @@
       <ListOption id="me" displayName="region_me" childSettingIds="airport_me"/>
       <ListOption id="as" displayName="region_as" childSettingIds="airport_as"/>
       <ListOption id="oc" displayName="region_oc" childSettingIds="airport_oc"/>
-    </ListConfiguration>
-    <ListConfiguration id="airport_local" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="LOCAL">
-      <ListOption id="LOCAL" displayName="airport_local"/>
     </ListConfiguration>
     <ListConfiguration id="airport_na" displayName="cfg_airport" screenReaderText="cfg_airport" icon="icon_cfg_airport" defaultValue="JFK">
       <ListOption id="HNL" displayName="airport_hnl"/>
@@ -6367,116 +6364,115 @@
     <ListConfiguration id="region">
       <ListOption id="local">
         <Group name="region_local" x="0" y="0" width="450" height="450">
-          <ListConfiguration id="airport_local">
-            <ListOption id="LOCAL">
-              <Group name="airport_LOCAL" x="0" y="0" width="450" height="450">
-                <Group name="solar_bezel" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450" alpha="255">
-                    <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="360">
-                      <Stroke color="[CONFIGURATION.bezel.0]" thickness="40" cap="BUTT"/>
-                    </Arc>
-                    <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="0">
-                      <Stroke color="[CONFIGURATION.bezel.1]" thickness="40" cap="BUTT"/>
-                      <Transform target="startAngle" value="90.0"/>
-                      <Transform target="endAngle" value="270.0"/>
-                    </Arc>
-                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450" alpha="0">
-                    <Arc centerX="225" centerY="225" width="384" height="384" startAngle="0" endAngle="360">
-                      <Stroke color="[CONFIGURATION.bezel.2]" thickness="8" cap="BUTT"/>
-                    </Arc>
-                    <Arc centerX="225" centerY="225" width="384" height="384" startAngle="0" endAngle="0">
-                      <Stroke color="[CONFIGURATION.bezel.3]" thickness="8" cap="BUTT"/>
-                      <Transform target="startAngle" value="90.0"/>
-                      <Transform target="endAngle" value="270.0"/>
-                    </Arc>
-                    <Variant mode="AMBIENT" target="alpha" value="200"/>
-                  </PartDraw>
-                </Group>
-                <Condition>
-                  <Expressions>
-                    <Expression name="c326"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
-                    <Expression name="c327"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
-                  </Expressions>
-                  <Compare expression="c326">
-                    <PartText x="145" y="76" width="160" height="28">
-                      <Text align="CENTER">
-                        <Font family="inter_500" size="24" color="#C9CED6">
-                          <Template>%s %s%s%s%sH<Parameter expression="([TIMEZONE_ABBREVIATION] != null &amp;&amp; textLength([TIMEZONE_ABBREVIATION]) &gt; 0 ? [TIMEZONE_ABBREVIATION] : &quot;LOCAL&quot;)"/><Parameter expression="([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0) &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) / 60)"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60"/></Template>
-                        </Font>
-                      </Text>
-                      <Variant mode="AMBIENT" target="alpha" value="170"/>
-                    </PartText>
-                  </Compare>
-                  <Compare expression="c327">
-                    <PartText x="145" y="76" width="160" height="28">
-                      <Text align="CENTER">
-                        <Font family="googlesans_500" size="24" color="#C9CED6">
-                          <Template>%s %s%s%s%sH<Parameter expression="([TIMEZONE_ABBREVIATION] != null &amp;&amp; textLength([TIMEZONE_ABBREVIATION]) &gt; 0 ? [TIMEZONE_ABBREVIATION] : &quot;LOCAL&quot;)"/><Parameter expression="([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0) &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) / 60)"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60"/></Template>
-                        </Font>
-                      </Text>
-                      <Variant mode="AMBIENT" target="alpha" value="170"/>
-                    </PartText>
-                  </Compare>
-                  <Default>
-                    <PartText x="145" y="76" width="160" height="28">
-                      <Text align="CENTER">
-                        <Font family="oswald_500" size="24" color="#C9CED6">
-                          <Template>%s %s%s%s%sH<Parameter expression="([TIMEZONE_ABBREVIATION] != null &amp;&amp; textLength([TIMEZONE_ABBREVIATION]) &gt; 0 ? [TIMEZONE_ABBREVIATION] : &quot;LOCAL&quot;)"/><Parameter expression="([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0) &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) / 60)"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60 == 0 ? &quot;&quot; : abs(([TIMEZONE_OFFSET_MINUTES_DST] != null ? [TIMEZONE_OFFSET_MINUTES_DST] : 0)) % 60"/></Template>
-                        </Font>
-                      </Text>
-                      <Variant mode="AMBIENT" target="alpha" value="170"/>
-                    </PartText>
-                  </Default>
-                </Condition>
-                <Condition>
-                  <Expressions>
-                    <Expression name="c328"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
-                  </Expressions>
-                  <Compare expression="c328">
-                    <PartDraw x="213" y="105" width="24" height="3">
-                      <Rectangle x="0" y="0" width="24" height="2"><Fill color="[CONFIGURATION.bezel.1]"/></Rectangle>
-                      <Variant mode="AMBIENT" target="alpha" value="0"/>
-                    </PartDraw>
-                  </Compare>
-                  <Default>
-                    <PartDraw x="213" y="105" width="24" height="3">
-                      <Rectangle x="0" y="0" width="24" height="2"><Fill color="#D72626"/></Rectangle>
-                      <Variant mode="AMBIENT" target="alpha" value="0"/>
-                    </PartDraw>
-                  </Default>
-                </Condition>
-                <Condition>
-                  <Expressions>
-                    <Expression name="c329"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
-                    <Expression name="c330"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
-                  </Expressions>
-                  <Compare expression="c329">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
-                      <Image resource="flat_hand_gmt"/>
-                      <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
-                      <Variant mode="AMBIENT" target="alpha" value="200"/>
-                    </PartImage>
-                  </Compare>
-                  <Compare expression="c330">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
-                      <Image resource="pixel_hand_gmt"/>
-                      <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
-                      <Variant mode="AMBIENT" target="alpha" value="200"/>
-                    </PartImage>
-                  </Compare>
-                  <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
-                      <Image resource="hand_gmt"/>
-                      <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
-                      <Variant mode="AMBIENT" target="alpha" value="200"/>
-                    </PartImage>
-                  </Default>
-                </Condition>
-              </Group>
-            </ListOption>
-          </ListConfiguration>
+          <Group name="solar_bezel" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450" alpha="255">
+              <Localization/>
+              <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="360">
+                <Stroke color="[CONFIGURATION.bezel.0]" thickness="40" cap="BUTT"/>
+              </Arc>
+              <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="0">
+                <Stroke color="[CONFIGURATION.bezel.1]" thickness="40" cap="BUTT"/>
+                <Transform target="startAngle" value="90.0"/>
+                <Transform target="endAngle" value="270.0"/>
+              </Arc>
+              <Variant mode="AMBIENT" target="alpha" value="0"/>
+            </PartDraw>
+            <PartDraw x="0" y="0" width="450" height="450" alpha="0">
+              <Localization/>
+              <Arc centerX="225" centerY="225" width="384" height="384" startAngle="0" endAngle="360">
+                <Stroke color="[CONFIGURATION.bezel.2]" thickness="8" cap="BUTT"/>
+              </Arc>
+              <Arc centerX="225" centerY="225" width="384" height="384" startAngle="0" endAngle="0">
+                <Stroke color="[CONFIGURATION.bezel.3]" thickness="8" cap="BUTT"/>
+                <Transform target="startAngle" value="90.0"/>
+                <Transform target="endAngle" value="270.0"/>
+              </Arc>
+              <Variant mode="AMBIENT" target="alpha" value="200"/>
+            </PartDraw>
+          </Group>
+          <Condition>
+            <Expressions>
+              <Expression name="c326"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c327"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
+            </Expressions>
+            <Compare expression="c326">
+              <PartText x="145" y="76" width="160" height="28">
+                <Text align="CENTER">
+                  <Font family="inter_500" size="24" color="#C9CED6">
+                    <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABBREVIATION]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
+                  </Font>
+                </Text>
+                <Variant mode="AMBIENT" target="alpha" value="170"/>
+              </PartText>
+            </Compare>
+            <Compare expression="c327">
+              <PartText x="145" y="76" width="160" height="28">
+                <Text align="CENTER">
+                  <Font family="googlesans_500" size="24" color="#C9CED6">
+                    <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABBREVIATION]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
+                  </Font>
+                </Text>
+                <Variant mode="AMBIENT" target="alpha" value="170"/>
+              </PartText>
+            </Compare>
+            <Default>
+              <PartText x="145" y="76" width="160" height="28">
+                <Text align="CENTER">
+                  <Font family="oswald_500" size="24" color="#C9CED6">
+                    <Template>%s %s%s%s%sH<Parameter expression="[TIMEZONE_ABBREVIATION]"/><Parameter expression="[TIMEZONE_OFFSET_MINUTES_DST] &lt; 0 ? &quot;−&quot; : &quot;+&quot;"/><Parameter expression="floor(abs([TIMEZONE_OFFSET_MINUTES_DST]) / 60)"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : &quot;:&quot;"/><Parameter expression="abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60 == 0 ? &quot;&quot; : abs([TIMEZONE_OFFSET_MINUTES_DST]) % 60"/></Template>
+                  </Font>
+                </Text>
+                <Variant mode="AMBIENT" target="alpha" value="170"/>
+              </PartText>
+            </Default>
+          </Condition>
+          <Condition>
+            <Expressions>
+              <Expression name="c328"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
+            </Expressions>
+            <Compare expression="c328">
+              <PartDraw x="213" y="105" width="24" height="3">
+                <Rectangle x="0" y="0" width="24" height="2"><Fill color="[CONFIGURATION.bezel.1]"/></Rectangle>
+                <Variant mode="AMBIENT" target="alpha" value="0"/>
+              </PartDraw>
+            </Compare>
+            <Default>
+              <PartDraw x="213" y="105" width="24" height="3">
+                <Rectangle x="0" y="0" width="24" height="2"><Fill color="#D72626"/></Rectangle>
+                <Variant mode="AMBIENT" target="alpha" value="0"/>
+              </PartDraw>
+            </Default>
+          </Condition>
+          <Condition>
+            <Expressions>
+              <Expression name="c329"><![CDATA[[CONFIGURATION.style] == "flat"]]></Expression>
+              <Expression name="c330"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
+            </Expressions>
+            <Compare expression="c329">
+              <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                <Localization/>
+                <Image resource="flat_hand_gmt"/>
+                <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
+                <Variant mode="AMBIENT" target="alpha" value="200"/>
+              </PartImage>
+            </Compare>
+            <Compare expression="c330">
+              <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                <Localization/>
+                <Image resource="pixel_hand_gmt"/>
+                <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
+                <Variant mode="AMBIENT" target="alpha" value="200"/>
+              </PartImage>
+            </Compare>
+            <Default>
+              <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                <Localization/>
+                <Image resource="hand_gmt"/>
+                <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
+                <Variant mode="AMBIENT" target="alpha" value="200"/>
+              </PartImage>
+            </Default>
+          </Condition>
         </Group>
       </ListOption>
       <ListOption id="na">
