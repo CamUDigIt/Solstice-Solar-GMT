@@ -1183,7 +1183,7 @@
     </ComplicationSlot>
     <!-- 6 o'clock long-text complication -->
     <ComplicationSlot slotId="301" displayName="slot_bottom" x="120" y="284" width="210" height="112" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY">
-      <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
+      <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT" primaryProvider="com.google.android.apps.wearables.weather" primaryProviderType="SHORT_TEXT"/>
       <BoundingRoundBox x="0" y="0" width="210" height="112" cornerRadius="8"/>
       <Complication type="LONG_TEXT">
         <Condition>

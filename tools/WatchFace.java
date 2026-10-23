@@ -777,7 +777,7 @@ public class WatchFace {
         int w = LONG_W, h = LONG_H;
         open("ComplicationSlot slotId=\"301\" displayName=\"slot_bottom\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"LONG_TEXT SHORT_TEXT EMPTY\"",
                 LONG_X, LONG_Y, w, TAP_MIN);
-        line("<DefaultProviderPolicy defaultSystemProvider=\"NEXT_EVENT\" defaultSystemProviderType=\"LONG_TEXT\"/>");
+        line("<DefaultProviderPolicy defaultSystemProvider=\"NEXT_EVENT\" defaultSystemProviderType=\"LONG_TEXT\" primaryProvider=\"com.google.android.apps.wearables.weather\" primaryProviderType=\"SHORT_TEXT\"/>");
         line("<BoundingRoundBox x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadius=\"8\"/>", w, TAP_MIN);
         for (String type : List.of("LONG_TEXT", "SHORT_TEXT")) {
             open("Complication type=\"%s\"", type);
