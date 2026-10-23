@@ -138,7 +138,7 @@
                           </xs:documentation>
                         </xs:annotation>
                       </xs:attribute>
-                      <xs:attribute name="colors" type="userStyleColorOptionType">
+                      <xs:attribute name="colors" type="colorListType">
                         <xs:annotation>
                           <xs:documentation>
                             List of color values

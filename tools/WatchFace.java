@@ -58,6 +58,7 @@ public class WatchFace {
             new Airport("GIG", "Rio de Janeiro", "America/Sao_Paulo", -22.81, -43.25),
             new Airport("EZE", "Buenos Aires", "America/Argentina/Buenos_Aires", -34.82, -58.54),
             // UTC+0 .. UTC+5
+            new Airport("UTC", "Universal Time", "UTC", 0.0, 0.0),
             new Airport("LHR", "London", "Europe/London", 51.47, -0.45),
             new Airport("DUB", "Dublin", "Europe/Dublin", 53.43, -6.25),
             new Airport("LIS", "Lisbon", "Europe/Lisbon", 38.77, -9.13),
@@ -132,7 +133,7 @@ public class WatchFace {
                     "LAX", "MIA", "YUL", "JFK", "MCO", "PHX", "SFO", "SEA", "YYT", "YYZ", "YVR", "IAD")),
             new Region("la", "Latin America & Caribbean", "GRU", List.of("BOG", "EZE", "CUN", "LIM", "MEX", "PTY", "GIG",
                     "SJU", "SCL", "GRU")),
-            new Region("eu", "Europe", "LHR", List.of("AMS", "ATH", "BCN", "CPH", "DUB", "FRA", "IST", "LIS", "LHR", "MAD",
+            new Region("eu", "Europe & UTC", "LHR", List.of("UTC", "AMS", "ATH", "BCN", "CPH", "DUB", "FRA", "IST", "LIS", "LHR", "MAD",
                     "SVO", "MUC", "CDG", "FCO", "VIE", "ZRH")),
             new Region("af", "Africa", "JNB", List.of("ADD", "CAI", "CPT", "JNB", "LOS", "NBO")),
             new Region("me", "Middle East & Central Asia", "DXB", List.of("AUH", "DOH", "DXB", "JED", "KBL", "KHI", "RUH",
@@ -416,6 +417,10 @@ public class WatchFace {
     }
 
     static java.awt.Color color(String hex) {
+        if (!hex.startsWith("#")) {
+            if (hex.contains("1") || hex.contains("3")) return java.awt.Color.decode("#312E81");
+            return java.awt.Color.decode("#6366F1");
+        }
         return java.awt.Color.decode(hex);
     }
 
@@ -627,7 +632,11 @@ public class WatchFace {
                 close("PartDraw");
                 dateText(0, w, h, size, "#FFFFFF", 255, 200);
             } else {
-                // Flat: gold numerals straight on the dial (Apple-style date accent).
+                // Flat: gold numerals with a subtle dark backing pill for high contrast.
+                open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" alpha=\"180\"", w, h);
+                line("<RoundRectangle x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadiusX=\"6\" cornerRadiusY=\"6\"><Fill color=\"#0E1116\"/><Stroke color=\"#2A303A\" thickness=\"1\"/></RoundRectangle>", w, h);
+                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+                close("PartDraw");
                 dateText(0, w, h, size, FLAT_DATE_GOLD, 255, 200);
             }
             close("Group");
@@ -694,7 +703,7 @@ public class WatchFace {
         line("<BoundingOval x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"/>", ROUND_TAP, ROUND_TAP);
         String ranged = "clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]), 0, 1)";
         String goal = "clamp([COMPLICATION.GOAL_PROGRESS_VALUE] / [COMPLICATION.GOAL_PROGRESS_TARGET_VALUE], 0, 1)";
-        for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT", "MONOCHROMATIC_IMAGE")) {
+        for (String type : List.of("RANGED_VALUE", "GOAL_PROGRESS", "SHORT_TEXT", "MONOCHROMATIC_IMAGE", "EMPTY")) {
             open("Complication type=\"%s\"", type);
             // Pilot: recessed sub-dial with a hairline rim. Flat / Pixel: solid flat disc.
             styled(() -> {
@@ -720,7 +729,7 @@ public class WatchFace {
             }
             if (type.equals("MONOCHROMATIC_IMAGE")) {
                 icon(c - 22, c - 22, 44);
-            } else {
+            } else if (!type.equals("EMPTY")) {
                 styled(() -> roundText(o, d, c, style == PILOT ? STEEL : "#FFFFFF"));
             }
             close("Complication");
@@ -870,8 +879,10 @@ public class WatchFace {
             for (Airport a : regionAirports(r)) {
                 open("ListOption id=\"%s\"", a.code);
                 open("Group name=\"airport_%s\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"", a.code);
+                open("Group name=\"solar_bezel\" x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
                 solarBezel(a, false);
                 solarBezel(a, true);
+                close("Group");
                 airportLabel(a);
                 gmtHand(a.zone);
                 close("Group");
@@ -883,7 +894,6 @@ public class WatchFace {
         }
         close("ListConfiguration");
     }
-
     /**
      * Solar bezel: red/blue shows day and night at the destination, drawn on a
      * 24-hour scale (midnight at the top) whichever bezel labels are chosen, so
@@ -1054,7 +1064,6 @@ public class WatchFace {
                     style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
             line("<Localization timeZone=\"%s\"/>", zone);
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
-            // Minute resolution: a second moves the hand 0.004 degrees, so finer updates only cost redraws.
             line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60) * 15\"/>");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"200\"/>");
             close("PartImage");
@@ -1211,21 +1220,34 @@ public class WatchFace {
     // ---- Local time hands -------------------------------------------------
 
     static void localHands() {
-        comment("Local time: hour, minute, sweeping seconds (outline hands in ambient)");
+        comment("Local time: hour, minute, sweeping seconds (1Hz tick when battery &lt; 20)");
         styled(() -> {
-            open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
-            hand("HourHand", "hand_hour", style.hour, 255, 0);
-            hand("HourHand", "hand_hour_ambient", style.hour, 0, 255);
-            hand("MinuteHand", "hand_minute", style.minute, 255, 0);
-            hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
-            HandBox b = handBox(style.second);
-            // Pixel's white second hand takes the colourway's day colour as its accent.
-            open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
-                    style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
-            line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
-            line("<Sweep frequency=\"15\"/>");
-            close("SecondHand");
-            close("AnalogClock");
+            switchOn("[BATTERY_LEVEL] < 20", () -> {
+                open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+                hand("HourHand", "hand_hour", style.hour, 255, 0);
+                hand("HourHand", "hand_hour_ambient", style.hour, 0, 255);
+                hand("MinuteHand", "hand_minute", style.minute, 255, 0);
+                hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
+                HandBox b = handBox(style.second);
+                open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
+                        style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
+                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+                close("SecondHand");
+                close("AnalogClock");
+            }, () -> {
+                open("AnalogClock x=\"0\" y=\"0\" width=\"450\" height=\"450\"");
+                hand("HourHand", "hand_hour", style.hour, 255, 0);
+                hand("HourHand", "hand_hour_ambient", style.hour, 0, 255);
+                hand("MinuteHand", "hand_minute", style.minute, 255, 0);
+                hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
+                HandBox b = handBox(style.second);
+                open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
+                        style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.1]\"" : "");
+                line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
+                line("<Sweep frequency=\"15\"/>");
+                close("SecondHand");
+                close("AnalogClock");
+            });
         });
     }
 
