@@ -915,10 +915,8 @@ public class WatchFace {
     }
 
     static void solarBezelLocal(boolean ambient) {
-        bezelPartLocal(ambient, () -> dayArc(
-                "([SUNRISE_TIME] != null && [SUNRISE_TIME] > 0 ? ([SUNRISE_TIME] / 60) * 15 : 90.0)",
-                "([SUNSET_TIME] != null && [SUNSET_TIME] > 0 ? ([SUNSET_TIME] / 60) * 15 : 270.0)"
-        ));
+        double[] p = solarParams(39.86, -104.67, "America/Denver");
+        bezelPartLocal(ambient, () -> solarArc(n(p[0]), n(p[1]), n(p[2])));
     }
 
     static void bezelPartLocal(boolean ambient, Runnable body) {
@@ -932,7 +930,8 @@ public class WatchFace {
     }
 
     static void localLabel() {
-        label(() -> labelTextLocal("%s %s%s%s%sH", "[TIMEZONE_ABBREVIATION]", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
+        String zoneExpr = "[TIMEZONE_OFFSET_MINUTES_DST] == -360 ? \"MDT\" : ([TIMEZONE_OFFSET_MINUTES_DST] == -240 ? \"EDT\" : ([TIMEZONE_OFFSET_MINUTES_DST] == -420 ? \"PDT\" : ([TIMEZONE_OFFSET_MINUTES_DST] == -300 ? \"CDT\" : ([TIMEZONE_OFFSET_MINUTES_DST] == 0 ? \"UTC\" : ([TIMEZONE_OFFSET_MINUTES_DST] == 60 ? \"BST\" : ([TIMEZONE_OFFSET_MINUTES_DST] == 120 ? \"CEST\" : \"LOCAL\"))))))";
+        label(() -> labelTextLocal("%s %s%s%s%sH", zoneExpr, signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
     }
 
     static void labelTextLocal(String template, String zoneExpr, String... params) {
