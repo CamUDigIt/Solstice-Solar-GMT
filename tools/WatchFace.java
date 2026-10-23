@@ -909,7 +909,7 @@ public class WatchFace {
     }
 
     static void solarBezelLocal(boolean ambient) {
-        bezelPartLocal(ambient, () -> dayArc("([SUNRISE_TIME] / 60) * 15", "([SUNSET_TIME] / 60) * 15"));
+        bezelPartLocal(ambient, () -> dayArc("90.0", "270.0"));
     }
 
     static void bezelPartLocal(boolean ambient, Runnable body) {
@@ -922,7 +922,7 @@ public class WatchFace {
     }
 
     static void localLabel() {
-        label(() -> labelTextLocal("%s %s%s%sH", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
+        label(() -> labelTextLocal("%s %s%s%s%sH", signedHours("[TIMEZONE_OFFSET_MINUTES_DST]")));
     }
 
     static void labelTextLocal(String template, String... params) {
