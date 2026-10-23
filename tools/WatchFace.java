@@ -915,7 +915,10 @@ public class WatchFace {
     }
 
     static void solarBezelLocal(boolean ambient) {
-        bezelPartLocal(ambient, () -> dayArc("90.0", "270.0"));
+        bezelPartLocal(ambient, () -> dayArc(
+                "([SUNRISE_TIME] != null && [SUNRISE_TIME] > 0 ? ([SUNRISE_TIME] / 60) * 15 : 90.0)",
+                "([SUNSET_TIME] != null && [SUNSET_TIME] > 0 ? ([SUNSET_TIME] / 60) * 15 : 270.0)"
+        ));
     }
 
     static void bezelPartLocal(boolean ambient, Runnable body) {

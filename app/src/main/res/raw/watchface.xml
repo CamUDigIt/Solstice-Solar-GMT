@@ -6372,8 +6372,8 @@
               </Arc>
               <Arc centerX="225" centerY="225" width="410" height="410" startAngle="0" endAngle="0">
                 <Stroke color="[CONFIGURATION.bezel.1]" thickness="40" cap="BUTT"/>
-                <Transform target="startAngle" value="90.0"/>
-                <Transform target="endAngle" value="270.0"/>
+                <Transform target="startAngle" value="([SUNRISE_TIME] != null &amp;&amp; [SUNRISE_TIME] &gt; 0 ? ([SUNRISE_TIME] / 60) * 15 : 90.0)"/>
+                <Transform target="endAngle" value="([SUNSET_TIME] != null &amp;&amp; [SUNSET_TIME] &gt; 0 ? ([SUNSET_TIME] / 60) * 15 : 270.0)"/>
               </Arc>
               <Variant mode="AMBIENT" target="alpha" value="0"/>
             </PartDraw>
@@ -6384,8 +6384,8 @@
               </Arc>
               <Arc centerX="225" centerY="225" width="384" height="384" startAngle="0" endAngle="0">
                 <Stroke color="[CONFIGURATION.bezel.3]" thickness="8" cap="BUTT"/>
-                <Transform target="startAngle" value="90.0"/>
-                <Transform target="endAngle" value="270.0"/>
+                <Transform target="startAngle" value="([SUNRISE_TIME] != null &amp;&amp; [SUNRISE_TIME] &gt; 0 ? ([SUNRISE_TIME] / 60) * 15 : 90.0)"/>
+                <Transform target="endAngle" value="([SUNSET_TIME] != null &amp;&amp; [SUNSET_TIME] &gt; 0 ? ([SUNSET_TIME] / 60) * 15 : 270.0)"/>
               </Arc>
               <Variant mode="AMBIENT" target="alpha" value="200"/>
             </PartDraw>
