@@ -15,10 +15,6 @@
     </ListConfiguration>
     <ColorConfiguration id="bezel" displayName="cfg_bezel" screenReaderText="cfg_bezel" icon="icon_cfg_bezel" defaultValue="blue_cola">
       <ColorOption id="apple_heritage" displayName="bezel_apple_heritage" icon="icon_bezel_apple_heritage" colors="#1D2838 #8B1E24 #1D2838 #8B1E24"/>
-      <ColorOption id="apple_stealth" displayName="bezel_apple_stealth" icon="icon_bezel_apple_stealth" colors="#181A1E #3B434E #181A1E #3B434E"/>
-      <ColorOption id="apple_gold" displayName="bezel_apple_gold" icon="icon_bezel_apple_gold" colors="#141619 #9E824C #141619 #786237"/>
-      <ColorOption id="apple_olive" displayName="bezel_apple_olive" icon="icon_bezel_apple_olive" colors="#1B261F #445847 #1B261F #445847"/>
-      <ColorOption id="apple_ocean" displayName="bezel_apple_ocean" icon="icon_bezel_apple_ocean" colors="#121A24 #3B5875 #121A24 #3B5875"/>
       <ColorOption id="blue_cola" displayName="bezel_blue_cola" icon="icon_bezel_blue_cola" colors="#1C3B82 #8B2224 #1C3B82 #8B2224"/>
       <ColorOption id="diet_blue_cola" displayName="bezel_diet_blue_cola" icon="icon_bezel_diet_blue_cola" colors="#1C3B82 #6E7882 #1C3B82 #525A62"/>
       <ColorOption id="midnight_cola" displayName="bezel_midnight_cola" icon="icon_bezel_midnight_cola" colors="#0B0B10 #1C3B82 #3F3F46 #1C3B82"/>
@@ -29,7 +25,6 @@
       <ColorOption id="cherry_cola" displayName="bezel_cherry_cola" icon="icon_bezel_cherry_cola" colors="#300C17 #85143E #4B1525 #85143E"/>
       <ColorOption id="spiced_cherry" displayName="bezel_spiced_cherry" icon="icon_bezel_spiced_cherry" colors="#450F1B #78808A #450F1B #525A62"/>
       <ColorOption id="lemon_lime" displayName="bezel_lemon_lime" icon="icon_bezel_lemon_lime" colors="#0B2F6B #167336 #0B2F6B #125A2A"/>
-      <ColorOption id="grapefruit" displayName="bezel_grapefruit" icon="icon_bezel_grapefruit" colors="#225217 #9E8516 #225217 #6E5B0F"/>
       <ColorOption id="neon_citrus" displayName="bezel_neon_citrus" icon="icon_bezel_neon_citrus" colors="#0B3B24 #5B822A #12472C #425E1E"/>
       <ColorOption id="diet_neon_citrus" displayName="bezel_diet_neon_citrus" icon="icon_bezel_diet_neon_citrus" colors="#0B3B24 #6E7882 #12472C #525A62"/>
       <ColorOption id="orange_soda" displayName="bezel_orange_soda" icon="icon_bezel_orange_soda" colors="#70260D #B85310 #70260D #8A3D0C"/>

@@ -209,13 +209,8 @@ public class WatchFace {
     // like red/green); the darker shade is night. Diet versions use silver as
     // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
-            // Apple Watch GMT Inspired Subdued Colorways
+            // Apple Heritage & Muted Drink-inspired Colourways
             new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#8B1E24"),
-            new Colorway("apple_stealth", "Apple Stealth", "#181A1E", "#3B434E", "#181A1E", "#3B434E"),
-            new Colorway("apple_gold", "Apple Gold", "#141619", "#9E824C", "#141619", "#786237"),
-            new Colorway("apple_olive", "Apple Olive", "#1B261F", "#445847", "#1B261F", "#445847"),
-            new Colorway("apple_ocean", "Apple Ocean", "#121A24", "#3B5875", "#121A24", "#3B5875"),
-            // Muted Drink-inspired Colourways
             new Colorway("blue_cola", "Blue Cola", "#1C3B82", "#8B2224", "#1C3B82", "#8B2224"),
             new Colorway("diet_blue_cola", "Diet Blue Cola", "#1C3B82", "#6E7882", "#1C3B82", "#525A62"),
             new Colorway("midnight_cola", "Midnight Cola", "#0B0B10", "#1C3B82", "#3F3F46", "#1C3B82"),
@@ -227,7 +222,6 @@ public class WatchFace {
             new Colorway("spiced_cherry", "Spiced Cherry", "#450F1B", "#78808A", "#450F1B", "#525A62"),
             // Subdued Citrus
             new Colorway("lemon_lime", "Lemon-Lime", "#0B2F6B", "#167336", "#0B2F6B", "#125A2A"),
-            new Colorway("grapefruit", "Grapefruit", "#225217", "#9E8516", "#225217", "#6E5B0F"),
             new Colorway("neon_citrus", "Neon Citrus", "#0B3B24", "#5B822A", "#12472C", "#425E1E"),
             new Colorway("diet_neon_citrus", "Diet Neon Citrus", "#0B3B24", "#6E7882", "#12472C", "#525A62"),
             // Muted Fruit

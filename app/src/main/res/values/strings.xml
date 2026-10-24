@@ -21,10 +21,6 @@
     <string name="region_oc">Oceania &amp; Pacific</string>
     <string name="cfg_airport">GMT airport</string>
     <string name="bezel_apple_heritage">Apple Heritage</string>
-    <string name="bezel_apple_stealth">Apple Stealth</string>
-    <string name="bezel_apple_gold">Apple Gold</string>
-    <string name="bezel_apple_olive">Apple Olive</string>
-    <string name="bezel_apple_ocean">Apple Ocean</string>
     <string name="bezel_blue_cola">Blue Cola</string>
     <string name="bezel_diet_blue_cola">Diet Blue Cola</string>
     <string name="bezel_midnight_cola">Midnight Cola</string>
@@ -35,7 +31,6 @@
     <string name="bezel_cherry_cola">Cherry Cola</string>
     <string name="bezel_spiced_cherry">Spiced Cherry</string>
     <string name="bezel_lemon_lime">Lemon-Lime</string>
-    <string name="bezel_grapefruit">Grapefruit</string>
     <string name="bezel_neon_citrus">Neon Citrus</string>
     <string name="bezel_diet_neon_citrus">Diet Neon Citrus</string>
     <string name="bezel_orange_soda">Orange Soda</string>
