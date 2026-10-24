@@ -209,19 +209,16 @@ public class WatchFace {
     // like red/green); the darker shade is night. Diet versions use silver as
     // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
-            // Apple Heritage & Pixel Watch Standard Color Themes
+            // Apple Heritage & Official Pixel Watch Color Themes
             new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#8B1E24"),
-            new Colorway("pixel_obsidian", "Pixel Obsidian", "#0E1012", "#3A4048", "#0E1012", "#3A4048"),
-            new Colorway("pixel_licorice", "Pixel Licorice", "#181A1D", "#78808A", "#181A1D", "#525A62"),
-            new Colorway("pixel_bay", "Pixel Bay", "#122442", "#3B6CA8", "#122442", "#3B6CA8"),
+            new Colorway("pixel_ivy", "Pixel Ivy", "#1B261D", "#527357", "#1B261D", "#527357"),
+            new Colorway("pixel_moonstone", "Pixel Moonstone", "#1A222B", "#687C8E", "#1A222B", "#687C8E"),
             new Colorway("pixel_porcelain", "Pixel Porcelain", "#242220", "#9C9894", "#242220", "#6E6A66"),
-            new Colorway("pixel_hazel", "Pixel Hazel", "#1B241E", "#5C7360", "#1B241E", "#5C7360"),
-            new Colorway("pixel_rose", "Pixel Rose", "#301B22", "#8A5C68", "#301B22", "#8A5C68"),
             new Colorway("pixel_iris", "Pixel Iris", "#221B30", "#6A5C80", "#221B30", "#6A5C80"),
-            new Colorway("pixel_jade", "Pixel Jade", "#12241C", "#4A7A64", "#12241C", "#4A7A64"),
             new Colorway("pixel_lemongrass", "Pixel Lemongrass", "#222614", "#6F7D3A", "#222614", "#6F7D3A"),
-            new Colorway("pixel_coral", "Pixel Coral", "#301812", "#8A4E40", "#301812", "#8A4E40"),
-            new Colorway("pixel_champagne", "Pixel Champagne", "#241C12", "#8A724E", "#241C12", "#8A724E"),
+            new Colorway("pixel_jade", "Pixel Jade", "#12241C", "#4A7A64", "#12241C", "#4A7A64"),
+            new Colorway("pixel_indigo", "Pixel Indigo", "#13192B", "#3D5280", "#13192B", "#3D5280"),
+            new Colorway("pixel_peony", "Pixel Peony", "#331821", "#8A4B60", "#331821", "#8A4B60"),
             // Muted Drink-inspired Colourways
             new Colorway("blue_cola", "Blue Cola", "#1C3B82", "#8B2224", "#1C3B82", "#8B2224"),
             new Colorway("diet_blue_cola", "Diet Blue Cola", "#1C3B82", "#6E7882", "#1C3B82", "#525A62"),
