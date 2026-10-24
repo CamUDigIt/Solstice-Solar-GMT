@@ -21,6 +21,17 @@
     <string name="region_oc">Oceania &amp; Pacific</string>
     <string name="cfg_airport">GMT airport</string>
     <string name="bezel_apple_heritage">Apple Heritage</string>
+    <string name="bezel_pixel_obsidian">Pixel Obsidian</string>
+    <string name="bezel_pixel_licorice">Pixel Licorice</string>
+    <string name="bezel_pixel_bay">Pixel Bay</string>
+    <string name="bezel_pixel_porcelain">Pixel Porcelain</string>
+    <string name="bezel_pixel_hazel">Pixel Hazel</string>
+    <string name="bezel_pixel_rose">Pixel Rose</string>
+    <string name="bezel_pixel_iris">Pixel Iris</string>
+    <string name="bezel_pixel_jade">Pixel Jade</string>
+    <string name="bezel_pixel_lemongrass">Pixel Lemongrass</string>
+    <string name="bezel_pixel_coral">Pixel Coral</string>
+    <string name="bezel_pixel_champagne">Pixel Champagne</string>
     <string name="bezel_blue_cola">Blue Cola</string>
     <string name="bezel_diet_blue_cola">Diet Blue Cola</string>
     <string name="bezel_midnight_cola">Midnight Cola</string>

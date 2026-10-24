@@ -15,6 +15,17 @@
     </ListConfiguration>
     <ColorConfiguration id="bezel" displayName="cfg_bezel" screenReaderText="cfg_bezel" icon="icon_cfg_bezel" defaultValue="blue_cola">
       <ColorOption id="apple_heritage" displayName="bezel_apple_heritage" icon="icon_bezel_apple_heritage" colors="#1D2838 #8B1E24 #1D2838 #8B1E24"/>
+      <ColorOption id="pixel_obsidian" displayName="bezel_pixel_obsidian" icon="icon_bezel_pixel_obsidian" colors="#0E1012 #3A4048 #0E1012 #3A4048"/>
+      <ColorOption id="pixel_licorice" displayName="bezel_pixel_licorice" icon="icon_bezel_pixel_licorice" colors="#181A1D #78808A #181A1D #525A62"/>
+      <ColorOption id="pixel_bay" displayName="bezel_pixel_bay" icon="icon_bezel_pixel_bay" colors="#122442 #3B6CA8 #122442 #3B6CA8"/>
+      <ColorOption id="pixel_porcelain" displayName="bezel_pixel_porcelain" icon="icon_bezel_pixel_porcelain" colors="#242220 #9C9894 #242220 #6E6A66"/>
+      <ColorOption id="pixel_hazel" displayName="bezel_pixel_hazel" icon="icon_bezel_pixel_hazel" colors="#1B241E #5C7360 #1B241E #5C7360"/>
+      <ColorOption id="pixel_rose" displayName="bezel_pixel_rose" icon="icon_bezel_pixel_rose" colors="#301B22 #8A5C68 #301B22 #8A5C68"/>
+      <ColorOption id="pixel_iris" displayName="bezel_pixel_iris" icon="icon_bezel_pixel_iris" colors="#221B30 #6A5C80 #221B30 #6A5C80"/>
+      <ColorOption id="pixel_jade" displayName="bezel_pixel_jade" icon="icon_bezel_pixel_jade" colors="#12241C #4A7A64 #12241C #4A7A64"/>
+      <ColorOption id="pixel_lemongrass" displayName="bezel_pixel_lemongrass" icon="icon_bezel_pixel_lemongrass" colors="#222614 #6F7D3A #222614 #6F7D3A"/>
+      <ColorOption id="pixel_coral" displayName="bezel_pixel_coral" icon="icon_bezel_pixel_coral" colors="#301812 #8A4E40 #301812 #8A4E40"/>
+      <ColorOption id="pixel_champagne" displayName="bezel_pixel_champagne" icon="icon_bezel_pixel_champagne" colors="#241C12 #8A724E #241C12 #8A724E"/>
       <ColorOption id="blue_cola" displayName="bezel_blue_cola" icon="icon_bezel_blue_cola" colors="#1C3B82 #8B2224 #1C3B82 #8B2224"/>
       <ColorOption id="diet_blue_cola" displayName="bezel_diet_blue_cola" icon="icon_bezel_diet_blue_cola" colors="#1C3B82 #6E7882 #1C3B82 #525A62"/>
       <ColorOption id="midnight_cola" displayName="bezel_midnight_cola" icon="icon_bezel_midnight_cola" colors="#0B0B10 #1C3B82 #3F3F46 #1C3B82"/>
