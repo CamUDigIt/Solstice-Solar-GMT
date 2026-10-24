@@ -693,12 +693,18 @@ public class WatchFace {
      * area underneath open any app.
      */
     static void tapSlot(int id, String name, int x, int y, int w, int h, String provider) {
-        List<String> types = List.of("SHORT_TEXT", "LONG_TEXT", "SMALL_IMAGE", "MONOCHROMATIC_IMAGE", "RANGED_VALUE", "GOAL_PROGRESS");
-        open("ComplicationSlot slotId=\"%d\" displayName=\"%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"%s EMPTY\"",
+        List<String> types = List.of("SHORT_TEXT", "LONG_TEXT", "SMALL_IMAGE", "MONOCHROMATIC_IMAGE", "RANGED_VALUE", "GOAL_PROGRESS", "EMPTY");
+        open("ComplicationSlot slotId=\"%d\" displayName=\"%s\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" supportedTypes=\"%s\"",
                 id, name, x, y, w, h, String.join(" ", types));
         line("<DefaultProviderPolicy defaultSystemProvider=\"%s\" defaultSystemProviderType=\"%s\"/>", provider, provider.equals("EMPTY") ? "EMPTY" : "SHORT_TEXT");
         line("<BoundingRoundBox x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadius=\"8\"/>", w, h);
-        for (String t : types) line("<Complication type=\"%s\"/>", t);
+        for (String t : types) {
+            open("Complication type=\"%s\"", t);
+            open("PartDraw x=\"0\" y=\"0\" width=\"%d\" height=\"%d\"", w, h);
+            line("<RoundRectangle x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" cornerRadiusX=\"8\" cornerRadiusY=\"8\"><Fill color=\"#00000000\"/></RoundRectangle>", w, h);
+            close("PartDraw");
+            close("Complication");
+        }
         close("ComplicationSlot");
     }
 
