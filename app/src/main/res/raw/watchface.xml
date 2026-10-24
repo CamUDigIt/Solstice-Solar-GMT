@@ -15,14 +15,6 @@
     </ListConfiguration>
     <ColorConfiguration id="bezel" displayName="cfg_bezel" screenReaderText="cfg_bezel" icon="icon_cfg_bezel" defaultValue="blue_cola">
       <ColorOption id="apple_heritage" displayName="bezel_apple_heritage" icon="icon_bezel_apple_heritage" colors="#1D2838 #8B1E24 #1D2838 #8B1E24"/>
-      <ColorOption id="pixel_ivy" displayName="bezel_pixel_ivy" icon="icon_bezel_pixel_ivy" colors="#1B261D #527357 #1B261D #527357"/>
-      <ColorOption id="pixel_moonstone" displayName="bezel_pixel_moonstone" icon="icon_bezel_pixel_moonstone" colors="#1A222B #687C8E #1A222B #687C8E"/>
-      <ColorOption id="pixel_porcelain" displayName="bezel_pixel_porcelain" icon="icon_bezel_pixel_porcelain" colors="#242220 #9C9894 #242220 #6E6A66"/>
-      <ColorOption id="pixel_iris" displayName="bezel_pixel_iris" icon="icon_bezel_pixel_iris" colors="#221B30 #6A5C80 #221B30 #6A5C80"/>
-      <ColorOption id="pixel_lemongrass" displayName="bezel_pixel_lemongrass" icon="icon_bezel_pixel_lemongrass" colors="#222614 #6F7D3A #222614 #6F7D3A"/>
-      <ColorOption id="pixel_jade" displayName="bezel_pixel_jade" icon="icon_bezel_pixel_jade" colors="#12241C #4A7A64 #12241C #4A7A64"/>
-      <ColorOption id="pixel_indigo" displayName="bezel_pixel_indigo" icon="icon_bezel_pixel_indigo" colors="#13192B #3D5280 #13192B #3D5280"/>
-      <ColorOption id="pixel_peony" displayName="bezel_pixel_peony" icon="icon_bezel_pixel_peony" colors="#331821 #8A4B60 #331821 #8A4B60"/>
       <ColorOption id="blue_cola" displayName="bezel_blue_cola" icon="icon_bezel_blue_cola" colors="#1C3B82 #8B2224 #1C3B82 #8B2224"/>
       <ColorOption id="diet_blue_cola" displayName="bezel_diet_blue_cola" icon="icon_bezel_diet_blue_cola" colors="#1C3B82 #6E7882 #1C3B82 #525A62"/>
       <ColorOption id="midnight_cola" displayName="bezel_midnight_cola" icon="icon_bezel_midnight_cola" colors="#0B0B10 #1C3B82 #3F3F46 #1C3B82"/>
