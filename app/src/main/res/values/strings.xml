@@ -20,6 +20,11 @@
     <string name="region_as">Asia</string>
     <string name="region_oc">Oceania &amp; Pacific</string>
     <string name="cfg_airport">GMT airport</string>
+    <string name="bezel_apple_heritage">Apple Heritage</string>
+    <string name="bezel_apple_stealth">Apple Stealth</string>
+    <string name="bezel_apple_gold">Apple Gold</string>
+    <string name="bezel_apple_olive">Apple Olive</string>
+    <string name="bezel_apple_ocean">Apple Ocean</string>
     <string name="bezel_blue_cola">Blue Cola</string>
     <string name="bezel_diet_blue_cola">Diet Blue Cola</string>
     <string name="bezel_midnight_cola">Midnight Cola</string>

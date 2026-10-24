@@ -209,40 +209,45 @@ public class WatchFace {
     // like red/green); the darker shade is night. Diet versions use silver as
     // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
-            // Colas
-            new Colorway("blue_cola", "Blue Cola", "#1D4ED8", "#C81E1E", "#1D4ED8", "#C81E1E"),
-            new Colorway("diet_blue_cola", "Diet Blue Cola", "#1D4ED8", "#B8BEC6", "#1D4ED8", "#656B72"),
-            new Colorway("midnight_cola", "Midnight Cola", "#0B0B10", "#1E5BD7", "#3F3F46", "#1E5BD7"),
-            new Colorway("classic_cola", "Classic Cola", "#4A2512", "#B91C1C", "#6B3A20", "#B91C1C"),
-            new Colorway("diet_cola", "Diet Cola", "#9F1D24", "#B8BEC6", "#9F1D24", "#656B72"),
-            new Colorway("zero_sugar_cola", "Zero Sugar Cola", "#0B0B0D", "#E41E2B", "#3F3F46", "#E41E2B"),
-            new Colorway("gold_cola", "Gold Cola", "#8E1B1B", "#D4A72C", "#8E1B1B", "#866A18"),
-            new Colorway("cherry_cola", "Cherry Cola", "#3D0C1C", "#B0174F", "#6B1A33", "#B0174F"),
-            new Colorway("spiced_cherry", "Spiced Cherry", "#5C1324", "#A9B0B8", "#6A1A2C", "#656B72"),
-            // Citrus and lemon-lime
-            new Colorway("lemon_lime", "Lemon-Lime", "#0B3D91", "#1E9E4A", "#0B3D91", "#19873F"),
-            new Colorway("grapefruit", "Grapefruit", "#2E6B1E", "#E5C21F", "#2E6B1E", "#7F6C12"),
-            new Colorway("neon_citrus", "Neon Citrus", "#0F5132", "#8DC63F", "#186040", "#557723"),
-            new Colorway("diet_neon_citrus", "Diet Neon Citrus", "#0F5132", "#B8BEC6", "#186040", "#656B72"),
-            // Fruit
-            new Colorway("orange_soda", "Orange Soda", "#9A3412", "#F97316", "#9A3412", "#BF5A11"),
-            new Colorway("grape_soda", "Grape Soda", "#3B0764", "#8B5CF6", "#5B21B6", "#7C4FD8"),
+            // Apple Watch GMT Inspired Subdued Colorways
+            new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#8B1E24"),
+            new Colorway("apple_stealth", "Apple Stealth", "#181A1E", "#3B434E", "#181A1E", "#3B434E"),
+            new Colorway("apple_gold", "Apple Gold", "#141619", "#9E824C", "#141619", "#786237"),
+            new Colorway("apple_olive", "Apple Olive", "#1B261F", "#445847", "#1B261F", "#445847"),
+            new Colorway("apple_ocean", "Apple Ocean", "#121A24", "#3B5875", "#121A24", "#3B5875"),
+            // Muted Drink-inspired Colourways
+            new Colorway("blue_cola", "Blue Cola", "#1C3B82", "#8B2224", "#1C3B82", "#8B2224"),
+            new Colorway("diet_blue_cola", "Diet Blue Cola", "#1C3B82", "#6E7882", "#1C3B82", "#525A62"),
+            new Colorway("midnight_cola", "Midnight Cola", "#0B0B10", "#1C3B82", "#3F3F46", "#1C3B82"),
+            new Colorway("classic_cola", "Classic Cola", "#3B1E12", "#8B2224", "#4B2818", "#8B2224"),
+            new Colorway("diet_cola", "Diet Cola", "#7A1B20", "#6E7882", "#7A1B20", "#525A62"),
+            new Colorway("zero_sugar_cola", "Zero Sugar Cola", "#0B0B0D", "#A81B24", "#3F3F46", "#A81B24"),
+            new Colorway("gold_cola", "Gold Cola", "#6B1B1B", "#9E7B27", "#6B1B1B", "#6E561A"),
+            new Colorway("cherry_cola", "Cherry Cola", "#300C17", "#85143E", "#4B1525", "#85143E"),
+            new Colorway("spiced_cherry", "Spiced Cherry", "#450F1B", "#78808A", "#450F1B", "#525A62"),
+            // Subdued Citrus
+            new Colorway("lemon_lime", "Lemon-Lime", "#0B2F6B", "#167336", "#0B2F6B", "#125A2A"),
+            new Colorway("grapefruit", "Grapefruit", "#225217", "#9E8516", "#225217", "#6E5B0F"),
+            new Colorway("neon_citrus", "Neon Citrus", "#0B3B24", "#5B822A", "#12472C", "#425E1E"),
+            new Colorway("diet_neon_citrus", "Diet Neon Citrus", "#0B3B24", "#6E7882", "#12472C", "#525A62"),
+            // Muted Fruit
+            new Colorway("orange_soda", "Orange Soda", "#70260D", "#B85310", "#70260D", "#8A3D0C"),
+            new Colorway("grape_soda", "Grape Soda", "#2B0748", "#5F3FB0", "#3E1763", "#4A308B"),
             // Root beer and ginger
-            new Colorway("root_beer", "Root Beer", "#4A2511", "#E39B0B", "#7C4A2A", "#966707"),
-            new Colorway("ginger_ale", "Ginger Ale", "#0B4D2C", "#C9A227", "#115C37", "#846A19"),
-            // Soft and earthy: cream soda, teas and lattes
-            new Colorway("cream_soda", "Cream Soda", "#5B4636", "#E8D3A8", "#5B4636", "#78694C"),
-            new Colorway("matcha_latte", "Matcha Latte", "#2F4A32", "#A9C49A", "#3A5A3E", "#5C7056"),
-            new Colorway("green_tea", "Green Tea", "#2F3519", "#8C9440", "#3A4220", "#6A702E"),
-            new Colorway("peach_tea", "Peach Tea", "#6B3B2A", "#F2B48C", "#6B3B2A", "#8B634A"),
-            new Colorway("lavender_lemonade", "Lavender Lemonade", "#4B3F72", "#C9B8E8", "#4B3F72", "#70658E"),
-            new Colorway("hibiscus_tea", "Hibiscus Tea", "#5E1F3A", "#E8A0B4", "#6A2442", "#955D71"),
-            new Colorway("blueberry_soda", "Blueberry Soda", "#2C3E66", "#A9BCE0", "#2C3E66", "#5C6B86"),
-            // Pixel-inspired tonal pairs
-            new Colorway("cucumber_water", "Cucumber Water", "#134E44", "#8ED1BC", "#1A5A4F", "#4D7368"),
-            new Colorway("butterfly_pea_tea", "Butterfly Pea Tea", "#2C2F6B", "#9C9CF2", "#383C80", "#6666A3"),
-            new Colorway("yuzu_soda", "Yuzu Soda", "#5A4A10", "#F2D36B", "#5A4A10", "#7C6B2F"),
-            new Colorway("tonic_water", "Tonic Water", "#37414D", "#A7B3C2", "#3F4A57", "#626B78"));
+            new Colorway("root_beer", "Root Beer", "#3B1E10", "#A36F08", "#59331C", "#754E05"),
+            new Colorway("ginger_ale", "Ginger Ale", "#083B22", "#91751B", "#0D472A", "#635012"),
+            // Soft teas and lattes
+            new Colorway("cream_soda", "Cream Soda", "#423327", "#B3A17E", "#423327", "#786B52"),
+            new Colorway("matcha_latte", "Matcha Latte", "#223825", "#7B916F", "#2B452E", "#52634A"),
+            new Colorway("green_tea", "Green Tea", "#222612", "#656B2E", "#2B3017", "#4C5221"),
+            new Colorway("peach_tea", "Peach Tea", "#4E2A1E", "#B58465", "#4E2A1E", "#785641"),
+            new Colorway("lavender_lemonade", "Lavender Lemonade", "#352C52", "#8E81A8", "#352C52", "#5A516E"),
+            new Colorway("hibiscus_tea", "Hibiscus Tea", "#45162A", "#A87082", "#4D1B30", "#754C5A"),
+            new Colorway("blueberry_soda", "Blueberry Soda", "#202D4A", "#7B8CAB", "#202D4A", "#525F78"),
+            new Colorway("cucumber_water", "Cucumber Water", "#0E3B33", "#699E8E", "#12453C", "#486E63"),
+            new Colorway("butterfly_pea_tea", "Butterfly Pea Tea", "#20224F", "#7373BA", "#2A2C61", "#4E4E82"),
+            new Colorway("yuzu_soda", "Yuzu Soda", "#42360B", "#B2994B", "#42360B", "#786631"),
+            new Colorway("tonic_water", "Tonic Water", "#272E38", "#7B8591", "#2F3845", "#525A63"));
 
 
     // ---- Palette ----------------------------------------------------------
@@ -250,9 +255,9 @@ public class WatchFace {
     static final String BG = "#000000";
     static final String DIAL_HI = "#161B23";
     static final String DIAL_LO = "#07090C";
-    static final String STEEL = "#C9CED6";
-    static final String LUME = "#F4F1E4";
-    static final String MUTED = "#8A93A0";
+    static final String STEEL = "#B8BEC6";
+    static final String LUME = "#E2DEC2";
+    static final String MUTED = "#78808A";
     static final String GMT_RED = "#D72626";
     static final String FLAT_PANEL = "#1C2027";   // Flat complication backgrounds
     static final String FLAT_DATE_GOLD = "#E3B341";
