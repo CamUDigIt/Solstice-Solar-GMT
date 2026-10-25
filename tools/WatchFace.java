@@ -211,6 +211,8 @@ public class WatchFace {
     static final List<Colorway> COLORWAYS = List.of(
             // Apple Heritage & Official Pixel Watch Material 3 Themes (with Tertiary Accents)
             new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#8B1E24"),
+            new Colorway("apple_watermelon", "Apple Watermelon", "#2C323B", "#D84355", "#2C323B", "#FF8A98"),
+            new Colorway("apple_slate_navy", "Apple Navy", "#222831", "#2B4C7E", "#222831", "#7A9EC2"),
             new Colorway("pixel_ivy", "Pixel Ivy", "#1C3220", "#A2D4A9", "#1C3220", "#A5E3CD"),
             new Colorway("pixel_moonstone", "Pixel Moonstone", "#202D3A", "#A0B4CC", "#202D3A", "#B2C5E8"),
             new Colorway("pixel_porcelain", "Pixel Porcelain", "#2E2A2B", "#E6E1E5", "#2E2A2B", "#E2D5B4"),
