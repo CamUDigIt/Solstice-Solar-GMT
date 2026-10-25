@@ -6515,7 +6515,7 @@
               <Expression name="c330"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
             </Expressions>
             <Compare expression="c329">
-              <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+              <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                 <Localization/>
                 <Image resource="flat_hand_gmt"/>
                 <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6523,7 +6523,7 @@
               </PartImage>
             </Compare>
             <Compare expression="c330">
-              <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+              <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                 <Localization/>
                 <Image resource="pixel_hand_gmt"/>
                 <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6531,7 +6531,7 @@
               </PartImage>
             </Compare>
             <Default>
-              <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+              <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                 <Localization/>
                 <Image resource="hand_gmt"/>
                 <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6634,7 +6634,7 @@
                     <Expression name="c335"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c334">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Honolulu"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6642,7 +6642,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c335">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Honolulu"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6650,7 +6650,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Honolulu"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6750,7 +6750,7 @@
                     <Expression name="c340"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c339">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Anchorage"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6758,7 +6758,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c340">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Anchorage"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6766,7 +6766,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Anchorage"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6866,7 +6866,7 @@
                     <Expression name="c345"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c344">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6874,7 +6874,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c345">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6882,7 +6882,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6982,7 +6982,7 @@
                     <Expression name="c350"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c349">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6990,7 +6990,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c350">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -6998,7 +6998,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7098,7 +7098,7 @@
                     <Expression name="c355"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c354">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7106,7 +7106,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c355">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7114,7 +7114,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7214,7 +7214,7 @@
                     <Expression name="c360"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c359">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7222,7 +7222,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c360">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7230,7 +7230,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Los_Angeles"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7330,7 +7330,7 @@
                     <Expression name="c365"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c364">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Denver"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7338,7 +7338,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c365">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Denver"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7346,7 +7346,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Denver"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7446,7 +7446,7 @@
                     <Expression name="c370"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c369">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Phoenix"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7454,7 +7454,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c370">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Phoenix"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7462,7 +7462,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Phoenix"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7562,7 +7562,7 @@
                     <Expression name="c375"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c374">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Vancouver"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7570,7 +7570,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c375">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Vancouver"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7578,7 +7578,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Vancouver"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7678,7 +7678,7 @@
                     <Expression name="c380"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c379">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7686,7 +7686,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c380">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7694,7 +7694,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7794,7 +7794,7 @@
                     <Expression name="c385"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c384">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7802,7 +7802,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c385">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7810,7 +7810,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7910,7 +7910,7 @@
                     <Expression name="c390"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c389">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7918,7 +7918,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c390">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -7926,7 +7926,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Chicago"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8026,7 +8026,7 @@
                     <Expression name="c395"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c394">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8034,7 +8034,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c395">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8042,7 +8042,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8142,7 +8142,7 @@
                     <Expression name="c400"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c399">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8150,7 +8150,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c400">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8158,7 +8158,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8258,7 +8258,7 @@
                     <Expression name="c405"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c404">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8266,7 +8266,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c405">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8274,7 +8274,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8374,7 +8374,7 @@
                     <Expression name="c410"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c409">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Toronto"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8382,7 +8382,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c410">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Toronto"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8390,7 +8390,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Toronto"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8490,7 +8490,7 @@
                     <Expression name="c415"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c414">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8498,7 +8498,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c415">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8506,7 +8506,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8606,7 +8606,7 @@
                     <Expression name="c420"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c419">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8614,7 +8614,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c420">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8622,7 +8622,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8722,7 +8722,7 @@
                     <Expression name="c425"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c424">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Toronto"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8730,7 +8730,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c425">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Toronto"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8738,7 +8738,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Toronto"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8838,7 +8838,7 @@
                     <Expression name="c430"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c429">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8846,7 +8846,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c430">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8854,7 +8854,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/New_York"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8954,7 +8954,7 @@
                     <Expression name="c435"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c434">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/St_Johns"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8962,7 +8962,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c435">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/St_Johns"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -8970,7 +8970,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/St_Johns"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9076,7 +9076,7 @@
                     <Expression name="c440"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c439">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Mexico_City"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9084,7 +9084,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c440">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Mexico_City"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9092,7 +9092,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Mexico_City"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9192,7 +9192,7 @@
                     <Expression name="c445"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c444">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Bogota"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9200,7 +9200,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c445">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Bogota"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9208,7 +9208,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Bogota"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9308,7 +9308,7 @@
                     <Expression name="c450"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c449">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Cancun"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9316,7 +9316,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c450">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Cancun"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9324,7 +9324,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Cancun"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9424,7 +9424,7 @@
                     <Expression name="c455"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c454">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Lima"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9432,7 +9432,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c455">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Lima"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9440,7 +9440,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Lima"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9540,7 +9540,7 @@
                     <Expression name="c460"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c459">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Panama"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9548,7 +9548,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c460">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Panama"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9556,7 +9556,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Panama"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9656,7 +9656,7 @@
                     <Expression name="c465"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c464">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Puerto_Rico"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9664,7 +9664,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c465">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Puerto_Rico"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9672,7 +9672,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Puerto_Rico"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9772,7 +9772,7 @@
                     <Expression name="c470"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c469">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Santiago"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9780,7 +9780,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c470">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Santiago"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9788,7 +9788,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Santiago"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9888,7 +9888,7 @@
                     <Expression name="c475"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c474">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Argentina/Buenos_Aires"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9896,7 +9896,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c475">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Argentina/Buenos_Aires"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -9904,7 +9904,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Argentina/Buenos_Aires"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10004,7 +10004,7 @@
                     <Expression name="c480"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c479">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Sao_Paulo"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10012,7 +10012,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c480">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Sao_Paulo"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10020,7 +10020,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Sao_Paulo"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10120,7 +10120,7 @@
                     <Expression name="c485"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c484">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Sao_Paulo"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10128,7 +10128,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c485">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Sao_Paulo"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10136,7 +10136,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="America/Sao_Paulo"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10242,7 +10242,7 @@
                     <Expression name="c490"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c489">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Dublin"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10250,7 +10250,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c490">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Dublin"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10258,7 +10258,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Dublin"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10358,7 +10358,7 @@
                     <Expression name="c495"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c494">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Lisbon"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10366,7 +10366,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c495">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Lisbon"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10374,7 +10374,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Lisbon"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10474,7 +10474,7 @@
                     <Expression name="c500"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c499">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/London"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10482,7 +10482,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c500">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/London"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10490,7 +10490,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/London"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10590,7 +10590,7 @@
                     <Expression name="c505"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c504">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="UTC"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10598,7 +10598,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c505">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="UTC"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10606,7 +10606,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="UTC"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10706,7 +10706,7 @@
                     <Expression name="c510"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c509">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Amsterdam"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10714,7 +10714,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c510">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Amsterdam"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10722,7 +10722,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Amsterdam"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10822,7 +10822,7 @@
                     <Expression name="c515"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c514">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Madrid"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10830,7 +10830,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c515">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Madrid"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10838,7 +10838,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Madrid"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10938,7 +10938,7 @@
                     <Expression name="c520"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c519">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Copenhagen"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10946,7 +10946,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c520">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Copenhagen"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -10954,7 +10954,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Copenhagen"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11054,7 +11054,7 @@
                     <Expression name="c525"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c524">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Berlin"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11062,7 +11062,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c525">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Berlin"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11070,7 +11070,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Berlin"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11170,7 +11170,7 @@
                     <Expression name="c530"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c529">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Madrid"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11178,7 +11178,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c530">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Madrid"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11186,7 +11186,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Madrid"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11286,7 +11286,7 @@
                     <Expression name="c535"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c534">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Berlin"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11294,7 +11294,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c535">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Berlin"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11302,7 +11302,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Berlin"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11402,7 +11402,7 @@
                     <Expression name="c540"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c539">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Paris"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11410,7 +11410,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c540">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Paris"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11418,7 +11418,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Paris"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11518,7 +11518,7 @@
                     <Expression name="c545"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c544">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Rome"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11526,7 +11526,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c545">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Rome"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11534,7 +11534,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Rome"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11634,7 +11634,7 @@
                     <Expression name="c550"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c549">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Vienna"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11642,7 +11642,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c550">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Vienna"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11650,7 +11650,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Vienna"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11750,7 +11750,7 @@
                     <Expression name="c555"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c554">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Zurich"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11758,7 +11758,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c555">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Zurich"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11766,7 +11766,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Zurich"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11866,7 +11866,7 @@
                     <Expression name="c560"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c559">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Athens"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11874,7 +11874,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c560">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Athens"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11882,7 +11882,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Athens"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11982,7 +11982,7 @@
                     <Expression name="c565"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c564">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Istanbul"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11990,7 +11990,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c565">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Istanbul"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -11998,7 +11998,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Istanbul"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12098,7 +12098,7 @@
                     <Expression name="c570"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c569">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Moscow"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12106,7 +12106,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c570">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Moscow"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12114,7 +12114,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Europe/Moscow"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12220,7 +12220,7 @@
                     <Expression name="c575"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c574">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Lagos"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12228,7 +12228,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c575">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Lagos"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12236,7 +12236,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Lagos"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12336,7 +12336,7 @@
                     <Expression name="c580"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c579">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Cairo"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12344,7 +12344,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c580">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Cairo"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12352,7 +12352,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Cairo"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12452,7 +12452,7 @@
                     <Expression name="c585"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c584">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Johannesburg"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12460,7 +12460,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c585">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Johannesburg"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12468,7 +12468,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Johannesburg"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12568,7 +12568,7 @@
                     <Expression name="c590"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c589">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Johannesburg"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12576,7 +12576,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c590">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Johannesburg"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12584,7 +12584,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Johannesburg"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12684,7 +12684,7 @@
                     <Expression name="c595"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c594">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Addis_Ababa"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12692,7 +12692,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c595">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Addis_Ababa"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12700,7 +12700,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Addis_Ababa"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12800,7 +12800,7 @@
                     <Expression name="c600"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c599">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Nairobi"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12808,7 +12808,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c600">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Nairobi"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12816,7 +12816,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Africa/Nairobi"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12922,7 +12922,7 @@
                     <Expression name="c605"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c604">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Qatar"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12930,7 +12930,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c605">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Qatar"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -12938,7 +12938,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Qatar"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13038,7 +13038,7 @@
                     <Expression name="c610"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c609">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Riyadh"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13046,7 +13046,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c610">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Riyadh"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13054,7 +13054,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Riyadh"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13154,7 +13154,7 @@
                     <Expression name="c615"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c614">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Riyadh"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13162,7 +13162,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c615">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Riyadh"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13170,7 +13170,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Riyadh"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13270,7 +13270,7 @@
                     <Expression name="c620"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c619">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tehran"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13278,7 +13278,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c620">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tehran"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13286,7 +13286,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tehran"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13386,7 +13386,7 @@
                     <Expression name="c625"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c624">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dubai"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13394,7 +13394,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c625">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dubai"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13402,7 +13402,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dubai"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13502,7 +13502,7 @@
                     <Expression name="c630"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c629">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dubai"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13510,7 +13510,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c630">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dubai"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13518,7 +13518,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dubai"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13618,7 +13618,7 @@
                     <Expression name="c635"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c634">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kabul"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13626,7 +13626,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c635">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kabul"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13634,7 +13634,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kabul"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13734,7 +13734,7 @@
                     <Expression name="c640"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c639">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Karachi"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13742,7 +13742,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c640">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Karachi"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13750,7 +13750,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Karachi"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13850,7 +13850,7 @@
                     <Expression name="c645"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c644">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tashkent"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13858,7 +13858,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c645">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tashkent"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13866,7 +13866,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tashkent"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13972,7 +13972,7 @@
                     <Expression name="c650"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c649">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13980,7 +13980,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c650">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -13988,7 +13988,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14088,7 +14088,7 @@
                     <Expression name="c655"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c654">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14096,7 +14096,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c655">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14104,7 +14104,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14204,7 +14204,7 @@
                     <Expression name="c660"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c659">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14212,7 +14212,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c660">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14220,7 +14220,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kolkata"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14320,7 +14320,7 @@
                     <Expression name="c665"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c664">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kathmandu"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14328,7 +14328,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c665">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kathmandu"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14336,7 +14336,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kathmandu"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14436,7 +14436,7 @@
                     <Expression name="c670"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c669">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dhaka"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14444,7 +14444,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c670">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dhaka"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14452,7 +14452,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Dhaka"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14552,7 +14552,7 @@
                     <Expression name="c675"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c674">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Yangon"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14560,7 +14560,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c675">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Yangon"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14568,7 +14568,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Yangon"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14668,7 +14668,7 @@
                     <Expression name="c680"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c679">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Bangkok"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14676,7 +14676,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c680">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Bangkok"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14684,7 +14684,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Bangkok"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14784,7 +14784,7 @@
                     <Expression name="c685"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c684">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Ho_Chi_Minh"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14792,7 +14792,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c685">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Ho_Chi_Minh"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14800,7 +14800,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Ho_Chi_Minh"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14900,7 +14900,7 @@
                     <Expression name="c690"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c689">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Jakarta"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14908,7 +14908,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c690">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Jakarta"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -14916,7 +14916,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Jakarta"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15016,7 +15016,7 @@
                     <Expression name="c695"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c694">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15024,7 +15024,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c695">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15032,7 +15032,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15132,7 +15132,7 @@
                     <Expression name="c700"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c699">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15140,7 +15140,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c700">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15148,7 +15148,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15248,7 +15248,7 @@
                     <Expression name="c705"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c704">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Hong_Kong"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15256,7 +15256,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c705">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Hong_Kong"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15264,7 +15264,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Hong_Kong"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15364,7 +15364,7 @@
                     <Expression name="c710"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c709">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kuala_Lumpur"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15372,7 +15372,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c710">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kuala_Lumpur"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15380,7 +15380,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Kuala_Lumpur"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15480,7 +15480,7 @@
                     <Expression name="c715"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c714">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Manila"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15488,7 +15488,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c715">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Manila"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15496,7 +15496,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Manila"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15596,7 +15596,7 @@
                     <Expression name="c720"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c719">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15604,7 +15604,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c720">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15612,7 +15612,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Shanghai"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15712,7 +15712,7 @@
                     <Expression name="c725"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c724">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Singapore"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15720,7 +15720,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c725">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Singapore"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15728,7 +15728,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Singapore"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15828,7 +15828,7 @@
                     <Expression name="c730"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c729">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Taipei"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15836,7 +15836,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c730">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Taipei"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15844,7 +15844,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Taipei"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15944,7 +15944,7 @@
                     <Expression name="c735"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c734">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tokyo"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15952,7 +15952,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c735">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tokyo"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -15960,7 +15960,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tokyo"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16060,7 +16060,7 @@
                     <Expression name="c740"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c739">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Seoul"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16068,7 +16068,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c740">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Seoul"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16076,7 +16076,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Seoul"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16176,7 +16176,7 @@
                     <Expression name="c745"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c744">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tokyo"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16184,7 +16184,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c745">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tokyo"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16192,7 +16192,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Asia/Tokyo"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16298,7 +16298,7 @@
                     <Expression name="c750"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c749">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Perth"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16306,7 +16306,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c750">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Perth"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16314,7 +16314,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Perth"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16414,7 +16414,7 @@
                     <Expression name="c755"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c754">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Adelaide"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16422,7 +16422,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c755">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Adelaide"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16430,7 +16430,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Adelaide"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16530,7 +16530,7 @@
                     <Expression name="c760"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c759">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Brisbane"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16538,7 +16538,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c760">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Brisbane"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16546,7 +16546,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Brisbane"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16646,7 +16646,7 @@
                     <Expression name="c765"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c764">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Melbourne"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16654,7 +16654,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c765">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Melbourne"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16662,7 +16662,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Melbourne"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16762,7 +16762,7 @@
                     <Expression name="c770"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c769">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Sydney"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16770,7 +16770,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c770">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Sydney"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16778,7 +16778,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Australia/Sydney"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16878,7 +16878,7 @@
                     <Expression name="c775"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c774">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Noumea"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16886,7 +16886,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c775">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Noumea"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16894,7 +16894,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Noumea"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -16994,7 +16994,7 @@
                     <Expression name="c780"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c779">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Auckland"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -17002,7 +17002,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c780">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Auckland"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -17010,7 +17010,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Auckland"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -17110,7 +17110,7 @@
                     <Expression name="c785"><![CDATA[[CONFIGURATION.style] == "pixel"]]></Expression>
                   </Expressions>
                   <Compare expression="c784">
-                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="218" y="37" width="14" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Tongatapu"/>
                       <Image resource="flat_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -17118,7 +17118,7 @@
                     </PartImage>
                   </Compare>
                   <Compare expression="c785">
-                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.1]">
+                    <PartImage x="216" y="63" width="18" height="164" pivotX="0.5" pivotY="0.987805" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Tongatapu"/>
                       <Image resource="pixel_hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -17126,7 +17126,7 @@
                     </PartImage>
                   </Compare>
                   <Default>
-                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474">
+                    <PartImage x="208" y="37" width="34" height="190" pivotX="0.5" pivotY="0.989474" tintColor="[CONFIGURATION.bezel.3]">
                       <Localization timeZone="Pacific/Tongatapu"/>
                       <Image resource="hand_gmt"/>
                       <Transform target="angle" value="([HOUR_0_23] + [MINUTE] / 60) * 15"/>
@@ -17595,7 +17595,7 @@
           <MinuteHand resource="flat_hand_minute_ambient" x="218" y="49" width="14" height="190" pivotX="0.5" pivotY="0.926316" alpha="0">
             <Variant mode="AMBIENT" target="alpha" value="255"/>
           </MinuteHand>
-          <SecondHand resource="flat_hand_second" x="218" y="41" width="14" height="222" pivotX="0.5" pivotY="0.828829">
+          <SecondHand resource="flat_hand_second" x="218" y="41" width="14" height="222" pivotX="0.5" pivotY="0.828829" tintColor="[CONFIGURATION.bezel.3]">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Sweep frequency="15"/>
           </SecondHand>
@@ -17615,7 +17615,7 @@
           <MinuteHand resource="pixel_hand_minute_ambient" x="216" y="51" width="18" height="192" pivotX="0.5" pivotY="0.90625" alpha="0">
             <Variant mode="AMBIENT" target="alpha" value="255"/>
           </MinuteHand>
-          <SecondHand resource="pixel_hand_second" x="218" y="41" width="14" height="216" pivotX="0.5" pivotY="0.851852" tintColor="[CONFIGURATION.bezel.1]">
+          <SecondHand resource="pixel_hand_second" x="218" y="41" width="14" height="216" pivotX="0.5" pivotY="0.851852" tintColor="[CONFIGURATION.bezel.3]">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Sweep frequency="15"/>
           </SecondHand>
@@ -17635,7 +17635,7 @@
           <MinuteHand resource="hand_minute_ambient" x="216" y="47" width="18" height="202" pivotX="0.5" pivotY="0.881188" alpha="0">
             <Variant mode="AMBIENT" target="alpha" value="255"/>
           </MinuteHand>
-          <SecondHand resource="hand_second" x="216" y="41" width="18" height="226" pivotX="0.5" pivotY="0.814159">
+          <SecondHand resource="hand_second" x="216" y="41" width="18" height="226" pivotX="0.5" pivotY="0.814159" tintColor="[CONFIGURATION.bezel.3]">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Sweep frequency="15"/>
           </SecondHand>
