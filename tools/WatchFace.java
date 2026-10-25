@@ -209,16 +209,16 @@ public class WatchFace {
     // like red/green); the darker shade is night. Diet versions use silver as
     // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
-            // Apple Heritage & Official Pixel Watch Color Themes
+            // Apple Heritage & Official Pixel Watch Material 3 Theme Hexes
             new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#8B1E24"),
-            new Colorway("pixel_ivy", "Pixel Ivy", "#1B261D", "#527357", "#1B261D", "#324B36"),
-            new Colorway("pixel_moonstone", "Pixel Moonstone", "#1A222B", "#687C8E", "#1A222B", "#455563"),
-            new Colorway("pixel_porcelain", "Pixel Porcelain", "#242220", "#9C9894", "#242220", "#6E6A66"),
-            new Colorway("pixel_iris", "Pixel Iris", "#221B30", "#6A5C80", "#221B30", "#4A3E5C"),
-            new Colorway("pixel_lemongrass", "Pixel Lemongrass", "#222614", "#6F7D3A", "#222614", "#4A5424"),
-            new Colorway("pixel_jade", "Pixel Jade", "#12241C", "#4A7A64", "#12241C", "#305444"),
-            new Colorway("pixel_indigo", "Pixel Indigo", "#13192B", "#3D5280", "#13192B", "#27375A"),
-            new Colorway("pixel_peony", "Pixel Peony", "#331821", "#8A4B60", "#331821", "#5C303F"),
+            new Colorway("pixel_ivy", "Pixel Ivy", "#1C3220", "#A2D4A9", "#1C3220", "#426B49"),
+            new Colorway("pixel_moonstone", "Pixel Moonstone", "#202D3A", "#A0B4CC", "#202D3A", "#485A6E"),
+            new Colorway("pixel_porcelain", "Pixel Porcelain", "#2E2A2B", "#E6E1E5", "#2E2A2B", "#787374"),
+            new Colorway("pixel_iris", "Pixel Iris", "#2F2542", "#C2A4FF", "#2F2542", "#5A4878"),
+            new Colorway("pixel_lemongrass", "Pixel Lemongrass", "#2C3312", "#C2D870", "#2C3312", "#5B6B2B"),
+            new Colorway("pixel_jade", "Pixel Jade", "#163226", "#8ADDB7", "#163226", "#386E55"),
+            new Colorway("pixel_indigo", "Pixel Indigo", "#1B2648", "#B3C5FF", "#1B2648", "#4A5F9E"),
+            new Colorway("pixel_peony", "Pixel Peony", "#3B1820", "#FD8D96", "#3B1820", "#823942"),
             // Muted Drink-inspired Colourways
             new Colorway("blue_cola", "Blue Cola", "#1C3B82", "#8B2224", "#1C3B82", "#8B2224"),
             new Colorway("diet_blue_cola", "Diet Blue Cola", "#1C3B82", "#6E7882", "#1C3B82", "#525A62"),
