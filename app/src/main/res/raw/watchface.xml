@@ -17,14 +17,13 @@
       <ColorOption id="apple_heritage" displayName="bezel_apple_heritage" icon="icon_bezel_apple_heritage" colors="#1D2838 #8B1E24 #1D2838 #8B1E24"/>
       <ColorOption id="apple_watermelon" displayName="bezel_apple_watermelon" icon="icon_bezel_apple_watermelon" colors="#2C323B #D84355 #2C323B #D84355"/>
       <ColorOption id="apple_slate_navy" displayName="bezel_apple_slate_navy" icon="icon_bezel_apple_slate_navy" colors="#222831 #2B4C7E #222831 #2B4C7E"/>
-      <ColorOption id="pixel_ivy" displayName="bezel_pixel_ivy" icon="icon_bezel_pixel_ivy" colors="#1C3220 #A2D4A9 #1C3220 #A5E3CD"/>
-      <ColorOption id="pixel_moonstone" displayName="bezel_pixel_moonstone" icon="icon_bezel_pixel_moonstone" colors="#202D3A #A0B4CC #202D3A #B2C5E8"/>
-      <ColorOption id="pixel_porcelain" displayName="bezel_pixel_porcelain" icon="icon_bezel_pixel_porcelain" colors="#2E2A2B #E6E1E5 #2E2A2B #E2D5B4"/>
-      <ColorOption id="pixel_iris" displayName="bezel_pixel_iris" icon="icon_bezel_pixel_iris" colors="#2F2542 #C2A4FF #2F2542 #F4A5F1"/>
-      <ColorOption id="pixel_lemongrass" displayName="bezel_pixel_lemongrass" icon="icon_bezel_pixel_lemongrass" colors="#2C3312 #C2D870 #2C3312 #E8D480"/>
-      <ColorOption id="pixel_jade" displayName="bezel_pixel_jade" icon="icon_bezel_pixel_jade" colors="#163226 #8ADDB7 #163226 #82D8E3"/>
-      <ColorOption id="pixel_indigo" displayName="bezel_pixel_indigo" icon="icon_bezel_pixel_indigo" colors="#1B2648 #B3C5FF #1B2648 #FD8D96"/>
-      <ColorOption id="pixel_peony" displayName="bezel_pixel_peony" icon="icon_bezel_pixel_peony" colors="#3B1820 #FD8D96 #3B1820 #FFC8A8"/>
+      <ColorOption id="pixel_moonstone" displayName="bezel_pixel_moonstone" icon="icon_bezel_pixel_moonstone" colors="#3F434E #B5BFD6 #3F434E #AEA4E2"/>
+      <ColorOption id="pixel_ivy" displayName="bezel_pixel_ivy" icon="icon_bezel_pixel_ivy" colors="#434A43 #C7D7CB #434A43 #CBE99F"/>
+      <ColorOption id="pixel_porcelain" displayName="bezel_pixel_porcelain" icon="icon_bezel_pixel_porcelain" colors="#47443C #DFD4BE #47443C #E1E797"/>
+      <ColorOption id="pixel_iris" displayName="bezel_pixel_iris" icon="icon_bezel_pixel_iris" colors="#3D4929 #9FAEEF #3D4929 #CCE26C"/>
+      <ColorOption id="pixel_jade" displayName="bezel_pixel_jade" icon="icon_bezel_pixel_jade" colors="#394432 #C0D69A #394432 #E2C87D"/>
+      <ColorOption id="pixel_indigo" displayName="bezel_pixel_indigo" icon="icon_bezel_pixel_indigo" colors="#353F6B #84ABF8 #353F6B #F19BE7"/>
+      <ColorOption id="pixel_peony" displayName="bezel_pixel_peony" icon="icon_bezel_pixel_peony" colors="#6B3346 #F27A84 #6B3346 #B69FF9"/>
       <ColorOption id="blue_cola" displayName="bezel_blue_cola" icon="icon_bezel_blue_cola" colors="#1C3B82 #8B2224 #1C3B82 #8B2224"/>
       <ColorOption id="diet_blue_cola" displayName="bezel_diet_blue_cola" icon="icon_bezel_diet_blue_cola" colors="#1C3B82 #6E7882 #1C3B82 #525A62"/>
       <ColorOption id="midnight_cola" displayName="bezel_midnight_cola" icon="icon_bezel_midnight_cola" colors="#0B0B10 #1C3B82 #3F3F46 #1C3B82"/>
