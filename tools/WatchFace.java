@@ -209,10 +209,10 @@ public class WatchFace {
     // like red/green); the darker shade is night. Diet versions use silver as
     // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
-            // Apple Watch Colorways (with classic GMT Red #D72626 tertiary accent)
-            new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#D72626"),
-            new Colorway("apple_watermelon", "Apple Watermelon", "#2C323B", "#D84355", "#2C323B", "#D72626"),
-            new Colorway("apple_slate_navy", "Apple Navy", "#222831", "#2B4C7E", "#222831", "#D72626"),
+            // Apple Watch Colorways (Ambient Day arc matches Day arc so ambient mode is never red)
+            new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#8B1E24"),
+            new Colorway("apple_watermelon", "Apple Watermelon", "#2C323B", "#D84355", "#2C323B", "#D84355"),
+            new Colorway("apple_slate_navy", "Apple Navy", "#222831", "#2B4C7E", "#222831", "#2B4C7E"),
             new Colorway("pixel_ivy", "Pixel Ivy", "#1C3220", "#A2D4A9", "#1C3220", "#A5E3CD"),
             new Colorway("pixel_moonstone", "Pixel Moonstone", "#202D3A", "#A0B4CC", "#202D3A", "#B2C5E8"),
             new Colorway("pixel_porcelain", "Pixel Porcelain", "#2E2A2B", "#E6E1E5", "#2E2A2B", "#E2D5B4"),
