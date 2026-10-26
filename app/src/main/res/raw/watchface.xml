@@ -14,9 +14,9 @@
       <ListOption id="24" displayName="bezel_format_24"/>
     </ListConfiguration>
     <ColorConfiguration id="bezel" displayName="cfg_bezel" screenReaderText="cfg_bezel" icon="icon_cfg_bezel" defaultValue="blue_cola">
-      <ColorOption id="apple_heritage" displayName="bezel_apple_heritage" icon="icon_bezel_apple_heritage" colors="#1D2838 #8B1E24 #1D2838 #8B1E24"/>
-      <ColorOption id="apple_watermelon" displayName="bezel_apple_watermelon" icon="icon_bezel_apple_watermelon" colors="#2C323B #D84355 #2C323B #D84355"/>
-      <ColorOption id="apple_slate_navy" displayName="bezel_apple_slate_navy" icon="icon_bezel_apple_slate_navy" colors="#222831 #2B4C7E #222831 #2B4C7E"/>
+      <ColorOption id="apple_navy_watermelon" displayName="bezel_apple_navy_watermelon" icon="icon_bezel_apple_navy_watermelon" colors="#1C2A39 #E64C4C #1C2A39 #E64C4C"/>
+      <ColorOption id="apple_slate_watermelon" displayName="bezel_apple_slate_watermelon" icon="icon_bezel_apple_slate_watermelon" colors="#2B2E33 #E64C4C #2B2E33 #E64C4C"/>
+      <ColorOption id="apple_slate_navy" displayName="bezel_apple_slate_navy" icon="icon_bezel_apple_slate_navy" colors="#2B2E33 #2A52BE #2B2E33 #2A52BE"/>
       <ColorOption id="pixel_moonstone" displayName="bezel_pixel_moonstone" icon="icon_bezel_pixel_moonstone" colors="#3F434E #B5BFD6 #3F434E #AEA4E2"/>
       <ColorOption id="pixel_ivy" displayName="bezel_pixel_ivy" icon="icon_bezel_pixel_ivy" colors="#434A43 #C7D7CB #434A43 #CBE99F"/>
       <ColorOption id="pixel_porcelain" displayName="bezel_pixel_porcelain" icon="icon_bezel_pixel_porcelain" colors="#47443C #DFD4BE #47443C #E1E797"/>
@@ -24,22 +24,6 @@
       <ColorOption id="pixel_jade" displayName="bezel_pixel_jade" icon="icon_bezel_pixel_jade" colors="#394432 #C0D69A #394432 #E2C87D"/>
       <ColorOption id="pixel_indigo" displayName="bezel_pixel_indigo" icon="icon_bezel_pixel_indigo" colors="#353F6B #84ABF8 #353F6B #F19BE7"/>
       <ColorOption id="pixel_peony" displayName="bezel_pixel_peony" icon="icon_bezel_pixel_peony" colors="#6B3346 #F27A84 #6B3346 #B69FF9"/>
-      <ColorOption id="blue_cola" displayName="bezel_blue_cola" icon="icon_bezel_blue_cola" colors="#1C3B82 #8B2224 #1C3B82 #8B2224"/>
-      <ColorOption id="diet_blue_cola" displayName="bezel_diet_blue_cola" icon="icon_bezel_diet_blue_cola" colors="#1C3B82 #6E7882 #1C3B82 #525A62"/>
-      <ColorOption id="midnight_cola" displayName="bezel_midnight_cola" icon="icon_bezel_midnight_cola" colors="#0B0B10 #1C3B82 #3F3F46 #1C3B82"/>
-      <ColorOption id="classic_cola" displayName="bezel_classic_cola" icon="icon_bezel_classic_cola" colors="#3B1E12 #8B2224 #4B2818 #8B2224"/>
-      <ColorOption id="diet_cola" displayName="bezel_diet_cola" icon="icon_bezel_diet_cola" colors="#7A1B20 #6E7882 #7A1B20 #525A62"/>
-      <ColorOption id="zero_sugar_cola" displayName="bezel_zero_sugar_cola" icon="icon_bezel_zero_sugar_cola" colors="#0B0B0D #A81B24 #3F3F46 #A81B24"/>
-      <ColorOption id="gold_cola" displayName="bezel_gold_cola" icon="icon_bezel_gold_cola" colors="#6B1B1B #9E7B27 #6B1B1B #6E561A"/>
-      <ColorOption id="cherry_cola" displayName="bezel_cherry_cola" icon="icon_bezel_cherry_cola" colors="#300C17 #85143E #4B1525 #85143E"/>
-      <ColorOption id="spiced_cherry" displayName="bezel_spiced_cherry" icon="icon_bezel_spiced_cherry" colors="#450F1B #78808A #450F1B #525A62"/>
-      <ColorOption id="lemon_lime" displayName="bezel_lemon_lime" icon="icon_bezel_lemon_lime" colors="#0B2F6B #167336 #0B2F6B #125A2A"/>
-      <ColorOption id="neon_citrus" displayName="bezel_neon_citrus" icon="icon_bezel_neon_citrus" colors="#0B3B24 #5B822A #12472C #425E1E"/>
-      <ColorOption id="diet_neon_citrus" displayName="bezel_diet_neon_citrus" icon="icon_bezel_diet_neon_citrus" colors="#0B3B24 #6E7882 #12472C #525A62"/>
-      <ColorOption id="orange_soda" displayName="bezel_orange_soda" icon="icon_bezel_orange_soda" colors="#70260D #B85310 #70260D #8A3D0C"/>
-      <ColorOption id="grape_soda" displayName="bezel_grape_soda" icon="icon_bezel_grape_soda" colors="#2B0748 #5F3FB0 #3E1763 #4A308B"/>
-      <ColorOption id="cream_soda" displayName="bezel_cream_soda" icon="icon_bezel_cream_soda" colors="#423327 #B3A17E #423327 #786B52"/>
-      <ColorOption id="tonic_water" displayName="bezel_tonic_water" icon="icon_bezel_tonic_water" colors="#272E38 #7B8591 #2F3845 #525A63"/>
     </ColorConfiguration>
     <ListConfiguration id="region" displayName="cfg_region" screenReaderText="cfg_region" icon="icon_cfg_airport" defaultValue="local">
       <ListOption id="local" displayName="region_local"/>

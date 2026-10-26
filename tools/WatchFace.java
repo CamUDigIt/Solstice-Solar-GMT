@@ -209,38 +209,19 @@ public class WatchFace {
     // like red/green); the darker shade is night. Diet versions use silver as
     // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
-            // Apple Watch Colorways
-            new Colorway("apple_heritage", "Apple Heritage", "#1D2838", "#8B1E24", "#1D2838", "#8B1E24"),
-            new Colorway("apple_watermelon", "Apple Watermelon", "#2C323B", "#D84355", "#2C323B", "#D84355"),
-            new Colorway("apple_slate_navy", "Apple Navy", "#222831", "#2B4C7E", "#222831", "#2B4C7E"),
-            // Pixel Watch Exact Screenshot Theme Hexes (Top=Day, BottomLeft=Night, BottomRight=Tertiary)
+            // Apple Watch GMT Iconic Colorways
+            new Colorway("apple_navy_watermelon", "Navy Blue / Watermelon", "#1C2A39", "#E64C4C", "#1C2A39", "#E64C4C"),
+            new Colorway("apple_slate_watermelon", "Slate / Watermelon", "#2B2E33", "#E64C4C", "#2B2E33", "#E64C4C"),
+            new Colorway("apple_slate_navy", "Slate / Navy Blue", "#2B2E33", "#2A52BE", "#2B2E33", "#2A52BE"),
+
+            // Pixel Watch Screenshot Theme Colorways
             new Colorway("pixel_moonstone", "Pixel Moonstone", "#3F434E", "#B5BFD6", "#3F434E", "#AEA4E2"),
             new Colorway("pixel_ivy", "Pixel Ivy", "#434A43", "#C7D7CB", "#434A43", "#CBE99F"),
             new Colorway("pixel_porcelain", "Pixel Porcelain", "#47443C", "#DFD4BE", "#47443C", "#E1E797"),
             new Colorway("pixel_iris", "Pixel Iris", "#3D4929", "#9FAEEF", "#3D4929", "#CCE26C"),
             new Colorway("pixel_jade", "Pixel Jade", "#394432", "#C0D69A", "#394432", "#E2C87D"),
             new Colorway("pixel_indigo", "Pixel Indigo", "#353F6B", "#84ABF8", "#353F6B", "#F19BE7"),
-            new Colorway("pixel_peony", "Pixel Peony", "#6B3346", "#F27A84", "#6B3346", "#B69FF9"),
-            // Muted Drink-inspired Colourways
-            new Colorway("blue_cola", "Blue Cola", "#1C3B82", "#8B2224", "#1C3B82", "#8B2224"),
-            new Colorway("diet_blue_cola", "Diet Blue Cola", "#1C3B82", "#6E7882", "#1C3B82", "#525A62"),
-            new Colorway("midnight_cola", "Midnight Cola", "#0B0B10", "#1C3B82", "#3F3F46", "#1C3B82"),
-            new Colorway("classic_cola", "Classic Cola", "#3B1E12", "#8B2224", "#4B2818", "#8B2224"),
-            new Colorway("diet_cola", "Diet Cola", "#7A1B20", "#6E7882", "#7A1B20", "#525A62"),
-            new Colorway("zero_sugar_cola", "Zero Sugar Cola", "#0B0B0D", "#A81B24", "#3F3F46", "#A81B24"),
-            new Colorway("gold_cola", "Gold Cola", "#6B1B1B", "#9E7B27", "#6B1B1B", "#6E561A"),
-            new Colorway("cherry_cola", "Cherry Cola", "#300C17", "#85143E", "#4B1525", "#85143E"),
-            new Colorway("spiced_cherry", "Spiced Cherry", "#450F1B", "#78808A", "#450F1B", "#525A62"),
-            // Subdued Citrus
-            new Colorway("lemon_lime", "Lemon-Lime", "#0B2F6B", "#167336", "#0B2F6B", "#125A2A"),
-            new Colorway("neon_citrus", "Neon Citrus", "#0B3B24", "#5B822A", "#12472C", "#425E1E"),
-            new Colorway("diet_neon_citrus", "Diet Neon Citrus", "#0B3B24", "#6E7882", "#12472C", "#525A62"),
-            // Muted Fruit
-            new Colorway("orange_soda", "Orange Soda", "#70260D", "#B85310", "#70260D", "#8A3D0C"),
-            new Colorway("grape_soda", "Grape Soda", "#2B0748", "#5F3FB0", "#3E1763", "#4A308B"),
-            // Soft teas and lattes
-            new Colorway("cream_soda", "Cream Soda", "#423327", "#B3A17E", "#423327", "#786B52"),
-            new Colorway("tonic_water", "Tonic Water", "#272E38", "#7B8591", "#2F3845", "#525A63"));
+            new Colorway("pixel_peony", "Pixel Peony", "#6B3346", "#F27A84", "#6B3346", "#B69FF9"));
 
 
     // ---- Palette ----------------------------------------------------------
