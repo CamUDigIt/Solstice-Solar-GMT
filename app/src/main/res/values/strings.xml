@@ -20,9 +20,9 @@
     <string name="region_as">Asia</string>
     <string name="region_oc">Oceania &amp; Pacific</string>
     <string name="cfg_airport">GMT airport</string>
-    <string name="bezel_apple_navy_watermelon">Navy Blue / Watermelon</string>
-    <string name="bezel_apple_slate_watermelon">Slate / Watermelon</string>
-    <string name="bezel_apple_slate_navy">Slate / Navy Blue</string>
+    <string name="bezel_apple_navy_watermelon">Apple Navy Blue / Watermelon</string>
+    <string name="bezel_apple_slate_watermelon">Apple Slate / Watermelon</string>
+    <string name="bezel_apple_slate_navy">Apple Slate / Navy Blue</string>
     <string name="bezel_pixel_moonstone">Pixel Moonstone</string>
     <string name="bezel_pixel_ivy">Pixel Ivy</string>
     <string name="bezel_pixel_porcelain">Pixel Porcelain</string>

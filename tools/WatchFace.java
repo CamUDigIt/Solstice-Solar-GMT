@@ -210,9 +210,9 @@ public class WatchFace {
     // the day colour.
     static final List<Colorway> COLORWAYS = List.of(
             // Apple Watch GMT Iconic Colorways
-            new Colorway("apple_navy_watermelon", "Navy Blue / Watermelon", "#1C2A39", "#E64C4C", "#1C2A39", "#E64C4C"),
-            new Colorway("apple_slate_watermelon", "Slate / Watermelon", "#2B2E33", "#E64C4C", "#2B2E33", "#E64C4C"),
-            new Colorway("apple_slate_navy", "Slate / Navy Blue", "#2B2E33", "#2A52BE", "#2B2E33", "#2A52BE"),
+            new Colorway("apple_navy_watermelon", "Apple Navy Blue / Watermelon", "#1C2A39", "#E64C4C", "#1C2A39", "#E64C4C"),
+            new Colorway("apple_slate_watermelon", "Apple Slate / Watermelon", "#2B2E33", "#E64C4C", "#2B2E33", "#E64C4C"),
+            new Colorway("apple_slate_navy", "Apple Slate / Navy Blue", "#2B2E33", "#2A52BE", "#2B2E33", "#2A52BE"),
 
             // Pixel Watch Screenshot Theme Colorways
             new Colorway("pixel_moonstone", "Pixel Moonstone", "#3F434E", "#B5BFD6", "#3F434E", "#AEA4E2"),
