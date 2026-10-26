@@ -240,15 +240,6 @@ public class WatchFace {
             new Colorway("grape_soda", "Grape Soda", "#2B0748", "#5F3FB0", "#3E1763", "#4A308B"),
             // Soft teas and lattes
             new Colorway("cream_soda", "Cream Soda", "#423327", "#B3A17E", "#423327", "#786B52"),
-            new Colorway("matcha_latte", "Matcha Latte", "#223825", "#7B916F", "#2B452E", "#52634A"),
-            new Colorway("green_tea", "Green Tea", "#222612", "#656B2E", "#2B3017", "#4C5221"),
-            new Colorway("peach_tea", "Peach Tea", "#4E2A1E", "#B58465", "#4E2A1E", "#785641"),
-            new Colorway("lavender_lemonade", "Lavender Lemonade", "#352C52", "#8E81A8", "#352C52", "#5A516E"),
-            new Colorway("hibiscus_tea", "Hibiscus Tea", "#45162A", "#A87082", "#4D1B30", "#754C5A"),
-            new Colorway("blueberry_soda", "Blueberry Soda", "#202D4A", "#7B8CAB", "#202D4A", "#525F78"),
-            new Colorway("cucumber_water", "Cucumber Water", "#0E3B33", "#699E8E", "#12453C", "#486E63"),
-            new Colorway("butterfly_pea_tea", "Butterfly Pea Tea", "#20224F", "#7373BA", "#2A2C61", "#4E4E82"),
-            new Colorway("yuzu_soda", "Yuzu Soda", "#42360B", "#B2994B", "#42360B", "#786631"),
             new Colorway("tonic_water", "Tonic Water", "#272E38", "#7B8591", "#2F3845", "#525A63"));
 
 

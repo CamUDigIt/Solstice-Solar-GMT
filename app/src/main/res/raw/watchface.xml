@@ -39,15 +39,6 @@
       <ColorOption id="orange_soda" displayName="bezel_orange_soda" icon="icon_bezel_orange_soda" colors="#70260D #B85310 #70260D #8A3D0C"/>
       <ColorOption id="grape_soda" displayName="bezel_grape_soda" icon="icon_bezel_grape_soda" colors="#2B0748 #5F3FB0 #3E1763 #4A308B"/>
       <ColorOption id="cream_soda" displayName="bezel_cream_soda" icon="icon_bezel_cream_soda" colors="#423327 #B3A17E #423327 #786B52"/>
-      <ColorOption id="matcha_latte" displayName="bezel_matcha_latte" icon="icon_bezel_matcha_latte" colors="#223825 #7B916F #2B452E #52634A"/>
-      <ColorOption id="green_tea" displayName="bezel_green_tea" icon="icon_bezel_green_tea" colors="#222612 #656B2E #2B3017 #4C5221"/>
-      <ColorOption id="peach_tea" displayName="bezel_peach_tea" icon="icon_bezel_peach_tea" colors="#4E2A1E #B58465 #4E2A1E #785641"/>
-      <ColorOption id="lavender_lemonade" displayName="bezel_lavender_lemonade" icon="icon_bezel_lavender_lemonade" colors="#352C52 #8E81A8 #352C52 #5A516E"/>
-      <ColorOption id="hibiscus_tea" displayName="bezel_hibiscus_tea" icon="icon_bezel_hibiscus_tea" colors="#45162A #A87082 #4D1B30 #754C5A"/>
-      <ColorOption id="blueberry_soda" displayName="bezel_blueberry_soda" icon="icon_bezel_blueberry_soda" colors="#202D4A #7B8CAB #202D4A #525F78"/>
-      <ColorOption id="cucumber_water" displayName="bezel_cucumber_water" icon="icon_bezel_cucumber_water" colors="#0E3B33 #699E8E #12453C #486E63"/>
-      <ColorOption id="butterfly_pea_tea" displayName="bezel_butterfly_pea_tea" icon="icon_bezel_butterfly_pea_tea" colors="#20224F #7373BA #2A2C61 #4E4E82"/>
-      <ColorOption id="yuzu_soda" displayName="bezel_yuzu_soda" icon="icon_bezel_yuzu_soda" colors="#42360B #B2994B #42360B #786631"/>
       <ColorOption id="tonic_water" displayName="bezel_tonic_water" icon="icon_bezel_tonic_water" colors="#272E38 #7B8591 #2F3845 #525A63"/>
     </ColorConfiguration>
     <ListConfiguration id="region" displayName="cfg_region" screenReaderText="cfg_region" icon="icon_cfg_airport" defaultValue="local">

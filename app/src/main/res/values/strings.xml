@@ -45,15 +45,6 @@
     <string name="bezel_orange_soda">Orange Soda</string>
     <string name="bezel_grape_soda">Grape Soda</string>
     <string name="bezel_cream_soda">Cream Soda</string>
-    <string name="bezel_matcha_latte">Matcha Latte</string>
-    <string name="bezel_green_tea">Green Tea</string>
-    <string name="bezel_peach_tea">Peach Tea</string>
-    <string name="bezel_lavender_lemonade">Lavender Lemonade</string>
-    <string name="bezel_hibiscus_tea">Hibiscus Tea</string>
-    <string name="bezel_blueberry_soda">Blueberry Soda</string>
-    <string name="bezel_cucumber_water">Cucumber Water</string>
-    <string name="bezel_butterfly_pea_tea">Butterfly Pea Tea</string>
-    <string name="bezel_yuzu_soda">Yuzu Soda</string>
     <string name="bezel_tonic_water">Tonic Water</string>
     <string name="airport_local">Local Time\nFollow Watch System Time</string>
     <string name="airport_hnl">Honolulu\nHNL · UTC−10</string>
