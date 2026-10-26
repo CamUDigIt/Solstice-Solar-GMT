@@ -214,14 +214,14 @@ public class WatchFace {
             new Colorway("apple_slate_watermelon", "Apple Slate / Watermelon", "#2B2E33", "#E64C4C", "#2B2E33", "#E64C4C"),
             new Colorway("apple_slate_navy", "Apple Slate / Navy Blue", "#2B2E33", "#2A52BE", "#2B2E33", "#2A52BE"),
 
-            // Pixel Watch Colorways (Ambient Day arc uses dimmed Color 1)
-            new Colorway("pixel_moonstone", "Pixel Moonstone", "#3F434E", "#B5BFD6", "#3F434E", "#636976"),
-            new Colorway("pixel_ivy", "Pixel Ivy", "#434A43", "#C7D7CB", "#434A43", "#6D766F"),
-            new Colorway("pixel_porcelain", "Pixel Porcelain", "#47443C", "#DFD4BE", "#47443C", "#7A7468"),
-            new Colorway("pixel_iris", "Pixel Iris", "#3D4929", "#9FAEEF", "#3D4929", "#576083"),
-            new Colorway("pixel_jade", "Pixel Jade", "#394432", "#C0D69A", "#394432", "#6A7554"),
-            new Colorway("pixel_indigo", "Pixel Indigo", "#353F6B", "#84ABF8", "#353F6B", "#485E88"),
-            new Colorway("pixel_peony", "Pixel Peony", "#6B3346", "#F27A84", "#6B3346", "#854348"),
+            // Pixel Watch Colorways (Top=Day, BottomLeft=Night, BottomRight=Tertiary Accent for GMT & Second hands)
+            new Colorway("pixel_moonstone", "Pixel Moonstone", "#3F434E", "#B5BFD6", "#3F434E", "#AEA4E2"),
+            new Colorway("pixel_ivy", "Pixel Ivy", "#434A43", "#C7D7CB", "#434A43", "#CBE99F"),
+            new Colorway("pixel_porcelain", "Pixel Porcelain", "#47443C", "#DFD4BE", "#47443C", "#E1E797"),
+            new Colorway("pixel_iris", "Pixel Iris", "#3D4929", "#9FAEEF", "#3D4929", "#CCE26C"),
+            new Colorway("pixel_jade", "Pixel Jade", "#394432", "#C0D69A", "#394432", "#E2C87D"),
+            new Colorway("pixel_indigo", "Pixel Indigo", "#353F6B", "#84ABF8", "#353F6B", "#F19BE7"),
+            new Colorway("pixel_peony", "Pixel Peony", "#6B3346", "#F27A84", "#6B3346", "#B69FF9"),
 
             // Soda Colorways
             new Colorway("blue_cola", "Blue Cola", "#1C3B82", "#8B2224", "#1C3B82", "#8B2224"),
@@ -1039,7 +1039,7 @@ public class WatchFace {
     static double bandThick() { return bandAmbient ? AMBIENT_BAND_THICK : BEZEL_THICK; }
 
     static void dayArc(String startExpr, String endExpr) {
-        arc(bandR(), 0, 0, bandAmbient ? "[CONFIGURATION.bezel.3]" : "[CONFIGURATION.bezel.1]", bandThick(), "BUTT",
+        arc(bandR(), 0, 0, "[CONFIGURATION.bezel.1]", bandThick(), "BUTT",
                 "<Transform target=\"startAngle\" value=\"" + xml(startExpr) + "\"/>\n"
                         + "<Transform target=\"endAngle\" value=\"" + xml(endExpr) + "\"/>");
     }
