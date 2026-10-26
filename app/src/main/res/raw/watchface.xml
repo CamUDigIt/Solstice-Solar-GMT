@@ -38,8 +38,6 @@
       <ColorOption id="diet_neon_citrus" displayName="bezel_diet_neon_citrus" icon="icon_bezel_diet_neon_citrus" colors="#0B3B24 #6E7882 #12472C #525A62"/>
       <ColorOption id="orange_soda" displayName="bezel_orange_soda" icon="icon_bezel_orange_soda" colors="#70260D #B85310 #70260D #8A3D0C"/>
       <ColorOption id="grape_soda" displayName="bezel_grape_soda" icon="icon_bezel_grape_soda" colors="#2B0748 #5F3FB0 #3E1763 #4A308B"/>
-      <ColorOption id="root_beer" displayName="bezel_root_beer" icon="icon_bezel_root_beer" colors="#3B1E10 #A36F08 #59331C #754E05"/>
-      <ColorOption id="ginger_ale" displayName="bezel_ginger_ale" icon="icon_bezel_ginger_ale" colors="#083B22 #91751B #0D472A #635012"/>
       <ColorOption id="cream_soda" displayName="bezel_cream_soda" icon="icon_bezel_cream_soda" colors="#423327 #B3A17E #423327 #786B52"/>
       <ColorOption id="matcha_latte" displayName="bezel_matcha_latte" icon="icon_bezel_matcha_latte" colors="#223825 #7B916F #2B452E #52634A"/>
       <ColorOption id="green_tea" displayName="bezel_green_tea" icon="icon_bezel_green_tea" colors="#222612 #656B2E #2B3017 #4C5221"/>

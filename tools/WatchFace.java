@@ -238,9 +238,6 @@ public class WatchFace {
             // Muted Fruit
             new Colorway("orange_soda", "Orange Soda", "#70260D", "#B85310", "#70260D", "#8A3D0C"),
             new Colorway("grape_soda", "Grape Soda", "#2B0748", "#5F3FB0", "#3E1763", "#4A308B"),
-            // Root beer and ginger
-            new Colorway("root_beer", "Root Beer", "#3B1E10", "#A36F08", "#59331C", "#754E05"),
-            new Colorway("ginger_ale", "Ginger Ale", "#083B22", "#91751B", "#0D472A", "#635012"),
             // Soft teas and lattes
             new Colorway("cream_soda", "Cream Soda", "#423327", "#B3A17E", "#423327", "#786B52"),
             new Colorway("matcha_latte", "Matcha Latte", "#223825", "#7B916F", "#2B452E", "#52634A"),
