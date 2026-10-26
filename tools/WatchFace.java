@@ -966,7 +966,8 @@ public class WatchFace {
     static void localGmtHand() {
         styled(() -> {
             HandBox b = handBox(style.gmt);
-            open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\" tintColor=\"[CONFIGURATION.bezel.3]\"", b.x, b.y, b.w, b.h, n(b.pivotY));
+            open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s", b.x, b.y, b.w, b.h, n(b.pivotY),
+                    style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.3]\"" : "");
             line("<Localization/>");
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
             line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60) * 15\"/>");
@@ -1139,7 +1140,8 @@ public class WatchFace {
         // 24-hour band (e.g. 18:15 at the 9:15 position of the 12-hour labels).
         styled(() -> {
             HandBox b = handBox(style.gmt);
-            open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\" tintColor=\"[CONFIGURATION.bezel.3]\"", b.x, b.y, b.w, b.h, n(b.pivotY));
+            open("PartImage x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s", b.x, b.y, b.w, b.h, n(b.pivotY),
+                    style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.3]\"" : "");
             line("<Localization timeZone=\"%s\"/>", zone);
             line("<Image resource=\"%shand_gmt\"/>", style.handPrefix);
             line("<Transform target=\"angle\" value=\"([HOUR_0_23] + [MINUTE] / 60) * 15\"/>");
@@ -1306,8 +1308,8 @@ public class WatchFace {
             hand("MinuteHand", "hand_minute", style.minute, 255, 0);
             hand("MinuteHand", "hand_minute_ambient", style.minute, 0, 255);
             HandBox b = handBox(style.second);
-            open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\" tintColor=\"[CONFIGURATION.bezel.3]\"",
-                    style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY));
+            open("SecondHand resource=\"%shand_second\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" pivotX=\"0.5\" pivotY=\"%s\"%s",
+                    style.handPrefix, b.x, b.y, b.w, b.h, n(b.pivotY), style == PIXEL ? " tintColor=\"[CONFIGURATION.bezel.3]\"" : "");
             line("<Variant mode=\"AMBIENT\" target=\"alpha\" value=\"0\"/>");
             line("<Sweep frequency=\"15\"/>");
             close("SecondHand");
