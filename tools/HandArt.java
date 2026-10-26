@@ -196,8 +196,6 @@ public class HandArt {
         g.fill(new RoundRectangle2D.Double(c - 2.6, len + 14, 5.2, tail - 16, 3, 3));
         double ly = 44, r = 6.5;
         g.fill(new Ellipse2D.Double(c - r, ly - r, 2 * r, 2 * r));
-        g.setColor(LUME);
-        g.fill(new Ellipse2D.Double(c - r + 1.6, ly - r + 1.6, 2 * r - 3.2, 2 * r - 3.2));
     }
 
     /** Thicker stem with a large outlined triangle tip. */
@@ -211,13 +209,6 @@ public class HandArt {
         arrow.lineTo(0, th);
         arrow.closePath();
         g.fill(arrow);
-        Path2D inset = new Path2D.Double();
-        inset.moveTo(c, 8);
-        inset.lineTo(w - 6, th - 3.5);
-        inset.lineTo(6, th - 3.5);
-        inset.closePath();
-        g.setColor(LUME);
-        g.fill(inset);
     }
 
     // ---- Flat -------------------------------------------------------------
